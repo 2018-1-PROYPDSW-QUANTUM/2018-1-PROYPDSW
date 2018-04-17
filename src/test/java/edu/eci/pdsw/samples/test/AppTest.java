@@ -1,4 +1,4 @@
-package edu.eci.cosw.sampleapp.test;
+package edu.eci.pdsw.samples.test;
 
 import static org.junit.Assert.fail;
 

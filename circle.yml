@@ -6,4 +6,5 @@ deployment:
   staging:
     branch: master
     heroku: 
-      appname: pdsw-circleci-demo
+      appname: pdswproyectoquantum
+
