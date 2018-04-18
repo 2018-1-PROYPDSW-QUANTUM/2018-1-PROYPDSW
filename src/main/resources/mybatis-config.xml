@@ -20,7 +20,6 @@
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
                 <property name="driver" value="${driver}" />
-                <!--property name="url" value="jdbc:mysql://localhost:3306/video_rental"/!-->
                 <property name="url" value="${url}"/>
                 <property name="username" value="${username}" />
                 <property name="password" value="${password}" />
