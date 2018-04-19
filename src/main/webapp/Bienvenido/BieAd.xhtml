@@ -1,0 +1,46 @@
+?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <style type="text/css">
+        body{
+                background-image: url(http://www.escuelaing.edu.co/uploads/superior/9311_conozcanos_01.jpg);
+                background-repeat: no-repeat;
+                background-size: 120%;
+                background-position: 000px 100px;
+            }
+        </style>
+    </h:head>
+    <h:body>       
+        <h:form prependId="false">
+
+            <p:outputPanel deferred="true" style="text-align: center">
+                <h3>BIENVENIDO AL SISTEMA DE CANCELACION DE ASIGNATURAS</h3>
+                <p> </p>
+                <br>
+                </br>
+                <br >
+                    <p:link   value="Solicitud Cancelacion" outcome="/cancelacion/estudiante" style="color:blue" />
+                </br>
+                <br>
+                    </br>
+                <br>
+                    <p:link value="Consejeria" outcome="/consejeria/consejeroEspecifico" style="color:blue" />
+                </br>
+                 <br>
+                    </br>
+                <br>
+                <p:link value="Coordinacion de Cancelaciones" outcome="/coordinacion/coordinador" style="color:blue" />
+                </br>
+            </p:outputPanel>
+            
+        </h:form>
+    </h:body>
+</html>
