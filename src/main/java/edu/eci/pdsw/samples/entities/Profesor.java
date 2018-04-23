@@ -13,7 +13,7 @@ public class Profesor {
     private long id;
     private String nombre;
     private String apellido;
-    //private Cursos[] grupos;
+    //private List[] grupos;
     private String correo;
     private String telefono;
     
