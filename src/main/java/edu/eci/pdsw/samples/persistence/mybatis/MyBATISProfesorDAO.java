@@ -5,7 +5,7 @@
  */
 package edu.eci.pdsw.samples.persistence.mybatis;
 
-import com.google.inject.Inject;
+//import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.persistence.ProfesorDAO;
@@ -18,7 +18,7 @@ import java.util.List;
  * @author diego
  */
 public class MyBATISProfesorDAO implements ProfesorDAO  {
-    @Inject
+    //@Inject
     private profesorMapper profesorMapper;
 
     @Override
@@ -48,8 +48,8 @@ public class MyBATISProfesorDAO implements ProfesorDAO  {
     
 }
 
-@Override
+/*@Override
     public void save(Profesor c) throws PersistenceException {
         ProfesorMapper.agregarProfesor(c.getId(),c.getNombre(),c.getApellido(),c.getTelefono(),c.getCorreo());
         
-    }
+    }*/
