@@ -30,6 +30,13 @@ public class Profesor {
         this.telefono=telefono;
     }
     
+    public void agregarGurpo(Grupo grupo){
+        grupos.add(grupo);
+    }    
+    
+    public void eliminarGrupo(Grupo grupo){
+        grupos.remove(grupo);
+    }
     public long getId(){
         return id;
     }
