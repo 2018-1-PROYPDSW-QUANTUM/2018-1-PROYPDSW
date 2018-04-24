@@ -1,23 +1,39 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Monitorias ECI</title>
         <style type="text/css">
-            body{
-                    background-image: url(resources/Fondo.jpg);
-                    background-repeat: no-repeat;
-                    background-size:100%;
-                }
+        body{
+                background-image: url(http://www.escuelaing.edu.co/uploads/superior/9311_conozcanos_01.jpg);
+                background-repeat: no-repeat;
+                background-size: 120%;
+                background-position: 000px 100px;
+            }
         </style>
     </h:head>
-    <h:body>
-        <h:form>
+    <h:body>       
+        <h:form prependId="false">
 
+            <p:outputPanel deferred="true" style="text-align: center">
+                <h3>BIENVENIDO AL SISTEMA DE MONITORIA</h3>
+                <p> </p>
+                <br>
+                </br>
+                <br >
+                    <p:link   value="INgreso Monitores" outcome="/login" style="color:blue" />
+                </br>
+                <br>
+                    </br>
+
+            </p:outputPanel>
+            
         </h:form>
     </h:body>
 </html>
-

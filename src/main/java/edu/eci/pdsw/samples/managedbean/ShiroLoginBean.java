@@ -1,31 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Very simple bean that authenticates the user via Apache Shiro, using JSF
+ * @author Daniel Mascarenhas
  */
-package edu.eci.pdsw.samples.managedbean;
+package edu.eci.pdsw.samples.managebeans;
 
-import java.io.IOException;
-import java.io.Serializable;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- *
- * @author 2098325
- */
-
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import java.io.IOException;
+import java.io.Serializable;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 
 @ManagedBean(name = "loginBean", eager=true)
@@ -53,7 +45,7 @@ public class ShiroLoginBean implements Serializable {
     /**
      * Try and authenticate the user
      */
-    public void doLogin() throws IOException {
+    public void doLogin() {
         Subject subject = SecurityUtils.getSubject();
 
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe());
@@ -64,18 +56,18 @@ public class ShiroLoginBean implements Serializable {
         try {
             subject.login(token);
             //prueb.setUser(username);
-            if (subject.hasRole("administrador")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("Bienvenido/BieAd.xhtml");
-            }
-            else if (subject.hasRole("monitor")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("Bienvenido/BieAd.xhtml");
+            if (subject.hasRole("monitor")) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("monitor/w.xhtml");
             }
             else if (subject.hasRole("profesor")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("Bienvenido/BieAd.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("profesor/w.xhtml");
+            }
+            else if (subject.hasRole("administrador")) {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("administracion/w.xhtml");
             }
             
             else {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("welcomePrimefaces.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("open/unauthorized.xhtml");
             }
         }
         catch (UnknownAccountException ex) {
