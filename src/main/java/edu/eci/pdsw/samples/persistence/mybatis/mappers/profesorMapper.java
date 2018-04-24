@@ -7,6 +7,7 @@ package edu.eci.pdsw.samples.persistence.mybatis.mappers;
 
 import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.entities.Profesor;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 /**
  *
@@ -14,10 +15,14 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface profesorMapper {
     
-    public Profesor consultarCliente(@Param("idProf")long id);
+    public Profesor consultarProfesor(@Param("idProf")long id);
     
-    public void asignarCursoAProfesor(@Param("NombreCurso")String curso ,@Param("idprof") int profesor );
+    public void asignarCursoAProfesor(@Param("NombreCurso")String curso ,@Param("idprof") long profesor );
     
     public void  agregarProfesor(@Param("idpro") long id, @Param("nombre") String nombre,@Param("apellido") String apellido,@Param("telefono") String telefono, @Param("correo") String correo);
+    
+    public List<Curso> consultarCusosProfesor(@Param("idpr")long id);
+
+    public List<Profesor> consultarProfesores();
     
 }

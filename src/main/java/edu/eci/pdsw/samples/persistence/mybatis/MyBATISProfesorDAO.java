@@ -23,26 +23,31 @@ public class MyBATISProfesorDAO implements ProfesorDAO  {
 
     @Override
     public void save(Profesor c) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        profesorMapper.agregarProfesor(c.getId(),c.getNombre(),c.getApellido(),c.getTelefono(),c.getCorreo());
     }
 
     @Override
     public List<Profesor> loadProfesor() throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return profesorMapper.consultarProfesores();
     }
 
     @Override
-    public Profesor load(int id) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Profesor load(long id) throws PersistenceException {
+        return profesorMapper.consultarProfesor(id);
     }
 
     @Override
-    public Curso loadCursoProfesor(String NombreCurso) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Curso> loadCursoProfesor(long id) throws PersistenceException {
+        return profesorMapper.consultarCusosProfesor(id);
     }
 
     @Override
     public void AsignarCursoAProfesor(String NombreCurso, long idProf) throws PersistenceException {
+        profesorMapper.asignarCursoAProfesor(NombreCurso, idProf);
+    }
+
+    @Override
+    public Curso loadCursoProfesor(String NombreCurso) throws PersistenceException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

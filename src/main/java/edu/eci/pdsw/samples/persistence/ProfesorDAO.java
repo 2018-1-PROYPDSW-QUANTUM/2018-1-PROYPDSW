@@ -15,7 +15,8 @@ import java.util.List;
 public interface ProfesorDAO {
     public void save(Profesor c) throws PersistenceException;
     public List<Profesor> loadProfesor() throws PersistenceException ;
-    public Profesor load(int id) throws PersistenceException;
+    public Profesor load(long id) throws PersistenceException;
     public Curso loadCursoProfesor(String NombreCurso)throws PersistenceException ;
     public void AsignarCursoAProfesor(String NombreCurso,long idProf)throws PersistenceException;
+    public List<Curso> loadCursoProfesor(long id) throws PersistenceException;
 }
