@@ -25,57 +25,11 @@ and open the template in the editor.
         <p:layout style="min-width:800px;min-height:800px;">  
             <p:layoutUnit position="center">
                 
-                DATOS DEL ESTUDIANTE<br/>
+                DATOS DEL MONITOR<br/>
 
-                       
-                <p:dataTable id="estudiante" var="estudiante" value= "#{SolicitudesEstudiantes.estudiante}">
                     
-                    <style type="text/css">
-                                body{
-                                background-image: url(http://www.neuralrehabilitation.org/en/wp-content/uploads/2017/06/IMG-20170613-WA0015.jpg);
-                                background-repeat: no-repeat;
-                                background-size: 120%;
-                                background-position: 000px 100px;
-                            }    
-                    </style>      
- 
-                    <p:column headerText="Id">                
-                        <h:outputText value="#{estudiante.id}" />
-                    </p:column>
-                    <p:column headerText="Nombre">    
-                        <h:outputText value="#{estudiante.nombre}" />
-                    </p:column>
-                    <p:column headerText="Semestre">    
-                        <h:outputText value="#{estudiante.semestre}" />
-                    </p:column>
-                    <p:column headerText="Creditos">    
-                        <h:outputText value="#{estudiante.creditos_aprobados}" />
-                    </p:column>
-                   
-                </p:dataTable>
                 
-                LISTA DE MATERIAS VISTAS ACTUALMENTE<br/>
-                
-                <p:dataTable id="tableAsignaturas" var="ListaDeAsignaturas" value= "#{SolicitudesEstudiantes.materiasActualesEst}">
- 
-                    <p:column headerText="Codigo">                
-                        <h:outputText value="#{ListaDeAsignaturas.codigo}" />
-                    </p:column>
-                    <p:column headerText="Nombre">    
-                        <h:outputText value="#{ListaDeAsignaturas.nombre}" />
-                    </p:column>
-                    <p:column headerText="Creditos">    
-                        <h:outputText value="#{ListaDeAsignaturas.creditos}" />
-                    </p:column>
-                    <p:column headerText="IMpacto">    
-                        <h:outputText value="#{SolicitudesEstudiantes.calcularImpacto}" />
-                    </p:column>
-                   
-                </p:dataTable>
-
-                <p:link   value="Solicitud de cancelacion" outcome="/cancelacion/cancelacionAsignaturas" style="color:blue" />
-                
-                                <h:outputLink value="/logout">logout</h:outputLink>
+                    
             </p:layoutUnit>
         </p:layout>
     </h:form>
