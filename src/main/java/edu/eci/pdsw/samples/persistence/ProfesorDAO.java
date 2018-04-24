@@ -5,8 +5,9 @@
  */
 package edu.eci.pdsw.samples.persistence;
 
-import edu.eci.pdsw.samples.entities.Curso;
+import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Profesor;
+import java.util.Date;
 import java.util.List;
 /**
  *
@@ -16,7 +17,7 @@ public interface ProfesorDAO {
     public void save(Profesor c) throws PersistenceException;
     public List<Profesor> loadProfesor() throws PersistenceException ;
     public Profesor load(long id) throws PersistenceException;
-    public Curso loadCursoProfesor(String NombreCurso)throws PersistenceException ;
-    public void AsignarCursoAProfesor(String NombreCurso,long idProf)throws PersistenceException;
-    public List<Curso> loadCursoProfesor(long id) throws PersistenceException;
+    public Grupo loadGrupoProfesor(String NombreGrupo)throws PersistenceException ;
+    public void AsignarGrupoAProfesor(Date year,String periodo,String neumonico,long idProf)throws PersistenceException;
+    public List<Grupo> loadGrupoProfesor(long id) throws PersistenceException;
 }

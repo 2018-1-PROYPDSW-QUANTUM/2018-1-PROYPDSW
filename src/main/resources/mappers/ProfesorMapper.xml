@@ -5,7 +5,54 @@
   
   
  <mapper namespace="edu.eci.pdsw.samples.entities.Profesor">
+     <select parameterType="map" id="consultarProfesor" resultMap="ProfesorResult">
+         SELECT id, nombre, apellido, telefono, correo
+         WHERE id=#{idprof}
+     </select>
      
+     <insert parameterType="map" id="agregarProfesor">
+         INSERT INTO Profesor (codigo,nombre,apellido,telefono,correo,clave) VALUES (#{idpro},#{nom},#{apelli],#{tel},#{email},123algo)
+     </insert>
      
+     <select parameterType="map" id="consultarGrupoProfesor" resultMap="CursoProfesorResult">
+         SELECT * FROM Grupo WHERE Year=#{yearG},Periodo_academico=#{gruPeriodo},Curso_Neumonoco=#{gruNeumonico}
+     </select>
      
+     <select parameterType="map" id="asignarGrupoAProfesor" resultMap="ProfesorCursoResult">
+                            UPDATE Grupo SET Profesor_Codigo=#{idpr} WHERE Year=#{year},Periodo_academico=#{grupPeriodo},Curso_Neumonoco=#{grupNeumonico}
+     </select>
+     
+     <select parameterType="map" id="consultarProfesores" resultMap="ProfesoresResult">
+         
+         SELECT 
+            
+            P.Codigo, P.Nombre, P.Apellido, P.Celular, P.Correo
+         
+            G.Year, G.Periodo_academico, G.Curso_Neumonico, G.Numero, G.Profesor_Codigo,
+         
+            FROM Profesor as P
+            LEFT JOIN Grupo as G ON P.Codigo=G.Profesor_Codigo
+         
+         <resultMap type='Profesor' id='ProfesoresResult'>
+             
+             <id property='id' column='documento'/>
+             <result property='nombre' column='Nombre'/>
+             <result property='apellido' column='Apellido'/>
+             <result property='celular' column='Celular'/>
+             <result property='correo' column='Correo'/>
+             <collection property='grupos' ofType='Grupo' resultMap='GrupoResult'></collection>
+                      
+         </resultMap> 
+         
+         <resultMap type='Curso' id='GrupoResult'>
+             
+             <id property='year' column='Year'/>
+             <id property='periodoAcademico' column='Periodo_academico'/>
+             <id property='neumonico' column='Curso_Neumonico'/>
+             <id property='numero' column='Numero'/>
+             <association property="profesor" javaType="Profesor" columnPrefix='P_' resultMap='ProfesorResult'></association>    
+             
+         </resultMap>
+         
+     </select>
  </mapper>

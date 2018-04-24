@@ -6,11 +6,12 @@
 package edu.eci.pdsw.samples.persistence.mybatis;
 
 //import com.google.inject.Inject;
-import edu.eci.pdsw.samples.entities.Curso;
+import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.persistence.ProfesorDAO;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.persistence.mybatis.mappers.profesorMapper;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,17 +38,17 @@ public class MyBATISProfesorDAO implements ProfesorDAO  {
     }
 
     @Override
-    public List<Curso> loadCursoProfesor(long id) throws PersistenceException {
-        return profesorMapper.consultarCusosProfesor(id);
+    public void AsignarGrupoAProfesor(Date year,String periodo,String neumonico, long idProf) throws PersistenceException {
+        profesorMapper.asignarGrupoAProfesor(year,periodo,neumonico, idProf);
     }
 
     @Override
-    public void AsignarCursoAProfesor(String NombreCurso, long idProf) throws PersistenceException {
-        profesorMapper.asignarCursoAProfesor(NombreCurso, idProf);
+    public Grupo loadGrupoProfesor(String NombreGrupo) throws PersistenceException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Curso loadCursoProfesor(String NombreCurso) throws PersistenceException {
+    public List<Grupo> loadGrupoProfesor(long id) throws PersistenceException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

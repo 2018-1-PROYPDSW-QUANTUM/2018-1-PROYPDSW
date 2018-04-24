@@ -5,8 +5,9 @@
  */
 package edu.eci.pdsw.samples.persistence.mybatis.mappers;
 
-import edu.eci.pdsw.samples.entities.Curso;
+import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Profesor;
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 /**
@@ -15,13 +16,14 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface profesorMapper {
     
-    public Profesor consultarProfesor(@Param("idProf")long id);
+    public Profesor consultarProfesor(@Param("idprof")long id);
     
-    public void asignarCursoAProfesor(@Param("NombreCurso")String curso ,@Param("idprof") long profesor );
+    public void  agregarProfesor(@Param("idpro") long id, @Param("nom") String nombre,@Param("apelli") String apellido,@Param("tel") String telefono, @Param("email") String correo);
+
+    public Grupo consultarGrupoProfesor(@Param("yearG")Date year,@Param("gruPeriodo")String periodo,@Param("gruNeumonico")String neumonico );
     
-    public void  agregarProfesor(@Param("idpro") long id, @Param("nombre") String nombre,@Param("apellido") String apellido,@Param("telefono") String telefono, @Param("correo") String correo);
+    public void asignarGrupoAProfesor(@Param("year")Date year,@Param("grupPeriodo")String periodo,@Param("grupNeumonico")String neumonico ,@Param("idpr") long profesor );
     
-    public List<Curso> consultarCusosProfesor(@Param("idpr")long id);
 
     public List<Profesor> consultarProfesores();
     

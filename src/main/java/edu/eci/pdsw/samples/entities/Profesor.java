@@ -5,6 +5,8 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.util.List;
+
 /**
  *
  * @author diego
@@ -13,7 +15,7 @@ public class Profesor {
     private long id;
     private String nombre;
     private String apellido;
-    //private List[] grupos;
+    private List<Grupo> grupos;
     private String correo;
     private String telefono;
     
