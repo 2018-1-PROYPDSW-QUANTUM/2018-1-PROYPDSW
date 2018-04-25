@@ -1,31 +1,84 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
+    <h:head>
         <style type="text/css">
-        body{
-                background-image: url(http://locationcolombia.com/wp-content/uploads/2014/05/BOGOTA-Escuela-col-de-Ingenieria-CIELITO-LINDO-31.jpg);
-                background-repeat: no-repeat;
-                background-position: 000px 00px;
+            body{
+                background-color: #B50005;
             }
+            .Input{
+                font-family: Verdana;
+                text-align: left;
+                width: 100%;
+                padding: 6%;                    
+                display: inline-block;
+                border-radius: 0px;
+                box-sizing: content-box;
+                box-shadow: 0px 0px;
+                border-width: 0px;
+                background-color: #E5E5E4;
+            }
+            #Forma{
+                background-color: #F7F7F5;
+                margin: auto;
+                width: 25%;
+                height: auto;
+                text-align: center;
+                padding: 5%;
+                box-shadow: 0px 7px 20px black;
+                text-align: center;
+            }
+            #Logo{
+                content:url(resources/Logo.png);
+                margin: auto;
+                width: 45%;
+                padding: 4%;
+            }
+            #inicioSesion{
+                text-align: center;
+                display: inline-block;
+            }
+            .Boton{
+                font-family: Verdana;
+                text-align: center;
+                width: 100%;
+                padding: 6%;                    
+                display: inline-block;
+                border-radius: 0px;
+                box-sizing: content-box;
+                border: 0px;
+                background-color: #AB1C09;
+            }
+            #Titulo{
+                background-color: #F7F7F5;
+                margin: auto;
+                width: 50%;
+                height: auto;
+                text-align: center;
+                padding: 1%;
+                box-shadow: 0px 7px 20px black;
+                font-family: Verdana;
+            }
+
         </style>
-</h:head>
-<h:body>
-    <h:form prependId="false">
-        <h:panelGrid columns="2" style="text-align: right">
-            <h:outputText value="Login:" style="color:blue" />
-            <p:inputText id="username" required="true" value="#{loginBean.username}" style="text-align: right"  />
-         
-            <h:outputText value="Password:" style="color:blue" />
-            <p:password id="password" required="true" value="#{loginBean.password}" style="text-align: right"/>
-
-            <h:outputText value="Remember me:" style="color:blue"/>
-            <p:selectBooleanCheckbox id="rememberMe" value="#{loginBean.rememberMe}"/>
-            <h:outputText/>
-            <p:commandButton value="Login" action="#{loginBean.doLogin}" />
-        </h:panelGrid>
-
-        <p:messages id="messages" autoUpdate="true" closable="true" />
-    </h:form>
-</h:body>
+    </h:head>
+    <h:body>
+        <div id="Titulo">
+            <h1> Inicio De Sesion </h1>
+        </div>
+        <br></br>
+        <div id="Forma">
+            <div id="Logo"></div>
+            <h:form id="inicioSesion" prependId="false">
+                <h:panelGrid columns="2" >
+                    <p:inputText class="Input" placeholder="usuario" id="username" required="true" value="#{loginBean.username}"/>
+                    <br></br>
+                    <p:password class="Input" placeholder="contraseña" id="password" required="true" value="#{loginBean.password}"/>
+                    <br></br>
+                    <p:commandButton class="Boton" value="Login" action="#{loginBean.doLogin}"/>                    
+                </h:panelGrid>
+                <p:messages id="messages" autoUpdate="true" closable="true" />
+            </h:form>
+        </div>
+    </h:body>
 </html>
