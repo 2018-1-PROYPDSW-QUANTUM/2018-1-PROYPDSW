@@ -14,17 +14,17 @@ import org.apache.ibatis.annotations.Param;
  *
  * @author diego
  */
-public interface profesorMapper {
+public interface ProfesorMapper {
     
-    public Profesor consultarProfesor(@Param("idprof")long id);
+    public Profesor ConsultarProfesor(@Param("idprof")long id);
     
-    public void  agregarProfesor(@Param("idpro") long id, @Param("nom") String nombre,@Param("apelli") String apellido,@Param("tel") String telefono, @Param("email") String correo);
+    public void  AgregarProfesor(@Param("idpro") long id, @Param("nom") String nombre,@Param("apelli") String apellido,@Param("tel") String telefono, @Param("email") String correo);
 
-    public Grupo consultarGrupoProfesor(@Param("yearG")Date year,@Param("gruPeriodo")String periodo,@Param("gruNeumonico")String neumonico );
+    public Grupo ConsultarGrupoProfesor(@Param("yearG")Date year,@Param("gruPeriodo")String periodo,@Param("gruNeumonico")String neumonico );
     
-    public void asignarGrupoAProfesor(@Param("year")Date year,@Param("grupPeriodo")String periodo,@Param("grupNeumonico")String neumonico ,@Param("idpr") long profesor );
+    public void AsignarGrupoAProfesor(@Param("year")Date year,@Param("grupPeriodo")String periodo,@Param("grupNeumonico")String neumonico ,@Param("idpr") long profesor );
     
 
-    public List<Profesor> consultarProfesores();
+    public List<Profesor> ConsultarProfesores();
     
 }

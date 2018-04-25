@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper">
+   
+     <select parameterType="map" id="ConsultarGrupo" resultMap="GrupoResult">
+         SELECT Year,Periodo_academico, Curso_Neumonico, Numero,Profesor_Codigo,Monitor_Codigo
+         WHERE Year=#{year} AND Periodo_academico=#{periodoAcad} AND Curso_Neumonico=#{cursoNeum}
+     </select>
+     
+     <insert parameterType="map" id="AgregarGrupo">
+         INSERT INTO Grupo (Year,Periodo_academico, Curso_Neumonico, Numero,Profesor_Codigo,Monitor_Codigo) VALUES (#{yea},#{periodoAca},#{cursoNeu},#{num},#{Profesorcod},#{monotCod})
+     </insert>
+     
+</mapper>

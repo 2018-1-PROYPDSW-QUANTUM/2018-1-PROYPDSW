@@ -10,5 +10,10 @@ package edu.eci.pdsw.samples.entities;
  * @author 2106146
  */
 public class Monitor {
+    private int id;
+    
+    public int getId(){
+        return id;
+    }
     
 }

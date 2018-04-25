@@ -4,25 +4,25 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   
- <mapper namespace="edu.eci.pdsw.samples.entities.Profesor">
-     <select parameterType="map" id="consultarProfesor" resultMap="ProfesorResult">
+ <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper">
+     <select parameterType="map" id="ConsultarProfesor" resultMap="ProfesorResult">
          SELECT id, nombre, apellido, telefono, correo
          WHERE id=#{idprof}
      </select>
      
-     <insert parameterType="map" id="agregarProfesor">
+     <insert parameterType="map" id="AgregarProfesor">
          INSERT INTO Profesor (codigo,nombre,apellido,telefono,correo,clave) VALUES (#{idpro},#{nom},#{apelli],#{tel},#{email},123algo)
      </insert>
      
-     <select parameterType="map" id="consultarGrupoProfesor" resultMap="CursoProfesorResult">
+     <select parameterType="map" id="ConsultarGrupoProfesor" resultMap="CursoProfesorResult">
          SELECT * FROM Grupo WHERE Year=#{yearG},Periodo_academico=#{gruPeriodo},Curso_Neumonoco=#{gruNeumonico}
      </select>
      
-     <select parameterType="map" id="asignarGrupoAProfesor" resultMap="ProfesorCursoResult">
+     <select parameterType="map" id="AsignarGrupoAProfesor" resultMap="ProfesorCursoResult">
                             UPDATE Grupo SET Profesor_Codigo=#{idpr} WHERE Year=#{year},Periodo_academico=#{grupPeriodo},Curso_Neumonoco=#{grupNeumonico}
      </select>
      
-     <select parameterType="map" id="consultarProfesores" resultMap="ProfesoresResult">
+     <select parameterType="map" id="ConsultarProfesores" resultMap="ProfesoresResult">
          
          SELECT 
             

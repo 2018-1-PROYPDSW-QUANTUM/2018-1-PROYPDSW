@@ -10,36 +10,37 @@ import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.persistence.ProfesorDAO;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
-import edu.eci.pdsw.samples.persistence.mybatis.mappers.profesorMapper;
+import edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper;
 import java.util.Date;
 import java.util.List;
+import javax.inject.Inject;
 
 /**
  *
  * @author diego
  */
 public class MyBATISProfesorDAO implements ProfesorDAO  {
-    //@Inject
-    private profesorMapper profesorMapper;
+    @Inject
+    private ProfesorMapper profesorMapper;
 
     @Override
     public void save(Profesor c) throws PersistenceException {
-        profesorMapper.agregarProfesor(c.getId(),c.getNombre(),c.getApellido(),c.getTelefono(),c.getCorreo());
+        profesorMapper.AgregarProfesor(c.getId(),c.getNombre(),c.getApellido(),c.getTelefono(),c.getCorreo());
     }
 
     @Override
     public List<Profesor> loadProfesor() throws PersistenceException {
-        return profesorMapper.consultarProfesores();
+        return profesorMapper.ConsultarProfesores();
     }
 
     @Override
     public Profesor load(long id) throws PersistenceException {
-        return profesorMapper.consultarProfesor(id);
+        return profesorMapper.ConsultarProfesor(id);
     }
 
     @Override
     public void AsignarGrupoAProfesor(Date year,String periodo,String neumonico, long idProf) throws PersistenceException {
-        profesorMapper.asignarGrupoAProfesor(year,periodo,neumonico, idProf);
+        profesorMapper.AsignarGrupoAProfesor(year,periodo,neumonico, idProf);
     }
 
     @Override

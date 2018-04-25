@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+<mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper">
+   
+     <select parameterType="map" id="ConsultarTema" resultMap="TemaResult">
+         SELECT Nombre, Descripcion
+         WHERE Nombre=#{nomb}
+     </select>
+     
+     <insert parameterType="map" id="AgregarTema">
+         INSERT INTO Tema (Nombre,Descripcion,Curso_Neumonico) VALUES (#{nomb},#{descrip},#{cursNeu})
+     </insert>
+     
+</mapper>

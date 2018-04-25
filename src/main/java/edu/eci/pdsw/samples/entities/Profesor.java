@@ -12,7 +12,7 @@ import java.util.List;
  * @author diego
  */
 public class Profesor {
-    private long id;
+    private int id;
     private String nombre;
     private String apellido;
     private List<Grupo> grupos;
@@ -22,7 +22,7 @@ public class Profesor {
     public Profesor(){
     }
     
-    public Profesor(long id,String nombre,String apellido,String correo,String telefono){
+    public Profesor(int id,String nombre,String apellido,String correo,String telefono){
         this.id=id;
         this.nombre=nombre;
         this.apellido=apellido;
@@ -37,7 +37,7 @@ public class Profesor {
     public void eliminarGrupo(Grupo grupo){
         grupos.remove(grupo);
     }
-    public long getId(){
+    public int getId(){
         return id;
     }
     
@@ -57,7 +57,7 @@ public class Profesor {
         return telefono;
     } 
     
-    public void setId(long id){
+    public void setId(int id){
         this.id=id;
     }
     

@@ -6,8 +6,7 @@
 package edu.eci.pdsw.samples.entities;
 
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.Year;
 import java.util.List;
 
 /**
@@ -17,12 +16,12 @@ import java.util.List;
 public class Grupo {
    private String cursoNeumonico;
    //private  HoraMonitoria;
-   private Date year; 
+   private Year year; 
    private String periodoAcademico;
    private int numero;
    private Profesor profesor;
    private Monitor monitor;
-   private List<Tema> temas;
+   //private List<estudiante> estudiantes;
    
    public Grupo(){
    }
@@ -32,13 +31,12 @@ public class Grupo {
        this.cursoNeumonico=neumonico;
    }
    
-
    
    public String getNeumonico(){
        return cursoNeumonico;
    }
    
-   public Date getyear(){
+   public Year getyear(){
        return year;
    }
    
@@ -50,23 +48,20 @@ public class Grupo {
        return numero;
    }
    
-   public Profesor getProfesor(){
-       return profesor;
+   public int getProfesor(){
+       return profesor.getId();
    }
    
-   public Monitor getMonitor(){
-       return monitor;
+   public int getMonitor(){
+       return monitor.getId();
    }
    
-   public List<Tema> getTemas(){
-       return temas;
-   }
    
    public void setNeumonico(String neumonico){
        this.cursoNeumonico=neumonico;
    }
    
-   public void setyear(Date year){
+   public void setyear(Year year){
        this.year=year;
    }
    
@@ -82,6 +77,8 @@ public class Grupo {
    public void setMonitor(Monitor monitor){
        this.monitor=monitor;
    }
+   
+   
    /*public List<Tema> getTemas(){
        return temas;
    }*/

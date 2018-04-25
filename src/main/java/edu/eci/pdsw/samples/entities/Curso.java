@@ -16,7 +16,7 @@ import java.util.List;
 public class Curso {
     private String nombre;
     private String neumonico;
-    private int creditoAcademicos;
+    private int creditosAcademicos;
     //private List<Franjas,HorasMonitoria> horasMonitoria;
     private List<Grupo> grupos;
     private List<Tema> temas;
@@ -27,7 +27,7 @@ public class Curso {
     public Curso(String nombre,String neumonico,int creditosAcademicos){
         this.nombre=nombre;
         this.neumonico=neumonico;
-        this.creditoAcademicos=creditosAcademicos;
+        this.creditosAcademicos=creditosAcademicos;
     }
     
     public String getNombre(){
@@ -38,6 +38,16 @@ public class Curso {
         return neumonico;
     }
     
+    public int getCreditosAcademicos(){
+        return creditosAcademicos;
+    }
     
+    public void agregarGrupo(Grupo grupo){
+        grupos.add(grupo);
+    }
+    
+    public void elminarGrupo(Grupo grupo){
+        grupos.remove(grupo);
+    }
     
 }
