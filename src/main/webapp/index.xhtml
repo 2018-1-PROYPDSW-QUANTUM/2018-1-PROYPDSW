@@ -15,21 +15,61 @@ and open the template in the editor.
                 background-color: #B50005;
             }
             #Titulo{
-                color: azure;
+                background-color: #F7F7F5;
+                margin: auto;
+                width: 50%;
+                height: auto;
+                text-align: center;
+                padding: 1%;
+                box-shadow: 0px 7px 20px black;
                 font-family: Verdana;
-                font-size: 50px;
             }
+            #Informacion{
+                background-color: #F7F7F5;
+                margin: auto;
+                width: 75%;
+                height: auto;
+                text-align: center;
+                padding: 1%;
+                box-shadow: 0px 7px 20px black;
+                font-family: Verdana;                 
+            }            
         </style>
     </h:head>
     <h:body>
-        <div id="Iniciar">
+        <div id="Titulo">
+            <h1> Sistema de Monitorias </h1>
+        </div>
+        <br></br>        
+        <div id="Informacion">
             <p:button outcome="/login" value="Iniciar Sesion" icon="ui-icon-star">
                 <f:param name="productId" value="10" />
             </p:button>
+            <br></br>
+            <h1> Monitorias Disponibles </h1>
+            <p:dataTable var="car" value="#{dtBasicView.cars}">
+                <p:column headerText="Materia">
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+                <p:column headerText="Monitor">
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+                <p:column headerText="Grupo">
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+                <p:column headerText="Hora Inicio">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+                <p:column headerText="Hora Fin">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+                <p:column headerText="Salon">
+                    <h:outputText value="#{car.color}" />
+                </p:column>               
+            </p:dataTable>            
         </div>
         <h:form prependId="false">
             <p:outputPanel deferred="true" style="text-align: center">
-                <h3 id="Titulo">SISTEMA DE MONITORIA</h3>
             </p:outputPanel>      
         </h:form>
     </h:body>
