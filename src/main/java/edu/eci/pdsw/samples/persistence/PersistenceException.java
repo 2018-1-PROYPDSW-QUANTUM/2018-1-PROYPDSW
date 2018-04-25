@@ -7,7 +7,7 @@ package edu.eci.pdsw.samples.persistence;
 
 /**
  *
- * @author diego
+ * @author diego, jonnhi
  */
 public class PersistenceException extends Exception {
 
@@ -18,5 +18,4 @@ public class PersistenceException extends Exception {
     public PersistenceException(String message, Throwable cause) {
         super(message, cause);
     }
-    
 }
