@@ -53,7 +53,7 @@ public class Grupo {
    }
    
    public int getMonitor(){
-       return monitor.getId();
+       return monitor.getCodigo();
    }
    
    
