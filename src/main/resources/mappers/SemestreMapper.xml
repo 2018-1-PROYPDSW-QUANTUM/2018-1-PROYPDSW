@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.SemestreMapper">
+    <select parameterType="map" id="consultarSemestreGeneral" resultMap="SemestreResult">
+        SELECT Year, Periodo_academico, fecha_inicio, fecha_fin, nombre        
+        FROM Semestre JOIN Administrador ON administrador_codigo=Codigo
+        <if test="yeSemestre != null and paSemestre != null">
+            WHERE Year = #{yeSemestre} AND Periodo_academico = #{paSemestre}
+        </if>
+    </select>
+    
+    <insert parameterType="map" id="registrarAdministrador">
+        INSERT INTO Semestre (Year, Periodo_academico, fecha_inicio, fecha_fin, administrador_codigo) 
+        VALUES (#{yeSemestre},#{paSemestre},#{fiSemestre},#{ffSemestre},#{aSemestre.codigo})
+    </insert>
+    
+    <!--celular, clave se podran actualizar-->
+    
+    <resultMap type="Semestre" id="SemestreResult" >
+        <id property="year" column="Year"/>
+        <id property="periodoAcademico" column="Periodo_academico"/>
+        <result property="fechaInicio" column="fecha_inicio"/>
+        <result property="fechaFin" column="fecha_fin"/>
+        <association property="admin" javaType="Administrador" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.AdministradorMapper.AdministradorResult"/>
+    </resultMap>
+      	
+</mapper>

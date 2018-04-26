@@ -14,7 +14,7 @@ import java.util.List;
  * @author diego
  */
 public class Grupo {
-   private String cursoNeumonico;
+   private String cursoNemonico;
    //private  HoraMonitoria;
    private Year year; 
    private String periodoAcademico;
@@ -28,12 +28,12 @@ public class Grupo {
    
    
    public Grupo(String neumonico,int creditos){
-       this.cursoNeumonico=neumonico;
+       this.cursoNemonico=neumonico;
    }
    
    
-   public String getNeumonico(){
-       return cursoNeumonico;
+   public String getNemonico(){
+       return cursoNemonico;
    }
    
    public Year getyear(){
@@ -57,8 +57,8 @@ public class Grupo {
    }
    
    
-   public void setNeumonico(String neumonico){
-       this.cursoNeumonico=neumonico;
+   public void setNemonico(String nemonico){
+       this.cursoNemonico=nemonico;
    }
    
    public void setyear(Year year){

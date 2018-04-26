@@ -39,7 +39,7 @@ public interface AdministradorMapper {
      * especificar el codigo se retornara una lista con todos los
      * administradores registrados.
      */
-    public List<Administrador> consultarAdministradorGeneral(@Param("cadmin") Integer codigo);
+    public List<Administrador> consultarAdministradorGeneral(@Param("coAdmin") Integer codigo);
 
     /**
      *
@@ -50,10 +50,10 @@ public interface AdministradorMapper {
      * @param correo
      * @param clave
      */
-    public void registrarAdministrador(@Param("cAdmin") Integer codigo,
-            @Param("name") String nombre,
-            @Param("lastname") String apellido,
-            @Param("cel") String celular,
-            @Param("email") String correo,
-            @Param("password") String clave);
+    public void registrarAdministrador(@Param("coAdmin") Integer codigo,
+            @Param("noAdmin") String nombre,
+            @Param("apAdmin") String apellido,
+            @Param("ceAdmin") String celular,
+            @Param("corAdmin") String correo,
+            @Param("clAdmin") String clave);
 }

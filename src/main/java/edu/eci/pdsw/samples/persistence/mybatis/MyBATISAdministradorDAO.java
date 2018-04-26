@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.persistence.mybatis;
 
 import java.util.List;
+import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Administrador;
 import edu.eci.pdsw.samples.persistence.AdministradorDAO;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
@@ -17,6 +18,7 @@ import edu.eci.pdsw.samples.persistence.mybatis.mappers.AdministradorMapper;
  */
 public class MyBATISAdministradorDAO implements AdministradorDAO {
 
+    @Inject
     private AdministradorMapper adminMapper;
 
     @Override

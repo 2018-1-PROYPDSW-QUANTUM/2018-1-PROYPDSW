@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.AdministradorMapper">
+    <select parameterType="map" id="consultarAdministradorGeneral" resultMap="AdministradorResult">
+        SELECT Codigo, nombre, apellido, celular, correo, clave        
+        FROM Administrador
+        <if test="cadmin != null">
+            WHERE codigo = #{coAdmin}
+        </if>
+    </select>
+    
+    <insert parameterType="map" id="registrarAdministrador">
+        INSERT INTO Administrador (Codigo, nombre, apellido, celular, correo, clave) 
+        VALUES (#{coAdmin},#{noAdmin},#{apAdmin},#{ceAdmin},#{corAdmin},#{clAdmin})
+    </insert>
+    
+    <!--celular, clave se podran actualizar-->
+    
+    <resultMap type="Administrador" id="AdministradorResult" >
+        <id property="codigo" column="Codigo"/>
+        <result property="nombre" column="nombre"/>
+        <result property="apellido" column="apellido"/>
+        <result property="celular" column="celular"/>
+        <result property="correo" column="correo"/>
+        <result property="clave" column="clave"/>
+    </resultMap>
+      	
+</mapper>
