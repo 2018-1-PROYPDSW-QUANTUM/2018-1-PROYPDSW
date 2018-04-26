@@ -9,6 +9,7 @@ import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Tema;
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 /**
  *
@@ -16,10 +17,10 @@ import java.util.List;
  */
 public interface CursoMapper {
     
-    public Curso ConsultarCurso(String neumonico);
-    public void AgregarCurso(String neumonico,String nombre,int creditos);
+    public Curso ConsultarCurso(@Param("neumon")String neumonico);
+    public void AgregarCurso(@Param("neumo") String neumonico,@Param("nomb")String nombre,@Param("credi")int creditos,@Param("prog")String Programa);
     public List<Curso> ConsultarCursos();
-    public List<Tema> ConsultarTemasCurso(String neumonico);
-    public List<Grupo>ConsultarGruposCurso(String neumonico);
+    public List<Tema> ConsultarTemasCurso(@Param("neum")String neumonico);
+    public List<Grupo>ConsultarGruposCurso(@Param("neu")String neumonico);
     
 }

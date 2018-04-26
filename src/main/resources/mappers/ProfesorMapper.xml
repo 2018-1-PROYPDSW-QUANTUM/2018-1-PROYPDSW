@@ -15,11 +15,13 @@
      </insert>
      
      <select parameterType="map" id="ConsultarGrupoProfesor" resultMap="CursoProfesorResult">
-         SELECT * FROM Grupo WHERE Year=#{yearG},Periodo_academico=#{gruPeriodo},Curso_Neumonoco=#{gruNeumonico}
+         SELECT * FROM Grupo 
+         WHERE Year=#{yearG},Periodo_academico=#{gruPeriodo},Curso_Neumonoco=#{gruNeumonico}
      </select>
      
      <select parameterType="map" id="AsignarGrupoAProfesor" resultMap="ProfesorCursoResult">
-                            UPDATE Grupo SET Profesor_Codigo=#{idpr} WHERE Year=#{year},Periodo_academico=#{grupPeriodo},Curso_Neumonoco=#{grupNeumonico}
+         UPDATE Grupo SET Profesor_Codigo=#{idpr} 
+         WHERE Year=#{year},Periodo_academico=#{grupPeriodo},Curso_Neumonoco=#{grupNeumonico}
      </select>
      
      <select parameterType="map" id="ConsultarProfesores" resultMap="ProfesoresResult">
@@ -32,6 +34,8 @@
          
             FROM Profesor as P
             LEFT JOIN Grupo as G ON P.Codigo=G.Profesor_Codigo
+         
+     </select>
          
          <resultMap type='Profesor' id='ProfesoresResult'>
              
@@ -54,5 +58,5 @@
              
          </resultMap>
          
-     </select>
+    
  </mapper>
