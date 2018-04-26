@@ -150,11 +150,11 @@
 -- ;
 
 -- Reference: Estudiante_cursa_Grupo (table: Estudiante_cursa)
-ALTER TABLE Estudiante_cursa ADD CONSTRAINT Estudiante_cursa_Grupo
-    FOREIGN KEY (Grupo_Semestre_Years, Grupo_Semestre_Periodo_academico, Grupo_Curso_Nemonico, Grupo_Numero)
-    REFERENCES Grupo (Semestre_Years, Semestre_Periodo_academico, Curso_Nemonico, Numero)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
+--ALTER TABLE Estudiante_cursa ADD CONSTRAINT Estudiante_cursa_Grupo
+    --FOREIGN KEY (Grupo_Semestre_Years, Grupo_Semestre_Periodo_academico, Grupo_Curso_Nemonico, Grupo_Numero)
+    --REFERENCES Grupo (Semestre_Years, Semestre_Periodo_academico, Curso_Nemonico, Numero)  
+    --NOT DEFERRABLE 
+    --INITIALLY IMMEDIATE
 ;
 
 -- -- Reference: Estudiantes_Estudiante (table: Estudiante_cursa)
@@ -166,12 +166,12 @@ ALTER TABLE Estudiante_cursa ADD CONSTRAINT Estudiante_cursa_Grupo
 -- ;
 
 -- Reference: Franja_Grupo (table: Franja)
-ALTER TABLE Franja ADD CONSTRAINT Franja_Grupo
-    FOREIGN KEY (Grupo_Semestre_Years, Grupo_Semestre_Periodo_academico, Grupo_Curso_Nemonico, Grupo_Numero)
-    REFERENCES Grupo (Semestre_Years, Semestre_Periodo_academico, Curso_Nemonico, Numero)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
-;
+--ALTER TABLE Franja ADD CONSTRAINT Franja_Grupo
+    --FOREIGN KEY (Grupo_Semestre_Years, Grupo_Semestre_Periodo_academico, Grupo_Curso_Nemonico, Grupo_Numero)
+    --REFERENCES Grupo (Semestre_Years, Semestre_Periodo_academico, Curso_Nemonico, Numero)  
+    --NOT DEFERRABLE 
+    --INITIALLY IMMEDIATE
+--;
 
 -- -- Reference: Grupo_Curso (table: Grupo)
 -- ALTER TABLE Grupo ADD CONSTRAINT Grupo_Curso
@@ -206,12 +206,12 @@ ALTER TABLE Franja ADD CONSTRAINT Franja_Grupo
 -- ;
 
 -- Reference: Monitoria_Grupo (table: Monitoria)
-ALTER TABLE Monitoria ADD CONSTRAINT Monitoria_Grupo
-    FOREIGN KEY (Grupo_Semestre_Years, Grupo_Semestre_Periodo_academico, Grupo_Curso_Nemonico, Grupo_Numero)
-    REFERENCES Grupo (Semestre_Years, Semestre_Periodo_academico, Curso_Nemonico, Numero)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
-;
+--ALTER TABLE Monitoria ADD CONSTRAINT Monitoria_Grupo
+   -- FOREIGN KEY (Grupo_Semestre_Years, Grupo_Semestre_Periodo_academico, Grupo_Curso_Nemonico, Grupo_Numero)
+  --  REFERENCES Grupo (Semestre_Years, Semestre_Periodo_academico, Curso_Nemonico, Numero)  
+  --  NOT DEFERRABLE 
+  --  INITIALLY IMMEDIATE
+--;
 
 -- -- Reference: Semestre_Administrador (table: Semestre)
 -- ALTER TABLE Semestre ADD CONSTRAINT Semestre_Administrador
@@ -227,7 +227,7 @@ ALTER TABLE Monitoria ADD CONSTRAINT Monitoria_Grupo
 --     REFERENCES Curso (Nemonico)  
 --     NOT DEFERRABLE 
 --     INITIALLY IMMEDIATE
-;
+--;
 
 -- End of file.
 
