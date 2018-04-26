@@ -36,7 +36,7 @@ public class ServiciosMonitoriaFactory {
         return createInjector(new XMLMyBatisModule() {
             @Override
             protected void initialize() {
-                setClassPathResource(pathResource);
+                //setClassPathResource(pathResource.class);
                 bind(ServiciosMonitoria.class).to(ServicioMonitoriaImpl.class);
                 bind(AdministradorDAO.class).to(MyBATISAdministradorDAO.class);
                 //bind(CursoDAO.class).to(MyBATISAdministradorDAO.class);
