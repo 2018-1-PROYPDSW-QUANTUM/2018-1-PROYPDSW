@@ -19,13 +19,13 @@
     
     <!--celular, clave se podran actualizar-->
     
-    <resultMap type="Administrador" id="AdministradorResult" >
-        <id property="codigo" column="Codigo"/>
-        <result property="nombre" column="nombre"/>
-        <result property="apellido" column="apellido"/>
-        <result property="celular" column="celular"/>
-        <result property="correo" column="correo"/>
-        <result property="clave" column="clave"/>
-    </resultMap>
+    <!--resultMap type="Administrador" id="AdministradorResult" >-->
+        <!--id property="codigo" column="Codigo"/>-->
+        <!--result property="nombre" column="nombre"/>-->
+        <!--result property="apellido" column="apellido"/>-->
+        <!--result property="celular" column="celular"/>-->
+        <!--result property="correo" column="correo"/>-->
+        <!--result property="clave" column="clave"/>-->
+    <!--/resultMap>-->
       	
 </mapper>

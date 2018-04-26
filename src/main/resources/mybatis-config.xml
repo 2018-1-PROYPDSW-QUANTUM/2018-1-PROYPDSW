@@ -9,6 +9,7 @@
     
     <properties resource="config.properties">
     </properties>
+    
     <typeAliases>
         <typeAlias type='edu.eci.pdsw.samples.entities.Administrador' alias='Administrador'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Asistente' alias='Asistente'/>
@@ -36,7 +37,15 @@
     </environments>
         
     <mappers>
-        <!--<mapper resource="mappers/ClienteMapper.xml"></mapper>-->
+        <mapper resource="mappers/AdministradorMapper.xml"></mapper>
+        <mapper resource="mappers/AsistenteMapper.xml"></mapper>
+        <mapper resource="mappers/CursoMapper.xml"></mapper>
+        <mapper resource="mappers/EstudianteMapper.xml"></mapper>
+        <mapper resource="mappers/GrupoMapper.xml"></mapper>
+        <mapper resource="mappers/MonitoriaMapper.xml"></mapper>
+        <mapper resource="mappers/ProfesorMapper.xml"></mapper>
+        <mapper resource="mappers/SemestreMapper.xml"></mapper>
+        <mapper resource="mappers/TemaMapper.xml"></mapper>                
 
     </mappers> 
         

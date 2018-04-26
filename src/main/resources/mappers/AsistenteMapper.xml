@@ -4,21 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.AsistenteMapper">
+    <!--resultMap type="Asistente" id="AsistenteResult" >-->
+        <!--id property="monitoria" column="Monitoria_identificador"/>-->
+        <!--<id property="periodoAcademico" column="Estudiante_codigo"/>-->
+        <!--collection property="estudiantes" ofType="Estudiante" resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.EstudianteMapper.EstudianteResult"/>>-->
+        <!--collection property="temas" ofType="Temas" resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TemaMapper.TemaResult"/-->
+    <!--/resultMap>-->
     <select parameterType="map" id="consultarAsistentes" resultMap="AsistenteResult">
         SELECT Monitoria_identificador, Estudiante_codigo, temas
         FROM Asistente
     </select>
     
-    <insert parameterType="map" id="registrarAsistente">
+    <insert  id="registrarAsistente">
         INSERT INTO Asistente (Monitoria_identificador, Estudiante_codigo, temas)
         VALUES (#{miAsistente},#{ecAsistente},#{teAsistente})
     </insert>
     
-    <resultMap type="Asistente" id="AsistenteResult" >
-        <id property="monitoria" column="Monitoria_identificador"/>
-        <!--<id property="periodoAcademico" column="Estudiante_codigo"/>-->
-        <collection property="estudiantes" ofType="Estudiante" resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.EstudianteMapper.EstudianteResult"/>
-        <collection property="temas" ofType="Temas" resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.TemaMapper.TemaResult"/>
-    </resultMap>
+
       	
 </mapper>

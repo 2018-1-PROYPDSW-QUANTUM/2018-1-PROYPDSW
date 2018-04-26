@@ -18,6 +18,7 @@ import edu.eci.pdsw.samples.persistence.mybatis.MyBATISProfesorDAO;
 import edu.eci.pdsw.samples.persistence.mybatis.MyBATISTemaDAO;
 import edu.eci.pdsw.samples.services.impl.ServicioMonitoriaImpl;
 import org.mybatis.guice.XMLMyBatisModule;
+import org.mybatis.guice.datasource.helper.JdbcHelper;
 
 
 /**
@@ -32,10 +33,12 @@ public class ServiciosMonitoriaFactory {
 
     private static Injector testInjector;
 
-    private Injector myBatisInjector(String pathResource) {
-        return createInjector(new XMLMyBatisModule() {
+    private ServiciosMonitoriaFactory(){
+
+        injector=createInjector(new XMLMyBatisModule() {
             @Override
             protected void initialize() {
+                install(JdbcHelper.PostgreSQL);
                 //setClassPathResource(pathResource.class);
                 bind(ServiciosMonitoria.class).to(ServicioMonitoriaImpl.class);
                 bind(AdministradorDAO.class).to(MyBATISAdministradorDAO.class);
@@ -45,12 +48,6 @@ public class ServiciosMonitoriaFactory {
                 bind(TemaDAO.class).to(MyBATISTemaDAO.class);
             }
         });
-    }
-
-    private ServiciosMonitoriaFactory(){
-
-        injector = myBatisInjector("mybatis-config.xml");
-        testInjector = myBatisInjector("mybatis-config-h2.xml");
     }
 
     public ServiciosMonitoria getServiciosMonitoria(){
@@ -67,3 +64,4 @@ public class ServiciosMonitoriaFactory {
     }
 
 }
+

@@ -19,12 +19,12 @@
     
     <!--celular, clave se podran actualizar-->
     
-    <resultMap type="Semestre" id="SemestreResult" >
-        <id property="year" column="Year"/>
-        <id property="periodoAcademico" column="Periodo_academico"/>
-        <result property="fechaInicio" column="fecha_inicio"/>
-        <result property="fechaFin" column="fecha_fin"/>
-        <association property="admin" javaType="Administrador" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.AdministradorMapper.AdministradorResult"/>
-    </resultMap>
+    <!--resultMap type="Semestre" id="SemestreResult" >-->
+        <!--id property="year" column="Year"/>-->
+        <!--id property="periodoAcademico" column="Periodo_academico"/>-->
+        <!--result property="fechaInicio" column="fecha_inicio"/>-->
+        <!--result property="fechaFin" column="fecha_fin"/>-->
+        <!--association property="admin" javaType="Administrador" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.AdministradorMapper.AdministradorResult"/>-->
+    <!--/resultMap>-->
       	
 </mapper>

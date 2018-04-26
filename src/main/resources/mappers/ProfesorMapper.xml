@@ -11,7 +11,7 @@
      </select>
      
      <insert parameterType="map" id="AgregarProfesor">
-         INSERT INTO Profesor (codigo,nombre,apellido,telefono,correo,clave) VALUES (#{idpro},#{nom},#{apelli],#{tel},#{email},123algo)
+         INSERT INTO Profesor (codigo,nombre,apellido,telefono,correo,clave) VALUES (#{idpro},#{nom},#{apelli},#{tel},#{email},123algo)
      </insert>
      
      <select parameterType="map" id="ConsultarGrupoProfesor" resultMap="CursoProfesorResult">
@@ -37,26 +37,26 @@
          
      </select>
          
-         <resultMap type='Profesor' id='ProfesoresResult'>
+         <!--resultMap type='Profesor' id='ProfesoresResult'>-->
              
-             <id property='id' column='documento'/>
-             <result property='nombre' column='Nombre'/>
-             <result property='apellido' column='Apellido'/>
-             <result property='celular' column='Celular'/>
-             <result property='correo' column='Correo'/>
-             <collection property='grupos' ofType='Grupo' resultMap='GrupoResult'></collection>
+             <!--id property='id' column='documento'/>-->
+             <!--result property='nombre' column='Nombre'/>-->
+             <!--result property='apellido' column='Apellido'/>-->
+             <!--result property='celular' column='Celular'/>-->
+             <!--result property='correo' column='Correo'/>-->
+             <!--collection property='grupos' ofType='Grupo' resultMap='GrupoResult'></collection>-->
                       
-         </resultMap> 
+         <!--/resultMap> -->
          
-         <resultMap type='Curso' id='GrupoResult'>
+         <!--resultMap type='Curso' id='GrupoResult'>-->
              
-             <id property='year' column='Year'/>
-             <id property='periodoAcademico' column='Periodo_academico'/>
-             <id property='neumonico' column='Curso_Neumonico'/>
-             <id property='numero' column='Numero'/>
-             <association property="profesor" javaType="Profesor" columnPrefix='P_' resultMap='ProfesorResult'></association>    
+             <!--id property='year' column='Year'/>-->
+             <!--id property='periodoAcademico' column='Periodo_academico'/>-->
+             <!--id property='neumonico' column='Curso_Neumonico'/>-->
+             <!--id property='numero' column='Numero'/>-->
+             <!--association property="profesor" javaType="Profesor" columnPrefix='P_' resultMap='ProfesorResult'></association>    -->
              
-         </resultMap>
+         <!--/resultMap>-->
          
     
  </mapper>

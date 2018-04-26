@@ -17,14 +17,14 @@
         VALUES (#{idMonitoria},#{feMonitoria},#{hiMonitoria},#{hfMonitoria},#{ipMonitoria},#{obMonitoria},#{grMonitoria.year},#{grMonitoria.periodoAcademico},#{grMonitoria.cursoNemonico},#{grMonitoria.numero})
     </insert>
     
-    <resultMap type="Monitoria" id="MonitoriaResult" >
-        <id property="id" column="Identificador"/>
-        <result property="fecha" column="Fecha"/>
-        <result property="horaInicio" column="hora_inicio"/>
-        <result property="horaFin" column="hora_fin"/>
-        <result property="ip" column="ip"/>
-        <result property="observaciones" column="observaciones"/>
-        <association property="grupo" javaType="Grupo" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult"/>
-    </resultMap>
+    <!--resultMap type="Monitoria" id="MonitoriaResult" >-->
+        <!--id property="id" column="Identificador"/>-->
+        <!--result property="fecha" column="Fecha"/>-->
+        <!--result property="horaInicio" column="hora_inicio"/>-->
+        <!--result property="horaFin" column="hora_fin"/>-->
+        <!--result property="ip" column="ip"/>-->
+        <!--result property="observaciones" column="observaciones"/>-->
+        <!--association property="grupo" javaType="Grupo" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult"/>-->
+    <!--/resultMap>-->
       	
 </mapper>

@@ -5,9 +5,13 @@
  */
 package edu.eci.pdsw.samples.services.impl;
 
+import edu.eci.pdsw.samples.entities.Grupo;
+import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.persistence.AdministradorDAO;
 import edu.eci.pdsw.samples.persistence.CursoDAO;
 import edu.eci.pdsw.samples.persistence.GrupoDAO;
+import edu.eci.pdsw.samples.persistence.MonitoriaDAO;
+import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.persistence.ProfesorDAO;
 import edu.eci.pdsw.samples.persistence.TemaDAO;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
@@ -18,6 +22,11 @@ import javax.inject.Inject;
  * @author camil
  */
 public class ServicioMonitoriaImpl implements ServiciosMonitoria{
+    
+    private ServiciosMonitoria serMon;
+    
+    @Inject
+    private MonitoriaDAO daoMonitoria;
 
     @Inject
     private AdministradorDAO daoAdministrador;
@@ -35,8 +44,12 @@ public class ServicioMonitoriaImpl implements ServiciosMonitoria{
     private TemaDAO daoTema;
     
     @Override
-    public void registrarMonitoria() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void registrarMonitoria(Monitoria nm,Grupo g ) throws PersistenceException {
+         try {
+            daoMonitoria.save(nm, g);
+        } catch (PersistenceException ex) {
+            throw new PersistenceException("Error al realizar la consulta:"+ex.getLocalizedMessage(), ex);
+        } 
     }
     
 }

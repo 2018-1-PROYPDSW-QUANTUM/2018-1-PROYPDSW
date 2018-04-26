@@ -14,8 +14,8 @@
         VALUES (#{coEstudiante})
     </insert>
     
-    <resultMap type="Estudiante" id="EstudianteResult" >
-        <id property="codigo" column="Codigo"/>
-    </resultMap>
+    <!--resultMap type="Estudiante" id="EstudianteResult" >-->
+        <!--id property="codigo" column="Codigo"/>-->
+    <!--/resultMap>-->
       	
 </mapper>
