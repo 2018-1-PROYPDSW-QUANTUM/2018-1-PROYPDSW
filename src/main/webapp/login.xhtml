@@ -1,40 +1,63 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-<h:head>
-       <style type="text/css">
+    <h:head>
+        <style type="text/css">
             body{
-                background-color: #B50005;
-            }
-            .Input{
-                font-family: Verdana;
-                text-align: left;
-                width: 100%;
-                padding: 6%;                    
-                display: inline-block;
-                border-radius: 0px;
-                box-sizing: content-box;
-                box-shadow: 0px 0px;
-                border-width: 0px;
-                background-color: #E5E5E4;
+                background-image: url(resources/Fondo.jpg);
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                max-width: 100%;
+                max-height: 100%;
+                margin: auto;
+                overflow: auto;
             }
             #Forma{
-                background-color: #F7F7F5;
                 margin: auto;
                 width: 25%;
                 height: auto;
                 text-align: center;
-                padding: 5%;
-                box-shadow: 0px 7px 20px black;
+                padding-left: 3%;
+                padding-right: 3%;
+                padding-bottom: 4%;
+                padding-top: 4%;
                 text-align: center;
             }
+            .form button {
+                font-family: Verdana, sans-serif;
+                text-transform: uppercase;
+                outline: 0;
+                background: #4CAF50;
+                width: 100%;
+                border: 0;
+                padding: 15px;
+                color: #FFFFFF;
+                font-size: 14px;
+                -webkit-transition: all 0.3 ease;
+                transition: all 0.3 ease;
+                cursor: pointer;
+            }            
+            .form input {
+                font-family: "Roboto", sans-serif;
+                outline: 0;
+                background: #f2f2f2;
+                width: 100%;
+                border: 0;
+                margin: 0 0 15px;
+                padding: 15px;
+                box-sizing: border-box;
+                font-size: 14px;
+            }            
             #Logo{
                 content:url(resources/Logo.png);
                 margin: auto;
                 width: 45%;
                 padding: 4%;
             }
-            #inicioSesion{
+            .InicioSesion{
                 text-align: center;
                 display: inline-block;
             }
@@ -48,6 +71,7 @@
                 box-sizing: content-box;
                 border: 0px;
                 background-color: #AB1C09;
+                box-sizing: border-box;
             }
             #Titulo{
                 background-color: #F7F7F5;
@@ -59,34 +83,62 @@
                 box-shadow: 0px 7px 20px black;
                 font-family: Verdana;
             }
+            #Recuerdame{
+                font-family: Verdana;
+                font-size: 80%;
+            }
+            .form {
+                position: relative;
+                z-index: 1;
+                background: #FFFFFF;
+                max-width: 20%;
+                margin: 0 auto 100px;
+                padding: 45px;
+                text-align: center;
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+                top: 20%
+            }
+            #rememberMe{
+                padding-top: 5%;
+            }
+            .form .message{
+                color: #4CAF50;
+                text-decoration: none;
+                font-size: 200%;
+            }
+            #Label{
+                font-family: Verdana;
+                color: grey;
+            }
+            .Titulo{
+                font-family: Verdana;
+                position: relative;
+                z-index: 1;
+                background: #FFFFFF;
+                max-width: 100%;
+                margin: 0 auto 100px;
+                text-align: rigth;
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+                color: grey;
+                padding: 0.1%;
+            }            
         </style>
-</h:head>
-<h:body>
-    
-        
-    <div id="Titulo">
-        
-        <h1> Inicio De Sesion </h1>
-    </div>
-        <br></br>
-        <div id="Forma">
-            <div id="Logo"></div>        
-            <h:form prependId="false">
-            <h:panelGrid columns="2" style="text-align: right">
-                <h:outputText value="Login:" style="color:blue" />
-                <p:inputText id="username" required="true" value="#{loginBean.username}" style="text-align: right"  />
-
-                <h:outputText value="Password:" style="color:blue" />
-                <p:password id="password" required="true" value="#{loginBean.password}" style="text-align: right"/>
-
-                <h:outputText value="Remember me:" style="color:blue"/>
-                <p:selectBooleanCheckbox id="rememberMe" value="#{loginBean.rememberMe}"/>
-                <h:outputText/>
-                <p:commandButton value="Login" action="#{loginBean.doLogin}" />
-            </h:panelGrid>
-
-            <p:messages id="messages" autoUpdate="true" closable="true" />
+    </h:head>
+    <h:body>
+        <div class="Titulo">
+            <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
+        </div>  
+        <div class="form">       
+            <h:form prependId="false" >
+                    <p:inputText placeholder="Usuario" required="true" value="#{loginBean.username}"/>
+                    <p:password placeholder="Contraseña" required="true" value="#{loginBean.password}"/>                    
+                    <p:commandButton class="Boton" value="Iniciar Sesion" action="#{loginBean.doLogin}" />
+                    <label id="Label">
+                        <p:selectBooleanCheckbox id="rememberMe" value="#{loginBean.rememberMe}"/>
+                        Recuerdame
+                    </label>
+                <p:messages id="messages" autoUpdate="true" closable="true" />
             </h:form>
         </div>
-</h:body>
+    </h:body>
 </html>
