@@ -151,11 +151,11 @@
 
 -- Reference: Estudiante_cursa_Grupo (table: Estudiante_cursa)
 --ALTER TABLE Estudiante_cursa ADD CONSTRAINT Estudiante_cursa_Grupo
-    --FOREIGN KEY (Grupo_Semestre_Years, Grupo_Semestre_Periodo_academico, Grupo_Curso_Nemonico, Grupo_Numero)
+  --  FOREIGN KEY (Grupo_Semestre_Years, Grupo_Semestre_Periodo_academico, Grupo_Curso_Nemonico, Grupo_Numero)
     --REFERENCES Grupo (Semestre_Years, Semestre_Periodo_academico, Curso_Nemonico, Numero)  
     --NOT DEFERRABLE 
     --INITIALLY IMMEDIATE
-;
+--;
 
 -- -- Reference: Estudiantes_Estudiante (table: Estudiante_cursa)
 -- ALTER TABLE Estudiante_cursa ADD CONSTRAINT Estudiantes_Estudiante
@@ -167,7 +167,7 @@
 
 -- Reference: Franja_Grupo (table: Franja)
 --ALTER TABLE Franja ADD CONSTRAINT Franja_Grupo
-    --FOREIGN KEY (Grupo_Semestre_Years, Grupo_Semestre_Periodo_academico, Grupo_Curso_Nemonico, Grupo_Numero)
+  --  FOREIGN KEY (Grupo_Semestre_Years, Grupo_Semestre_Periodo_academico, Grupo_Curso_Nemonico, Grupo_Numero)
     --REFERENCES Grupo (Semestre_Years, Semestre_Periodo_academico, Curso_Nemonico, Numero)  
     --NOT DEFERRABLE 
     --INITIALLY IMMEDIATE
@@ -207,8 +207,8 @@
 
 -- Reference: Monitoria_Grupo (table: Monitoria)
 --ALTER TABLE Monitoria ADD CONSTRAINT Monitoria_Grupo
-   -- FOREIGN KEY (Grupo_Semestre_Years, Grupo_Semestre_Periodo_academico, Grupo_Curso_Nemonico, Grupo_Numero)
-  --  REFERENCES Grupo (Semestre_Years, Semestre_Periodo_academico, Curso_Nemonico, Numero)  
+  --  FOREIGN KEY (Grupo_Semestre_Years, Grupo_Semestre_Periodo_academico, Grupo_Curso_Nemonico, Grupo_Numero)
+  -- REFERENCES Grupo (Semestre_Years, Semestre_Periodo_academico, Curso_Nemonico, Numero)  
   --  NOT DEFERRABLE 
   --  INITIALLY IMMEDIATE
 --;
