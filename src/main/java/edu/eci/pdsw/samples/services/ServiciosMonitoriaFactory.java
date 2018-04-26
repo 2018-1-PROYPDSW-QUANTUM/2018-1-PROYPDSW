@@ -10,10 +10,14 @@ import com.google.inject.Injector;
 import edu.eci.pdsw.samples.persistence.AdministradorDAO;
 import edu.eci.pdsw.samples.persistence.CursoDAO;
 import edu.eci.pdsw.samples.persistence.GrupoDAO;
+import edu.eci.pdsw.samples.persistence.MonitorDAO;
+import edu.eci.pdsw.samples.persistence.MonitoriaDAO;
 import edu.eci.pdsw.samples.persistence.ProfesorDAO;
 import edu.eci.pdsw.samples.persistence.TemaDAO;
 import edu.eci.pdsw.samples.persistence.mybatis.MyBATISAdministradorDAO;
+import edu.eci.pdsw.samples.persistence.mybatis.MyBATISCursoDAO;
 import edu.eci.pdsw.samples.persistence.mybatis.MyBATISGrupoDAO;
+import edu.eci.pdsw.samples.persistence.mybatis.MyBATISMonitoriaDAO;
 import edu.eci.pdsw.samples.persistence.mybatis.MyBATISProfesorDAO;
 import edu.eci.pdsw.samples.persistence.mybatis.MyBATISTemaDAO;
 import edu.eci.pdsw.samples.services.impl.ServicioMonitoriaImpl;
@@ -46,6 +50,8 @@ public class ServiciosMonitoriaFactory {
                 bind(GrupoDAO.class).to(MyBATISGrupoDAO.class);
                 bind(ProfesorDAO.class).to(MyBATISProfesorDAO.class);
                 bind(TemaDAO.class).to(MyBATISTemaDAO.class);
+                bind(CursoDAO.class).to(MyBATISCursoDAO.class);
+                bind(MonitoriaDAO.class).to(MyBATISMonitoriaDAO.class);
             }
         });
     }
