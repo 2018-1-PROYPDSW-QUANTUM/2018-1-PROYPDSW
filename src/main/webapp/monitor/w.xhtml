@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF8"?>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -6,9 +6,9 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <style type="text/css">
             body{
@@ -34,13 +34,13 @@ and open the template in the editor.
                 padding: 1%;
             }
             #Fecha{
-                text-align: center;
+                textalign: center;
                 display: inline-block;
                 width: 100%;
             }
             .Input{
                 font-family: Verdana;
-                text-align: left;
+                textalign: left;
                 width: 100%;
                 padding: 5%;                    
                 display: inline-block;
@@ -107,7 +107,29 @@ and open the template in the editor.
         <br></br>
         <div id="Monitorias">
             <h1> Monitorias </h1>
-
+            <p:dataTable var="car" value="#{dtBasicView.cars}">
+                <p:column headerText="Materia">
+                    <h:outputText value="#{car.id}" />
+                </p:column>
+                <p:column headerText="Monitor">
+                    <h:outputText value="#{car.year}" />
+                </p:column>
+                <p:column headerText="Hora inicio">
+                    <h:outputText value="#{car.brand}" />
+                </p:column>
+                <p:column headerText="Hora Fin">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+                <p:column headerText="Tema">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+                <p:column headerText="Descripcion">
+                    <h:outputText value="#{car.color}" />
+                </p:column>
+                <p:column headerText="Descripcion">
+                    <h:outputText value="#{car.color}" />
+                </p:column>                
+            </p:dataTable>
         </div>
     </h:body>
 </html>
