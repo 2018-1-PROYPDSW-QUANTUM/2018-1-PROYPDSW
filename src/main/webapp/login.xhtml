@@ -1,8 +1,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-    <h:head>
-        <style type="text/css">
+<h:head>
+       <style type="text/css">
             body{
                 background-color: #B50005;
             }
@@ -60,24 +60,33 @@
                 font-family: Verdana;
             }
         </style>
-    </h:head>
-    <h:body>
-        <div id="Titulo">
-            <h1> Inicio De Sesion </h1>
-        </div>
+</h:head>
+<h:body>
+    
+        
+    <div id="Titulo">
+        
+        <h1> Inicio De Sesion </h1>
+    </div>
         <br></br>
         <div id="Forma">
-            <div id="Logo"></div>
-            <h:form id="inicioSesion" prependId="false">
-                <h:panelGrid columns="2" >
-                    <p:inputText class="Input" placeholder="usuario" id="username" required="true" value="#{loginBean.username}"/>
-                    <br></br>
-                    <p:password class="Input" placeholder="contraseña" id="password" required="true" value="#{loginBean.password}"/>
-                    <br></br>
-                    <p:commandButton class="Boton" value="Login" action="#{loginBean.doLogin}"/>                    
-                </h:panelGrid>
-                <p:messages id="messages" autoUpdate="true" closable="true" />
+            <div id="Logo"></div>        
+            <h:form prependId="false">
+            <h:panelGrid columns="2" style="text-align: right">
+                <h:outputText value="Login:" style="color:blue" />
+                <p:inputText id="username" required="true" value="#{loginBean.username}" style="text-align: right"  />
+
+                <h:outputText value="Password:" style="color:blue" />
+                <p:password id="password" required="true" value="#{loginBean.password}" style="text-align: right"/>
+
+                <h:outputText value="Remember me:" style="color:blue"/>
+                <p:selectBooleanCheckbox id="rememberMe" value="#{loginBean.rememberMe}"/>
+                <h:outputText/>
+                <p:commandButton value="Login" action="#{loginBean.doLogin}" />
+            </h:panelGrid>
+
+            <p:messages id="messages" autoUpdate="true" closable="true" />
             </h:form>
         </div>
-    </h:body>
+</h:body>
 </html>
