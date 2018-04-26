@@ -86,19 +86,19 @@ and open the template in the editor.
         <div id="Registro">
             <h:form id="Fecha" prependId="false">
                 <h:panelGrid id="Panel" columns="1" >
-                    <p:inputText class="Input" placeholder="Fecha (DD/MM/AAAA)" required="true"/>
+                    <p:inputText class="Input" placeholder="Fecha (DD/MM/AAAA)" required="true" value="#{RegistroMonitoria.nuevaMonitoria.fecha}"/>
                     <br></br>
-                    <p:inputText class="Input" placeholder="Hora inicio" required="true"/>
+                    <p:inputText class="Input" placeholder="Hora inicio" required="true" value="#{RegistroMonitoria.nuevaMonitoria.horaInicio}"/>
                     <br></br>
-                    <p:inputText class="Input" placeholder="Hora fin" required="true"/>
+                    <p:inputText class="Input" placeholder="Hora fin" required="true" value="#{RegistroMonitoria.nuevaMonitoria.horaFin}"/>
                     <br></br>
-                    <p:inputText class="Input" placeholder="Materia" required="true"/>
+                    <p:inputText class="Input" placeholder="Materia" required="true" value="#{RegistroMonitoria.nuevaMonitoria.materia}"/>
                     <br></br>
-                    <p:inputText class="Input" placeholder="Estudiante" required="true"/>
+                    <p:inputText class="Input" placeholder="Estudiante" required="true" value="#{RegistroMonitoria.nuevaMonitoria.estudiante}"/>
                     <br></br>                    
-                    <p:inputText class="Input" placeholder="Tema" required="true"/>
+                    <p:inputText class="Input" placeholder="Tema" required="true" value="#{RegistroMonitoria.nuevaMonitoria.tema}"/>
                     <br></br>
-                    <p:inputText class="Input" placeholder="Descripcion" required="true"/>
+                    <p:inputText class="Input" placeholder="Descripcion" required="true" value="#{RegistroMonitoria.nuevaMonitoria.descripcion}"/>
                     <br></br>                    
                     <p:commandButton class="Boton" value="Enviar"/>
                 </h:panelGrid>   
