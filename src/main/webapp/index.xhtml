@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <style type="text/css">
             body{
@@ -23,17 +24,6 @@ and open the template in the editor.
                 margin: auto;
                 overflow: auto;
             }
-            .Titulo{
-                font-family: Verdana;
-                position: relative;
-                z-index: 1;
-                background: #FFFFFF;
-                max-width: 100%;
-                margin: 0 auto 100px;
-                text-align: rigth;
-                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-                color: grey;
-            }
             #Informacion{
                 background-color: #F7F7F5;
                 margin: auto;
@@ -45,19 +35,50 @@ and open the template in the editor.
                 font-family: Verdana;
                 color: grey;
             }         
-            #TituloFuente{
-                padding: 1%;
+            .Titulo{
+                font-family: Verdana;
+                position: relative;
+                z-index: 1;
+                background: #FFFFFF;
+                max-width: 100%;
+                margin: 0 auto 100px;
+                text-align: right;
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+                color: grey;              
             }
+            .Boton{
+                font-family: Verdana, sans-serif;
+                text-transform: uppercase;
+                outline: 0;
+                background: #4CAF50;
+                width: 50%;
+                border: 0;
+                padding: 15px;
+                color: #FFFFFF;
+                font-size: 14px;
+                -webkit-transition: all 0.3 ease;
+                transition: all 0.3 ease;
+                cursor: pointer;
+            }           
         </style>
     </h:head>
     <h:body>
         <div class="Titulo">
-            <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
+            <table>
+                <th>
+                    <img src="resources/LogoEscuela.png" alt="Logo Escuela"></img>
+                </th>
+                <th width="70%" style="text-align: left;">
+                    <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
+                </th>
+                <th width="30%" style="text-align: center;">
+                    <p:button class="Boton" outcome="/login" value="Iniciar Sesion" icon="">
+                        <f:param name="productId" value="10" />
+                    </p:button>                    
+                </th>
+            </table>
         </div>       
         <div id="Informacion">
-            <p:button outcome="/login" value="Iniciar Sesion" icon="ui-icon-star">
-                <f:param name="productId" value="10" />
-            </p:button>
             <br></br>
             <h1> | Monitorias Disponibles | </h1>
             <p:dataTable var="car" value="#{dtBasicView.cars}">
