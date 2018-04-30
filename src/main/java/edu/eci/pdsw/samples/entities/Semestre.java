@@ -12,7 +12,8 @@ import java.util.Date;
  * @author jonnhi
  */
 public class Semestre {
-
+    
+    private long id;
     private Integer year;
     private String periodoAcademico;
     private Date fechaInicio;
@@ -27,6 +28,12 @@ public class Semestre {
         this.admin = admin;
     }
 
+    
+    public long getIdentificador(){
+        return this.id;
+    }
+    
+    
     public Integer getYear() {
         return year;
     }

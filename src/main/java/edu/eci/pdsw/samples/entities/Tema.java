@@ -10,6 +10,7 @@ package edu.eci.pdsw.samples.entities;
  * @author diego
  */
 public class Tema {
+    private int identificador;
     private String nombre;
     private String descripcion;
     private String cursoNeumonico;
@@ -17,9 +18,15 @@ public class Tema {
     public Tema(){
     }
     
-    public Tema(String nombre,String descripcion){
+    public Tema(int identificador, String nombre,String descripcion, String cursoNeumonico){
+        this.identificador=identificador;
         this.nombre=nombre;
         this.descripcion=descripcion;
+        this.cursoNeumonico=cursoNeumonico;
+    }
+    
+    public int getIdentificador(){
+        return this.identificador;
     }
     
     public String getNombre(){

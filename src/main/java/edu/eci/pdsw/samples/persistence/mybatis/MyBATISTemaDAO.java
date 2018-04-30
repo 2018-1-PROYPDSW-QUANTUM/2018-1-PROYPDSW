@@ -26,7 +26,7 @@ public class MyBATISTemaDAO implements TemaDAO{
 
     @Override
     public void save(Tema t) throws PersistenceException {
-        temaMapper.AgregarTema(t.getNombre(), t.getdescripcion(), t.getCursoNeumonico());
+        temaMapper.AgregarTema(t.getIdentificador() ,t.getNombre(), t.getdescripcion(), t.getCursoNeumonico());
     }
 
     @Override

@@ -14,30 +14,47 @@ import java.util.List;
  * @author diego
  */
 public class Grupo {
+   private long id;
    private String cursoNemonico;
-   //private  HoraMonitoria;
-   private Year year; 
+   private Semestre semestre; 
    private String periodoAcademico;
    private int numero;
    private Profesor profesor;
    private Monitor monitor;
-   //private List<estudiante> estudiantes;
+   private List<Estudiante> estudiantes;
+
    
    public Grupo(){
    }
    
    
-   public Grupo(String neumonico,int creditos){
-       this.cursoNemonico=neumonico;
+   public Grupo(long id, String cursoNeumonico,Semestre semestre, String periodoAcademico,int numero,Profesor profesor,Monitor monitor,int creditos){
+       this.id=id;
+       this.cursoNemonico=cursoNeumonico;
+       this.semestre=semestre;
+       this.periodoAcademico=periodoAcademico;
+       this.numero=numero;
+       this.profesor=profesor;
+       this.monitor=monitor;
    }
    
+   public void  agregarEstudiante(Estudiante e){
+       estudiantes.add(e);
+   }
    
+   public void eliminarEstudiante(Estudiante e){
+       estudiantes.remove(e);
+   }
+   
+   public long getIdentificador(){
+       return this.id;
+   }
    public String getNemonico(){
        return cursoNemonico;
    }
    
-   public Year getyear(){
-       return year;
+   public Semestre getSemestre(){
+       return semestre;
    }
    
    public String getPeriodoAcademico(){
@@ -61,8 +78,8 @@ public class Grupo {
        this.cursoNemonico=nemonico;
    }
    
-   public void setyear(Year year){
-       this.year=year;
+   public void setSemestre(Semestre semestre){
+       this.semestre=semestre;
    }
    
    public void setPeriodoAcademico(String periodoAcademico){
@@ -77,10 +94,5 @@ public class Grupo {
    public void setMonitor(Monitor monitor){
        this.monitor=monitor;
    }
-   
-   
-   /*public List<Tema> getTemas(){
-       return temas;
-   }*/
    
 }

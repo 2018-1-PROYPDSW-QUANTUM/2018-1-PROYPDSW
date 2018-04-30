@@ -18,7 +18,7 @@ public interface GrupoDAO {
     
     public void save(Grupo g) throws PersistenceException;
     public List<Grupo> loadGrupos() throws PersistenceException;
-    public Grupo load(Year year,String neumonico,String periodoAcademico);
+    public Grupo load(long identificador);
     
     
 }

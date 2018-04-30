@@ -7,12 +7,19 @@
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper">
    
      <select parameterType="map" id="ConsultarTema" resultMap="TemaResult">
-         SELECT Nombre, Descripcion
+         SELECT nombre, descripcion
          WHERE Nombre=#{nomb}
      </select>
      
      <insert parameterType="map" id="AgregarTema">
-         INSERT INTO Tema (Nombre,Descripcion,Curso_Neumonico) VALUES (#{nomb},#{descrip},#{cursNeu})
+         INSERT INTO Tema (Identificador,Nombre,Descripcion,CursoNeumonico) VALUES (#{iden},#{nomb},#{descrip},#{cursNeu})
      </insert>
+     
+     <resultMap type="Tema" id="TemaResult" >>
+        <id property="identificador" column="Identificador"/>
+        <result property="nombre" column="Nombre"/>
+        <result property="descripcion" column="Descripcion_/>
+        <result property="cursoNeumonico" column="CursoNeumonico"/>
+    </resultMap>
      
 </mapper>

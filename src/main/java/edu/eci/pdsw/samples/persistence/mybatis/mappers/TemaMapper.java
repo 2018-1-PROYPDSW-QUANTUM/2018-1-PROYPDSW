@@ -16,7 +16,7 @@ import org.apache.ibatis.annotations.Param;
 public interface TemaMapper {
     
     public Tema ConsultarTema(@Param("nomb")String nombre);
-    public void AgregarTema(@Param("nom")String nombre,@Param("descrip")String descripcion,@Param("cursNeu")String cursoNeumonico);
+    public void AgregarTema(@Param("iden")int identificador, @Param("nom")String nombre,@Param("descrip")String descripcion,@Param("cursNeu")String cursoNeumonico);
     public List<Tema> ConsultarTemas();
     
 }
