@@ -25,7 +25,7 @@ public class MyBATISCursoDAO implements  CursoDAO{
     
     @Override
     public void save(Curso c) throws PersistenceException {
-        cursoMapper.AgregarCurso(c.getNeumonico(), c.getNombre(), c.getCreditosAcademicos(), c.getProgramaAcademico());
+        cursoMapper.AgregarCurso(c.getNeumonico(), c.getNombre(), c.getCreditosAcademicos(), null);
     }
 
     @Override

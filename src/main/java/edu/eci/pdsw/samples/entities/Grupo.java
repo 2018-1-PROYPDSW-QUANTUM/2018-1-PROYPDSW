@@ -6,7 +6,6 @@
 package edu.eci.pdsw.samples.entities;
 
 
-import java.time.Year;
 import java.util.List;
 
 /**
@@ -15,7 +14,7 @@ import java.util.List;
  */
 public class Grupo {
    private long id;
-   private String cursoNemonico;
+   private Curso curso;
    private Semestre semestre; 
    private String periodoAcademico;
    private int numero;
@@ -28,9 +27,9 @@ public class Grupo {
    }
    
    
-   public Grupo(long id, String cursoNeumonico,Semestre semestre, String periodoAcademico,int numero,Profesor profesor,Monitor monitor,int creditos){
+   public Grupo(long id, Curso curso,Semestre semestre, String periodoAcademico,int numero,Profesor profesor,Monitor monitor,int creditos){
        this.id=id;
-       this.cursoNemonico=cursoNeumonico;
+       this.curso=curso;
        this.semestre=semestre;
        this.periodoAcademico=periodoAcademico;
        this.numero=numero;
@@ -49,8 +48,8 @@ public class Grupo {
    public long getIdentificador(){
        return this.id;
    }
-   public String getNemonico(){
-       return cursoNemonico;
+   public Curso getCurso(){
+       return curso;
    }
    
    public Semestre getSemestre(){
@@ -74,8 +73,8 @@ public class Grupo {
    }
    
    
-   public void setNemonico(String nemonico){
-       this.cursoNemonico=nemonico;
+   public void setCurso(Curso curso){
+       this.curso=curso;
    }
    
    public void setSemestre(Semestre semestre){

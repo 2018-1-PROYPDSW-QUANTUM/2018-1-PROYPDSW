@@ -25,7 +25,7 @@ public class MyBATISGrupoDAO implements GrupoDAO{
 
     @Override
     public void save(Grupo g) throws PersistenceException {
-        grupoMapper.AgregarGrupo(g.getIdentificador(), g.getSemestre().getIdentificador(), g.getPeriodoAcademico(), g.getNemonico(), g.getNumero(), g.getProfesor(), g.getMonitor());
+        grupoMapper.AgregarGrupo(g.getIdentificador(), g.getSemestre().getIdentificador(), g.getPeriodoAcademico(), g.getCurso().getNeumonico(), g.getNumero(), g.getProfesor(), g.getMonitor());
     }
 
     @Override

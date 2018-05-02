@@ -20,7 +20,6 @@ public class Curso {
     //private List<Franjas,HorasMonitoria> horasMonitoria;
     private List<Grupo> grupos;
     private List<Tema> temas;
-    private String programaAcademico;
     
     
     public Curso(){
@@ -36,6 +35,7 @@ public class Curso {
         return nombre;
     }
     
+    
     public String getNeumonico(){
         return neumonico;
     }
@@ -44,9 +44,6 @@ public class Curso {
         return creditosAcademicos;
     }
     
-    public String getProgramaAcademico(){
-        return programaAcademico;
-    }
     
     public void getNombre(String nombre){
         this.nombre= nombre;
@@ -58,10 +55,6 @@ public class Curso {
     
     public void getCreditosAcademicos(int creditoAcademicos){
         this.creditosAcademicos= creditosAcademicos;
-    }
-    
-    public void getProgramaAcademico(String programaAcademico){
-        this.programaAcademico= programaAcademico;
     }
     
     public void agregarGrupo(Grupo grupo){

@@ -15,4 +15,13 @@
          INSERT INTO Grupo (Year,Periodo_academico, Curso_Neumonico, Numero,Profesor_Codigo,Monitor_Codigo) VALUES (#{yea},#{periodoAca},#{cursoNeu},#{num},#{Profesorcod},#{monotCod})
      </insert>
      
+     <resultMap type="Grupo" id="GrupoResult" >
+        <id property="id" column="Identificador"/>
+        <result property="numero" column="numero"/>
+        <association property="semestre" javaType="Semestre" columnPrefix='se_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.SemestreMapper.SemestreResult"></association>   
+        <association property="curso" javaType="Curso" columnPrefix='cu_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper.CursoResult"></association>   
+        <association property="profesor" javaType="Profesor" columnPrefix='pr_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper.ProfesorResult"></association>   
+        <association property="Monitor" javaType="Monitor" columnPrefix='mo_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper.MonitorResult"></association>  
+    </resultMap>
+     
 </mapper>

@@ -12,31 +12,32 @@
      </select>
      
      <insert parameterType="map" id ="AgregrarCurso" >
-         INSERT INTO  Curso (Neumonico, Noombre, Creditos, Programa) VALUES (#{neumo},#{nomb},#{credi},null,#{prog})
+         INSERT INTO  Curso (neumonico, nombre, creditos,horas_monitorias) VALUES (#{neumo},#{nomb},#{credi},null)
      </insert> 
      
-     <select parameterType="map" id="ConsultarTemasCurso" resultMap="TemasCursoResult">
-         SELECT Nombre, Descripcion
-         FROM Tema
-         WHERE Neumonico =#{neum}
-     </select>
      
      <select parameterType="map" id="ConsultarGruposCurso" resultMap="GruposCursoResult">
          SELECT Nombre, Descripcion
          FROM Grupo
-         WHERE Neumonico =#{neum}
+         WHERE neumonico =#{neum}
      </select>
      
      <select parameterType="map" id="ConsultarCursos" resultMap="GruposResult">
          SELECT 
-            c.Neumonico, c.Nombre, c.Creditos,c.Programa
+            c.neumonico, c.nombre, c.creditos, c.horas_monitoria
             
-            g.Year, g.Periodo_academico, g.Curso_Neumonico, g.Numero, g.Profesor_Codigo, g.Monitor_Codigo
+             g.Periodo_academico, g.curso_ceumonico, g.numero, g.profesor_Codigo, g.monitor_codigo
          
          FROM Curso AS c
-         LEFT JOIN as g on c.Neumonico=g.Curso_Neumonico
+         LEFT JOIN as g on c.neumonico=g.curso_neumonico
          
          
      </select>
-     
+      <resultMap type='Cliente' id='ClienteResult'>
+                    <id property='neumonico' column='neumonico'/>
+                    <result property='nombre' column='nombre'/>
+                    <result property='creditosacAdemicos' column='Creditos'/>                                            
+                    <collection property='grupos' ofType='Grupo' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.GrupoMapper.GrupoResult'></collection>
+                    <collection property='temas' ofType='Tema' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.TemaMapper.TemaResult'></collection>
+                </resultMap>
  </mapper>
