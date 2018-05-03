@@ -68,7 +68,7 @@ CREATE TABLE Grupo (
 -- Table: Monitor
 CREATE TABLE Monitor (
     Codigo int  NOT NULL,
-    semestre_Ingreso varchar(6)  NOT NULL,
+    semestre_ingreso varchar(6)  NOT NULL,
     programa_academico varchar(50)  NOT NULL,
     nombre varchar(30)  NOT NULL,
     apellido varchar(30)  NOT NULL,

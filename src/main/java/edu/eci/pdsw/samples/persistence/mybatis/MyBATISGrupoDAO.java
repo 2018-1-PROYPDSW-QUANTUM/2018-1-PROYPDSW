@@ -7,12 +7,9 @@ package edu.eci.pdsw.samples.persistence.mybatis;
 
 import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Grupo;
-import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.persistence.GrupoDAO;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper;
-import edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper;
-import java.time.Year;
 import java.util.List;
 
 /**

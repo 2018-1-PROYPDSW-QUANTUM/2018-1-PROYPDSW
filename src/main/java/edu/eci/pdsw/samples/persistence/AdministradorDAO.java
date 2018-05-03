@@ -17,6 +17,7 @@ public interface AdministradorDAO {
     /**
      *
      * @param admin
+     * @throws edu.eci.pdsw.samples.persistence.PersistenceException
      */
     public void save(Administrador admin) throws PersistenceException;
     
@@ -24,12 +25,14 @@ public interface AdministradorDAO {
      *
      * @param codigo
      * @return Administrador con el codigo indicado en el parametro.
+     * @throws edu.eci.pdsw.samples.persistence.PersistenceException
      */
     public Administrador load(Integer codigo) throws PersistenceException;
     
     /**
      *
      * @return Lista de administradores.
+     * @throws edu.eci.pdsw.samples.persistence.PersistenceException
      */
     public List<Administrador> loadAll() throws PersistenceException;
 }

@@ -7,7 +7,7 @@
     <select parameterType="map" id="consultarAdministradorGeneral" resultMap="AdministradorResult">
         SELECT Codigo, nombre, apellido, celular, correo, clave        
         FROM Administrador
-        <if test="cadmin != null">
+        <if test="coAdmin != null">
             WHERE codigo = #{coAdmin}
         </if>
     </select>

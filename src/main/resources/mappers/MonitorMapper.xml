@@ -1,11 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
-
-<root>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper">
+    <select parameterType="map" id="consultarMonitorGeneral" resultMap="MonitorResult">
+        SELECT Codigo, semestre_ingreso, programa_academico, nombre, apellido, celular, correo, clave
+        FROM Monitor
+        <if test="coMonitor != null">
+            WHERE Codigo = #{coMonitor}
+        </if>
+    </select>
     
-</root>
+    <insert parameterType="map" id="registrarMonitor">
+        INSERT INTO Monitor (Codigo, semestre_ingreso, programa_academico, nombre, apellido, celular, correo, clave)
+        VALUES (#{coMonitor},#{siMonitor},#{paMonitor},#{noMonitor},#{apMonitor},#{ceMonitor},#{coMonitor},#{clMonitor})
+    </insert>
+    
+    <!--celular, clave se podran actualizar-->
+    
+    <resultMap type="Monitor" id="MonitorResult" >
+        <id property="codigo" column="Codigo"/>
+        <result property="semestreIngreso" column="semestre_ingreso"/>
+        <result property="programaAcademico" column="programa_academico"/>
+        <result property="nombre" column="nombre"/>
+        <result property="apellido" column="apellido"/>
+        <result property="celular" column="celular"/>
+        <result property="correo" column="correo"/>
+        <result property="clave" column="clave"/>
+    </resultMap>
+      	
+</mapper>

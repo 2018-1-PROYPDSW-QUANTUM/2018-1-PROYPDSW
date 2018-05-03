@@ -5,13 +5,33 @@
  */
 package edu.eci.pdsw.samples.persistence;
 
+import java.util.List;
 import edu.eci.pdsw.samples.entities.Monitor;
 
 /**
  *
- * @author DANIEL
+ * @author DANIEL, jonnhi
  */
 public interface MonitorDAO {
+
+    /**
+     *
+     * @param m
+     * @throws PersistenceException
+     */
     public void save(Monitor m) throws PersistenceException;
-    public Monitor load(long id) throws PersistenceException;
+
+    /**
+     *
+     * @param c
+     * @return
+     * @throws PersistenceException
+     */
+    public Monitor load(Integer c) throws PersistenceException;
+
+    /**
+     *
+     * @return @throws PersistenceException
+     */
+    public List<Monitor> loadAll() throws PersistenceException;
 }

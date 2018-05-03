@@ -7,29 +7,43 @@ package edu.eci.pdsw.samples.entities;
 
 /**
  *
- * @author 2106146
+ * @author 2106146, jonnhi
  */
 public class Monitor {
-    private int codigo;
-    private char semestreIngreso;
+
+    private Integer codigo;
+    private String semestreIngreso;
     private String programaAcademico;
     private String nombre;
     private String apellido;
     private String celular;
+    private String correo;
+    private String clave;
 
-    public int getCodigo() {
+    public Monitor(Integer codigo, String semestreIngreso, String programaAcademico, String nombre, String apellido, String celular, String correo, String clave) {
+        this.codigo = codigo;
+        this.semestreIngreso = semestreIngreso;
+        this.programaAcademico = programaAcademico;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.celular = celular;
+        this.correo = correo;
+        this.clave = clave;
+    }
+
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
 
-    public char getSemestreIngreso() {
+    public String getSemestreIngreso() {
         return semestreIngreso;
     }
 
-    public void setSemestreIngreso(char semestreIngreso) {
+    public void setSemestreIngreso(String semestreIngreso) {
         this.semestreIngreso = semestreIngreso;
     }
 
@@ -80,7 +94,5 @@ public class Monitor {
     public void setClave(String clave) {
         this.clave = clave;
     }
-    private String correo;
-    private String clave;
-    
+
 }
