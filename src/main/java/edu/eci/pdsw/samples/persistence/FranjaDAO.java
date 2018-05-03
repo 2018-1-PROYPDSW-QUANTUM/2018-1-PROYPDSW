@@ -12,6 +12,19 @@ import edu.eci.pdsw.samples.entities.Franja;
  * @author DANIEL
  */
 public interface FranjaDAO {
+    
+    /**
+     *
+     * @param f
+     * @throws PersistenceException
+     */
     public void save(Franja f) throws PersistenceException;
+
+    /**
+     *
+     * @param id
+     * @return
+     * @throws PersistenceException
+     */
     public Franja load(long id) throws PersistenceException;
 }

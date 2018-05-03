@@ -21,6 +21,7 @@ public interface GrupoMapper {
     public void AgregarGrupo(@Param("id")long id, @Param("semestre")long semestreIdentificador,@Param("periodoAca")String periodoAcademico,@Param("cursoNeu")String cursoNeumonico,@Param("num")int numero,@Param("Profesorcod")int profesorCodigo,@Param("monotCod")int codigo);
     public List<Grupo> ConsultarGrupos();
 
-    public void AgregarGrupo(Semestre semestre, String periodoAcademico, String nemonico, int numero, int profesor, int monitor);
+    
+    
     
 }
