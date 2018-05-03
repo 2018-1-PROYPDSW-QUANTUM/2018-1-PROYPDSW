@@ -5,9 +5,7 @@
  */
 package edu.eci.pdsw.samples.services;
 
-import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Monitoria;
-import edu.eci.pdsw.samples.persistence.PersistenceException;
 
 /**
  *
@@ -15,6 +13,6 @@ import edu.eci.pdsw.samples.persistence.PersistenceException;
  */
 public interface ServiciosMonitoria {
     
-    public abstract void registrarMonitoria(Monitoria nm,Grupo g) throws PersistenceException;
+    public abstract void registrarMonitoria(Monitoria m) throws ExcepcionServiciosMonitoria;
     
 }

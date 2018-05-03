@@ -8,6 +8,7 @@ package edu.eci.pdsw.samples.managedbean;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
+import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriaFactory;
 import java.io.Serializable;
@@ -39,8 +40,8 @@ public class RegistroMonitoriaBean implements Serializable{
     }
     
     
-    public void setNuevaMonitoria(Monitoria nuevaMonitoria, Grupo grupo) throws PersistenceException {
-        sm.registrarMonitoria(nuevaMonitoria, grupo);
+    public void setNuevaMonitoria(Monitoria nuevaMonitoria) throws PersistenceException, ExcepcionServiciosMonitoria {
+        sm.registrarMonitoria(nuevaMonitoria);
     }
 
     
