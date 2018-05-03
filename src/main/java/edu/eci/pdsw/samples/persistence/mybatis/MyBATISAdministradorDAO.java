@@ -30,10 +30,8 @@ public class MyBATISAdministradorDAO implements AdministradorDAO {
     public Administrador load(Integer codigo) throws PersistenceException {
         try {
             return adminMapper.consultarAdministrador(codigo);
-        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+        } catch (org.apache.ibatis.exceptions.PersistenceException | java.lang.IndexOutOfBoundsException e) {
             throw new PersistenceException("Error al consultar el cliente: "+codigo,e);
-        } catch(java.lang.IndexOutOfBoundsException ex){
-            throw new PersistenceException("Error al consultar el cliente: "+codigo,ex);
         }
     }
 

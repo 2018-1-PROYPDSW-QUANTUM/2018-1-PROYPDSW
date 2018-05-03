@@ -18,8 +18,8 @@ CREATE TABLE Administrador (
 CREATE TABLE Asistente (
     Monitoria_identificador bigint  NOT NULL,
     Estudiante_codigo int  NOT NULL,
-    Tema_Identificador int  NOT NULL,
-    CONSTRAINT Asistente_pk PRIMARY KEY (Monitoria_identificador,Estudiante_codigo,Tema_Identificador)
+    Tema_identificador int  NOT NULL,
+    CONSTRAINT Asistente_pk PRIMARY KEY (Monitoria_identificador,Estudiante_codigo,Tema_identificador)
 );
 
 -- Table: Curso
@@ -149,7 +149,7 @@ ALTER TABLE Tema ADD CONSTRAINT UK_Tema_curso_nombre UNIQUE (nombre, curso_Nemon
 -- foreign keys
 -- Reference: Asistente_Tema (table: Asistente)
 ALTER TABLE Asistente ADD CONSTRAINT Asistente_Tema
-    FOREIGN KEY (Tema_Identificador)
+    FOREIGN KEY (Tema_identificador)
     REFERENCES Tema (Identificador)
 ;
 

@@ -46,7 +46,7 @@ public class ServicioMonitoriaImpl implements ServiciosMonitoria{
     @Override
     public void registrarMonitoria(Monitoria nm,Grupo g ) throws PersistenceException {
          try {
-            daoMonitoria.save(nm, g);
+            daoMonitoria.save(nm);
         } catch (PersistenceException ex) {
             throw new PersistenceException("Error al realizar la consulta:"+ex.getLocalizedMessage(), ex);
         } 

@@ -19,16 +19,16 @@ public class Monitoria {
     private Date horaFin;
     private String ip;
     private String observaciones;
-    private Grupo grupo;
+    private Monitor monitor;
 
-    public Monitoria(Integer id, Date fecha, Date horaInicio, Date horaFin, String ip, String observaciones, Grupo grupo) {
+    public Monitoria(Integer id, Date fecha, Date horaInicio, Date horaFin, String ip, String observaciones, Monitor monitor) {
         this.id = id;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.ip = ip;
         this.observaciones = observaciones;
-        this.grupo = grupo;
+        this.monitor = monitor;
     }
 
     public Integer getId() {
@@ -79,12 +79,12 @@ public class Monitoria {
         this.observaciones = observaciones;
     }
 
-    public Grupo getGrupo() {
-        return grupo;
+    public Monitor getMonitor() {
+        return monitor;
     }
 
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
+    public void setMonitor(Monitor monitor) {
+        this.monitor = monitor;
     }
     
     

@@ -14,13 +14,13 @@ import java.util.List;
 public class Asistente {
 
     private Monitoria monitoria;
+    private Estudiante estudiante;
     private List<Tema> temas;
-    private List<Estudiante> estudiantes;
 
-    public Asistente(Monitoria monitoria, List<Tema> temas, List<Estudiante> estudiantes) {
+    public Asistente(Monitoria monitoria, Estudiante estudiante, List<Tema> temas) {
         this.monitoria = monitoria;
+        this.estudiante = estudiante;
         this.temas = temas;
-        this.estudiantes = estudiantes;
     }
 
     public Monitoria getMonitoria() {
@@ -39,12 +39,12 @@ public class Asistente {
         this.temas = temas;
     }
 
-    public List<Estudiante> getEstudiantes() {
-        return estudiantes;
+    public Estudiante getEstudiante() {
+        return estudiante;
     }
 
-    public void setEstudiantes(List<Estudiante> estudiantes) {
-        this.estudiantes = estudiantes;
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
     }
     
     

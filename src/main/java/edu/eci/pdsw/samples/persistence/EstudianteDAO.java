@@ -13,5 +13,10 @@ import edu.eci.pdsw.samples.entities.Estudiante;
  */
 public interface EstudianteDAO {
     
+    /**
+     *
+     * @param e Estudiante
+     * @throws PersistenceException
+     */
     public void save(Estudiante e) throws PersistenceException;
 }

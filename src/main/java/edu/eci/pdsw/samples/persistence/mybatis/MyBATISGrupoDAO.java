@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.persistence.mybatis;
 
+import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.persistence.GrupoDAO;
@@ -13,19 +14,19 @@ import edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper;
 import edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper;
 import java.time.Year;
 import java.util.List;
-import javax.inject.Inject;
 
 /**
  *
  * @author diego
  */
-public class MyBATISGrupoDAO implements GrupoDAO{
+public class MyBATISGrupoDAO implements GrupoDAO {
+
     @Inject
     private GrupoMapper grupoMapper;
 
     @Override
     public void save(Grupo g) throws PersistenceException {
-        grupoMapper.AgregarGrupo(g.getIdentificador(), g.getSemestre().getIdentificador(), g.getPeriodoAcademico(), g.getCurso().getNeumonico(), g.getNumero(), g.getProfesor(), g.getMonitor());
+        grupoMapper.AgregarGrupo(g.getIdentificador(), g.getSemestre().getId(), g.getPeriodoAcademico(), g.getCurso().getNeumonico(), g.getNumero(), g.getProfesor(), g.getMonitor());
     }
 
     @Override
@@ -37,5 +38,5 @@ public class MyBATISGrupoDAO implements GrupoDAO{
     public Grupo load(long identificador) {
         return grupoMapper.ConsultarGrupo(identificador);
     }
-    
+
 }

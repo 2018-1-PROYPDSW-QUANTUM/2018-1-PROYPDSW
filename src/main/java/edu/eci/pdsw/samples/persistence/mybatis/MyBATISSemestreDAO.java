@@ -24,12 +24,12 @@ public class MyBATISSemestreDAO implements SemestreDAO {
 
     @Override
     public void save(Semestre s, Administrador admin) throws PersistenceException {
-        semestreMapper.registrarSemestre(s.getYear(), s.getPeriodoAcademico(), s.getFechaInicio(), s.getFechaFin(), admin);
+        semestreMapper.registrarSemestre(s.getId(), s.getYears(), s.getPeriodoAcademico(), s.getFechaInicio(), s.getFechaFin(), admin.getCodigo());
     }
 
     @Override
-    public Semestre load(Integer year, String periodoAcademico) throws PersistenceException {
-        return semestreMapper.consultarSemestre(year, periodoAcademico);
+    public Semestre load(Integer years, String periodoAcademico) throws PersistenceException {
+        return semestreMapper.consultarSemestre(years, periodoAcademico);
     }
 
     @Override

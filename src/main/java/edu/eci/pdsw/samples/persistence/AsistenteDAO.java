@@ -19,7 +19,9 @@ public interface AsistenteDAO {
 
     /**
      *
-     * @param a
+     * @param m Monitoria
+     * @param e Estudiante
+     * @param t Tema
      * @throws PersistenceException
      */
     public void save(Monitoria m, Estudiante e, Tema t) throws PersistenceException;

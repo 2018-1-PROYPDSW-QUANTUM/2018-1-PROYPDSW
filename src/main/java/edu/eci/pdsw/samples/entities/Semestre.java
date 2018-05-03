@@ -13,33 +13,36 @@ import java.util.Date;
  */
 public class Semestre {
     
-    private long id;
-    private Integer year;
+    private Integer id;
+    private Integer years;
     private String periodoAcademico;
     private Date fechaInicio;
     private Date fechaFin;
     private Administrador admin;
 
-    public Semestre(Integer year, String periodoAcademico, Date fechaInicio, Date fechaFin, Administrador admin) {
-        this.year = year;
+    public Semestre(Integer id, Integer years, String periodoAcademico, Date fechaInicio, Date fechaFin, Administrador admin) {
+        this.id = id;
+        this.years = years;
         this.periodoAcademico = periodoAcademico;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.admin = admin;
     }
 
-    
-    public long getIdentificador(){
-        return this.id;
-    }
-    
-    
-    public Integer getYear() {
-        return year;
+    public Integer getId() {
+        return id;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setId(Integer id) {
+        this.id = id;
+    }    
+    
+    public Integer getYears() {
+        return years;
+    }
+
+    public void setYears(Integer years) {
+        this.years = years;
     }
 
     public String getPeriodoAcademico() {

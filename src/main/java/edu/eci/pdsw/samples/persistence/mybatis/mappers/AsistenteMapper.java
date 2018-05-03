@@ -25,5 +25,5 @@ public interface AsistenteMapper {
     
     public void registrarAsistente(@Param("miAsistente") Integer monitoriaId, 
             @Param("ecAsistente") Integer estudianteCodigo, 
-            @Param("teAsistente") String temas);
+            @Param("tiAsistente") Integer temaId);
 }

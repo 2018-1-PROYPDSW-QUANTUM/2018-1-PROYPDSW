@@ -19,12 +19,12 @@ public interface SemestreMapper {
 
     /**
      *
-     * @param year
+     * @param years
      * @param periodoAcademico
      * @return
      */
-    default Semestre consultarSemestre(Integer year, String periodoAcademico) {
-        return consultarSemestreGeneral(year, periodoAcademico).get(0);
+    default Semestre consultarSemestre(Integer years, String periodoAcademico) {
+        return consultarSemestreGeneral(years, periodoAcademico).get(0);
     }
 
     /**
@@ -37,25 +37,27 @@ public interface SemestreMapper {
 
     /**
      *
-     * @param year
+     * @param years
      * @param periodoAcademico
      * @return
      */
-    public List<Semestre> consultarSemestreGeneral(@Param("yeSemestre") Integer year,
+    public List<Semestre> consultarSemestreGeneral(@Param("yeSemestre") Integer years,
             @Param("paSemestre") String periodoAcademico);
 
     /**
      *
-     * @param year
+     * @param id
+     * @param years
      * @param periodoAcademico
      * @param fechaInicio
      * @param fechaFin
-     * @param admin
+     * @param adminCodigo
      */
-    public void registrarSemestre(@Param("yeSemestre") Integer year, 
+    public void registrarSemestre(@Param("idSemestre") Integer id, 
+            @Param("yeSemestre") Integer years, 
             @Param("paSemestre") String periodoAcademico, 
             @Param("fiSemestre") Date fechaInicio, 
             @Param("ffSemestre") Date fechaFin, 
-            @Param("aSemestre") Administrador admin);
+            @Param("acSemestre") Integer adminCodigo);
 
 }

@@ -45,8 +45,7 @@
         <mapper resource="mappers/MonitoriaMapper.xml"></mapper>
         <mapper resource="mappers/ProfesorMapper.xml"></mapper>
         <mapper resource="mappers/SemestreMapper.xml"></mapper>
-        <mapper resource="mappers/TemaMapper.xml"></mapper>                
-
+        <mapper resource="mappers/TemaMapper.xml"></mapper>
     </mappers> 
         
         

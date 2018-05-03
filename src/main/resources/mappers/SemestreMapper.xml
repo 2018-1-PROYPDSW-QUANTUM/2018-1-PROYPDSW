@@ -5,7 +5,7 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.SemestreMapper">
     <select parameterType="map" id="consultarSemestreGeneral" resultMap="SemestreResult">
-        SELECT Year, Periodo_academico, fecha_inicio, fecha_fin, nombre        
+        SELECT Identificador, years, periodo_academico, fecha_inicio, fecha_fin, administrador_codigo, nombre
         FROM Semestre JOIN Administrador ON administrador_codigo=Codigo
         <if test="yeSemestre != null and paSemestre != null">
             WHERE Year = #{yeSemestre} AND Periodo_academico = #{paSemestre}
@@ -13,18 +13,17 @@
     </select>
     
     <insert parameterType="map" id="registrarAdministrador">
-        INSERT INTO Semestre (Year, Periodo_academico, fecha_inicio, fecha_fin, administrador_codigo) 
-        VALUES (#{yeSemestre},#{paSemestre},#{fiSemestre},#{ffSemestre},#{aSemestre.codigo})
+        INSERT INTO Semestre (Identificador, years, periodo_academico, fecha_inicio, fecha_fin, administrador_codigo) 
+        VALUES (#{idSemestre},#{yeSemestre},#{paSemestre},#{fiSemestre},#{ffSemestre},#{acSemestre})
     </insert>
     
-    <!--celular, clave se podran actualizar-->
-    
-    <!--resultMap type="Semestre" id="SemestreResult" >-->
-        <!--id property="year" column="Year"/>-->
-        <!--id property="periodoAcademico" column="Periodo_academico"/>-->
-        <!--result property="fechaInicio" column="fecha_inicio"/>-->
-        <!--result property="fechaFin" column="fecha_fin"/>-->
-        <!--association property="admin" javaType="Administrador" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.AdministradorMapper.AdministradorResult"/>-->
-    <!--/resultMap>-->
+    <resultMap type="Semestre" id="SemestreResult">
+        <id property="id" column="Identificador"/>
+        <result property="years" column="years"/>
+        <result property="periodoAcademico" column="Periodo_academico"/>
+        <result property="fechaInicio" column="fecha_inicio"/>
+        <result property="fechaFin" column="fecha_fin"/>
+        <association property="admin" javaType="Administrador" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.AdministradorMapper.AdministradorResult"/>
+    </resultMap>
       	
 </mapper>

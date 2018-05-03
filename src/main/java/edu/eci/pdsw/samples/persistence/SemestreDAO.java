@@ -18,18 +18,19 @@ public interface SemestreDAO {
     /**
      *
      * @param semestre
+     * @param admin
      * @throws PersistenceException
      */
     public void save(Semestre semestre, Administrador admin) throws PersistenceException;
 
     /**
      *
-     * @param year
+     * @param years
      * @param periodoAcademico
      * @return Registro del semestre year y periodoAcademico
      * @throws PersistenceException
      */
-    public Semestre load(Integer year, String periodoAcademico) throws PersistenceException;
+    public Semestre load(Integer years, String periodoAcademico) throws PersistenceException;
 
     /**
      *
