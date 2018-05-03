@@ -30,7 +30,7 @@
                 <property name="driver" value="org.h2.Driver" />
                 <property name="url" value="jdbc:h2:file:./target/db/testdb;MODE=PostgreSQL" />
                 <property name="username" value="anonymous" />
-                <property name="password" value="" />
+                <property name="password" value="anonymous" />
             </dataSource>
         </environment>
     </environments>
@@ -41,6 +41,7 @@
         <mapper resource="mappers/CursoMapper.xml"></mapper>
         <mapper resource="mappers/EstudianteMapper.xml"></mapper>
         <mapper resource="mappers/GrupoMapper.xml"></mapper>
+        <mapper resource="mappers/MonitorMapper.xml"></mapper>
         <mapper resource="mappers/MonitoriaMapper.xml"></mapper>
         <mapper resource="mappers/ProfesorMapper.xml"></mapper>
         <mapper resource="mappers/SemestreMapper.xml"></mapper>

@@ -46,12 +46,38 @@ public class ServiciosMonitoriaFactory {
 
     private static Injector testInjector;
 
-    private Injector myBatisInjector(String pathResource) {
-        return createInjector(new XMLMyBatisModule() {
+    private ServiciosMonitoriaFactory() {
+
+        injector = createInjector(new XMLMyBatisModule() {
+
+            @Override
+            protected void initialize() {
+                System.out.println("Initializing");
+                install(JdbcHelper.PostgreSQL);
+                setClassPathResource("mybatis-config.xml");
+                bind(ServiciosMonitoria.class).to(ServiciosMonitoriaImpl.class);
+                bind(AdministradorDAO.class).to(MyBATISAdministradorDAO.class);
+                bind(AsistenteDAO.class).to(MyBATISAsistenteDAO.class);
+                bind(CursoDAO.class).to(MyBATISCursoDAO.class);
+                bind(EstudianteDAO.class).to(MyBATISEstudianteDAO.class);
+//                bind(FranjaDAO.class).to(MyBATISFranjaDAO.class);
+                bind(GrupoDAO.class).to(MyBATISGrupoDAO.class);
+                bind(MonitorDAO.class).to(MyBATISMonitorDAO.class);
+                bind(MonitoriaDAO.class).to(MyBATISMonitoriaDAO.class);
+                bind(ProfesorDAO.class).to(MyBATISProfesorDAO.class);
+                bind(SemestreDAO.class).to(MyBATISSemestreDAO.class);
+                bind(TemaDAO.class).to(MyBATISTemaDAO.class);
+                System.out.println("End Initializing");
+
+            }
+        }
+        );
+
+        testInjector = createInjector(new XMLMyBatisModule() {
             @Override
             protected void initialize() {
                 install(JdbcHelper.PostgreSQL);
-                setClassPathResource(pathResource);
+                setClassPathResource("mybatis-config-h2.xml");
                 bind(ServiciosMonitoria.class).to(ServiciosMonitoriaImpl.class);
                 bind(AdministradorDAO.class).to(MyBATISAdministradorDAO.class);
                 bind(AsistenteDAO.class).to(MyBATISAsistenteDAO.class);
@@ -65,24 +91,26 @@ public class ServiciosMonitoriaFactory {
                 bind(SemestreDAO.class).to(MyBATISSemestreDAO.class);
                 bind(TemaDAO.class).to(MyBATISTemaDAO.class);
             }
-        });
-    }
-
-    private ServiciosMonitoriaFactory() {
-        injector = myBatisInjector("mybatis-config.xml");
-        testInjector = myBatisInjector("mybatis-config-h2.xml");
+        }
+        );
     }
 
     public ServiciosMonitoria getServiciosMonitoria() {
+        System.out.println("GET Servicios monitoria");
         return injector.getInstance(ServiciosMonitoria.class);
     }
 
-    public ServiciosMonitoria getServiciosMonitoriaTesting() {
+    public ServiciosMonitoria getTestingServiciosMonitoria() {
         return testInjector.getInstance(ServiciosMonitoria.class);
     }
 
     public static ServiciosMonitoriaFactory getInstance() {
+        System.out.println("GET Instance");
         return instance;
     }
 
+    public static void main(String a[]) throws ExcepcionServiciosMonitoria {
+
+        System.out.println(ServiciosMonitoriaFactory.getInstance().getServiciosMonitoria().consultarMonitorias());
+    }
 }

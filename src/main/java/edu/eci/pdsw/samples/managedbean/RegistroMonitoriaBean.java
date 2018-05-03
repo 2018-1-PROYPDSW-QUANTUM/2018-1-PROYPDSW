@@ -13,7 +13,6 @@ import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriaFactory;
-import java.io.Serializable;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -22,9 +21,10 @@ import javax.faces.bean.SessionScoped;
  *
  * @author camil
  */
-@ManagedBean(name = "RegistroMonitoria")
+
+@ManagedBean(name = "registrarMonitoria")
 @SessionScoped
-public class RegistroMonitoriaBean implements Serializable{
+public class RegistroMonitoriaBean {
     
     private ServiciosMonitoria sm = ServiciosMonitoriaFactory.getInstance().getServiciosMonitoria();
     private Monitoria nuevaMonitoria;

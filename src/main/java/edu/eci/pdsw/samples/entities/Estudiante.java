@@ -10,11 +10,15 @@ package edu.eci.pdsw.samples.entities;
  * @author jonnhi
  */
 public class Estudiante {
-    
+
     private Integer codigo;
-    
-    public Estudiante(Integer codigo){
-        this.codigo=codigo;
+
+    public Estudiante() {
+
+    }
+
+    public Estudiante(Integer codigo) {
+        this.codigo = codigo;
     }
 
     public Integer getCodigo() {
@@ -24,6 +28,5 @@ public class Estudiante {
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
-    
-    
+
 }
