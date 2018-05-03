@@ -21,7 +21,7 @@
         <association property="semestre" javaType="Semestre" columnPrefix='se_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.SemestreMapper.SemestreResult"></association>   
         <association property="curso" javaType="Curso" columnPrefix='cu_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper.CursoResult"></association>   
         <association property="profesor" javaType="Profesor" columnPrefix='pr_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper.ProfesorResult"></association>   
-        <association property="Monitor" javaType="Monitor" columnPrefix='mo_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper.MonitorResult"></association>  
+        <association property="Monitor" javaType="Monitor" columnPrefix='mo_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper.MonitorResult"></association>          
     </resultMap>
      
 </mapper>

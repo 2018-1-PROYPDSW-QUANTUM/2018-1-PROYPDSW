@@ -28,6 +28,7 @@
         <result property="celular" column="celular"/>
         <result property="correo" column="correo"/>
         <result property="clave" column="clave"/>
+        <collection property="gruposMonitor" ofType="Grupo" resultmap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult"/>
     </resultMap>
       	
 </mapper>

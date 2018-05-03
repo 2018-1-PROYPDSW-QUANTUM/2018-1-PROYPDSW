@@ -5,6 +5,8 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.util.List;
+
 /**
  *
  * @author 2106146, jonnhi
@@ -19,6 +21,7 @@ public class Monitor {
     private String celular;
     private String correo;
     private String clave;
+    private List<Grupo> gruposMonitor;
 
     public Monitor(Integer codigo, String semestreIngreso, String programaAcademico, String nombre, String apellido, String celular, String correo, String clave) {
         this.codigo = codigo;
@@ -34,7 +37,7 @@ public class Monitor {
     public Integer getCodigo() {
         return codigo;
     }
-
+    
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }
@@ -95,4 +98,11 @@ public class Monitor {
         this.clave = clave;
     }
 
+    public List<Grupo> getGruposMonitor() {
+        return gruposMonitor;
+    }
+
+    public void setGruposMonitor(List<Grupo> gruposMonitor) {
+        this.gruposMonitor = gruposMonitor;
+    }
 }

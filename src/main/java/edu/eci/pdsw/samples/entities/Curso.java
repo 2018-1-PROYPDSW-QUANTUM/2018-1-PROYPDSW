@@ -64,5 +64,21 @@ public class Curso {
     public void elminarGrupo(Grupo grupo){
         grupos.remove(grupo);
     }
+
+    public List<Grupo> getGrupos() {
+        return grupos;
+    }
+
+    public void setGrupos(List<Grupo> grupos) {
+        this.grupos = grupos;
+    }
+
+    public List<Tema> getTemas() {
+        return temas;
+    }
+
+    public void setTemas(List<Tema> temas) {
+        this.temas = temas;
+    }
     
 }

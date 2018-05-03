@@ -22,6 +22,7 @@ import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
+import java.util.List;
 
 /**
  *
@@ -69,6 +70,11 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
         } catch (PersistenceException ex) {
             throw new ExcepcionServiciosMonitoria("Error al registrar la monitoria: " + m.getId(), ex);
         }
+    }
+
+    @Override
+    public List<Monitoria> consultarMonitorias() throws ExcepcionServiciosMonitoria {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

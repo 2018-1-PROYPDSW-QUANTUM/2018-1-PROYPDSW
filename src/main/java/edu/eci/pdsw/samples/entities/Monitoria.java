@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.entities;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -20,6 +21,7 @@ public class Monitoria {
     private String ip;
     private String observaciones;
     private Monitor monitor;
+    private List<Asistente> asistentesMonitoria;
 
     public Monitoria(Integer id, Date fecha, Date horaInicio, Date horaFin, String ip, String observaciones, Monitor monitor) {
         this.id = id;
@@ -86,6 +88,12 @@ public class Monitoria {
     public void setMonitor(Monitor monitor) {
         this.monitor = monitor;
     }
-    
-    
+
+    public List<Asistente> getAsistentesMonitoria() {
+        return asistentesMonitoria;
+    }
+
+    public void setAsistentesMonitoria(List<Asistente> asistentesMonitoria) {
+        this.asistentesMonitoria = asistentesMonitoria;
+    }
 }

@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.services;
 
 import edu.eci.pdsw.samples.entities.Monitoria;
+import java.util.List;
 
 /**
  *
@@ -14,5 +15,5 @@ import edu.eci.pdsw.samples.entities.Monitoria;
 public interface ServiciosMonitoria {
     
     public abstract void registrarMonitoria(Monitoria m) throws ExcepcionServiciosMonitoria;
-    
+    public abstract List<Monitoria> consultarMonitorias() throws ExcepcionServiciosMonitoria;
 }

@@ -85,21 +85,13 @@ and open the template in the editor.
         <br></br>
         <div id="Registro">
             <h:form id="Fecha" prependId="false">
-                <h:panelGrid id="Panel" columns="1" >
-                    <p:inputText class="Input" placeholder="Fecha (DD/MM/AAAA)" required="true" />
-                    <br></br>
-                    <p:inputText class="Input" placeholder="Hora inicio" required="true" />
-                    <br></br>
-                    <p:inputText class="Input" placeholder="Hora fin" required="true" />
-                    <br></br>
-                    <p:inputText class="Input" placeholder="Materia" required="true" />
-                    <br></br>
-                    <p:inputText class="Input" placeholder="Estudiante" required="true" />
+                <h:panelGrid id="Panel" columns="1">
+                    <p:inputText class="Input" placeholder="Estudiante" required="true" value="#{RegistroMonitoria.estudianteMonitoria.codigo}"/>
                     <br></br>                    
-                    <p:inputText class="Input" placeholder="Tema" required="true" />
+                    <!--<p:inputText class="Input" placeholder="Tema" required="true" value=""/>-->
                     <br></br>
                     <p:inputText class="Input" placeholder="Descripcion" required="true" />
-                    <br></br>                    
+                    <br></br>
                     <p:commandButton class="Boton" value="Enviar"/>
                 </h:panelGrid>   
             </h:form>
@@ -107,7 +99,7 @@ and open the template in the editor.
         <br></br>
         <div id="Monitorias">
             <h1> Monitorias </h1>
-            <p:dataTable var="car" value="#{dtBasicView.cars}">
+            <p:dataTable var="monitorias" value="#{dtBasicView.cars}">
                 <p:column headerText="Materia">
                     <h:outputText value="#{car.id}" />
                 </p:column>
@@ -125,10 +117,7 @@ and open the template in the editor.
                 </p:column>
                 <p:column headerText="Descripcion">
                     <h:outputText value="#{car.color}" />
-                </p:column>
-                <p:column headerText="Descripcion">
-                    <h:outputText value="#{car.color}" />
-                </p:column>                
+                </p:column>              
             </p:dataTable>
         </div>
     </h:body>

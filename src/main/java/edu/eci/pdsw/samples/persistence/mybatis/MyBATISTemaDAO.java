@@ -5,6 +5,8 @@
  */
 package edu.eci.pdsw.samples.persistence.mybatis;
 
+
+import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.persistence.GrupoDAO;
@@ -13,7 +15,6 @@ import edu.eci.pdsw.samples.persistence.TemaDAO;
 import edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper;
 import edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper;
 import java.util.List;
-import javax.inject.Inject;
 
 /**
  *
