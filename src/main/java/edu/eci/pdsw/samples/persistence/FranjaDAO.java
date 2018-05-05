@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.persistence;
 
+import java.util.List;
 import edu.eci.pdsw.samples.entities.Franja;
 
 /**
@@ -23,8 +24,15 @@ public interface FranjaDAO {
     /**
      *
      * @param id
-     * @return
+     * @return Franja con identificador ir
      * @throws PersistenceException
      */
-    public Franja load(long id) throws PersistenceException;
+    public Franja load(Integer id) throws PersistenceException;
+    
+    /**
+     *
+     * @return Lista de las franjas asignadas
+     * @throws PersistenceException
+     */
+    public List<Franja> loadAll() throws PersistenceException;
 }

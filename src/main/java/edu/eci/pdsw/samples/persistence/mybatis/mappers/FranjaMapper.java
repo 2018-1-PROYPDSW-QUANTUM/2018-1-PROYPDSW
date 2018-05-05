@@ -6,15 +6,51 @@
 package edu.eci.pdsw.samples.persistence.mybatis.mappers;
 
 import edu.eci.pdsw.samples.entities.Franja;
+import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 /**
  *
- * @author 2104784
+ * @author jonnhi
  */
 public interface FranjaMapper {
-    public Franja ConsultarFranja(@Param("iden") long identificardor);
-    public void AgregarFranja(@Param("id") long id, @Param("semestre")long semestreIdentificador,@Param("periodoAca")String periodoAcademico,@Param("cursoNeu")String cursoNeumonico,@Param("num")int numero,@Param("Profesorcod")int profesorCodigo,@Param("monotCod")int codigo);
-    public List<Franja> ConsultarFranjas();
+
+    /**
+     *
+     * @param id
+     * @return Franja con identificador id
+     */
+    default Franja consultarFranja(Integer id) {
+        return consultarFranjaGeneral(id).get(0);
+    }
+
+    /**
+     *
+     * @return Franjas registradas
+     */
+    default List<Franja> ConsultarFranjas() {
+        return consultarFranjaGeneral(null);
+    }
+
+    /**
+     *
+     * @param identificardor
+     * @return Franjas registradas
+     */
+    public List<Franja> consultarFranjaGeneral(@Param("idFranja") Integer identificardor);
+
+    /**
+     *
+     * @param id
+     * @param dia
+     * @param horaInicio
+     * @param horaFinal
+     * @param grupoId
+     */
+    public void registrarFranja(@Param("idFranja") Integer id,
+            @Param("diFranja") String dia,
+            @Param("hiFranja") Date horaInicio,
+            @Param("hfFranja") Date horaFinal,
+            @Param("giFranja") Integer grupoId);
 }

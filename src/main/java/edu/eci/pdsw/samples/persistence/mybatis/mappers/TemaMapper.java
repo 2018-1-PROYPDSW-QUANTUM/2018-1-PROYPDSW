@@ -11,12 +11,23 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  *
- * @author diego
+ * @author diego, jonnhi
  */
 public interface TemaMapper {
-    
-    public Tema ConsultarTema(@Param("nomb")String nombre);
-    public void AgregarTema(@Param("iden")int identificador, @Param("nom")String nombre,@Param("descrip")String descripcion,@Param("cursNeu")String cursoNeumonico);
-    public List<Tema> ConsultarTemas();
-    
+
+    default Tema consultarTema(Integer id) {
+        return consultarTemaGeneral(id).get(0);
+    }
+
+    default List<Tema> consultarTemas() {
+        return consultarTemaGeneral(null);
+    }
+
+    public List<Tema> consultarTemaGeneral(@Param("idTema") Integer id);
+
+    public void agregarTema(@Param("idTema") Integer id,
+            @Param("cnTema") String cursoNemonico,
+            @Param("nom") String nombre,
+            @Param("descrip") String descripcion);
+
 }

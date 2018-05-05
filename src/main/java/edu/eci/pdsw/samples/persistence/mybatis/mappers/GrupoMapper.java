@@ -5,10 +5,8 @@
  */
 package edu.eci.pdsw.samples.persistence.mybatis.mappers;
 
-import edu.eci.pdsw.samples.entities.Grupo;
-import edu.eci.pdsw.samples.entities.Semestre;
-import java.time.Year;
 import java.util.List;
+import edu.eci.pdsw.samples.entities.Grupo;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -16,12 +14,15 @@ import org.apache.ibatis.annotations.Param;
  * @author diego
  */
 public interface GrupoMapper {
-    
-    public Grupo ConsultarGrupo(@Param("iden")long identificardor);
-    public void AgregarGrupo(@Param("id")long id, @Param("semestre")long semestreIdentificador,@Param("periodoAca")String periodoAcademico,@Param("cursoNeu")String cursoNeumonico,@Param("num")int numero,@Param("Profesorcod")int profesorCodigo,@Param("monotCod")int codigo);
-    public List<Grupo> ConsultarGrupos();
 
-    
-    
-    
+    public Grupo consultarGrupo(@Param("iden") Integer identificardor);
+
+    public List<Grupo> consultarGrupos();
+
+    public void agregarGrupo(@Param("idGrupo") Integer id, 
+            @Param("seGrupo") Integer semestreIdentificador, 
+            @Param("cnGrupo") String cursoNemonico, 
+            @Param("nuGrupo") int numero, 
+            @Param("pcGrupo") Integer profesorCodigo, 
+            @Param("mcGrupo") Integer codigo);
 }

@@ -4,40 +4,35 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   
- <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper">
+<mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper">
      
-     <select parameterType="map" id="ConsultarCurso" resultMap="CursoResult">
-         SELECT Neumonico, Nombre, Creditos,Programa
-         WHERE Neumonico =#{neumon}
-     </select>
-     
-     <insert parameterType="map" id ="AgregrarCurso" >
-         INSERT INTO  Curso (neumonico, nombre, creditos,horas_monitorias) VALUES (#{neumo},#{nomb},#{credi},null)
-     </insert> 
-     
-     
-     <select parameterType="map" id="ConsultarGruposCurso" resultMap="GruposCursoResult">
-         SELECT Nombre, Descripcion
-         FROM Grupo
-         WHERE neumonico =#{neum}
-     </select>
-     
-     <select parameterType="map" id="ConsultarCursos" resultMap="GruposResult">
-         SELECT 
-            c.neumonico, c.nombre, c.creditos, c.horas_monitoria
+    <select parameterType="map" id="consultarCurso" resultMap="CursoResult">
+        SELECT Nemonico, Nombre, Creditos,Programa
+        FROM Curso
+        WHERE Neumonico =#{nemon}
+    </select>
+    
+    <select parameterType="map" id="consultarCursos" resultMap="GruposResult">
+        SELECT 
+        c.Nemonico, c.nombre, c.creditos, c.horas_monitoria
             
-             g.Periodo_academico, g.curso_ceumonico, g.numero, g.profesor_Codigo, g.monitor_codigo
+        g.Periodo_academico, g.curso_ceumonico, g.numero, g.profesor_Codigo, g.monitor_codigo
          
-         FROM Curso AS c
-         LEFT JOIN as g on c.neumonico=g.curso_neumonico
-         
-         
-     </select>
-      <resultMap type='Cliente' id='ClienteResult'>
-                    <id property='neumonico' column='neumonico'/>
-                    <result property='nombre' column='nombre'/>
-                    <result property='creditosacAdemicos' column='Creditos'/>                                            
-                    <collection property='grupos' ofType='Grupo' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.GrupoMapper.GrupoResult'></collection>
-                    <collection property='temas' ofType='Tema' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.TemaMapper.TemaResult'></collection>
-                </resultMap>
- </mapper>
+        FROM Curso AS c
+        LEFT JOIN as g on c.neumonico=g.curso_neumonico     
+    </select>
+    
+    <insert parameterType="map" id ="agregrarCurso" >
+        INSERT INTO Curso (Nemonico, nombre, creditos, horas_monitorias)
+        VALUES (#{nemo},#{nomb},#{credi},#{hmCurso})
+    </insert>
+    
+    <resultMap type='Curso' id='CursoResult'>
+        <id property='nemonico' column='Nemonico'/>
+        <result property='nombre' column='nombre'/>
+        <result property='creditosacAdemicos' column='creditos'/>
+        <result property='horasMonitoria' column='horas_monitoria'/>
+        <collection property='grupos' ofType='Grupo' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.GrupoMapper.GrupoResult'></collection>
+        <collection property='temas' ofType='Tema' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.TemaMapper.TemaResult'></collection>
+    </resultMap>
+</mapper>

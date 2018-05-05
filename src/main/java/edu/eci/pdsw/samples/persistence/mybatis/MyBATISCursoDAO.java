@@ -5,47 +5,35 @@
  */
 package edu.eci.pdsw.samples.persistence.mybatis;
 
+import java.util.List;
 import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Curso;
-import edu.eci.pdsw.samples.entities.Grupo;
-import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.persistence.CursoDAO;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper;
-import java.util.List;
 
 /**
  *
  * @author diego
  */
-public class MyBATISCursoDAO implements  CursoDAO{
-    
+public class MyBATISCursoDAO implements CursoDAO {
+
     @Inject
     private CursoMapper cursoMapper;
-    
+
     @Override
     public void save(Curso c) throws PersistenceException {
-        cursoMapper.AgregarCurso(c.getNeumonico(), c.getNombre(), c.getCreditosAcademicos(), null);
+        cursoMapper.agregarCurso(c.getNemonico(), c.getNombre(), c.getCreditosAcademicos(), c.getHorasMonitoria());
     }
 
     @Override
-    public List<Curso> loadGrupos() throws PersistenceException {
-        return cursoMapper.ConsultarCursos();
+    public Curso load(String nemonico) {
+        return cursoMapper.consultarCurso(nemonico);
     }
 
     @Override
-    public Curso load(String neumonico) {
-        return cursoMapper.ConsultarCurso(neumonico);
+    public List<Curso> loadAll() throws PersistenceException {
+        return cursoMapper.consultarCursos();
     }
 
-    @Override
-    public List<Grupo> ConsultarGrupos(String neumonico) throws PersistenceException {
-        return cursoMapper.ConsultarGruposCurso(neumonico);
-    }
-
-    @Override
-    public List<Tema> ConsultarTemas(String neumonico) throws PersistenceException {
-        return cursoMapper.ConsultarTemasCurso(neumonico);
-    }
-    
 }

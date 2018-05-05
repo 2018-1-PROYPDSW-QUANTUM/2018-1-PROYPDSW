@@ -15,10 +15,26 @@ import java.util.List;
  * @author diego
  */
 public interface GrupoDAO {
-    
+
+    /**
+     *
+     * @param g
+     * @throws PersistenceException
+     */
     public void save(Grupo g) throws PersistenceException;
-    public List<Grupo> loadGrupos() throws PersistenceException;
-    public Grupo load(long identificador);
-    
-    
+
+    /**
+     *
+     * @param identificador
+     * @return
+     */
+    public Grupo load(Integer identificador);
+
+    /**
+     *
+     * @return
+     * @throws PersistenceException
+     */
+    public List<Grupo> loadAll() throws PersistenceException;
+
 }

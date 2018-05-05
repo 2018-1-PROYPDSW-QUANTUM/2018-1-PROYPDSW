@@ -5,19 +5,34 @@
  */
 package edu.eci.pdsw.samples.persistence;
 
-import edu.eci.pdsw.samples.entities.Grupo;
-import edu.eci.pdsw.samples.entities.Profesor;
-import java.util.Date;
 import java.util.List;
+import edu.eci.pdsw.samples.entities.Profesor;
+
 /**
  *
  * @author diego
  */
 public interface ProfesorDAO {
+
+    /**
+     *
+     * @param p
+     * @throws PersistenceException
+     */
     public void save(Profesor p) throws PersistenceException;
-    public List<Profesor> loadProfesor() throws PersistenceException ;
-    public Profesor load(long id) throws PersistenceException;
-    public Grupo loadGrupoProfesor(String NombreGrupo)throws PersistenceException ;
-    public void AsignarGrupoAProfesor(Date year,String periodo,String neumonico,long idProf)throws PersistenceException;
-    public List<Grupo> loadGrupoProfesor(long id) throws PersistenceException;
+
+    /**
+     *
+     * @param id
+     * @return
+     * @throws PersistenceException
+     */
+    public Profesor load(Integer id) throws PersistenceException;
+
+    /**
+     *
+     * @return @throws PersistenceException
+     */
+    public List<Profesor> loadAll() throws PersistenceException;
+
 }

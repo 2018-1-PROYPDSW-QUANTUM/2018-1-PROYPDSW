@@ -12,69 +12,82 @@ import java.util.List;
  * @author diego
  */
 public class Profesor {
-    private int id;
+
+    private Integer id;
     private String nombre;
     private String apellido;
-    private List<Grupo> grupos;
+    private String celular;
     private String correo;
-    private String telefono;
-    
-    public Profesor(){
+    private String clave;
+    private List<Grupo> grupos;
+
+    public Profesor() {
     }
-    
-    public Profesor(int id,String nombre,String apellido,String correo,String telefono){
-        this.id=id;
-        this.nombre=nombre;
-        this.apellido=apellido;
-        this.correo=correo;
-        this.telefono=telefono;
+
+    public Profesor(Integer id, String nombre, String apellido, String celular, String correo, String clave, List<Grupo> grupos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.celular = celular;
+        this.correo = correo;
+        this.clave = clave;
+        this.grupos = grupos;
     }
-    
-    public void agregarGurpo(Grupo grupo){
-        grupos.add(grupo);
-    }    
-    
-    public void eliminarGrupo(Grupo grupo){
-        grupos.remove(grupo);
-    }
-    public int getId(){
+
+    public Integer getId() {
         return id;
     }
-    
-    public String getNombre(){
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
         return nombre;
     }
-    
-    public String getApellido(){
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
         return apellido;
     }
-    
-    public String getCorreo(){
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getCorreo() {
         return correo;
     }
-    
-    public String getTelefono(){
-        return telefono;
-    } 
-    
-    public void setId(int id){
-        this.id=id;
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
-    
-    public void setNombre(String nombre){
-        this.nombre=nombre;
+
+    public String getClave() {
+        return clave;
     }
-    
-    public void setApellido(String apellido){
-        this.apellido=apellido;
+
+    public void setClave(String clave) {
+        this.clave = clave;
     }
-    
-    public void setCorreo(String correo){
-        this.correo=correo;
+
+    public List<Grupo> getGrupos() {
+        return grupos;
     }
-    
-    public void setTelefono(String telefono){
-        this.telefono=telefono;
+
+    public void setGrupos(List<Grupo> grupos) {
+        this.grupos = grupos;
     }
-    
+
 }

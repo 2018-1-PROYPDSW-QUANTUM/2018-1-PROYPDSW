@@ -19,44 +19,24 @@ import java.util.List;
  *
  * @author diego
  */
-public class MyBATISProfesorDAO implements ProfesorDAO  {
+public class MyBATISProfesorDAO implements ProfesorDAO {
+
     @Inject
     private ProfesorMapper profesorMapper;
 
     @Override
     public void save(Profesor c) throws PersistenceException {
-        profesorMapper.AgregarProfesor(c.getId(),c.getNombre(),c.getApellido(),c.getTelefono(),c.getCorreo());
+        profesorMapper.agregarProfesor(c.getId(), c.getNombre(), c.getApellido(), c.getCelular(), c.getCorreo(), c.getClave());
     }
 
     @Override
-    public List<Profesor> loadProfesor() throws PersistenceException {
-        return profesorMapper.ConsultarProfesores();
+    public Profesor load(Integer id) throws PersistenceException {
+        return profesorMapper.consultarProfesor(id);
     }
 
     @Override
-    public Profesor load(long id) throws PersistenceException {
-        return profesorMapper.ConsultarProfesor(id);
+    public List<Profesor> loadAll() throws PersistenceException {
+        return profesorMapper.consultarProfesores();
     }
 
-    @Override
-    public void AsignarGrupoAProfesor(Date year,String periodo,String neumonico, long idProf) throws PersistenceException {
-        profesorMapper.AsignarGrupoAProfesor(year,periodo,neumonico, idProf);
-    }
-
-    @Override
-    public Grupo loadGrupoProfesor(String NombreGrupo) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Grupo> loadGrupoProfesor(long id) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
-
-/*@Override
-    public void save(Profesor c) throws PersistenceException {
-        ProfesorMapper.agregarProfesor(c.getId(),c.getNombre(),c.getApellido(),c.getTelefono(),c.getCorreo());
-        
-    }*/

@@ -18,6 +18,9 @@ public class Administrador {
     private String correo;
     private String clave;
 
+    public Administrador() {
+    }
+
     public Administrador(Integer codigo, String nombre, String apellido, String celular, String correo, String clave) {
         this.codigo = codigo;
         this.nombre = nombre;

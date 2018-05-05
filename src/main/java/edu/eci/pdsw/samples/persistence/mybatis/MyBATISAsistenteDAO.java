@@ -26,7 +26,7 @@ public class MyBATISAsistenteDAO implements AsistenteDAO {
 
     @Override
     public void save(Monitoria m, Estudiante e, Tema t) throws PersistenceException {
-        asistente.registrarAsistente(m.getId(), e.getCodigo(), t.getIdentificador());
+        asistente.registrarAsistente(m.getId(), e.getCodigo(), t.getId());
     }
 
     @Override

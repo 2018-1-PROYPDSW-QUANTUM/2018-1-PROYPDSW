@@ -6,20 +6,24 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper">
    
-     <select parameterType="map" id="ConsultarTema" resultMap="TemaResult">
-         SELECT nombre, descripcion
-         WHERE Nombre=#{nomb}
-     </select>
+    <select parameterType="map" id="consultarTemaGeneral" resultMap="TemaResult">
+        SELECT Identificador, curso_nemonico, nombre, descripcion
+        FROM Tema
+        <if test="idTema != null">
+            WHERE Identificador = #{idTema}
+        </if>
+    </select>
      
-     <insert parameterType="map" id="AgregarTema">
-         INSERT INTO Tema (Identificador,Nombre,Descripcion,CursoNeumonico) VALUES (#{iden},#{nomb},#{descrip},#{cursNeu})
-     </insert>
+    <insert parameterType="map" id="agregarTema">
+        INSERT INTO Tema (Identificador, curso_nemonico, nombre, descripcion)
+        VALUES (#{idTema},#{cnTema},#{nomb},#{descrip})
+    </insert>
      
-     <resultMap type="Tema" id="TemaResult" >>
-        <id property="identificador" column="Identificador"/>
-        <result property="nombre" column="Nombre"/>
-        <result property="descripcion" column="Descripcion_/>
-        <result property="cursoNeumonico" column="CursoNeumonico"/>
+    <resultMap type="Tema" id="TemaResult" >
+        <id property="id" column="Identificador"/>
+        <result property="nombre" column="nombre"/>
+        <result property="descripcion" column="descripcion"/>
+        <association property="cursoNemonico" javaType="Curso" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper.CursoResult"/>
     </resultMap>
      
 </mapper>

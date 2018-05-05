@@ -12,13 +12,16 @@ import java.util.Date;
  * @author jonnhi
  */
 public class Semestre {
-    
+
     private Integer id;
     private Integer years;
     private String periodoAcademico;
     private Date fechaInicio;
     private Date fechaFin;
     private Administrador admin;
+
+    public Semestre() {
+    }
 
     public Semestre(Integer id, Integer years, String periodoAcademico, Date fechaInicio, Date fechaFin, Administrador admin) {
         this.id = id;
@@ -35,8 +38,8 @@ public class Semestre {
 
     public void setId(Integer id) {
         this.id = id;
-    }    
-    
+    }
+
     public Integer getYears() {
         return years;
     }
@@ -76,6 +79,5 @@ public class Semestre {
     public void setAdmin(Administrador admin) {
         this.admin = admin;
     }
-    
-    
+
 }

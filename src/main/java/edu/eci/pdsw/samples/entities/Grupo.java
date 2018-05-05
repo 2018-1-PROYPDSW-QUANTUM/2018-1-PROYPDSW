@@ -5,7 +5,6 @@
  */
 package edu.eci.pdsw.samples.entities;
 
-
 import java.util.List;
 
 /**
@@ -13,85 +12,91 @@ import java.util.List;
  * @author diego
  */
 public class Grupo {
-   private long id;
-   private Curso curso;
-   private Semestre semestre; 
-   private String periodoAcademico;
-   private int numero;
-   private Profesor profesor;
-   private Monitor monitor;
-   private List<Estudiante> estudiantes;
 
-   
-   public Grupo(){
-   }
-   
-   
-   public Grupo(long id, Curso curso,Semestre semestre, String periodoAcademico,int numero,Profesor profesor,Monitor monitor,int creditos){
-       this.id=id;
-       this.curso=curso;
-       this.semestre=semestre;
-       this.periodoAcademico=periodoAcademico;
-       this.numero=numero;
-       this.profesor=profesor;
-       this.monitor=monitor;
-   }
-   
-   public void  agregarEstudiante(Estudiante e){
-       estudiantes.add(e);
-   }
-   
-   public void eliminarEstudiante(Estudiante e){
-       estudiantes.remove(e);
-   }
-   
-   public long getIdentificador(){
-       return this.id;
-   }
-   public Curso getCurso(){
-       return curso;
-   }
-   
-   public Semestre getSemestre(){
-       return semestre;
-   }
-   
-   public String getPeriodoAcademico(){
-       return periodoAcademico;
-   }
-   
-   public int getNumero(){
-       return numero;
-   }
-   
-   public int getProfesor(){
-       return profesor.getId();
-   }
-   
-   public int getMonitor(){
-       return monitor.getCodigo();
-   }
-   
-   
-   public void setCurso(Curso curso){
-       this.curso=curso;
-   }
-   
-   public void setSemestre(Semestre semestre){
-       this.semestre=semestre;
-   }
-   
-   public void setPeriodoAcademico(String periodoAcademico){
-       this.periodoAcademico=periodoAcademico;
-   }
-   public void setNumero(int numero){
-       this.numero=numero;
-   }
-   public void setProfesor(Profesor profesor){
-       this.profesor=profesor;
-   }
-   public void setMonitor(Monitor monitor){
-       this.monitor=monitor;
-   }
-   
+    private Integer id;
+    private Semestre semestre;
+    private Curso curso;
+    private int numero;
+    private Profesor profesor;
+    private Monitor monitor;
+    private List<Estudiante> estudiantes;
+    private List<Franja> franjasMonitoria;
+
+    public Grupo() {
+    }
+
+    public Grupo(Integer id, Curso curso, Semestre semestre, int numero, Profesor profesor, Monitor monitor, int creditos, List<Franja> franjasMonitoria) {
+        this.id = id;
+        this.semestre = semestre;
+        this.curso = curso;
+        this.numero = numero;
+        this.profesor = profesor;
+        this.monitor = monitor;
+        this.franjasMonitoria = franjasMonitoria;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Semestre getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(Semestre semestre) {
+        this.semestre = semestre;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
+    }
+
+    public Monitor getMonitor() {
+        return monitor;
+    }
+
+    public void setMonitor(Monitor monitor) {
+        this.monitor = monitor;
+    }
+
+    public List<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(List<Estudiante> estudiantes) {
+        this.estudiantes = estudiantes;
+    }
+
+    public List<Franja> getFranjasMonitoria() {
+        return franjasMonitoria;
+    }
+
+    public void setFranjasMonitoria(List<Franja> franjasMonitoria) {
+        this.franjasMonitoria = franjasMonitoria;
+    }
+
 }

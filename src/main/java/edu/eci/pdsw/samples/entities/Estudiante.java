@@ -5,6 +5,8 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.util.List;
+
 /**
  *
  * @author jonnhi
@@ -12,9 +14,9 @@ package edu.eci.pdsw.samples.entities;
 public class Estudiante {
 
     private Integer codigo;
+    private List<Grupo> cursando;
 
     public Estudiante() {
-
     }
 
     public Estudiante(Integer codigo) {
@@ -29,4 +31,14 @@ public class Estudiante {
         this.codigo = codigo;
     }
 
+    public List<Grupo> getCursando() {
+        return cursando;
+    }
+
+    public void setCursando(List<Grupo> cursando) {
+        this.cursando = cursando;
+    }
+
+    
+    
 }

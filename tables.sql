@@ -115,7 +115,7 @@ CREATE TABLE Semestre (
 -- Table: Tema
 CREATE TABLE Tema (
     Identificador int  NOT NULL,
-    curso_Nemonico char(4)  NOT NULL,
+    curso_nemonico char(4)  NOT NULL,
     nombre varchar(30)  NOT NULL,
     descripcion varchar(90),
     CONSTRAINT Tema_pk PRIMARY KEY (Identificador)
@@ -144,7 +144,7 @@ ALTER TABLE Profesor ADD CONSTRAINT UK_Profesor_celular UNIQUE (celular);
 ALTER TABLE Semestre ADD CONSTRAINT UK_Semestre_years_periodo UNIQUE (years, periodo_academico);
 
 --Table Tema
-ALTER TABLE Tema ADD CONSTRAINT UK_Tema_curso_nombre UNIQUE (nombre, curso_Nemonico);
+ALTER TABLE Tema ADD CONSTRAINT UK_Tema_curso_nombre UNIQUE (nombre, curso_nemonico);
 
 -- foreign keys
 -- Reference: Asistente_Tema (table: Asistente)
@@ -223,7 +223,7 @@ ALTER TABLE Semestre ADD CONSTRAINT Semestre_Administrador
 
 -- Reference: Tema_Curso (table: Tema)
 ALTER TABLE Tema ADD CONSTRAINT Tema_Curso
-    FOREIGN KEY (curso_Nemonico)
+    FOREIGN KEY (curso_nemonico)
     REFERENCES Curso (Nemonico)
 ;
 

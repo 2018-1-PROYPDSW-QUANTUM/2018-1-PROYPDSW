@@ -3,19 +3,26 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.EstudianteMapper">
-<!--    <select parameterType="map" id="consultarEstudianteGeneral" resultMap="EstudianteResult">
-        SELECT Codigo
-        FROM Estudiante
-    </select>-->
+<mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.FranjaMapper">
+    <select parameterType="map" id="consultarFranjaGeneral" resultMap="FranjaResult">
+        SELECT Identificador, dia, hora_inicio, hora_fin, grupo_identificador, curso_nemonico
+        FROM Franja JOIN Grupo ON grupo_identificador=Grupo.Identificador
+        <if test="idFranja != null">
+            WHERE Identificador = #{idFranja}
+        </if>
+    </select>
     
-    <insert parameterType="map" id="registrarEstudiante">
-        INSERT INTO Estudiante (Codigo)
-        VALUES (#{coEstudiante})
+    <insert parameterType="map" id="registrarFranja">
+        INSERT INTO Franja (Identificador, dia, hora_inicio, hora_fin, grupo_identificador) 
+        VALUES (#{idFranja},#{diFranja},#{hiFranja},#{hfFranja},#{giFranja})
     </insert>
     
-    <resultMap type="Estudiante" id="EstudianteResult" >
-        <id property="codigo" column="Codigo"/>
+    <resultMap type="Franja" id="FranjaResult">
+        <id property="id" column="Identificador"/>
+        <result property="dia" column="dia"/>
+        <result property="horaInicio" column="hora_inicio"/>
+        <result property="horaFin" column="hora_fin"/>
+        <association property="grupo" javaType="Grupo" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult"/>
     </resultMap>
       	
 </mapper>

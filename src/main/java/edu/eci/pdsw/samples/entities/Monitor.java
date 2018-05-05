@@ -23,6 +23,9 @@ public class Monitor {
     private String clave;
     private List<Grupo> gruposMonitor;
 
+    public Monitor() {
+    }
+
     public Monitor(Integer codigo, String semestreIngreso, String programaAcademico, String nombre, String apellido, String celular, String correo, String clave) {
         this.codigo = codigo;
         this.semestreIngreso = semestreIngreso;
@@ -37,7 +40,7 @@ public class Monitor {
     public Integer getCodigo() {
         return codigo;
     }
-    
+
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
     }

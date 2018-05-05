@@ -9,16 +9,34 @@ import java.util.Date;
 
 /**
  *
- * @author DANIEL
+ * @author DANIEL, jonnhi
  */
 public class Franja {
-   private String dia;
-   private Date horaInicio;
-   private Date horaFin;
-   private int grupoYear;
-   private char grupoPeriodoAcademico;
-   private String grupoCursoNemonico;
-   private int grupoNumero;
+
+    private Integer id;
+    private String dia;
+    private Date horaInicio;
+    private Date horaFin;
+    private Grupo grupo;
+
+    public Franja() {
+    }
+
+    public Franja(Integer id, String dia, Date horaInicio, Date horaFin, Grupo grupo) {
+        this.id = id;
+        this.dia = dia;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.grupo = grupo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getDia() {
         return dia;
@@ -44,36 +62,12 @@ public class Franja {
         this.horaFin = horaFin;
     }
 
-    public int getGrupoYear() {
-        return grupoYear;
+    public Grupo getGrupo() {
+        return grupo;
     }
 
-    public void setGrupoYear(int grupoYear) {
-        this.grupoYear = grupoYear;
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
 
-    public char getGrupoPeriodoAcademico() {
-        return grupoPeriodoAcademico;
-    }
-
-    public void setGrupoPeriodoAcademico(char grupoPeriodoAcademico) {
-        this.grupoPeriodoAcademico = grupoPeriodoAcademico;
-    }
-
-    public String getGrupoCursoNemonico() {
-        return grupoCursoNemonico;
-    }
-
-    public void setGrupoCursoNemonico(String grupoCursoNemonico) {
-        this.grupoCursoNemonico = grupoCursoNemonico;
-    }
-
-    public int getGrupoNumero() {
-        return grupoNumero;
-    }
-
-    public void setGrupoNumero(int grupoNumero) {
-        this.grupoNumero = grupoNumero;
-    }
-           
 }

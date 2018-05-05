@@ -14,9 +14,26 @@ import java.util.List;
  * @author diego
  */
 public interface TemaDAO {
-    
+
+    /**
+     *
+     * @param t
+     * @throws PersistenceException
+     */
     public void save(Tema t) throws PersistenceException;
-    public List<Tema> loadTemas() throws PersistenceException;
-    public Tema load(String nombre) throws PersistenceException;
-    
+
+    /**
+     *
+     * @param id
+     * @return
+     * @throws PersistenceException
+     */
+    public Tema load(Integer id) throws PersistenceException;
+
+    /**
+     *
+     * @return @throws PersistenceException
+     */
+    public List<Tema> loadAll() throws PersistenceException;
+
 }

@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.persistence.mybatis;
 
+import java.util.List;
 import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Franja;
 import edu.eci.pdsw.samples.persistence.FranjaDAO;
@@ -15,18 +16,24 @@ import edu.eci.pdsw.samples.persistence.mybatis.mappers.FranjaMapper;
  *
  * @author jonnhi
  */
-public class MyBATISFranjaDAO implements FranjaDAO{
+public class MyBATISFranjaDAO implements FranjaDAO {
+
     @Inject
     private FranjaMapper franjaMapper;
-            
+
     @Override
     public void save(Franja f) throws PersistenceException {
-        
+        franjaMapper.registrarFranja(f.getId(), f.getDia(), f.getHoraInicio(), f.getHoraFin(), f.getGrupo().getNumero());
     }
 
     @Override
-    public Franja load(long id) throws PersistenceException {
-        
+    public Franja load(Integer id) throws PersistenceException {
+        return franjaMapper.consultarFranja(id);
     }
-    
+
+    @Override
+    public List<Franja> loadAll() throws PersistenceException {
+        return franjaMapper.ConsultarFranjas();
+    }
+
 }

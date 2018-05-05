@@ -5,41 +5,35 @@
  */
 package edu.eci.pdsw.samples.persistence.mybatis;
 
-
-import com.google.inject.Inject;
-import edu.eci.pdsw.samples.entities.Profesor;
-import edu.eci.pdsw.samples.entities.Tema;
-import edu.eci.pdsw.samples.persistence.GrupoDAO;
-import edu.eci.pdsw.samples.persistence.PersistenceException;
-import edu.eci.pdsw.samples.persistence.TemaDAO;
-import edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper;
-import edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper;
 import java.util.List;
+import com.google.inject.Inject;
+import edu.eci.pdsw.samples.entities.Tema;
+import edu.eci.pdsw.samples.persistence.TemaDAO;
+import edu.eci.pdsw.samples.persistence.PersistenceException;
+import edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper;
 
 /**
  *
- * @author diego
+ * @author diego, jonnhi
  */
-public class MyBATISTemaDAO implements TemaDAO{
+public class MyBATISTemaDAO implements TemaDAO {
     
     @Inject
     private TemaMapper temaMapper;
-
+    
     @Override
     public void save(Tema t) throws PersistenceException {
-        temaMapper.AgregarTema(t.getIdentificador() ,t.getNombre(), t.getdescripcion(), t.getCursoNeumonico());
+        temaMapper.agregarTema(t.getId(), t.getCursoNemonico().getNemonico(), t.getNombre(), t.getDescripcion());
     }
-
+    
     @Override
-    public List<Tema> loadTemas() throws PersistenceException {
-        return temaMapper.ConsultarTemas();
+    public Tema load(Integer id) throws PersistenceException {
+        return temaMapper.consultarTema(id);
     }
-
+    
     @Override
-    public Tema load(String nombre) throws PersistenceException {
-        return temaMapper.ConsultarTema(nombre);
+    public List<Tema> loadAll() throws PersistenceException {
+        return temaMapper.consultarTemas();
     }
-
-
     
 }

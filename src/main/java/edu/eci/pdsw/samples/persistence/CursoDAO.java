@@ -5,19 +5,33 @@
  */
 package edu.eci.pdsw.samples.persistence;
 
-import edu.eci.pdsw.samples.entities.Curso;
-import edu.eci.pdsw.samples.entities.Grupo;
-import edu.eci.pdsw.samples.entities.Tema;
 import java.util.List;
+import edu.eci.pdsw.samples.entities.Curso;
 
 /**
  *
  * @author diego
  */
 public interface CursoDAO {
+
+    /**
+     *
+     * @param c
+     * @throws PersistenceException
+     */
     public void save(Curso c) throws PersistenceException;
-    public List<Curso> loadGrupos() throws PersistenceException;
-    public Curso load(String neumonico);
-    public List<Grupo> ConsultarGrupos(String neumonico) throws PersistenceException;
-    public List<Tema> ConsultarTemas(String neumonico) throws PersistenceException;
+
+    /**
+     *
+     * @param nemonico
+     * @return
+     */
+    public Curso load(String nemonico);
+
+    /**
+     *
+     * @return @throws PersistenceException
+     */
+    public List<Curso> loadAll() throws PersistenceException;
+
 }

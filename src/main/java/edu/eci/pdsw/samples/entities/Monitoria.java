@@ -23,6 +23,9 @@ public class Monitoria {
     private Monitor monitor;
     private List<Asistente> asistentesMonitoria;
 
+    public Monitoria() {
+    }
+
     public Monitoria(Integer id, Date fecha, Date horaInicio, Date horaFin, String ip, String observaciones, Monitor monitor) {
         this.id = id;
         this.fecha = fecha;

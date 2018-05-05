@@ -10,46 +10,52 @@ package edu.eci.pdsw.samples.entities;
  * @author diego
  */
 public class Tema {
-    private int identificador;
+
+    private Integer id;
+    private Curso cursoNemonico;
     private String nombre;
     private String descripcion;
-    private String cursoNeumonico;
-    
-    public Tema(){
+
+    public Tema() {
     }
-    
-    public Tema(int identificador, String nombre,String descripcion, String cursoNeumonico){
-        this.identificador=identificador;
-        this.nombre=nombre;
-        this.descripcion=descripcion;
-        this.cursoNeumonico=cursoNeumonico;
+
+    public Tema(Integer id, Curso cursoNeumonico, String nombre, String descripcion) {
+        this.id = id;
+        this.cursoNemonico = cursoNeumonico;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
     }
-    
-    public int getIdentificador(){
-        return this.identificador;
+
+    public Integer getId() {
+        return id;
     }
-    
-    public String getNombre(){
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Curso getCursoNemonico() {
+        return cursoNemonico;
+    }
+
+    public void setCursoNemonico(Curso cursoNemonico) {
+        this.cursoNemonico = cursoNemonico;
+    }
+
+    public String getNombre() {
         return nombre;
     }
-    
-    public String getdescripcion(){
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
         return descripcion;
     }
-    
-    public String getCursoNeumonico(){
-        return cursoNeumonico;
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
-    
-    public void setNombre(String nombre){
-        this.nombre=nombre;
-    }
-    
-    public void setDescripcion(String descripcion){
-        this.descripcion=descripcion;
-    }
-    
-    public void setCursoNeumonico(){
-        this.cursoNeumonico=cursoNeumonico;
-    }
+
 }

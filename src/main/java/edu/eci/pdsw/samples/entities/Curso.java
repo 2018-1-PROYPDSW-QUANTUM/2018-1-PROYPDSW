@@ -11,58 +11,57 @@ import java.util.List;
  *
  * @author 2106146
  */
-
-//nombre del curso, nemónico, créditos académicos, horas de monitoría aprobadas para el curso, temas asociados al curso
 public class Curso {
+
+    private String nemonico;
     private String nombre;
-    private String neumonico;
     private int creditosAcademicos;
-    //private List<Franjas,HorasMonitoria> horasMonitoria;
+    private int horasMonitoria;
     private List<Grupo> grupos;
     private List<Tema> temas;
-    
-    
-    public Curso(){
+
+    public Curso() {
     }
-    
-    public Curso(String nombre,String neumonico,int creditosAcademicos){
-        this.nombre=nombre;
-        this.neumonico=neumonico;
-        this.creditosAcademicos=creditosAcademicos;
+
+    public Curso(String nemonico, String nombre, int creditosAcademicos, int horasMonitoria, List<Grupo> grupos, List<Tema> temas) {
+        this.nombre = nombre;
+        this.nemonico = nemonico;
+        this.creditosAcademicos = creditosAcademicos;
+        this.horasMonitoria = horasMonitoria;
+        this.grupos = grupos;
+        this.temas = temas;
     }
-    
-    public String getNombre(){
+
+    public String getNemonico() {
+        return nemonico;
+    }
+
+    public void setNemonico(String nemonico) {
+        this.nemonico = nemonico;
+    }
+
+    public String getNombre() {
         return nombre;
     }
-    
-    
-    public String getNeumonico(){
-        return neumonico;
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
-    
-    public int getCreditosAcademicos(){
+
+    public int getCreditosAcademicos() {
         return creditosAcademicos;
     }
-    
-    
-    public void getNombre(String nombre){
-        this.nombre= nombre;
+
+    public void setCreditosAcademicos(int creditosAcademicos) {
+        this.creditosAcademicos = creditosAcademicos;
     }
-    
-    public void getNeumonico(String neumonico){
-        this.neumonico= neumonico;
+
+    public int getHorasMonitoria() {
+        return horasMonitoria;
     }
-    
-    public void getCreditosAcademicos(int creditoAcademicos){
-        this.creditosAcademicos= creditosAcademicos;
-    }
-    
-    public void agregarGrupo(Grupo grupo){
-        grupos.add(grupo);
-    }
-    
-    public void elminarGrupo(Grupo grupo){
-        grupos.remove(grupo);
+
+    public void setHorasMonitoria(int horasMonitoria) {
+        this.horasMonitoria = horasMonitoria;
     }
 
     public List<Grupo> getGrupos() {
@@ -80,5 +79,5 @@ public class Curso {
     public void setTemas(List<Tema> temas) {
         this.temas = temas;
     }
-    
+
 }

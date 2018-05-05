@@ -17,6 +17,10 @@ public class Asistente {
     private Estudiante estudiante;
     private List<Tema> temas;
 
+    public Asistente() {
+
+    }
+
     public Asistente(Monitoria monitoria, Estudiante estudiante, List<Tema> temas) {
         this.monitoria = monitoria;
         this.estudiante = estudiante;
@@ -46,6 +50,5 @@ public class Asistente {
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
     }
-    
-    
+
 }
