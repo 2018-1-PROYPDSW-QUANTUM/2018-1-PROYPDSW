@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Profesor {
 
-    private Integer id;
+    private Integer codigo;
     private String nombre;
     private String apellido;
     private String celular;
@@ -24,8 +24,8 @@ public class Profesor {
     public Profesor() {
     }
 
-    public Profesor(Integer id, String nombre, String apellido, String celular, String correo, String clave, List<Grupo> grupos) {
-        this.id = id;
+    public Profesor(Integer codigo, String nombre, String apellido, String celular, String correo, String clave, List<Grupo> grupos) {
+        this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.celular = celular;
@@ -34,12 +34,12 @@ public class Profesor {
         this.grupos = grupos;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getCodigo() {
+        return codigo;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {

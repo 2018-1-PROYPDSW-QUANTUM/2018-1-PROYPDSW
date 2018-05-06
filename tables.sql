@@ -204,9 +204,7 @@ ALTER TABLE Grupo ADD CONSTRAINT Grupo_Profesor
 -- Reference: Grupo_Semestre (table: Grupo)
 ALTER TABLE Grupo ADD CONSTRAINT Grupo_Semestre
     FOREIGN KEY (semestre_identificador)
-    REFERENCES Semestre (Identificador)  
-     
-    
+    REFERENCES Semestre (Identificador)
 ;
 
 -- Reference: Monitoria_Monitor (table: Monitoria)

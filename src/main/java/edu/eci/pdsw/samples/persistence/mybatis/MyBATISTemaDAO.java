@@ -23,7 +23,7 @@ public class MyBATISTemaDAO implements TemaDAO {
     
     @Override
     public void save(Tema t) throws PersistenceException {
-        temaMapper.agregarTema(t.getId(), t.getCursoNemonico().getNemonico(), t.getNombre(), t.getDescripcion());
+        temaMapper.registrarTema(t.getId(), t.getCursoNemonico().getNemonico(), t.getNombre(), t.getDescripcion());
     }
     
     @Override

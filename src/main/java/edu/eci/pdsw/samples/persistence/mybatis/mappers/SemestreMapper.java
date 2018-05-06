@@ -5,7 +5,6 @@
  */
 package edu.eci.pdsw.samples.persistence.mybatis.mappers;
 
-import edu.eci.pdsw.samples.entities.Administrador;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import edu.eci.pdsw.samples.entities.Semestre;

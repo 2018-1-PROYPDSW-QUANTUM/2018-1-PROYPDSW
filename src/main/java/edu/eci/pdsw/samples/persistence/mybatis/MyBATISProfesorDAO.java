@@ -5,15 +5,12 @@
  */
 package edu.eci.pdsw.samples.persistence.mybatis;
 
-//import com.google.inject.Inject;
+import java.util.List;
 import com.google.inject.Inject;
-import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.persistence.ProfesorDAO;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper;
-import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -25,13 +22,13 @@ public class MyBATISProfesorDAO implements ProfesorDAO {
     private ProfesorMapper profesorMapper;
 
     @Override
-    public void save(Profesor c) throws PersistenceException {
-        profesorMapper.agregarProfesor(c.getId(), c.getNombre(), c.getApellido(), c.getCelular(), c.getCorreo(), c.getClave());
+    public void save(Profesor p) throws PersistenceException {
+        profesorMapper.registrarProfesor(p.getCodigo(), p.getNombre(), p.getApellido(), p.getCelular(), p.getCorreo(), p.getClave());
     }
 
     @Override
-    public Profesor load(Integer id) throws PersistenceException {
-        return profesorMapper.consultarProfesor(id);
+    public Profesor load(Integer codigo) throws PersistenceException {
+        return profesorMapper.consultarProfesor(codigo);
     }
 
     @Override

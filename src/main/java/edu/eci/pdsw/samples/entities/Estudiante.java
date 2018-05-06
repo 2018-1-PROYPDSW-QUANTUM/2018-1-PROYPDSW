@@ -19,8 +19,9 @@ public class Estudiante {
     public Estudiante() {
     }
 
-    public Estudiante(Integer codigo) {
+    public Estudiante(Integer codigo, List<Grupo> cursando) {
         this.codigo = codigo;
+        this.cursando = cursando;
     }
 
     public Integer getCodigo() {

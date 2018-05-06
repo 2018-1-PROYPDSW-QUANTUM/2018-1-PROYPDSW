@@ -56,7 +56,7 @@ public interface MonitorMapper {
             @Param("noMonitor") String nombre, 
             @Param("apMonitor") String apellido, 
             @Param("ceMonitor") String celular, 
-            @Param("coMonitor") String correo, 
+            @Param("corMonitor") String correo, 
             @Param("clMonitor") String clave);
 
 }

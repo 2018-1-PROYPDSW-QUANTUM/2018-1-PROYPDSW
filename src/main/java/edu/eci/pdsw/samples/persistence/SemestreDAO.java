@@ -7,7 +7,6 @@ package edu.eci.pdsw.samples.persistence;
 
 import java.util.List;
 import edu.eci.pdsw.samples.entities.Semestre;
-import edu.eci.pdsw.samples.entities.Administrador;
 
 /**
  *
@@ -21,7 +20,7 @@ public interface SemestreDAO {
      * @param admin
      * @throws PersistenceException
      */
-    public void save(Semestre semestre, Administrador admin) throws PersistenceException;
+    public void save(Semestre semestre) throws PersistenceException;
 
     /**
      *

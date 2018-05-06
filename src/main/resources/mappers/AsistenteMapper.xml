@@ -15,8 +15,8 @@
     </insert>
     
     <resultMap type="Asistente" id="AsistenteResult" >
-        <id property="monitoria" column="Monitoria_identificador"/>
-        <id property="estudiante" column="Estudiante_codigo"/>
+        <association property="monitoria" javaType="Monitoria" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitoriaMapper.MonitoriaResult"/>
+        <association property="estudiante" javaType="Estudiante" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.EstudianteMapper.EstudianteResult"/>
         <collection property="temas" ofType="Tema" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper.TemaResult"/>
     </resultMap>
       	

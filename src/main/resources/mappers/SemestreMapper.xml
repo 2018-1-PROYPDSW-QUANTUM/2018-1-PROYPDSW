@@ -8,11 +8,11 @@
         SELECT Identificador, years, periodo_academico, fecha_inicio, fecha_fin, administrador_codigo, nombre
         FROM Semestre JOIN Administrador ON administrador_codigo=Codigo
         <if test="yeSemestre != null and paSemestre != null">
-            WHERE Year = #{yeSemestre} AND Periodo_academico = #{paSemestre}
+            WHERE years = #{yeSemestre} AND periodo_academico = #{paSemestre}
         </if>
     </select>
     
-    <insert parameterType="map" id="registrarAdministrador">
+    <insert parameterType="map" id="registrarSemestre">
         INSERT INTO Semestre (Identificador, years, periodo_academico, fecha_inicio, fecha_fin, administrador_codigo) 
         VALUES (#{idSemestre},#{yeSemestre},#{paSemestre},#{fiSemestre},#{ffSemestre},#{acSemestre})
     </insert>
@@ -23,7 +23,7 @@
         <result property="periodoAcademico" column="Periodo_academico"/>
         <result property="fechaInicio" column="fecha_inicio"/>
         <result property="fechaFin" column="fecha_fin"/>
-        <association property="admin" javaType="Administrador" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.AdministradorMapper.AdministradorResult"/>
+        <association property="admin" javaType="Administrador" resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.AdministradorMapper.AdministradorResult'/>
     </resultMap>
       	
 </mapper>

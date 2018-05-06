@@ -13,14 +13,14 @@ import edu.eci.pdsw.samples.entities.Administrador;
  * @author jonnhi
  */
 public interface AdministradorDAO {
-    
+
     /**
      *
      * @param admin
      * @throws edu.eci.pdsw.samples.persistence.PersistenceException
      */
     public void save(Administrador admin) throws PersistenceException;
-    
+
     /**
      *
      * @param codigo
@@ -28,7 +28,7 @@ public interface AdministradorDAO {
      * @throws edu.eci.pdsw.samples.persistence.PersistenceException
      */
     public Administrador load(Integer codigo) throws PersistenceException;
-    
+
     /**
      *
      * @return Lista de administradores.

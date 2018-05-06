@@ -26,7 +26,7 @@ public class Monitor {
     public Monitor() {
     }
 
-    public Monitor(Integer codigo, String semestreIngreso, String programaAcademico, String nombre, String apellido, String celular, String correo, String clave) {
+    public Monitor(Integer codigo, String semestreIngreso, String programaAcademico, String nombre, String apellido, String celular, String correo, String clave, List<Grupo> gruposMonitor) {
         this.codigo = codigo;
         this.semestreIngreso = semestreIngreso;
         this.programaAcademico = programaAcademico;
@@ -35,6 +35,7 @@ public class Monitor {
         this.celular = celular;
         this.correo = correo;
         this.clave = clave;
+        this.gruposMonitor = gruposMonitor;
     }
 
     public Integer getCodigo() {

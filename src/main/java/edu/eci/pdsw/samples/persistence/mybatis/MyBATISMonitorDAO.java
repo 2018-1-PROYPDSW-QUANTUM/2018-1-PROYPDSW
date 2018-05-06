@@ -23,7 +23,7 @@ public class MyBATISMonitorDAO implements MonitorDAO {
 
     @Override
     public void save(Monitor m) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        monitorMapper.registrarMonitor(m.getCodigo(), m.getSemestreIngreso(), m.getProgramaAcademico(), m.getNombre(), m.getApellido(), m.getCelular(), m.getCorreo(), m.getClave());
     }
 
     @Override

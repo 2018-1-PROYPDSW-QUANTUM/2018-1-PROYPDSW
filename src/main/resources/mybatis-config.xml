@@ -8,14 +8,12 @@
         <setting name="logImpl" value="LOG4J"/>        
     </settings>
     
-    <properties resource="config.properties">
-    </properties>
-    
     <typeAliases>
         <typeAlias type='edu.eci.pdsw.samples.entities.Administrador' alias='Administrador'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Asistente' alias='Asistente'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Curso' alias='Curso'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Estudiante' alias='Estudiante'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Franja' alias='Franja'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Grupo' alias='Grupo'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Monitor' alias='Monitor'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Monitoria' alias='Monitoria'/>
@@ -42,6 +40,7 @@
         <mapper resource="mappers/AsistenteMapper.xml"></mapper>
         <mapper resource="mappers/CursoMapper.xml"></mapper>
         <mapper resource="mappers/EstudianteMapper.xml"></mapper>
+        <mapper resource="mappers/FranjaMapper.xml"></mapper>
         <mapper resource="mappers/GrupoMapper.xml"></mapper>
         <mapper resource="mappers/MonitorMapper.xml"></mapper>
         <mapper resource="mappers/MonitoriaMapper.xml"></mapper>

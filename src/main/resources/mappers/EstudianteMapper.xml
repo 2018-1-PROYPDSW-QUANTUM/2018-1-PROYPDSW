@@ -16,6 +16,7 @@
     
     <resultMap type="Estudiante" id="EstudianteResult" >
         <id property="codigo" column="Codigo"/>
+        <collection property='cursando' ofType='Grupo' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.GrupoMapper.GrupoResult'></collection>
     </resultMap>
       	
 </mapper>

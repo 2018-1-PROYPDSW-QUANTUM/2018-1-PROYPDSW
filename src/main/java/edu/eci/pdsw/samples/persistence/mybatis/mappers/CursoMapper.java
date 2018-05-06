@@ -15,13 +15,40 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface CursoMapper {
 
-    public Curso consultarCurso(@Param("nemon") String nemonico);
+    /**
+     *
+     * @param nemonico
+     * @return
+     */
+    default Curso consultarCurso(String nemonico) {
+        return consultarCursoGeneral(nemonico).get(0);
+    }
 
-    public List<Curso> consultarCursos();
+    /**
+     *
+     * @return
+     */
+    default List<Curso> consultarCursos() {
+        return consultarCursoGeneral(null);
+    }
 
-    public void agregarCurso(@Param("nemo") String nemonico, 
-            @Param("nomb") String nombre, 
-            @Param("credi") int creditos, 
+    /**
+     *
+     * @param nemonico
+     * @return
+     */
+    public List<Curso> consultarCursoGeneral(@Param("neCurso") String nemonico);
+
+    /**
+     *
+     * @param nemonico
+     * @param nombre
+     * @param creditos
+     * @param horasMonitoria
+     */
+    public void registrarCurso(@Param("neCurso") String nemonico,
+            @Param("noCurso") String nombre,
+            @Param("crCurso") int creditos,
             @Param("hmCurso") int horasMonitoria);
 
 }

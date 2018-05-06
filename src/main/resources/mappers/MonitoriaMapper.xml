@@ -26,7 +26,7 @@
         <result property="ip" column="ip"/>
         <result property="observaciones" column="observaciones"/>
         <association property="monitor" javaType="Monitor" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper.MonitorResult"/>
-        <collection property="asistentesMonitoria" ofType="Asistente" resultmap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.AsistenteMapper.AsistenteResult"/>
+        <collection property="asistentes" ofType="Asistente" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.AsistenteMapper.AsistenteResult"/>
     </resultMap>
       	
 </mapper>

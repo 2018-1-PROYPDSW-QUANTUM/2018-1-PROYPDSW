@@ -5,10 +5,8 @@
  */
 package edu.eci.pdsw.samples.persistence;
 
-import edu.eci.pdsw.samples.entities.Grupo;
-import edu.eci.pdsw.samples.entities.Tema;
-import java.time.Year;
 import java.util.List;
+import edu.eci.pdsw.samples.entities.Grupo;
 
 /**
  *
@@ -25,10 +23,10 @@ public interface GrupoDAO {
 
     /**
      *
-     * @param identificador
+     * @param id
      * @return
      */
-    public Grupo load(Integer identificador);
+    public Grupo load(Integer id);
 
     /**
      *

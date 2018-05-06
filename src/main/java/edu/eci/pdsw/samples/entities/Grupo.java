@@ -25,13 +25,14 @@ public class Grupo {
     public Grupo() {
     }
 
-    public Grupo(Integer id, Curso curso, Semestre semestre, int numero, Profesor profesor, Monitor monitor, int creditos, List<Franja> franjasMonitoria) {
+    public Grupo(Integer id, Semestre semestre, Curso curso, int numero, Profesor profesor, Monitor monitor, List<Estudiante> estudiantes, List<Franja> franjasMonitoria) {
         this.id = id;
         this.semestre = semestre;
         this.curso = curso;
         this.numero = numero;
         this.profesor = profesor;
         this.monitor = monitor;
+        this.estudiantes = estudiantes;
         this.franjasMonitoria = franjasMonitoria;
     }
 

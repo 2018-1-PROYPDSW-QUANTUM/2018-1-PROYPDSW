@@ -23,12 +23,12 @@ public class MyBATISGrupoDAO implements GrupoDAO {
 
     @Override
     public void save(Grupo g) throws PersistenceException {
-        grupoMapper.agregarGrupo(g.getId(), g.getSemestre().getId(), g.getCurso().getNemonico(), g.getNumero(), g.getProfesor().getId(), g.getMonitor().getCodigo());
+        grupoMapper.registrarGrupo(g.getId(), g.getSemestre().getId(), g.getCurso().getNemonico(), g.getNumero(), g.getProfesor().getCodigo(), g.getMonitor().getCodigo());
     }
 
     @Override
-    public Grupo load(Integer identificador) {
-        return grupoMapper.consultarGrupo(identificador);
+    public Grupo load(Integer id) {
+        return grupoMapper.consultarGrupo(id);
     }
 
     @Override

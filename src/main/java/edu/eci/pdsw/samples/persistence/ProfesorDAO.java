@@ -23,11 +23,11 @@ public interface ProfesorDAO {
 
     /**
      *
-     * @param id
+     * @param codigo
      * @return
      * @throws PersistenceException
      */
-    public Profesor load(Integer id) throws PersistenceException;
+    public Profesor load(Integer codigo) throws PersistenceException;
 
     /**
      *

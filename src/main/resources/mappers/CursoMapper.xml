@@ -5,26 +5,17 @@
   
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper">
-     
-    <select parameterType="map" id="consultarCurso" resultMap="CursoResult">
-        SELECT Nemonico, Nombre, Creditos,Programa
+    <select parameterType="map" id="consultarCursoGeneral" resultMap="CursoResult">
+        SELECT Nemonico, nombre, creditos, horas_monitoria
         FROM Curso
-        WHERE Neumonico =#{nemon}
+        <if test="neCurso != null">
+            WHERE Nemonico = #{neCurso}
+        </if>
     </select>
     
-    <select parameterType="map" id="consultarCursos" resultMap="GruposResult">
-        SELECT 
-        c.Nemonico, c.nombre, c.creditos, c.horas_monitoria
-            
-        g.Periodo_academico, g.curso_ceumonico, g.numero, g.profesor_Codigo, g.monitor_codigo
-         
-        FROM Curso AS c
-        LEFT JOIN as g on c.neumonico=g.curso_neumonico     
-    </select>
-    
-    <insert parameterType="map" id ="agregrarCurso" >
+    <insert parameterType="map" id ="registrarCurso" >
         INSERT INTO Curso (Nemonico, nombre, creditos, horas_monitorias)
-        VALUES (#{nemo},#{nomb},#{credi},#{hmCurso})
+        VALUES (#{neCurso},#{noCurso},#{crCurso},#{hmCurso})
     </insert>
     
     <resultMap type='Curso' id='CursoResult'>

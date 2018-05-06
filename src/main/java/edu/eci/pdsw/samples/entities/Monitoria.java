@@ -21,12 +21,12 @@ public class Monitoria {
     private String ip;
     private String observaciones;
     private Monitor monitor;
-    private List<Asistente> asistentesMonitoria;
+    private List<Asistente> asistentes;
 
     public Monitoria() {
     }
 
-    public Monitoria(Integer id, Date fecha, Date horaInicio, Date horaFin, String ip, String observaciones, Monitor monitor) {
+    public Monitoria(Integer id, Date fecha, Date horaInicio, Date horaFin, String ip, String observaciones, Monitor monitor, List<Asistente> asistentes) {
         this.id = id;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
@@ -34,6 +34,7 @@ public class Monitoria {
         this.ip = ip;
         this.observaciones = observaciones;
         this.monitor = monitor;
+        this.asistentes = asistentes;
     }
 
     public Integer getId() {
@@ -92,11 +93,11 @@ public class Monitoria {
         this.monitor = monitor;
     }
 
-    public List<Asistente> getAsistentesMonitoria() {
-        return asistentesMonitoria;
+    public List<Asistente> getAsistentes() {
+        return asistentes;
     }
 
-    public void setAsistentesMonitoria(List<Asistente> asistentesMonitoria) {
-        this.asistentesMonitoria = asistentesMonitoria;
+    public void setAsistentes(List<Asistente> asistentes) {
+        this.asistentes = asistentes;
     }
 }

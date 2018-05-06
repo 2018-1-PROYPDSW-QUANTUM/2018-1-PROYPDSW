@@ -12,7 +12,7 @@ import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
-import edu.eci.pdsw.samples.services.ServiciosMonitoriaFactory;
+import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -26,7 +26,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class RegistroMonitoriaBean {
     
-    private ServiciosMonitoria sm = ServiciosMonitoriaFactory.getInstance().getServiciosMonitoria();
+    private ServiciosMonitoria sm = ServiciosMonitoriasFactory.getInstance().getMonitoriasServices();
     private Monitoria nuevaMonitoria;
     private Grupo grupo;    
     private Franja franjaMonitoria;
@@ -40,13 +40,13 @@ public class RegistroMonitoriaBean {
         return nuevaMonitoria;
     }
 
-    public List<Monitoria>consultarMonitorias() throws ExcepcionServiciosMonitoria{
-        return sm.consultarMonitorias();
-    }
-    
-    public void setNuevaMonitoria(Monitoria nuevaMonitoria) throws PersistenceException, ExcepcionServiciosMonitoria {
-        sm.registrarMonitoria(nuevaMonitoria);
-    }
+//    public List<Monitoria>consultarMonitorias() throws ExcepcionServiciosMonitoria{
+//        return sm.consultarMonitorias();
+//    }
+//    
+//    public void setNuevaMonitoria(Monitoria nuevaMonitoria) throws PersistenceException, ExcepcionServiciosMonitoria {
+//        sm.registrarMonitoria(nuevaMonitoria);
+//    }
 
     public Grupo getGrupo() {
         return grupo;

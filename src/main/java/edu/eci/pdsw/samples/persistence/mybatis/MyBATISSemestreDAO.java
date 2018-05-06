@@ -7,7 +7,6 @@ package edu.eci.pdsw.samples.persistence.mybatis;
 
 import java.util.List;
 import com.google.inject.Inject;
-import edu.eci.pdsw.samples.entities.Administrador;
 import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.persistence.SemestreDAO;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
@@ -23,8 +22,8 @@ public class MyBATISSemestreDAO implements SemestreDAO {
     private SemestreMapper semestreMapper;
 
     @Override
-    public void save(Semestre s, Administrador admin) throws PersistenceException {
-        semestreMapper.registrarSemestre(s.getId(), s.getYears(), s.getPeriodoAcademico(), s.getFechaInicio(), s.getFechaFin(), admin.getCodigo());
+    public void save(Semestre s) throws PersistenceException {
+        semestreMapper.registrarSemestre(s.getId(), s.getYears(), s.getPeriodoAcademico(), s.getFechaInicio(), s.getFechaFin(), s.getAdmin().getCodigo());
     }
 
     @Override

@@ -15,15 +15,44 @@ import edu.eci.pdsw.samples.entities.Profesor;
  */
 public interface ProfesorMapper {
 
-    public Profesor consultarProfesor(@Param("idprof") Integer id);
+    /**
+     *
+     * @param codigo
+     * @return
+     */
+    default Profesor consultarProfesor(Integer codigo) {
+        return consultarProfesorGeneral(codigo).get(0);
+    }
 
-    public List<Profesor> consultarProfesores();
+    /**
+     *
+     * @return
+     */
+    default List<Profesor> consultarProfesores() {
+        return consultarProfesorGeneral(null);
+    }
 
-    public void agregarProfesor(@Param("idpro") Integer id,
-            @Param("nom") String nombre,
-            @Param("apelli") String apellido,
-            @Param("tel") String celular,
-            @Param("email") String correo,
+    /**
+     *
+     * @param codigo
+     * @return
+     */
+    public List<Profesor> consultarProfesorGeneral(@Param("coProfesor") Integer codigo);
+
+    /**
+     *
+     * @param codigo
+     * @param nombre
+     * @param apellido
+     * @param celular
+     * @param correo
+     * @param clave
+     */
+    public void registrarProfesor(@Param("coProfesor") Integer codigo,
+            @Param("noProfesor") String nombre,
+            @Param("apProfesor") String apellido,
+            @Param("ceProfesor") String celular,
+            @Param("corProfesor") String correo,
             @Param("clProfesor") String clave);
 
 }

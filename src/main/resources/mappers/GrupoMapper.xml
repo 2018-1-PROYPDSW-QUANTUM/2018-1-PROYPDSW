@@ -5,14 +5,15 @@
   
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper">
-   
     <select parameterType="map" id="consultarGrupo" resultMap="GrupoResult">
         SELECT Identificador, semestre_identificador, curso_nemonico, numero, profesor_codigo, monitor_codigo
         FROM Grupo
-        WHERE Year=#{year} AND Periodo_academico=#{periodoAcad} AND Curso_Neumonico=#{cursoNeum}
+        <if test="idGrupo != null">
+            WHERE Identificador = #{idGrupo}
+        </if>
     </select>
      
-    <insert parameterType="map" id="agregarGrupo">
+    <insert parameterType="map" id="registrarGrupo">
         INSERT INTO Grupo (Identificador, semestre_identificador, curso_nemonico, numero, profesor_codigo, monitor_codigo)
         VALUES (#{idGrupo},#{seGrupo},#{cnGrupo},#{nuGrupo},#{pcGrupo},#{mcGrupo})
     </insert>
@@ -24,6 +25,8 @@
         <association property="curso" javaType="Curso" columnPrefix='cu_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper.CursoResult"></association>
         <association property="profesor" javaType="Profesor" columnPrefix='pr_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper.ProfesorResult"></association>
         <association property="monitor" javaType="Monitor" columnPrefix='mo_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper.MonitorResult"></association>
+        <collection property='estudiantes' ofType='Estudiante' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.EstudianteMapper.EstudianteResult"></collection>
+        <collection property='franjasMonitoria' ofType='Franja' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.FranjaMapper.FranjaResult"></collection>
     </resultMap>
      
 </mapper>

@@ -15,11 +15,40 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface GrupoMapper {
 
-    public Grupo consultarGrupo(@Param("iden") Integer identificardor);
+    /**
+     *
+     * @param id
+     * @return
+     */
+    default Grupo consultarGrupo(Integer id) {
+        return consultarGrupoGeneral(id).get(0);
+    }
 
-    public List<Grupo> consultarGrupos();
+    /**
+     *
+     * @return
+     */
+    default List<Grupo> consultarGrupos() {
+        return consultarGrupoGeneral(null);
+    }
+    
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public List<Grupo> consultarGrupoGeneral(@Param("idGrupo") Integer id);
 
-    public void agregarGrupo(@Param("idGrupo") Integer id, 
+    /**
+     *
+     * @param id
+     * @param semestreIdentificador
+     * @param cursoNemonico
+     * @param numero
+     * @param profesorCodigo
+     * @param codigo
+     */
+    public void registrarGrupo(@Param("idGrupo") Integer id, 
             @Param("seGrupo") Integer semestreIdentificador, 
             @Param("cnGrupo") String cursoNemonico, 
             @Param("nuGrupo") int numero, 
