@@ -9,6 +9,8 @@ import java.util.List;
 import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.entities.Administrador;
 import edu.eci.pdsw.samples.entities.Monitoria;
+import edu.eci.pdsw.samples.entities.Asistente;
+import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.entities.Profesor;
 import java.util.Date;
 
@@ -17,6 +19,14 @@ import java.util.Date;
  * @author jonnhi
  */
 public interface ServiciosMonitoria {
+
+    /**
+     *
+     * @param curso
+     * @return
+     * @throws ExcepcionServiciosMonitoria
+     */
+    public List<Asistente> consultarAsistentesXCurso(Curso curso) throws ExcepcionServiciosMonitoria;
 
     /**
      *
@@ -32,21 +42,20 @@ public interface ServiciosMonitoria {
      * @throws ExcepcionServiciosMonitoria
      */
     public abstract Administrador consultarAdministrador(Integer codigo) throws ExcepcionServiciosMonitoria;
-    
+
     /**
      *
-     * @return
-     * @throws ExcepcionServiciosMonitoria
+     * @return @throws ExcepcionServiciosMonitoria
      */
     public abstract List<Administrador> consultarAdministradores() throws ExcepcionServiciosMonitoria;
-    
+
     /**
      *
      * @param pro
      * @throws ExcepcionServiciosMonitoria
      */
     public abstract void registrarProfesor(Profesor pro) throws ExcepcionServiciosMonitoria;
-    
+
     /**
      *
      * @param codigo
@@ -54,21 +63,20 @@ public interface ServiciosMonitoria {
      * @throws ExcepcionServiciosMonitoria
      */
     public abstract Profesor consultarProfesor(Integer codigo) throws ExcepcionServiciosMonitoria;
-    
+
     /**
      *
-     * @return
-     * @throws ExcepcionServiciosMonitoria
+     * @return @throws ExcepcionServiciosMonitoria
      */
     public abstract List<Profesor> consultarProfesores() throws ExcepcionServiciosMonitoria;
-    
+
     /**
      *
      * @param sem
      * @throws ExcepcionServiciosMonitoria
      */
     public abstract void registrarSemestre(Semestre sem) throws ExcepcionServiciosMonitoria;
-    
+
     /**
      *
      * @param year
@@ -77,27 +85,38 @@ public interface ServiciosMonitoria {
      * @throws ExcepcionServiciosMonitoria
      */
     public abstract Semestre consultarSemestre(Integer year, String periodo) throws ExcepcionServiciosMonitoria;
-    
+
+    /**
+     *
+     * @return @throws ExcepcionServiciosMonitoria
+     */
+    public abstract List<Semestre> consultarSemestres() throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @param id
+     * @param fecha
+     * @param horaInicio
+     * @param horaFin
+     * @param direccionIp
+     * @param observaciones
+     * @param codigoMonitor
+     * @throws ExcepcionServiciosMonitoria
+     */
+    public abstract void registrarMonitoria(int id, Date fecha, Date horaInicio, Date horaFin, String direccionIp, String observaciones, int codigoMonitor)
+            throws ExcepcionServiciosMonitoria;
+
     /**
      *
      * @return
      * @throws ExcepcionServiciosMonitoria
      */
-    public abstract List<Semestre> consultarSemestres() throws ExcepcionServiciosMonitoria;
-    
-    /**
-     * 
-     */
-    public abstract void registrarMonitoria(int id, Date fecha, Date horaInicio, Date horaFin, String direccionIp, String observaciones, int codigoMonitor)
-            throws ExcepcionServiciosMonitoria;
-    
-    /**
-     * 
-     */
     public abstract Monitoria consultarMonitoria() throws ExcepcionServiciosMonitoria;
-    
+
     /**
-     * 
+     *
+     * @return
+     * @throws ExcepcionServiciosMonitoria
      */
     public abstract List<Monitoria> consultarMonitorias() throws ExcepcionServiciosMonitoria;
 }

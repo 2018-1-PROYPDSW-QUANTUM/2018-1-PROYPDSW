@@ -7,6 +7,7 @@ package edu.eci.pdsw.samples.persistence.mybatis;
 
 import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Asistente;
+import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.entities.Tema;
@@ -40,8 +41,8 @@ public class MyBATISAsistenteDAO implements AsistenteDAO {
     }
 
     @Override
-    public Asistente loadTemaAsistente(String t) throws PersistenceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Asistente> loadAsistenteXCurso(Curso c) throws PersistenceException {
+        return asistente.consultarAsistentesXMateria(c.getNemonico());
     }
 
     @Override

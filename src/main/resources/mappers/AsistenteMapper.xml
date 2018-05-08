@@ -9,10 +9,18 @@
         FROM Asistente JOIN Tema ON Tema_identificador=Identificador
     </select>
     
+    <select id="consultarAsistentesXMateria" resultMap="AsistenteResult">
+        SELECT Estudiante_codigo, nombre
+        FROM (asistente join tema on  tema_identificador=tema.identificador) 
+        join grupo on grupo.curso_nemonico=tema.curso_nemonico
+        WHERE grupo.curso_nemonico=#{neCurso}
+    </select>
+    
     <insert  id="registrarAsistente">
         INSERT INTO Asistente (Monitoria_identificador, Estudiante_codigo, Tema_identificador)
         VALUES (#{miAsistente},#{ecAsistente},#{tiAsistente})
     </insert>
+    
     
     <resultMap type="Asistente" id="AsistenteResult" >
         <association property="monitoria" javaType="Monitoria" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitoriaMapper.MonitoriaResult"/>

@@ -7,6 +7,8 @@ package edu.eci.pdsw.samples.services.impl;
 
 import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Administrador;
+import edu.eci.pdsw.samples.entities.Asistente;
+import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.persistence.TemaDAO;
 import edu.eci.pdsw.samples.persistence.CursoDAO;
 import edu.eci.pdsw.samples.persistence.GrupoDAO;
@@ -37,9 +39,9 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
     @Inject
     private AdministradorDAO daoAdministrador;
 
-//    @Inject
-//    private AsistenteDAO daoAsistente;
-//
+    @Inject
+    private AsistenteDAO daoAsistente;
+
 //    @Inject
 //    private CursoDAO daoCurso;
 //
@@ -161,4 +163,14 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
     public List<Monitoria> consultarMonitorias() throws ExcepcionServiciosMonitoria {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<Asistente> consultarAsistentesXCurso(Curso curso) throws ExcepcionServiciosMonitoria {
+        try {
+            return daoAsistente.loadAsistenteXCurso(curso);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar los asistentes en las monitorias del grupo: " + curso.getNemonico(), e);
+        }
+    }
+
 }
