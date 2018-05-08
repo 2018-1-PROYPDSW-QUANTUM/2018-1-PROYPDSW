@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.managedbean;
 
 import edu.eci.pdsw.samples.entities.Profesor;
+import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
 import javax.faces.bean.ManagedBean;
@@ -35,14 +36,11 @@ public class MonitoriaProfesorBean {
         this.sm = sm;
     }
 
-    public Profesor getProfesorMonitoria() {
-        return profesorMonitoria;
+    public Profesor getProfesorMonitoria() throws ExcepcionServiciosMonitoria {
+        return sm.consultarProfesor(998);
     }
 
     public void setProfesorMonitoria(Profesor profesorMonitoria) {
         this.profesorMonitoria = profesorMonitoria;
-    }
-    
-    
-    
+    }   
 }
