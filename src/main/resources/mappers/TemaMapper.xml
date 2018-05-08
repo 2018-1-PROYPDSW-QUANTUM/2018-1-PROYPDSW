@@ -6,10 +6,12 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper">
     <select parameterType="map" id="consultarTemaGeneral" resultMap="TemaResult">
-        SELECT Identificador, curso_nemonico, nombre, descripcion
-        FROM Tema
+        SELECT
+        t.Identificador, t.nombre, t.descripcion,
+        c.Nemonico, c.nombre, c.creditos, c.horas_monitoria
+        FROM Tema as t JOIN Curso as c ON t.curso_nemonico=c.Nemonico
         <if test="idTema != null">
-            WHERE Identificador = #{idTema}
+            WHERE t.Identificador = #{idTema}
         </if>
     </select>
      
@@ -19,9 +21,9 @@
     </insert>
      
     <resultMap type="Tema" id="TemaResult" >
-        <id property="id" column="Identificador"/>
-        <result property="nombre" column="nombre"/>
-        <result property="descripcion" column="descripcion"/>
+        <id property="id" column="t.Identificador,"/>
+        <result property="nombre" column="t.nombre"/>
+        <result property="descripcion" column="t.descripcion"/>
         <association property="cursoNemonico" javaType="Curso" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper.CursoResult"/>
     </resultMap>
      

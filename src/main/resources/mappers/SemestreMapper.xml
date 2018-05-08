@@ -5,10 +5,12 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.SemestreMapper">
     <select parameterType="map" id="consultarSemestreGeneral" resultMap="SemestreResult">
-        SELECT Identificador, years, periodo_academico, fecha_inicio, fecha_fin, administrador_codigo, nombre
-        FROM Semestre JOIN Administrador ON administrador_codigo=Codigo
+        SELECT 
+        s.Identificador, s.years, s.periodo_academico, s.fecha_inicio, s.fecha_fin,
+        a.Codigo, a.nombre, a.apellido, a.celular, a.correo, a.clave
+        FROM Semestre as s JOIN Administrador as a ON administrador_codigo=Codigo
         <if test="yeSemestre != null and paSemestre != null">
-            WHERE years = #{yeSemestre} AND periodo_academico = #{paSemestre}
+            WHERE s.years = #{yeSemestre} AND s.periodo_academico = #{paSemestre}
         </if>
     </select>
     
@@ -18,11 +20,11 @@
     </insert>
     
     <resultMap type="Semestre" id="SemestreResult">
-        <id property="id" column="Identificador"/>
-        <result property="years" column="years"/>
-        <result property="periodoAcademico" column="Periodo_academico"/>
-        <result property="fechaInicio" column="fecha_inicio"/>
-        <result property="fechaFin" column="fecha_fin"/>
+        <id property="id" column="s.Identificador"/>
+        <result property="years" column="s.years"/>
+        <result property="periodoAcademico" column="s.periodo_academico"/>
+        <result property="fechaInicio" column="s.fecha_inicio"/>
+        <result property="fechaFin" column="s.fecha_fin"/>
         <association property="admin" javaType="Administrador" resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.AdministradorMapper.AdministradorResult'/>
     </resultMap>
       	

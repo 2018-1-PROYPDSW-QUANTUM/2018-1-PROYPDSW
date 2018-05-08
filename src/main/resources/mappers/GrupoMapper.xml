@@ -6,10 +6,23 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper">
     <select parameterType="map" id="consultarGrupo" resultMap="GrupoResult">
-        SELECT Identificador, semestre_identificador, curso_nemonico, numero, profesor_codigo, monitor_codigo
-        FROM Grupo
+        SELECT 
+        g.Identificador, g.numero, 
+        s.Identificador, s.years, s.periodo_academico, s.fecha_inicio, s.fecha_fin, 
+        c.Nemonico, c.nombre, c.creditos, c.horas_monitoria, 
+        p.Codigo, p.nombre, p.apellido, p.celular, p.correo, p.clave, 
+        m.Codigo, m.semsetre_ingreso, m.programa_academico, m.nombre, m.apellido, m.celular, m.correo, m.clave, 
+        e.Codigo, 
+        f.Identificador, f.dia, f.hora_inicio, f.hora_fin
+        FROM Grupo as g JOIN Semestre as s ON g.semestre_identificador=s.Identificador 
+            JOIN Curso as c ON g.curso_nemonico=c.Nemonico 
+            JOIN Profesor as p ON g.profesor_codigo=p.Codigo 
+            JOIN Monitor as m ON g.monitor_codigo=m.Codigo
+            JOIN Estudiante_cursa as ec ON g.Identificador=ec.Grupo_identificador
+            JOIN Estudiante as e ON g.monitor_codigo=m.Codigo 
+            JOIN Franja as f ON g.Identificador=f.grupo_identificador
         <if test="idGrupo != null">
-            WHERE Identificador = #{idGrupo}
+            WHERE g.Identificador = #{idGrupo}
         </if>
     </select>
      
@@ -19,12 +32,12 @@
     </insert>
      
     <resultMap type="Grupo" id="GrupoResult" >
-        <id property="id" column="Identificador"/>
-        <result property="numero" column="numero"/>
-        <association property="semestre" javaType="Semestre" columnPrefix='se_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.SemestreMapper.SemestreResult"></association>
-        <association property="curso" javaType="Curso" columnPrefix='cu_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper.CursoResult"></association>
-        <association property="profesor" javaType="Profesor" columnPrefix='pr_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper.ProfesorResult"></association>
-        <association property="monitor" javaType="Monitor" columnPrefix='mo_' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper.MonitorResult"></association>
+        <id property="id" column="g.Identificador"/>
+        <result property="numero" column="g.numero"/>
+        <association property="semestre" javaType="Semestre" resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.SemestreMapper.SemestreResult"></association>
+        <association property="curso" javaType="Curso" resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper.CursoResult"></association>
+        <association property="profesor" javaType="Profesor" resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper.ProfesorResult"></association>
+        <association property="monitor" javaType="Monitor" resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper.MonitorResult"></association>
         <collection property='estudiantes' ofType='Estudiante' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.EstudianteMapper.EstudianteResult"></collection>
         <collection property='franjasMonitoria' ofType='Franja' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.FranjaMapper.FranjaResult"></collection>
     </resultMap>

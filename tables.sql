@@ -27,7 +27,7 @@ CREATE TABLE Curso (
     Nemonico char(4)  NOT NULL,
     nombre varchar(30)  NOT NULL,
     creditos int  NOT NULL,
-    horas_monitoria date  NOT NULL,
+    horas_monitoria int  NOT NULL,
     CONSTRAINT Curso PRIMARY KEY (Nemonico)
 );
 
@@ -39,9 +39,9 @@ CREATE TABLE Estudiante (
 
 -- Table: Estudiante_cursa
 CREATE TABLE Estudiante_cursa (
-    Estudiante_Codigo int  NOT NULL,
-    Grupo_Identificador int  NOT NULL,
-    CONSTRAINT Estudiante_cursa_pk PRIMARY KEY (Estudiante_Codigo,Grupo_Identificador)
+    Estudiante_codigo int  NOT NULL,
+    Grupo_identificador int  NOT NULL,
+    CONSTRAINT Estudiante_cursa_pk PRIMARY KEY (Estudiante_codigo,Grupo_identificador)
 );
 
 -- Table: Franja
@@ -167,13 +167,13 @@ ALTER TABLE Asistente ADD CONSTRAINT Asistentes_Monitoria
 
 -- Reference: Estudiante_cursa_Grupo (table: Estudiante_cursa)
 ALTER TABLE Estudiante_cursa ADD CONSTRAINT Estudiante_cursa_Grupo
-    FOREIGN KEY (Grupo_Identificador)
+    FOREIGN KEY (Grupo_identificador)
     REFERENCES Grupo (Identificador)
 ;
 
 -- Reference: Estudiantes_Estudiante (table: Estudiante_cursa)
 ALTER TABLE Estudiante_cursa ADD CONSTRAINT Estudiantes_Estudiante
-    FOREIGN KEY (Estudiante_Codigo)
+    FOREIGN KEY (Estudiante_codigo)
     REFERENCES Estudiante (Codigo)
 ;
 

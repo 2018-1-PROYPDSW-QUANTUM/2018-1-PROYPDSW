@@ -6,10 +6,12 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper">
     <select parameterType="map" id="consultarProfesorGeneral" resultMap="ProfesorResult">
-        SELECT codigo, nombre, apellido, celular, correo
-        FROM Profesor
+        SELECT
+        p.Codigo, p.nombre, p.apellido, p.celular, p.correo, p.clave,
+        g.Identificador, g.numero
+        FROM Profesor as p JOIN Grupo as g ON p.Codigo=g.profesor_codigo
         <if test="coProfesor != null">
-            WHERE codigo = #{coProfesor}
+            WHERE p.Codigo = #{coProfesor}
         </if>
     </select>
          
@@ -19,12 +21,12 @@
     </insert>
     
     <resultMap type='Profesor' id='ProfesorResult'>
-        <id property='codigo' column='codigo'/>
-        <result property='nombre' column='nombre'/>
-        <result property='apellido' column='apellido'/>
-        <result property='celular' column='celular'/>
-        <result property='correo' column='correo'/>
-        <result property='clave' column='clave'/>
-        <!--<collection property='grupos' ofType='Grupo' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult"></collection>-->
+        <id property='codigo' column='p.Codigo'/>
+        <result property='nombre' column='p.nombre'/>
+        <result property='apellido' column='p.apellido'/>
+        <result property='celular' column='p.celular'/>
+        <result property='correo' column='p.correo'/>
+        <result property='clave' column='p.clave'/>
+        <collection property='grupos' ofType='Grupo' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult"></collection>
     </resultMap> 
 </mapper>

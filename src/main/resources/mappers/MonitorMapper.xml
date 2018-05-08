@@ -5,10 +5,12 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper">
     <select parameterType="map" id="consultarMonitorGeneral" resultMap="MonitorResult">
-        SELECT Codigo, semestre_ingreso, programa_academico, nombre, apellido, celular, correo, clave
-        FROM Monitor
+        SELECT 
+        m.Codigo, m.semsetre_ingreso, m.programa_academico, m.nombre, m.apellido, m.celular, m.correo, m.clave, 
+        g.Identificador, g.numero
+        FROM Monitor as m JOIN Grupo as g ON m.Codigo=g.monitor_codigo
         <if test="coMonitor != null">
-            WHERE Codigo = #{coMonitor}
+            WHERE m.Codigo = #{coMonitor}
         </if>
     </select>
     
@@ -20,14 +22,14 @@
     <!--celular, clave se podran actualizar-->
     
     <resultMap type="Monitor" id="MonitorResult" >
-        <id property="codigo" column="Codigo"/>
-        <result property="semestreIngreso" column="semestre_ingreso"/>
-        <result property="programaAcademico" column="programa_academico"/>
-        <result property="nombre" column="nombre"/>
-        <result property="apellido" column="apellido"/>
-        <result property="celular" column="celular"/>
-        <result property="correo" column="correo"/>
-        <result property="clave" column="clave"/>
+        <id property="codigo" column="m.Codigo"/>
+        <result property="semestreIngreso" column="m.semsetre_ingreso"/>
+        <result property="programaAcademico" column="m.programa_academico"/>
+        <result property="nombre" column="m.nombre"/>
+        <result property="apellido" column="m.apellido"/>
+        <result property="celular" column="m.celular"/>
+        <result property="correo" column="m.correo"/>
+        <result property="clave" column="m.clave"/>
         <collection property='gruposMonitor' ofType='Grupo' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.GrupoMapper.GrupoResult'></collection>
     </resultMap>
       	
