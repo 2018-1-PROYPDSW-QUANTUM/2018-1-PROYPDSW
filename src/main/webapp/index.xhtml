@@ -8,8 +8,7 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <style type="text/css">
             body{
@@ -68,10 +67,15 @@ and open the template in the editor.
                 <th>
                     <img src="resources/LogoEscuela.png" alt="Logo Escuela"></img>
                 </th>
-                <th width="70%" style="text-align: left;">
+                <th width="33%" style="text-align: left;">
                     <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
                 </th>
-                <th width="30%" style="text-align: center;">
+                <th width="33%" style="text-align: center;">
+                    <p:button class="Boton" outcome="/profesor/w" value="Profesor" icon="">
+                        <f:param name="productId" value="10" />
+                    </p:button>                    
+                </th>                
+                <th width="33%" style="text-align: center;">
                     <p:button class="Boton" outcome="/monitor/w" value="Iniciar Sesion" icon="">
                         <f:param name="productId" value="10" />
                     </p:button>                    

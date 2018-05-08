@@ -86,40 +86,42 @@ and open the template in the editor.
         <div id="Registro">
             <h:form id="Fecha" prependId="false">
                 <h:panelGrid id="Panel" columns="1">
-<!--                    <p:inputText class="Input" placeholder="Estudiante" required="true" value="#{RegistroMonitoria.estudianteMonitoria.codigo}"/>-->
+                    <p:inputText class="Input" placeholder="Estudiante" value="#{registrarMonitoria.estudianteMonitoria.codigo}"/>
                     <br></br>                    
-                    <!--<p:inputText class="Input" placeholder="Tema" required="true" value=""/>-->
+                    <p:inputText class="Input" placeholder="Tema" value="#{registrarMonitoria.estudianteMonitoria.codigo}"/>
                     <br></br>
-                    <p:inputText class="Input" placeholder="Descripcion" required="true" />
+                    <p:inputText class="Input" placeholder="Descripcion" value="#{registrarMonitoria.nuevaMonitoria.observaciones}"/>
                     <br></br>
-                    <p:commandButton class="Boton" value="Enviar"/>
+                    <p:commandButton class="Boton" value="Enviar" actionListener="#{AlquilerItems.registrarNuevaMonitoria}" update="monitoria Fecha">
+                        <p:resetInput target="Fecha"/>
+                    </p:commandButton>
                 </h:panelGrid>   
             </h:form>
         </div>
         <br></br>
-<!--        <div id="Monitorias">
+        <div id="Monitorias">
             <h1> Monitorias </h1>
-            <p:dataTable var="monitorias" value="#{dtBasicView.cars}">
+            <p:dataTable var="monitorias" value="#{registrarMonitoria.consultarMonitorias}" selection="#{RegistroMonitorias.monitoriaSeleccionada}" id="monitoria">
                 <p:column headerText="Materia">
-                    <h:outputText value="#{car.id}" />
+                    <h:outputText value="#{monitorias.getMonitor().getGruposMonitor().getCurso().getNemonico()}" />
                 </p:column>
                 <p:column headerText="Monitor">
-                    <h:outputText value="#{car.year}" />
+                    <h:outputText value="#{monitorias.monitor}" />
                 </p:column>
                 <p:column headerText="Hora inicio">
-                    <h:outputText value="#{car.brand}" />
+                    <h:outputText value="#{monitorias.horaInicio}" />
                 </p:column>
                 <p:column headerText="Hora Fin">
-                    <h:outputText value="#{car.color}" />
+                    <h:outputText value="#{monitorias.horaFin}" />
                 </p:column>
                 <p:column headerText="Tema">
                     <h:outputText value="#{car.color}" />
                 </p:column>
                 <p:column headerText="Descripcion">
-                    <h:outputText value="#{car.color}" />
+                    <h:outputText value="#{monitoria.observaciones}" />
                 </p:column>              
             </p:dataTable>
-        </div>-->
+        </div>
     </h:body>
 </html>
 

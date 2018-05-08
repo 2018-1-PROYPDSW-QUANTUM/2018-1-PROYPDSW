@@ -8,7 +8,9 @@ package edu.eci.pdsw.samples.services;
 import java.util.List;
 import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.entities.Administrador;
+import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.entities.Profesor;
+import java.util.Date;
 
 /**
  *
@@ -82,5 +84,20 @@ public interface ServiciosMonitoria {
      * @throws ExcepcionServiciosMonitoria
      */
     public abstract List<Semestre> consultarSemestres() throws ExcepcionServiciosMonitoria;
-
+    
+    /**
+     * 
+     */
+    public abstract void registrarMonitoria(int id, Date fecha, Date horaInicio, Date horaFin, String direccionIp, String observaciones, int codigoMonitor)
+            throws ExcepcionServiciosMonitoria;
+    
+    /**
+     * 
+     */
+    public abstract Monitoria consultarMonitoria() throws ExcepcionServiciosMonitoria;
+    
+    /**
+     * 
+     */
+    public abstract List<Monitoria> consultarMonitorias() throws ExcepcionServiciosMonitoria;
 }

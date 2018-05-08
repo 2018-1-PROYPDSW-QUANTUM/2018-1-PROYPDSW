@@ -25,6 +25,7 @@ import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -146,4 +147,18 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
         }
     }
 
+    @Override
+    public void registrarMonitoria(int id, Date fecha, Date horaInicio, Date horaFin, String direccionIp, String observaciones, int codigoMonitor) throws ExcepcionServiciosMonitoria {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Monitoria consultarMonitoria() throws ExcepcionServiciosMonitoria {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Monitoria> consultarMonitorias() throws ExcepcionServiciosMonitoria {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
