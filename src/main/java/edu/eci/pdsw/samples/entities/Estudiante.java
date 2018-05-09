@@ -5,13 +5,14 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author jonnhi
  */
-public class Estudiante {
+public class Estudiante implements Serializable{
 
     private Integer codigo;
     private List<Grupo> cursando;

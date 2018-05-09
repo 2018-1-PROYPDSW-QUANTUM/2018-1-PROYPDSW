@@ -5,8 +5,24 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.AsistenteMapper">
     <select parameterType="map" id="consultarAsistentes" resultMap="AsistenteResult">
-        SELECT Monitoria_identificador, Estudiante_codigo, Tema_identificador, nombre
-        FROM Asistente JOIN Tema ON Tema_identificador=Identificador
+        SELECT 
+        mo.Identificador, mo.fecha, mo.hora_inicio, mo.hora_fin, mo.ip, mo.observaciones,
+        e.Codigo, 
+        t.Identificador, t.nombre, t.descripcion
+        FROM Asistente JOIN monitoria as mo ON Monitoria_identificador=mo.Identificador 
+            JOIN Estudiante as e ON Estudiante_codigo=e.Codigo
+            JOIN Tema as t Tema_identificador=t.Identificador
+    </select>
+    
+    <select id="consultarAsistentesXMateria" resultMap="AsistenteResult">
+        SELECT 
+        mo.Identificador, mo.fecha, mo.hora_inicio, mo.hora_fin, mo.ip, mo.observaciones,
+        e.Codigo, 
+        t.Identificador, t.nombre, t.descripcion
+        FROM Asistente JOIN monitoria as mo ON Monitoria_identificador=mo.Identificador 
+            JOIN Estudiante as e ON Estudiante_codigo=e.Codigo
+            JOIN Tema as t Tema_identificador=t.Identificador
+        WHERE t.curso_nemonico=#{neCurso}
     </select>
     
     <insert  id="registrarAsistente">
@@ -14,10 +30,11 @@
         VALUES (#{miAsistente},#{ecAsistente},#{tiAsistente})
     </insert>
     
+    
     <resultMap type="Asistente" id="AsistenteResult" >
         <association property="monitoria" javaType="Monitoria" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitoriaMapper.MonitoriaResult"/>
         <association property="estudiante" javaType="Estudiante" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.EstudianteMapper.EstudianteResult"/>
-        <collection property="temas" ofType="Tema" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper.TemaResult"/>
+        <!--<collection property="temas" ofType="Tema" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper.TemaResult"/>-->
     </resultMap>
       	
 </mapper>

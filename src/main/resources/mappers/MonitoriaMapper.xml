@@ -6,10 +6,12 @@
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitoriaMapper">
     <select parameterType="map" id="consultarMonitoriaGeneral" resultMap="MonitoriaResult">
         SELECT 
-        Identificador, fecha, hora_inicio, hora_fin, ip, observaciones, monitor_codigo, nombre
-        FROM Monitoria JOIN Monitor ON monitor_codigo=codigo
+        mo.Identificador, mo.fecha, mo.hora_inicio, mo.hora_fin, mo.ip, mo.observaciones, 
+        m.Codigo, m.semsetre_ingreso, m.programa_academico, m.nombre, m.apellido, m.celular, m.correo, m.clave
+        FROM Monitoria as mo JOIN Monitor as m ON mo.monitor_codigo=m.codigo 
+            JOIN Asistente as a ON mo.Identificador=a.Monitoria_identificador
         <if test="idMonitoria != null">
-            WHERE Identificador = #{idMonitoria}
+            WHERE mo.Identificador = #{idMonitoria}
         </if>
     </select>
     
@@ -24,7 +26,7 @@
         <result property="horaInicio" column="hora_inicio"/>
         <result property="horaFin" column="hora_fin"/>
         <result property="ip" column="ip"/>
-        <result property="observaciones" column="observaciones"/>
+        <result property="observaciones" column="mo.observaciones"/>
         <association property="monitor" javaType="Monitor" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper.MonitorResult"/>
         <collection property="asistentes" ofType="Asistente" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.AsistenteMapper.AsistenteResult"/>
     </resultMap>

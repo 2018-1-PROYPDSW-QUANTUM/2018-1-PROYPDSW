@@ -27,13 +27,23 @@ import javax.faces.bean.SessionScoped;
 public class RegistroMonitoriaBean {
     
     private ServiciosMonitoria sm = ServiciosMonitoriasFactory.getInstance().getMonitoriasServices();
-    private Monitoria nuevaMonitoria;
+    private final Monitoria nuevaMonitoria;
     private Grupo grupo;    
     private Franja franjaMonitoria;
     private Estudiante estudianteMonitoria;
+    private Monitoria monitoriaSeleccionada;
 
     public RegistroMonitoriaBean() throws PersistenceException{
-        
+        estudianteMonitoria = new Estudiante();
+        nuevaMonitoria = new Monitoria();
+    }
+    
+    public Monitoria getMonitoriaSeleccionada() {
+        return monitoriaSeleccionada;
+    }
+
+    public void setMonitoriaSeleccionada(Monitoria monitoriaSeleccionada) {
+        this.monitoriaSeleccionada = monitoriaSeleccionada;
     }    
     
     public Monitoria getNuevaMonitoria() {
@@ -44,10 +54,11 @@ public class RegistroMonitoriaBean {
 //        return sm.consultarMonitorias();
 //    }
 //    
-//    public void setNuevaMonitoria(Monitoria nuevaMonitoria) throws PersistenceException, ExcepcionServiciosMonitoria {
-//        sm.registrarMonitoria(nuevaMonitoria);
+//    public void registrarNuevaMonitoria(Monitoria nuevaMonitoria) throws PersistenceException, ExcepcionServiciosMonitoria {
+//        sm.registrarMonitoria(nuevaMonitoria.getId(), nuevaMonitoria.getFecha(), nuevaMonitoria.getHoraInicio(), nuevaMonitoria.getHoraFin(),
+//                nuevaMonitoria.getIp(), nuevaMonitoria.getObservaciones(), nuevaMonitoria.getMonitor().getCodigo());
 //    }
-
+    
     public Grupo getGrupo() {
         return grupo;
     }

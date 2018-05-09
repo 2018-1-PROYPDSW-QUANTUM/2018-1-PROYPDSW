@@ -8,6 +8,7 @@ package edu.eci.pdsw.samples.persistence;
 import java.util.List;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.entities.Asistente;
+import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Monitoria;
 
@@ -44,11 +45,11 @@ public interface AsistenteDAO {
 
     /**
      *
-     * @param t
+     * @param c
      * @return
      * @throws PersistenceException
      */
-    public Asistente loadTemaAsistente(String t) throws PersistenceException;
+    public List<Asistente> loadAsistenteXCurso(Curso c) throws PersistenceException;
 
     /**
      *

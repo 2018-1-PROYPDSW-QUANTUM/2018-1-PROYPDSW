@@ -7,6 +7,8 @@ package edu.eci.pdsw.samples.services.impl;
 
 import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Administrador;
+import edu.eci.pdsw.samples.entities.Asistente;
+import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.persistence.TemaDAO;
 import edu.eci.pdsw.samples.persistence.CursoDAO;
 import edu.eci.pdsw.samples.persistence.GrupoDAO;
@@ -25,6 +27,7 @@ import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,26 +39,26 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
     @Inject
     private AdministradorDAO daoAdministrador;
 
-//    @Inject
-//    private AsistenteDAO daoAsistente;
-//
-//    @Inject
-//    private CursoDAO daoCurso;
-//
-//    @Inject
-//    private EstudianteDAO daoEstudiante;
-//
-//    @Inject
-//    private FranjaDAO daoFranja;
-//
-//    @Inject
-//    private GrupoDAO daoGrupo;
-//
-//    @Inject
-//    private MonitorDAO daoMonitor;
-//
-//    @Inject
-//    private MonitoriaDAO daoMonitoria;
+    @Inject
+    private AsistenteDAO daoAsistente;
+
+    @Inject
+    private CursoDAO daoCurso;
+
+    @Inject
+    private EstudianteDAO daoEstudiante;
+
+    @Inject
+    private FranjaDAO daoFranja;
+
+    @Inject
+    private GrupoDAO daoGrupo;
+
+    @Inject
+    private MonitorDAO daoMonitor;
+
+    @Inject
+    private MonitoriaDAO daoMonitoria;
     @Inject
     private ProfesorDAO daoProfesor;
 
@@ -143,6 +146,30 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
             return daoProfesor.loadAll();
         } catch (PersistenceException e) {
             throw new ExcepcionServiciosMonitoria("Error al consultar todos los profesores registrados. ", e);
+        }
+    }
+
+    @Override
+    public void registrarMonitoria(int id, Date fecha, Date horaInicio, Date horaFin, String direccionIp, String observaciones, int codigoMonitor) throws ExcepcionServiciosMonitoria {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Monitoria consultarMonitoria() throws ExcepcionServiciosMonitoria {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Monitoria> consultarMonitorias() throws ExcepcionServiciosMonitoria {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Asistente> consultarAsistentesXCurso(Curso curso) throws ExcepcionServiciosMonitoria {
+        try {
+            return daoAsistente.loadAsistenteXCurso(curso);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar los asistentes en las monitorias del grupo: " + curso.getNemonico(), e);
         }
     }
 

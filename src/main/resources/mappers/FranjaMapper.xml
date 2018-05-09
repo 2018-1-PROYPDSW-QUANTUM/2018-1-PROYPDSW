@@ -5,10 +5,12 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.FranjaMapper">
     <select parameterType="map" id="consultarFranjaGeneral" resultMap="FranjaResult">
-        SELECT Identificador, dia, hora_inicio, hora_fin, grupo_identificador, curso_nemonico
-        FROM Franja JOIN Grupo ON grupo_identificador=Grupo.Identificador
+        SELECT 
+        f.Identificador, f.dia, f.hora_inicio, f.hora_fin,
+        g.Identificador, g.numero
+        FROM Franja as f JOIN Grupo as g ON f.grupo_identificador=g.Identificador
         <if test="idFranja != null">
-            WHERE Identificador = #{idFranja}
+            WHERE f.Identificador = #{idFranja}
         </if>
     </select>
     
@@ -19,7 +21,7 @@
     
     <resultMap type="Franja" id="FranjaResult">
         <id property="id" column="Identificador"/>
-        <result property="dia" column="dia"/>
+        <result property="dia" column="f.dia"/>
         <result property="horaInicio" column="hora_inicio"/>
         <result property="horaFin" column="hora_fin"/>
         <association property="grupo" javaType="Grupo" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult"/>

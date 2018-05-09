@@ -5,47 +5,135 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <f:view contentType="text/html">
-        <h:head>
-            <f:facet name="first">
-                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>DATOS PROFESOR</title>
-            </f:facet>
-        </h:head>
+    <h:head>
+        <style type="text/css">
+            body{
+                background-image: url(../resources/Fondo.jpg);
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                max-width: 100%;
+                max-height: 100%;
+                margin: auto;
+                overflow: auto;
+            }
+            #Informacion{
+                background-color: #F7F7F5;
+                margin: auto;
+                width: 75%;
+                height: auto;
+                text-align: center;
+                padding: 1%;
+                box-shadow: 0px 7px 20px black;
+                font-family: Verdana;
+                color: grey;
+            }             
+            .Boton{
+                font-family: Verdana, sans-serif;
+                text-transform: uppercase;
+                outline: 0;
+                background: #4CAF50;
+                width: 50%;
+                border: 0;
+                padding: 15px;
+                color: #FFFFFF;
+                font-size: 14px;
+                -webkit-transition: all 0.3 ease;
+                transition: all 0.3 ease;
+                cursor: pointer;
+            }
+            .Titulo{
+                font-family: Verdana;
+                position: relative;
+                z-index: 1;
+                background: #FFFFFF;
+                max-width: 100%;
+                margin: 0 auto 100px;
+                text-align: right;
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+                color: grey;              
+            }
+        </style>
+    </h:head>
 
-        <h:body>
-
-            <p:layout fullPage="true">
-
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    Header
-                </p:layoutUnit>
-
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    Footer
-                </p:layoutUnit>
-
-                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-                    <p:menu>
-                        <p:submenu label="Resources">
-                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
-                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
-                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
-                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
-
-                        </p:submenu>
-
-                    </p:menu>
-                </p:layoutUnit>
-
-                <p:layoutUnit position="center">
-                    Welcome to PrimeFaces
-                </p:layoutUnit>
-
-            </p:layout>
-
-        </h:body>
-
-    </f:view>
+    <h:body>
+        <div class="Titulo">
+            <table>
+                <th>
+                    <img src="../resources/LogoEscuela.png" alt="Logo Escuela"></img>
+                </th>
+                <th width="70%" style="text-align: left;">
+                    <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
+                </th>
+                <th width="30%" style="text-align: center;">
+                <p:button class="Boton" outcome="/index" value="Volver">
+                    <f:param name="productId" value="10" />
+                </p:button>                    
+                </th>
+            </table>
+        </div>
+        <div id="Informacion">
+            <br></br>
+            <h1> | Informacion Monitoria | </h1>
+            <table>
+                <tr>
+                    <th width="20%">
+                <h:form>
+                    <p:dataTable var="profesor" value="#{monitoriaProfesor.profesorMonitoria.grupos}">
+                        <p:column headerText="Materias" >
+                            <h:outputText value="#{profesor.curso.nemonico}" />
+                        </p:column>             
+                    </p:dataTable> 
+                    <br></br><br></br>
+                    <p:splitButton value="Grupo" actionListener="#{buttonView.save}">
+                        <p:menuitem value="Update" actionListener="#{buttonView.update}"/>
+                        <p:menuitem value="Delete" actionListener="#{buttonView.delete}" ajax="false" icon="ui-icon-close" />
+                        <p:separator />
+                        <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink" />
+                    </p:splitButton>  
+                    <br></br><br></br>
+                    <p:button class="Boton" value="Consultar" icon="" style="width: 100%">
+                        <f:param name="productId" value="10" />
+                    </p:button>             
+                </h:form>
+                </th>                
+                <th width="90%" style="float: right;">
+                <p:dataTable var="monitorias" value="#{dtBasicView.cars}">
+                    <f:facet name="header">
+                        <h:outputText value="Monitorias registradas"/>
+                    </f:facet>
+                    <p:column headerText="Codigo estudiante" style="width: 30%">
+                        <h:outputText value="#{car.id}" />
+                    </p:column>
+                    <p:column headerText="Tema">
+                        <h:outputText value="#{car.year}" />
+                    </p:column>              
+                </p:dataTable>
+                </th>
+                </tr>
+            </table>
+        </div>
+        <br></br><br></br>
+        <div id="Informacion">
+            <br></br>
+            <h1> | Informacion Monitoria | </h1>
+            <p:growl id="msgs" showDetail="true" />
+            <p:tabView>
+                <p:tab title="Asesorias">
+                    <p:chart type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px" />
+                </p:tab>
+                <p:tab title="Curso">
+                    <p:chart type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px" />
+                </p:tab>
+                <p:tab title="Grupo">
+                    <p:chart type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px" />
+                </p:tab>
+                <p:tab title="Tema">
+                    <p:chart type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px" />
+                </p:tab>
+            </p:tabView>
+        </div>          
+    </h:body>
 </html>
 

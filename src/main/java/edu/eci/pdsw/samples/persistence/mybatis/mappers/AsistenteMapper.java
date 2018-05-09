@@ -21,7 +21,7 @@ public interface AsistenteMapper {
     
     public Asistente consultarAsistenteXEstudiante(@Param("ecAsistente") Integer estudianteCodigo);
     
-    public Asistente consultarAsistenteXTema(@Param("ecAsistente") String temas);
+    public List<Asistente> consultarAsistentesXMateria(@Param("neCurso") String curso);
     
     public void registrarAsistente(@Param("miAsistente") Integer monitoriaId, 
             @Param("ecAsistente") Integer estudianteCodigo, 
