@@ -17,7 +17,6 @@ public interface SemestreDAO {
     /**
      *
      * @param semestre
-     * @param admin
      * @throws PersistenceException
      */
     public void save(Semestre semestre) throws PersistenceException;

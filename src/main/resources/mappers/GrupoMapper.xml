@@ -32,8 +32,8 @@
     </insert>
      
     <resultMap type="Grupo" id="GrupoResult" >
-        <id property="id" column="g.Identificador"/>
-        <result property="numero" column="g.numero"/>
+        <id property="id" column="Identificador"/>
+        <result property="numero" column="numero"/>
         <association property="semestre" javaType="Semestre" resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.SemestreMapper.SemestreResult"></association>
         <association property="curso" javaType="Curso" resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper.CursoResult"></association>
         <association property="profesor" javaType="Profesor" resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper.ProfesorResult"></association>

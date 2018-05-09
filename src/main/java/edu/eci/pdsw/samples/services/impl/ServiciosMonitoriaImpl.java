@@ -42,23 +42,23 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
     @Inject
     private AsistenteDAO daoAsistente;
 
-//    @Inject
-//    private CursoDAO daoCurso;
-//
-//    @Inject
-//    private EstudianteDAO daoEstudiante;
-//
-//    @Inject
-//    private FranjaDAO daoFranja;
-//
-//    @Inject
-//    private GrupoDAO daoGrupo;
-//
-//    @Inject
-//    private MonitorDAO daoMonitor;
-//
-//    @Inject
-//    private MonitoriaDAO daoMonitoria;
+    @Inject
+    private CursoDAO daoCurso;
+
+    @Inject
+    private EstudianteDAO daoEstudiante;
+
+    @Inject
+    private FranjaDAO daoFranja;
+
+    @Inject
+    private GrupoDAO daoGrupo;
+
+    @Inject
+    private MonitorDAO daoMonitor;
+
+    @Inject
+    private MonitoriaDAO daoMonitoria;
     @Inject
     private ProfesorDAO daoProfesor;
 

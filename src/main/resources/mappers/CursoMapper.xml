@@ -23,11 +23,11 @@
     </insert>
     
     <resultMap type='Curso' id='CursoResult'>
-        <id property='nemonico' column='c.Nemonico'/>
-        <result property='nombre' column='c.nombre'/>
-        <result property='creditosacAdemicos' column='c.creditos'/>
-        <result property='horasMonitoria' column='c.horas_monitoria'/>
+        <id property='nemonico' column='Nemonico'/>
+        <result property='nombre' column='nombre'/>
+        <result property='creditosacAdemicos' column='creditos'/>
+        <result property='horasMonitoria' column='horas_monitoria'/>
         <collection property='grupos' ofType='Grupo' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.GrupoMapper.GrupoResult'></collection>
-        <collection property='temas' ofType='Tema' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.TemaMapper.TemaResult'></collection>
+        <!--<collection property='temas' ofType='Tema' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.TemaMapper.TemaResult'></collection>-->
     </resultMap>
 </mapper>

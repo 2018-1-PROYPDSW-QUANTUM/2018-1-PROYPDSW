@@ -5,10 +5,11 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.AdministradorMapper">
     <select parameterType="map" id="consultarAdministradorGeneral" resultMap="AdministradorResult">
-        SELECT Codigo, nombre, apellido, celular, correo, clave
-        FROM Administrador
+        SELECT 
+        a.Codigo, a.nombre, a.apellido, a.celular, a.correo, a.clave
+        FROM Administrador as a
         <if test="coAdmin != null">
-            WHERE codigo = #{coAdmin}
+            WHERE a.Codigo = #{coAdmin}
         </if>
     </select>
     

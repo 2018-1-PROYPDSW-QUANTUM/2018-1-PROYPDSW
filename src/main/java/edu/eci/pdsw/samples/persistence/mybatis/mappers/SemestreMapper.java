@@ -52,11 +52,11 @@ public interface SemestreMapper {
      * @param fechaFin
      * @param adminCodigo
      */
-    public void registrarSemestre(@Param("idSemestre") Integer id, 
-            @Param("yeSemestre") Integer years, 
-            @Param("paSemestre") String periodoAcademico, 
-            @Param("fiSemestre") Date fechaInicio, 
-            @Param("ffSemestre") Date fechaFin, 
+    public void registrarSemestre(@Param("idSemestre") Integer id,
+            @Param("yeSemestre") Integer years,
+            @Param("paSemestre") String periodoAcademico,
+            @Param("fiSemestre") Date fechaInicio,
+            @Param("ffSemestre") Date fechaFin,
             @Param("acSemestre") Integer adminCodigo);
 
 }

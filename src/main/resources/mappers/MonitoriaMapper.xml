@@ -21,11 +21,11 @@
     </insert>
     
     <resultMap type="Monitoria" id="MonitoriaResult">
-        <id property="id" column="mo.Identificador"/>
-        <result property="fecha" column="mo.fecha"/>
-        <result property="horaInicio" column="mo.hora_inicio"/>
-        <result property="horaFin" column="mo.hora_fin"/>
-        <result property="ip" column="mo.ip"/>
+        <id property="id" column="Identificador"/>
+        <result property="fecha" column="fecha"/>
+        <result property="horaInicio" column="hora_inicio"/>
+        <result property="horaFin" column="hora_fin"/>
+        <result property="ip" column="ip"/>
         <result property="observaciones" column="mo.observaciones"/>
         <association property="monitor" javaType="Monitor" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper.MonitorResult"/>
         <collection property="asistentes" ofType="Asistente" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.AsistenteMapper.AsistenteResult"/>

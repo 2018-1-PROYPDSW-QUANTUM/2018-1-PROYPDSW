@@ -21,12 +21,12 @@
     </insert>
     
     <resultMap type='Profesor' id='ProfesorResult'>
-        <id property='codigo' column='p.Codigo'/>
-        <result property='nombre' column='p.nombre'/>
-        <result property='apellido' column='p.apellido'/>
-        <result property='celular' column='p.celular'/>
-        <result property='correo' column='p.correo'/>
-        <result property='clave' column='p.clave'/>
+        <id property='codigo' column='Codigo'/>
+        <result property='nombre' column='nombre'/>
+        <result property='apellido' column='apellido'/>
+        <result property='celular' column='celular'/>
+        <result property='correo' column='correo'/>
+        <result property='clave' column='clave'/>
         <collection property='grupos' ofType='Grupo' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult"></collection>
     </resultMap> 
 </mapper>

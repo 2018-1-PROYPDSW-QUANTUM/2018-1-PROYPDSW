@@ -20,10 +20,10 @@
     </insert>
     
     <resultMap type="Franja" id="FranjaResult">
-        <id property="id" column="f.Identificador"/>
+        <id property="id" column="Identificador"/>
         <result property="dia" column="f.dia"/>
-        <result property="horaInicio" column="f.hora_inicio"/>
-        <result property="horaFin" column="f.hora_fin"/>
+        <result property="horaInicio" column="hora_inicio"/>
+        <result property="horaFin" column="hora_fin"/>
         <association property="grupo" javaType="Grupo" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult"/>
     </resultMap>
       	

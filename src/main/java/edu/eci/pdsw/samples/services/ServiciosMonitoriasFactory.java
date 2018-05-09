@@ -64,7 +64,7 @@ public class ServiciosMonitoriasFactory {
                 bind(MonitoriaDAO.class).to(MyBATISMonitoriaDAO.class);
                 bind(ProfesorDAO.class).to(MyBATISProfesorDAO.class);
                 bind(SemestreDAO.class).to(MyBATISSemestreDAO.class);
-                bind(TemaDAO.class).to(MyBATISTemaDAO.class);
+//                bind(TemaDAO.class).to(MyBATISTemaDAO.class);
             }
 
         }
@@ -88,7 +88,7 @@ public class ServiciosMonitoriasFactory {
                 bind(MonitoriaDAO.class).to(MyBATISMonitoriaDAO.class);
                 bind(ProfesorDAO.class).to(MyBATISProfesorDAO.class);
                 bind(SemestreDAO.class).to(MyBATISSemestreDAO.class);
-                bind(TemaDAO.class).to(MyBATISTemaDAO.class);
+//                bind(TemaDAO.class).to(MyBATISTemaDAO.class);
             }
 
         }

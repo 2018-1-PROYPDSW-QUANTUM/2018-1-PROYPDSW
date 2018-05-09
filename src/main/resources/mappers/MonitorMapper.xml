@@ -22,14 +22,14 @@
     <!--celular, clave se podran actualizar-->
     
     <resultMap type="Monitor" id="MonitorResult" >
-        <id property="codigo" column="m.Codigo"/>
-        <result property="semestreIngreso" column="m.semsetre_ingreso"/>
-        <result property="programaAcademico" column="m.programa_academico"/>
-        <result property="nombre" column="m.nombre"/>
-        <result property="apellido" column="m.apellido"/>
-        <result property="celular" column="m.celular"/>
-        <result property="correo" column="m.correo"/>
-        <result property="clave" column="m.clave"/>
+        <id property="codigo" column="Codigo"/>
+        <result property="semestreIngreso" column="semsetre_ingreso"/>
+        <result property="programaAcademico" column="programa_academico"/>
+        <result property="nombre" column="nombre"/>
+        <result property="apellido" column="apellido"/>
+        <result property="celular" column="celular"/>
+        <result property="correo" column="correo"/>
+        <result property="clave" column="clave"/>
         <collection property='gruposMonitor' ofType='Grupo' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.GrupoMapper.GrupoResult'></collection>
     </resultMap>
       	

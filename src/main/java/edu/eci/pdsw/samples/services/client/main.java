@@ -28,6 +28,6 @@ public class main {
 //        ServiciosMonitoriasFactory.getInstance().getMonitoriasServices().registrarAdministrador(admin);
 //        ServiciosMonitoriasFactory.getInstance().getMonitoriasServices().registrarSemestre(sem);
 //        ServiciosMonitoriasFactory.getInstance().getMonitoriasServices().registrarProfesor(pro);
-        System.out.println(ServiciosMonitoriasFactory.getInstance().getMonitoriasServices().consultarProfesores());
+//        System.out.println(ServiciosMonitoriasFactory.getInstance().getMonitoriasServices().consultarProfesores());
     }
 }

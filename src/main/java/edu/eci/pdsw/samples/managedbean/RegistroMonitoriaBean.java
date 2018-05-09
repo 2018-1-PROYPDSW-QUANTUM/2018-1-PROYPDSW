@@ -50,14 +50,14 @@ public class RegistroMonitoriaBean {
         return nuevaMonitoria;
     }
 
-    public List<Monitoria>consultarMonitorias() throws ExcepcionServiciosMonitoria{
-        return sm.consultarMonitorias();
-    }
-    
-    public void registrarNuevaMonitoria(Monitoria nuevaMonitoria) throws PersistenceException, ExcepcionServiciosMonitoria {
-        sm.registrarMonitoria(nuevaMonitoria.getId(), nuevaMonitoria.getFecha(), nuevaMonitoria.getHoraInicio(), nuevaMonitoria.getHoraFin(),
-                nuevaMonitoria.getIp(), nuevaMonitoria.getObservaciones(), nuevaMonitoria.getMonitor().getCodigo());
-    }
+//    public List<Monitoria>consultarMonitorias() throws ExcepcionServiciosMonitoria{
+//        return sm.consultarMonitorias();
+//    }
+//    
+//    public void registrarNuevaMonitoria(Monitoria nuevaMonitoria) throws PersistenceException, ExcepcionServiciosMonitoria {
+//        sm.registrarMonitoria(nuevaMonitoria.getId(), nuevaMonitoria.getFecha(), nuevaMonitoria.getHoraInicio(), nuevaMonitoria.getHoraFin(),
+//                nuevaMonitoria.getIp(), nuevaMonitoria.getObservaciones(), nuevaMonitoria.getMonitor().getCodigo());
+//    }
     
     public Grupo getGrupo() {
         return grupo;
