@@ -26,15 +26,17 @@ public class Monitoria {
     public Monitoria() {
     }
 
-    public Monitoria(Integer id, Date fecha, Date horaInicio, Date horaFin, String ip, String observaciones, Monitor monitor, List<Asistente> asistentes) {
+    public Monitoria(Integer id, Date fecha, Date horaInicio, Date horaFin, String ip, String observaciones, Monitor monitor) {
         this.id = id;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.ip = ip;
         this.observaciones = observaciones;
-        this.monitor = monitor;
-        this.asistentes = asistentes;
+    }
+    
+    public void agregarAsistente(Asistente asistente){
+        asistentes.add(asistente);
     }
 
     public Integer getId() {

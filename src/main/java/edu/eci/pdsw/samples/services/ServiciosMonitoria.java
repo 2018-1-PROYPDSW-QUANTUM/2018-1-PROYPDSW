@@ -11,6 +11,7 @@ import edu.eci.pdsw.samples.entities.Administrador;
 import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.entities.Asistente;
 import edu.eci.pdsw.samples.entities.Curso;
+import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.entities.Profesor;
 import java.util.Date;
 
@@ -19,6 +20,8 @@ import java.util.Date;
  * @author jonnhi
  */
 public interface ServiciosMonitoria {
+    
+    public abstract Monitor consultarMonitor(Integer codigo) throws ExcepcionServiciosMonitoria;
 
     /**
      *

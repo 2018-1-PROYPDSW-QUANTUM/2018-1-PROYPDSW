@@ -13,29 +13,65 @@ import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
+import java.io.Serializable;
+import java.util.Date;
+import javax.enterprise.context.SessionScoped;
 import java.util.List;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+
+
+
 
 /**
  *
  * @author camil
  */
 
-@ManagedBean(name = "registrarMonitoria")
 @SessionScoped
-public class RegistroMonitoriaBean {
-    
+@Named("registrarMonitoria")
+public class RegistroMonitoriaBean implements Serializable{
     private ServiciosMonitoria sm = ServiciosMonitoriasFactory.getInstance().getMonitoriasServices();
     private final Monitoria nuevaMonitoria;
     private Grupo grupo;    
     private Franja franjaMonitoria;
-    private Estudiante estudianteMonitoria;
+    private int estudianteMonitoria;
     private Monitoria monitoriaSeleccionada;
-
-    public RegistroMonitoriaBean() throws PersistenceException{
-        estudianteMonitoria = new Estudiante();
+    private final List<Monitoria> cMonitorias;
+    private Integer monitorCodigo;
+    private String curso;
+    private String observaciones;
+    
+    
+    public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria{
+        cMonitorias=sm.consultarMonitorias();
         nuevaMonitoria = new Monitoria();
+    }
+    
+    public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria{
+        sm.registrarMonitoria(sm.consultarMonitorias().size(), new Date(), new Date(), new Date(), "xxx.xx.xx", observaciones,monitorCodigo);
+    }
+    
+    public String getObservaciones(){
+        return observaciones;
+    }
+    
+    public void setObservaciones(String observaciones){
+        this.observaciones=observaciones;
+    }
+    
+    public Integer getMonitorCodigo(){
+        return monitorCodigo;
+    }
+    
+    public void setMonitorCodigo(Integer monitorCodigo){
+        this.monitorCodigo=monitorCodigo;
+    }
+    public String getCurso(){
+        return curso;
+    }
+    
+    public void setCurso(String curso){
+        this.curso=curso;
     }
     
     public Monitoria getMonitoriaSeleccionada() {
@@ -50,14 +86,15 @@ public class RegistroMonitoriaBean {
         return nuevaMonitoria;
     }
 
-//    public List<Monitoria>consultarMonitorias() throws ExcepcionServiciosMonitoria{
-//        return sm.consultarMonitorias();
-//    }
-//    
-//    public void registrarNuevaMonitoria(Monitoria nuevaMonitoria) throws PersistenceException, ExcepcionServiciosMonitoria {
-//        sm.registrarMonitoria(nuevaMonitoria.getId(), nuevaMonitoria.getFecha(), nuevaMonitoria.getHoraInicio(), nuevaMonitoria.getHoraFin(),
-//                nuevaMonitoria.getIp(), nuevaMonitoria.getObservaciones(), nuevaMonitoria.getMonitor().getCodigo());
-//    }
+
+    public List<Monitoria> getCMonitorias() throws ExcepcionServiciosMonitoria{
+        return cMonitorias;
+    }
+    
+    public void registrarNuevaMonitoria(Monitoria nuevaMonitoria) throws PersistenceException, ExcepcionServiciosMonitoria {
+        sm.registrarMonitoria(nuevaMonitoria.getId(), nuevaMonitoria.getFecha(), nuevaMonitoria.getHoraInicio(), nuevaMonitoria.getHoraFin(),
+                nuevaMonitoria.getIp(), nuevaMonitoria.getObservaciones(), nuevaMonitoria.getMonitor().getCodigo());
+    }
     
     public Grupo getGrupo() {
         return grupo;
@@ -83,11 +120,11 @@ public class RegistroMonitoriaBean {
         this.franjaMonitoria = franjaMonitoria;
     }
 
-    public Estudiante getEstudianteMonitoria() {
+    public int getEstudianteMonitoria() {
         return estudianteMonitoria;
     }
 
-    public void setEstudianteMonitoria(Estudiante estudianteMonitoria) {
+    public void setEstudianteMonitoria(int estudianteMonitoria) {
         this.estudianteMonitoria = estudianteMonitoria;
     }
     

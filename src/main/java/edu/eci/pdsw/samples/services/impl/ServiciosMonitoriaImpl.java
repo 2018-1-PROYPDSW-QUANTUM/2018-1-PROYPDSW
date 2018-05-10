@@ -9,6 +9,7 @@ import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Administrador;
 import edu.eci.pdsw.samples.entities.Asistente;
 import edu.eci.pdsw.samples.entities.Curso;
+import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.persistence.TemaDAO;
 import edu.eci.pdsw.samples.persistence.CursoDAO;
 import edu.eci.pdsw.samples.persistence.GrupoDAO;
@@ -59,6 +60,7 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
 
     @Inject
     private MonitoriaDAO daoMonitoria;
+
     @Inject
     private ProfesorDAO daoProfesor;
 
@@ -170,6 +172,15 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
             return daoAsistente.loadAsistenteXCurso(curso);
         } catch (PersistenceException e) {
             throw new ExcepcionServiciosMonitoria("Error al consultar los asistentes en las monitorias del grupo: " + curso.getNemonico(), e);
+        }
+    }
+
+    @Override
+    public Monitor consultarMonitor(Integer codigo) throws ExcepcionServiciosMonitoria {
+        try {
+            return daoMonitor.load(codigo);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar el monitor con codigo: " + codigo, e);
         }
     }
 
