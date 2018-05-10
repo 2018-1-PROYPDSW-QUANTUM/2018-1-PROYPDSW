@@ -40,7 +40,7 @@ and open the template in the editor.
                 z-index: 1;
                 background: #FFFFFF;
                 max-width: 100%;
-                margin: 0 auto 100px;
+                margin: 0 auto 10%;
                 text-align: right;
                 box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
                 color: grey;              
@@ -67,51 +67,52 @@ and open the template in the editor.
                 <th>
                     <img src="resources/LogoEscuela.png" alt="Logo Escuela"></img>
                 </th>
-                <th width="33%" style="text-align: left;">
+                <th width="70%" style="text-align: left;">
                     <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
                 </th>
 
                 <th width="30%" style="text-align: center;">
                     <p:button class="Boton" outcome="/login" value="Iniciar Sesion" icon="">
                     </p:button>
-                </th>
-                <th width="33%" style="text-align: center;">
-                    <p:button class="Boton" outcome="/profesor/w" value="Profesor" icon="">
-                        <f:param name="productId" value="10" />
-                    </p:button>                    
-                </th>                
-                <th width="33%" style="text-align: center;">
-                    <p:button class="Boton" outcome="/monitor/w" value="Iniciar Sesion" icon="">
-
-
-                        <f:param name="productId" value="10" />
-                    </p:button>                    
-                </th>
+                </th>                 
             </table>
         </div>       
         <div id="Informacion">
             <br></br>
             <h1> | Monitorias Disponibles | </h1>
-            <p:dataTable var="car" value="#{dtBasicView.cars}">
-                <p:column headerText="Materia">
-                    <h:outputText value="#{car.id}" />
-                </p:column>
-                <p:column headerText="Monitor">
-                    <h:outputText value="#{car.year}" />
-                </p:column>
-                <p:column headerText="Grupo">
-                    <h:outputText value="#{car.brand}" />
-                </p:column>
-                <p:column headerText="Hora Inicio">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
-                <p:column headerText="Hora Fin">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
-                <p:column headerText="Salon">
-                    <h:outputText value="#{car.color}" />
-                </p:column>               
-            </p:dataTable>            
+            <table>
+                <tr>
+                    <th width="20%">
+                        <p:dataTable var="profesor">
+                            <p:column headerText="Materias" >
+                                <h:outputText />
+                            </p:column>             
+                        </p:dataTable> 
+                    </th>
+                    <th width="90%" style="float: right;">
+                        <p:dataTable var="car" value="#{dtBasicView.cars}">
+                            <p:column headerText="Materia">
+                                <h:outputText value="#{car.id}" />
+                            </p:column>
+                            <p:column headerText="Monitor">
+                                <h:outputText value="#{car.year}" />
+                            </p:column>
+                            <p:column headerText="Grupo">
+                                <h:outputText value="#{car.brand}" />
+                            </p:column>
+                            <p:column headerText="Hora Inicio">
+                                <h:outputText value="#{car.color}" />
+                            </p:column>
+                            <p:column headerText="Hora Fin">
+                                <h:outputText value="#{car.color}" />
+                            </p:column>
+                            <p:column headerText="Salon">
+                                <h:outputText value="#{car.color}" />
+                            </p:column>               
+                        </p:dataTable>
+                    </th>
+                </tr>
+            </table>
         </div>
         <h:form prependId="false">
             <p:outputPanel deferred="true" style="text-align: center">

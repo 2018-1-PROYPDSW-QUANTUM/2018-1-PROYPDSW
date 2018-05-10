@@ -12,55 +12,15 @@ and open the template in the editor.
     <h:head>
         <style type="text/css">
             body{
-                background-color: #B50005;
-            }
-            #RegistroTitulo{
-                background-color: #F7F7F5;
+                background-image: url(../resources/Fondo.jpg);
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                max-width: 100%;
+                max-height: 100%;
                 margin: auto;
-                width: 50%;
-                height: auto;
-                text-align: center;
-                padding: 1%;
-                box-shadow: 0px 7px 20px black;
-                font-family: Verdana;              
-            }
-            #Registro{
-                background-color: #F7F7F5;
-                margin: auto;
-                width: 25%;
-                height: auto;
-                text-align: center;
-                box-shadow: 0px 7px 20px black;
-                padding: 1%;
-            }
-            #Fecha{
-                textalign: center;
-                display: inline-block;
-                width: 100%;
-            }
-            .Input{
-                font-family: Verdana;
-                textalign: left;
-                width: 100%;
-                padding: 5%;                    
-                display: inline-block;
-                border-radius: 0px;
-                box-sizing: content-box;
-                box-shadow: 0px 0px;
-                border-width: 0px;
-                background-color: #E5E5E4;
-                box-sizing: border-box; /* Evita que se salga de la forma padre */
-            }
-            .Boton{
-                font-family: Verdana;
-                text-align: center;
-                width: 70%;
-                padding: 6%;                    
-                display: inline-block;
-                border-radius: 0px;
-                box-sizing: content-box;
-                border: 0px;
-                background-color: #AB1C09;
+                overflow: auto;
             }
             #Panel{
                 width: 100%;
@@ -74,35 +34,97 @@ and open the template in the editor.
                 text-align: center;
                 padding: 1%;
                 box-shadow: 0px 7px 20px black;
-                font-family: Verdana;                 
+                font-family: Verdana;
+                color: grey;                
+            }            
+            #Fecha{
+                text-align: center;
+                display: inline-block;
+                width: 100%;
             }
+            .form{
+                position: relative;
+                z-index: 1;
+                background: #FFFFFF;
+                max-width: 30%;
+                margin: 0 auto 1%;
+                padding: 3%;
+                text-align: center;
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+                top: 10%;
+                color: grey;
+                font-family: Verdana;
+            }            
+            .form input {
+                font-family: "Roboto", sans-serif;
+                outline: 0;
+                background: #f2f2f2;
+                width: 100%;
+                border: 0;
+                margin: 0 0 15px;
+                padding: 15px;
+                box-sizing: border-box;
+                font-size: 14px;
+            } 
+            .Boton{
+                font-family: Verdana, sans-serif;
+                text-transform: uppercase;
+                outline: 0;
+                background: #4CAF50;
+                width: 50%;
+                border: 0;
+                padding: 15px;
+                color: #FFFFFF;
+                font-size: 14px;
+                -webkit-transition: all 0.3 ease;
+                transition: all 0.3 ease;
+                cursor: pointer;
+            } 
+            .Titulo{
+                font-family: Verdana;
+                position: relative;
+                z-index: 1;
+                background: #FFFFFF;
+                max-width: 100%;
+                margin: 0 auto 2%;
+                text-align: right;
+                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+                color: grey;              
+            }            
         </style>
     </h:head>
     <h:body>
-        <div id="RegistroTitulo">
-            <h1> Registro De Monitoria </h1>
-        </div>
+        <div class="Titulo">
+            <table>
+                <th>
+                    <img src="../resources/LogoEscuela.png" alt="Logo Escuela"></img>
+                </th>
+                <th width="70%" style="text-align: left;">
+                    <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
+                </th>
+
+                <th width="30%" style="text-align: center;">
+                    <p:button class="Boton" outcome="/login" value="Cerrar Sesion" icon="">
+                    </p:button>
+                </th>                 
+            </table>
+        </div> 
         <br></br>
-        <div id="Registro">
+        <div class="form">
             <h:form id="Fecha" prependId="false">
                 <h:panelGrid id="Panel" columns="1">
-                    <h:outputLabel value="Monitor(Codigo): "/>
-                    <p:inputText id="monitor" value="#{registrarMonitoria.monitorCodigo}" required="true"/>
-                    <h:outputLabel value="Materia(neumonico): "/>
-                    <p:inputText id="materia" value="#{registrarMonitoria.curso}" required="true" label="Keyword"/>
-                    <h:outputLabel value="Grupo:"/>
-                    <p:inputText id="grupo" value="#{registrarMonitoria.grupo}" required="true" label="Keyword"/>
-                    <h:outputLabel value="Estudiante "/>
-                    <p:inputText id="estudiante"  value="#{registrarMonitoria.estudianteMonitoria}" required="true" label="Keyword"/>         
-                    <h3>observaciones</h3>
-                    <p:inputTextarea id="observaciones" rows="6" cols="33" value="#{registrarMonitoria.observaciones}" required="true" label="Keyword"/>                  
+                    <h1>| Registrar Monitoria |</h1>
+                    <p:inputText placeholder="Monitor(Codigo)" id="monitor" value="#{registrarMonitoria.monitorCodigo}" required="true"/>
+                    <p:inputText placeholder="Materia(neumonico)" id="materia" value="#{registrarMonitoria.curso}" required="true" label="Keyword"/>
+                    <p:inputText placeholder="Grupo" id="grupo" value="#{registrarMonitoria.grupo}" required="true" label="Keyword"/>
+                    <p:inputText placeholder="Estudiante" id="estudiante"  value="#{registrarMonitoria.estudianteMonitoria}" required="true" label="Keyword"/>         
+                    <p:inputTextarea placeholder="Observaciones" style="text-align:center;" id="observaciones" rows="6" cols="33" value="#{registrarMonitoria.observaciones}" required="true" label="Keyword"/>                  
                     <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaMonitoria}" styleClass="ui-priority-primary" />
                 </h:panelGrid>   
             </h:form>
         </div>
-        <br></br>
         <div id="Monitorias">
-            <h1> Monitorias </h1>
+            <h1> Monitorias Registradas </h1>
             <p:dataTable var="monitorias" value="#{registrarMonitoria.cMonitorias}" selection="#{RegistroMonitorias.monitoriaSeleccionada}" id="monitoria">
                 <p:column headerText="Materia">
                     <h:outputText value="#{monitorias.getMonitor().getGruposMonitor().getCurso().getNemonico()}" />
