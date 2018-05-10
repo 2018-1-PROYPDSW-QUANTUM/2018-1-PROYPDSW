@@ -80,4 +80,10 @@ public class Semestre {
         this.admin = admin;
     }
 
+    @Override
+    public String toString() {
+        return "Semestre {" + "id=" + id + ", year=" + years + ", Periodo academico=" + periodoAcademico + 
+                ", Fecha inicio=" + fechaInicio + ", Fecha fin=" + fechaFin + ", Administrador=" + admin + '}';
+    }
+
 }

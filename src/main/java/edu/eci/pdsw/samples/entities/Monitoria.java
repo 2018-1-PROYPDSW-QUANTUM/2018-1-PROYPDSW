@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -16,27 +17,21 @@ public class Monitoria {
 
     private Integer id;
     private Date fecha;
-    private Date horaInicio;
-    private Date horaFin;
+    private LocalTime horaInicio;
+    private LocalTime horaFin;
     private String ip;
     private String observaciones;
-    private Monitor monitor;
-    private List<Asistente> asistentes;
 
     public Monitoria() {
     }
 
-    public Monitoria(Integer id, Date fecha, Date horaInicio, Date horaFin, String ip, String observaciones, Monitor monitor) {
+    public Monitoria(Integer id, Date fecha, LocalTime horaInicio, LocalTime horaFin, String ip, String observaciones) {
         this.id = id;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.ip = ip;
         this.observaciones = observaciones;
-    }
-    
-    public void agregarAsistente(Asistente asistente){
-        asistentes.add(asistente);
     }
 
     public Integer getId() {
@@ -55,19 +50,19 @@ public class Monitoria {
         this.fecha = fecha;
     }
 
-    public Date getHoraInicio() {
+    public LocalTime getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(Date horaInicio) {
+    public void setHoraInicio(LocalTime horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public Date getHoraFin() {
+    public LocalTime getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(Date horaFin) {
+    public void setHoraFin(LocalTime horaFin) {
         this.horaFin = horaFin;
     }
 
@@ -87,19 +82,10 @@ public class Monitoria {
         this.observaciones = observaciones;
     }
 
-    public Monitor getMonitor() {
-        return monitor;
+    @Override
+    public String toString() {
+        return "Monitoria {" + "Id=" + id + ", Fecha=" + fecha + ", Hora inicio=" + horaInicio
+                + ", Hora fin=" + horaFin + ", Ip=" + ip + ", Observaciones=" + observaciones + '}';
     }
 
-    public void setMonitor(Monitor monitor) {
-        this.monitor = monitor;
-    }
-
-    public List<Asistente> getAsistentes() {
-        return asistentes;
-    }
-
-    public void setAsistentes(List<Asistente> asistentes) {
-        this.asistentes = asistentes;
-    }
 }

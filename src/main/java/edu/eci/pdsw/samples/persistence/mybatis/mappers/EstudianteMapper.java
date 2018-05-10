@@ -29,7 +29,7 @@ public interface EstudianteMapper {
      * @param codigo
      * @return
      */
-    default List<Estudiante> consultarEstudiantes(Integer codigo) {
+    default List<Estudiante> consultarEstudiantes() {
         return consultarEstudianteGeneral(null);
     }
 

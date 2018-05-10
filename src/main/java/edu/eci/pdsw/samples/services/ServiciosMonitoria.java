@@ -11,8 +11,13 @@ import edu.eci.pdsw.samples.entities.Administrador;
 import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.entities.Asistente;
 import edu.eci.pdsw.samples.entities.Curso;
+import edu.eci.pdsw.samples.entities.Estudiante;
+import edu.eci.pdsw.samples.entities.EstudianteCursa;
+import edu.eci.pdsw.samples.entities.Franja;
+import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.entities.Profesor;
+import edu.eci.pdsw.samples.entities.Tema;
 import java.util.Date;
 
 /**
@@ -20,16 +25,8 @@ import java.util.Date;
  * @author jonnhi
  */
 public interface ServiciosMonitoria {
-    
-    public abstract Monitor consultarMonitor(Integer codigo) throws ExcepcionServiciosMonitoria;
 
-    /**
-     *
-     * @param curso
-     * @return
-     * @throws ExcepcionServiciosMonitoria
-     */
-    public List<Asistente> consultarAsistentesXCurso(Curso curso) throws ExcepcionServiciosMonitoria;
+    public abstract Monitor consultarMonitor(Integer codigo) throws ExcepcionServiciosMonitoria;
 
     /**
      *
@@ -51,6 +48,85 @@ public interface ServiciosMonitoria {
      * @return @throws ExcepcionServiciosMonitoria
      */
     public abstract List<Administrador> consultarAdministradores() throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @return @throws ExcepcionServiciosMonitoria
+     */
+    public abstract List<Asistente> consultarAsistentes() throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @param curso
+     * @return
+     * @throws ExcepcionServiciosMonitoria
+     */
+    public List<Asistente> consultarAsistentesXCurso(Curso curso) throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @return @throws ExcepcionServiciosMonitoria
+     */
+    public abstract List<Curso> consultarCursos() throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @return @throws ExcepcionServiciosMonitoria
+     */
+    public abstract List<EstudianteCursa> consultarEstudiantesCursan() throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @return @throws ExcepcionServiciosMonitoria
+     */
+    public abstract List<Estudiante> consultarEstudiantes() throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @return @throws ExcepcionServiciosMonitoria
+     */
+    public abstract List<Franja> consultarFranjas() throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @param id
+     * @return
+     * @throws ExcepcionServiciosMonitoria
+     */
+    public abstract Grupo consultarGrupo(Integer id) throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @return @throws ExcepcionServiciosMonitoria
+     */
+    public abstract List<Grupo> consultarGrupos() throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @return @throws ExcepcionServiciosMonitoria
+     */
+    public abstract List<Monitor> consultarMonitores() throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @param mo
+     * @param m
+     * @throws ExcepcionServiciosMonitoria
+     */
+    public abstract void registrarMonitoria(Monitoria mo, Monitor m)
+            throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @return @throws ExcepcionServiciosMonitoria
+     */
+    public abstract Monitoria consultarMonitoria() throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @return @throws ExcepcionServiciosMonitoria
+     */
+    public abstract List<Monitoria> consultarMonitorias() throws ExcepcionServiciosMonitoria;
 
     /**
      *
@@ -97,29 +173,8 @@ public interface ServiciosMonitoria {
 
     /**
      *
-     * @param id
-     * @param fecha
-     * @param horaInicio
-     * @param horaFin
-     * @param direccionIp
-     * @param observaciones
-     * @param codigoMonitor
-     * @throws ExcepcionServiciosMonitoria
+     * @return @throws ExcepcionServiciosMonitoria
      */
-    public abstract void registrarMonitoria(int id, Date fecha, Date horaInicio, Date horaFin, String direccionIp, String observaciones, int codigoMonitor)
-            throws ExcepcionServiciosMonitoria;
+    public abstract List<Tema> consultarTemas() throws ExcepcionServiciosMonitoria;
 
-    /**
-     *
-     * @return
-     * @throws ExcepcionServiciosMonitoria
-     */
-    public abstract Monitoria consultarMonitoria() throws ExcepcionServiciosMonitoria;
-
-    /**
-     *
-     * @return
-     * @throws ExcepcionServiciosMonitoria
-     */
-    public abstract List<Monitoria> consultarMonitorias() throws ExcepcionServiciosMonitoria;
 }

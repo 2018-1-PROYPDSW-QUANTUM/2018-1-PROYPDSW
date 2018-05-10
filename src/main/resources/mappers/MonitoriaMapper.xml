@@ -6,9 +6,14 @@
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitoriaMapper">
     <select parameterType="map" id="consultarMonitoriaGeneral" resultMap="MonitoriaResult">
         SELECT 
-        mo.Identificador, mo.fecha, mo.hora_inicio, mo.hora_fin, mo.ip, mo.observaciones, 
-        m.Codigo, m.semsetre_ingreso, m.programa_academico, m.nombre, m.apellido, m.celular, m.correo, m.clave
-        FROM Monitoria as mo JOIN Monitor as m ON mo.monitor_codigo=m.codigo 
+        mo.Identificador as mo_Identificador, 
+        mo.fecha as mo_fecha, 
+        mo.hora_inicio as mo_hora_inicio, 
+        mo.hora_fin as mo_hora_fin, 
+        mo.ip as mo_ip, 
+        mo.observaciones as mo_observaciones
+        
+        FROM Monitoria as mo
             JOIN Asistente as a ON mo.Identificador=a.Monitoria_identificador
         <if test="idMonitoria != null">
             WHERE mo.Identificador = #{idMonitoria}
@@ -21,14 +26,12 @@
     </insert>
     
     <resultMap type="Monitoria" id="MonitoriaResult">
-        <id property="id" column="Identificador"/>
-        <result property="fecha" column="fecha"/>
-        <result property="horaInicio" column="hora_inicio"/>
-        <result property="horaFin" column="hora_fin"/>
-        <result property="ip" column="ip"/>
-        <result property="observaciones" column="mo.observaciones"/>
-        <association property="monitor" javaType="Monitor" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper.MonitorResult"/>
-        <collection property="asistentes" ofType="Asistente" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.AsistenteMapper.AsistenteResult"/>
+        <id property="id" column="mo_Identificador"/>
+        <result property="fecha" column="mo_fecha"/>
+        <result property="horaInicio" column="mo_hora_inicio"/>
+        <result property="horaFin" column="mo_hora_fin"/>
+        <result property="ip" column="mo_ip"/>
+        <result property="observaciones" column="mo_observaciones"/>
     </resultMap>
       	
 </mapper>

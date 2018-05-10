@@ -15,20 +15,18 @@ public class Curso {
 
     private String nemonico;
     private String nombre;
-    private int creditosAcademicos;
-    private int horasMonitoria;
-    private List<Grupo> grupos;
+    private int creditos;
+    private double horasMonitoria;
     private List<Tema> temas;
 
     public Curso() {
     }
 
-    public Curso(String nemonico, String nombre, int creditosAcademicos, int horasMonitoria, List<Grupo> grupos, List<Tema> temas) {
-        this.nombre = nombre;
+    public Curso(String nemonico, String nombre, int creditos, double horasMonitoria, List<Tema> temas) {
         this.nemonico = nemonico;
-        this.creditosAcademicos = creditosAcademicos;
+        this.nombre = nombre;
+        this.creditos = creditos;
         this.horasMonitoria = horasMonitoria;
-        this.grupos = grupos;
         this.temas = temas;
     }
 
@@ -48,28 +46,20 @@ public class Curso {
         this.nombre = nombre;
     }
 
-    public int getCreditosAcademicos() {
-        return creditosAcademicos;
+    public int getCreditos() {
+        return creditos;
     }
 
-    public void setCreditosAcademicos(int creditosAcademicos) {
-        this.creditosAcademicos = creditosAcademicos;
+    public void setCreditos(int creditos) {
+        this.creditos = creditos;
     }
 
-    public int getHorasMonitoria() {
+    public double getHorasMonitoria() {
         return horasMonitoria;
     }
 
-    public void setHorasMonitoria(int horasMonitoria) {
+    public void setHorasMonitoria(double horasMonitoria) {
         this.horasMonitoria = horasMonitoria;
-    }
-
-    public List<Grupo> getGrupos() {
-        return grupos;
-    }
-
-    public void setGrupos(List<Grupo> grupos) {
-        this.grupos = grupos;
     }
 
     public List<Tema> getTemas() {
@@ -78,6 +68,12 @@ public class Curso {
 
     public void setTemas(List<Tema> temas) {
         this.temas = temas;
+    }
+
+    @Override
+    public String toString() {
+        return "Curso {" + "Nemonico=" + nemonico + ", Nombre=" + nombre + ", Creditos=" + creditos + 
+                ", Horas monitoria=" + horasMonitoria + ", Temas=" + temas + '}';
     }
 
 }

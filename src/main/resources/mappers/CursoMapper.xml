@@ -7,11 +7,18 @@
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper">
     <select parameterType="map" id="consultarCursoGeneral" resultMap="CursoResult">
         SELECT 
-        c.Nemonico, c.nombre, c.creditos, c.horas_monitoria, 
-        g.Identificador, g.numero,
-        t.Identificador, t.nombre, t.descripcion
-        FROM Curso as c JOIN Grupo as g ON c.Nemonico=g.curso_nemonico 
-            JOIN Tema as t ON c.Nemonico=t.curso_nemonico
+        
+        c.Nemonico as c_Nemonico, 
+        c.nombre as c_nombre, 
+        c.creditos as c_creditos, 
+        c.horas_monitoria as c_horas_monitoria, 
+        
+        t.Identificador as t_Identificador, 
+        t.nombre as t_nombre, 
+        t.descripcion as t_descripcion
+        
+        FROM Curso as c 
+        left join Tema as t ON c.Nemonico=t.curso_nemonico
         <if test="neCurso != null">
             WHERE c.Nemonico = #{neCurso}
         </if>
@@ -23,11 +30,10 @@
     </insert>
     
     <resultMap type='Curso' id='CursoResult'>
-        <id property='nemonico' column='Nemonico'/>
-        <result property='nombre' column='nombre'/>
-        <result property='creditosacAdemicos' column='creditos'/>
-        <result property='horasMonitoria' column='horas_monitoria'/>
-        <collection property='grupos' ofType='Grupo' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.GrupoMapper.GrupoResult'></collection>
-        <!--<collection property='temas' ofType='Tema' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.TemaMapper.TemaResult'></collection>-->
+        <id property='nemonico' column='c_Nemonico'/>
+        <result property='nombre' column='c_nombre'/>
+        <result property='creditos' column='c_creditos'/>
+        <result property='horasMonitoria' column='c_horas_monitoria'/>
+        <collection property="temas" ofType="Tema" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper.TemaResult"/>
     </resultMap>
 </mapper>

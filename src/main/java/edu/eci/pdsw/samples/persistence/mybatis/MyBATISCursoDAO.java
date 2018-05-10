@@ -23,7 +23,7 @@ public class MyBATISCursoDAO implements CursoDAO {
 
     @Override
     public void save(Curso c) throws PersistenceException {
-        cursoMapper.registrarCurso(c.getNemonico(), c.getNombre(), c.getCreditosAcademicos(), c.getHorasMonitoria());
+        cursoMapper.registrarCurso(c.getNemonico(), c.getNombre(), c.getCreditos(), c.getHorasMonitoria());
     }
 
     @Override

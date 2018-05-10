@@ -9,6 +9,10 @@ import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Administrador;
 import edu.eci.pdsw.samples.entities.Asistente;
 import edu.eci.pdsw.samples.entities.Curso;
+import edu.eci.pdsw.samples.entities.Estudiante;
+import edu.eci.pdsw.samples.entities.EstudianteCursa;
+import edu.eci.pdsw.samples.entities.Franja;
+import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.persistence.TemaDAO;
 import edu.eci.pdsw.samples.persistence.CursoDAO;
@@ -22,10 +26,11 @@ import edu.eci.pdsw.samples.persistence.MonitoriaDAO;
 import edu.eci.pdsw.samples.persistence.EstudianteDAO;
 import edu.eci.pdsw.samples.persistence.AdministradorDAO;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
-
 import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Semestre;
+import edu.eci.pdsw.samples.entities.Tema;
+import edu.eci.pdsw.samples.persistence.EstudianteCursaDAO;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import java.util.Date;
@@ -33,7 +38,7 @@ import java.util.List;
 
 /**
  *
- * @author camil
+ * @author camil, jonnhi
  */
 public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
 
@@ -45,6 +50,9 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
 
     @Inject
     private CursoDAO daoCurso;
+
+    @Inject
+    private EstudianteCursaDAO daoEstudianteCursa;
 
     @Inject
     private EstudianteDAO daoEstudiante;
@@ -66,9 +74,9 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
 
     @Inject
     private SemestreDAO daoSemestre;
-//
-//    @Inject
-//    private TemaDAO daoTema;
+
+    @Inject
+    private TemaDAO daoTema;
 
     @Override
     public void registrarAdministrador(Administrador admin) throws ExcepcionServiciosMonitoria {
@@ -98,29 +106,102 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
     }
 
     @Override
-    public void registrarSemestre(Semestre sem) throws ExcepcionServiciosMonitoria {
+    public List<Asistente> consultarAsistentes() throws ExcepcionServiciosMonitoria {
         try {
-            daoSemestre.save(sem);
+            return daoAsistente.loadAll();
         } catch (PersistenceException e) {
-            throw new ExcepcionServiciosMonitoria("Error al registrar el semestre: " + sem.getYears() + "-" + sem.getPeriodoAcademico(), e);
+            throw new ExcepcionServiciosMonitoria("Error al consultar todos los asistentes registrados. ", e);
         }
     }
 
     @Override
-    public Semestre consultarSemestre(Integer year, String periodo) throws ExcepcionServiciosMonitoria {
+    public List<Asistente> consultarAsistentesXCurso(Curso curso) throws ExcepcionServiciosMonitoria {
         try {
-            return daoSemestre.load(year, periodo);
+            return daoAsistente.loadAsistenteXCurso(curso);
         } catch (PersistenceException e) {
-            throw new ExcepcionServiciosMonitoria("Error al consultar el semestre: " + year + "-" + periodo, e);
+            throw new ExcepcionServiciosMonitoria("Error al consultar los asistentes en las monitorias del grupo: " + curso.getNemonico(), e);
         }
     }
 
     @Override
-    public List<Semestre> consultarSemestres() throws ExcepcionServiciosMonitoria {
+    public List<Curso> consultarCursos() throws ExcepcionServiciosMonitoria {
         try {
-            return daoSemestre.loadAll();
+            return daoCurso.loadAll();
         } catch (PersistenceException e) {
-            throw new ExcepcionServiciosMonitoria("Error al consultar todos los semestres registrados. ", e);
+            throw new ExcepcionServiciosMonitoria("Error al consultar todos los cursos registrados. ", e);
+        }
+    }
+
+    @Override
+    public List<EstudianteCursa> consultarEstudiantesCursan() throws ExcepcionServiciosMonitoria {
+        try {
+            return daoEstudianteCursa.loadAll();
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar todos los estudiantesCursan registrados. ", e);
+        }
+    }
+
+    @Override
+    public List<Estudiante> consultarEstudiantes() throws ExcepcionServiciosMonitoria {
+        try {
+            return daoEstudiante.loadAll();
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar todos los estudiantes registrados. ", e);
+        }
+    }
+
+    @Override
+    public List<Franja> consultarFranjas() throws ExcepcionServiciosMonitoria {
+        try {
+            return daoFranja.loadAll();
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar todas las franjas registrados. ", e);
+        }
+    }
+
+    @Override
+    public Grupo consultarGrupo(Integer id) throws ExcepcionServiciosMonitoria {
+        try {
+            return daoGrupo.load(id);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar el grupo: " + id, e);
+        }
+    }
+
+    @Override
+    public List<Grupo> consultarGrupos() throws ExcepcionServiciosMonitoria {
+        try {
+            return daoGrupo.loadAll();
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar todos los grupos registrados. ", e);
+        }
+    }
+
+    @Override
+    public List<Monitor> consultarMonitores() throws ExcepcionServiciosMonitoria {
+        try {
+            return daoMonitor.loadAll();
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar todos los monitores registrados. ", e);
+        }
+    }
+
+    @Override
+    public void registrarMonitoria(Monitoria mo, Monitor m) throws ExcepcionServiciosMonitoria {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Monitoria consultarMonitoria() throws ExcepcionServiciosMonitoria {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Monitoria> consultarMonitorias() throws ExcepcionServiciosMonitoria {
+        try {
+            return daoMonitoria.load();
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar todas las monitorias registradas. ", e);
         }
     }
 
@@ -152,26 +233,38 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
     }
 
     @Override
-    public void registrarMonitoria(int id, Date fecha, Date horaInicio, Date horaFin, String direccionIp, String observaciones, int codigoMonitor) throws ExcepcionServiciosMonitoria {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Monitoria consultarMonitoria() throws ExcepcionServiciosMonitoria {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Monitoria> consultarMonitorias() throws ExcepcionServiciosMonitoria {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Asistente> consultarAsistentesXCurso(Curso curso) throws ExcepcionServiciosMonitoria {
+    public void registrarSemestre(Semestre sem) throws ExcepcionServiciosMonitoria {
         try {
-            return daoAsistente.loadAsistenteXCurso(curso);
+            daoSemestre.save(sem);
         } catch (PersistenceException e) {
-            throw new ExcepcionServiciosMonitoria("Error al consultar los asistentes en las monitorias del grupo: " + curso.getNemonico(), e);
+            throw new ExcepcionServiciosMonitoria("Error al registrar el semestre: " + sem.getYears() + "-" + sem.getPeriodoAcademico(), e);
+        }
+    }
+
+    @Override
+    public Semestre consultarSemestre(Integer year, String periodo) throws ExcepcionServiciosMonitoria {
+        try {
+            return daoSemestre.load(year, periodo);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar el semestre: " + year + "-" + periodo, e);
+        }
+    }
+
+    @Override
+    public List<Semestre> consultarSemestres() throws ExcepcionServiciosMonitoria {
+        try {
+            return daoSemestre.loadAll();
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar todos los semestres registrados. ", e);
+        }
+    }
+
+    @Override
+    public List<Tema> consultarTemas() throws ExcepcionServiciosMonitoria {
+        try {
+            return daoTema.loadAll();
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar todos los temas registrados. ", e);
         }
     }
 

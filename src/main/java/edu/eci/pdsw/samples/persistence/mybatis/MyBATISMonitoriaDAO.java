@@ -7,6 +7,7 @@ package edu.eci.pdsw.samples.persistence.mybatis;
 
 import java.util.List;
 import com.google.inject.Inject;
+import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.persistence.MonitoriaDAO;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
@@ -22,8 +23,8 @@ public class MyBATISMonitoriaDAO implements MonitoriaDAO {
     private MonitoriaMapper monitoria;
 
     @Override
-    public void save(Monitoria m) throws PersistenceException {
-        monitoria.registrarMonitoria(m.getId(), m.getFecha(), m.getHoraInicio(), m.getHoraFin(), m.getIp(), m.getObservaciones(), m.getMonitor().getCodigo());
+    public void save(Monitoria mo, Monitor m) throws PersistenceException {
+        monitoria.registrarMonitoria(mo.getId(), mo.getFecha(), mo.getHoraInicio(), mo.getHoraFin(), mo.getIp(), mo.getObservaciones(), m.getCodigo());
     }
 
     @Override

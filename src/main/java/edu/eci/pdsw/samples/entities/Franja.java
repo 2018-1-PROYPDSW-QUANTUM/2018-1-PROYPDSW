@@ -5,7 +5,7 @@
  */
 package edu.eci.pdsw.samples.entities;
 
-import java.util.Date;
+import java.time.LocalTime;
 
 /**
  *
@@ -15,19 +15,17 @@ public class Franja {
 
     private Integer id;
     private String dia;
-    private Date horaInicio;
-    private Date horaFin;
-    private Grupo grupo;
+    private LocalTime horaInicio;
+    private LocalTime horaFin;
 
     public Franja() {
     }
 
-    public Franja(Integer id, String dia, Date horaInicio, Date horaFin, Grupo grupo) {
+    public Franja(Integer id, String dia, LocalTime horaInicio, LocalTime horaFin) {
         this.id = id;
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        this.grupo = grupo;
     }
 
     public Integer getId() {
@@ -46,28 +44,25 @@ public class Franja {
         this.dia = dia;
     }
 
-    public Date getHoraInicio() {
+    public LocalTime getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(Date horaInicio) {
+    public void setHoraInicio(LocalTime horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public Date getHoraFin() {
+    public LocalTime getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(Date horaFin) {
+    public void setHoraFin(LocalTime horaFin) {
         this.horaFin = horaFin;
     }
 
-    public Grupo getGrupo() {
-        return grupo;
-    }
-
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
+    @Override
+    public String toString() {
+        return "Franja {" + "Id=" + id + ", Dia=" + dia + ", Hora inicio=" + horaInicio + ", Hora fin=" + horaFin + '}';
     }
 
 }

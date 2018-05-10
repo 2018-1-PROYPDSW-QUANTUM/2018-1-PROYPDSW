@@ -25,9 +25,9 @@ CREATE TABLE Asistente (
 -- Table: Curso
 CREATE TABLE Curso (
     Nemonico char(4)  NOT NULL,
-    nombre varchar(30)  NOT NULL,
+    nombre varchar(50)  NOT NULL,
     creditos int  NOT NULL,
-    horas_monitoria int  NOT NULL,
+    horas_monitoria real  NOT NULL,
     CONSTRAINT Curso PRIMARY KEY (Nemonico)
 );
 
@@ -82,8 +82,8 @@ CREATE TABLE Monitor (
 CREATE TABLE Monitoria (
     Identificador bigint  NOT NULL,
     fecha date  NOT NULL,
-    hora_inicio timestamp  NOT NULL,
-    hora_fin timestamp  NOT NULL,
+    hora_inicio time  NOT NULL,
+    hora_fin time  NOT NULL,
     ip varchar(15)  NOT NULL,
     observaciones varchar(300)  NOT NULL,
     monitor_codigo int  NOT NULL,

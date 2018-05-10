@@ -6,23 +6,20 @@
 package edu.eci.pdsw.samples.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *
  * @author jonnhi
  */
-public class Estudiante implements Serializable{
+public class Estudiante implements Serializable {
 
     private Integer codigo;
-    private List<Grupo> cursando;
 
     public Estudiante() {
     }
 
-    public Estudiante(Integer codigo, List<Grupo> cursando) {
+    public Estudiante(Integer codigo) {
         this.codigo = codigo;
-        this.cursando = cursando;
     }
 
     public Integer getCodigo() {
@@ -33,14 +30,9 @@ public class Estudiante implements Serializable{
         this.codigo = codigo;
     }
 
-    public List<Grupo> getCursando() {
-        return cursando;
+    @Override
+    public String toString() {
+        return "Estudiante {" + "Codigo=" + codigo + '}';
     }
 
-    public void setCursando(List<Grupo> cursando) {
-        this.cursando = cursando;
-    }
-
-    
-    
 }

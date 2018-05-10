@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.persistence;
 
 import java.util.List;
+import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.entities.Monitoria;
 
 /**
@@ -16,10 +17,11 @@ public interface MonitoriaDAO {
     
     /**
      *
+     * @param mo
      * @param m
      * @throws PersistenceException
      */
-    public void save(Monitoria m) throws PersistenceException;
+    public void save(Monitoria mo, Monitor m) throws PersistenceException;
     
     /**
      *

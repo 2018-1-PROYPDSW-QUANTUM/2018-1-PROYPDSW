@@ -3,10 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  
-<mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper">
-    <select parameterType="map" id="consultarGrupoGeneral" resultMap="GrupoResult">
+<mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.EstudianteCursaMapper">
+    <select parameterType="map" id="consultarEstudianteCursaGeneral" resultMap="EstudianteCursaResult">
         SELECT 
+        e.Codigo as e_Codigo,
+        
         g.Identificador as g_Identificador, 
         g.numero as g_numero, 
         
@@ -51,9 +52,11 @@
         
         t.Identificador as t_Identificador, 
         t.nombre as t_nombre, 
-        t.descripcion as t_descripcion 
+        t.descripcion as t_descripcion
         
-        FROM Grupo as g 
+        FROM Estudiante_cursa as ec 
+        left join Estudiante as e ON ec.Estudiante_codigo=e.Codigo 
+        left join Grupo as g ON ec.Grupo_identificador=g.Identificador 
         left join Profesor as p ON g.profesor_codigo=p.Codigo 
         left join Monitor as m ON g.monitor_codigo=m.Codigo 
         left join Semestre as s ON g.semestre_identificador=s.Identificador 
@@ -61,22 +64,19 @@
         left join Curso as c ON g.curso_nemonico=c.Nemonico 
         left join Franja as f ON g.Identificador=f.grupo_identificador
         left join Tema as t ON c.Nemonico=t.curso_nemonico 
-        <if test="idGrupo != null">
-            WHERE g.Identificador = #{idGrupo}
+        <if test="ecEstudianteCursa != null or giEstudianteCursa != null">
+            WHERE ec.Estudiante_codigo = #{ecEstudianteCursa} OR ec.Grupo_identificador = #{giEstudianteCursa}
         </if>
     </select>
-     
-    <insert parameterType="map" id="registrarGrupo">
-        INSERT INTO Grupo (Identificador, semestre_identificador, curso_nemonico, numero, profesor_codigo, monitor_codigo)
-        VALUES (#{idGrupo},#{seGrupo},#{cnGrupo},#{nuGrupo},#{pcGrupo},#{mcGrupo})
+    
+    <insert parameterType="map" id="registrarEstudianteCursa">
+        INSERT INTO Estudiante_Cursa (Estudiante_codigo, Grupo_identificador)
+        VALUES (#{ecEstudianteCursa},#{giEstudianteCursa})
     </insert>
-     
-    <resultMap type="Grupo" id="GrupoResult" >
-        <id property="id" column="g_Identificador"/>
-        <result property="numero" column="g_numero"/>
-        <association property="semestre" javaType="Semestre" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.SemestreMapper.SemestreResult"></association>
-        <association property="curso" javaType="Curso" resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper.CursoResult'/>
-        <collection property='franjas' ofType='Franja' resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.FranjaMapper.FranjaResult"></collection>
+    
+    <resultMap type="EstudianteCursa" id="EstudianteCursaResult" >
+        <collection property='estudiantes' ofType='Estudiante' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.EstudianteMapper.EstudianteResult'></collection>
+        <collection property='grupos' ofType='Grupo' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult'></collection>
     </resultMap>
-     
+      	
 </mapper>

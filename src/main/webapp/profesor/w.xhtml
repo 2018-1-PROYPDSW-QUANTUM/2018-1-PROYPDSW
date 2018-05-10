@@ -80,9 +80,9 @@
                 <tr>
                     <th width="20%">
                 <h:form>
-                    <p:dataTable var="profesor" value="#{monitoriaProfesor.profesorMonitoria.grupos}">
+                    <p:dataTable var="profesores" value="#{monitoriaProfesor.profesorMonitoria}" id="Tprofesores">
                         <p:column headerText="Materias" >
-                            <h:outputText value="#{profesor.curso.nemonico}" />
+                            <h:outputText value="#{profesores.nombre}" />
                         </p:column>             
                     </p:dataTable> 
                     <br></br><br></br>

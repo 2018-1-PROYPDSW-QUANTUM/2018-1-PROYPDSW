@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Date;
 import org.apache.ibatis.annotations.Param;
 import edu.eci.pdsw.samples.entities.Monitoria;
+import java.time.LocalTime;
 
 /**
  *
@@ -52,8 +53,8 @@ public interface MonitoriaMapper {
      */
     public void registrarMonitoria(@Param("idMonitoria") Integer id, 
             @Param("feMonitoria") Date fecha, 
-            @Param("hiMonitoria") Date horaInicio, 
-            @Param("hfMonitoria") Date horaFin, 
+            @Param("hiMonitoria") LocalTime horaInicio, 
+            @Param("hfMonitoria") LocalTime horaFin, 
             @Param("ipMonitoria") String ip, 
             @Param("obMonitoria") String observaciones, 
             @Param("mcMonitoria") Integer monitorCodigo);

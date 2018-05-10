@@ -6,7 +6,14 @@
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.AdministradorMapper">
     <select parameterType="map" id="consultarAdministradorGeneral" resultMap="AdministradorResult">
         SELECT 
-        a.Codigo, a.nombre, a.apellido, a.celular, a.correo, a.clave
+        
+        a.Codigo as a_Codigo, 
+        a.nombre as a_nombre, 
+        a.apellido as a_apellido, 
+        a.celular as a_celular, 
+        a.correo as a_correo, 
+        a.clave as a_clave
+        
         FROM Administrador as a
         <if test="coAdmin != null">
             WHERE a.Codigo = #{coAdmin}
@@ -21,12 +28,12 @@
     <!--celular, clave se podran actualizar-->
     
     <resultMap type="Administrador" id="AdministradorResult" >
-        <id property="codigo" column="Codigo"/>
-        <result property="nombre" column="nombre"/>
-        <result property="apellido" column="apellido"/>
-        <result property="celular" column="celular"/>
-        <result property="correo" column="correo"/>
-        <result property="clave" column="clave"/>
+        <id property="codigo" column="a_Codigo"/>
+        <result property="nombre" column="a_nombre"/>
+        <result property="apellido" column="a_apellido"/>
+        <result property="celular" column="a_celular"/>
+        <result property="correo" column="a_correo"/>
+        <result property="clave" column="a_clave"/>
     </resultMap>
       	
 </mapper>

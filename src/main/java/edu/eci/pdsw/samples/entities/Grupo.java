@@ -17,23 +17,17 @@ public class Grupo {
     private Semestre semestre;
     private Curso curso;
     private int numero;
-    private Profesor profesor;
-    private Monitor monitor;
-    private List<Estudiante> estudiantes;
-    private List<Franja> franjasMonitoria;
+    private List<Franja> franjas;
 
     public Grupo() {
     }
 
-    public Grupo(Integer id, Semestre semestre, Curso curso, int numero, Profesor profesor, Monitor monitor, List<Estudiante> estudiantes, List<Franja> franjasMonitoria) {
+    public Grupo(Integer id, Semestre semestre, Curso curso, int numero, List<Franja> franjas) {
         this.id = id;
         this.semestre = semestre;
         this.curso = curso;
         this.numero = numero;
-        this.profesor = profesor;
-        this.monitor = monitor;
-        this.estudiantes = estudiantes;
-        this.franjasMonitoria = franjasMonitoria;
+        this.franjas = franjas;
     }
 
     public Integer getId() {
@@ -68,36 +62,18 @@ public class Grupo {
         this.numero = numero;
     }
 
-    public Profesor getProfesor() {
-        return profesor;
+    public List<Franja> getFranjas() {
+        return franjas;
     }
 
-    public void setProfesor(Profesor profesor) {
-        this.profesor = profesor;
+    public void setFranjas(List<Franja> franjas) {
+        this.franjas = franjas;
     }
 
-    public Monitor getMonitor() {
-        return monitor;
-    }
-
-    public void setMonitor(Monitor monitor) {
-        this.monitor = monitor;
-    }
-
-    public List<Estudiante> getEstudiantes() {
-        return estudiantes;
-    }
-
-    public void setEstudiantes(List<Estudiante> estudiantes) {
-        this.estudiantes = estudiantes;
-    }
-
-    public List<Franja> getFranjasMonitoria() {
-        return franjasMonitoria;
-    }
-
-    public void setFranjasMonitoria(List<Franja> franjasMonitoria) {
-        this.franjasMonitoria = franjasMonitoria;
+    @Override
+    public String toString() {
+        return "Grupo {" + "Id=" + id + ", Semestre=" + semestre + ", Curso="
+                + curso + ", Numero=" + numero + ", Franjas=" + franjas + '}';
     }
 
 }

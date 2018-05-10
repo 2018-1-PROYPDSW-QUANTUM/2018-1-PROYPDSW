@@ -13,6 +13,7 @@ import com.google.inject.Injector;
 import edu.eci.pdsw.samples.persistence.AdministradorDAO;
 import edu.eci.pdsw.samples.persistence.AsistenteDAO;
 import edu.eci.pdsw.samples.persistence.CursoDAO;
+import edu.eci.pdsw.samples.persistence.EstudianteCursaDAO;
 import edu.eci.pdsw.samples.persistence.EstudianteDAO;
 import edu.eci.pdsw.samples.persistence.FranjaDAO;
 import edu.eci.pdsw.samples.persistence.GrupoDAO;
@@ -24,6 +25,7 @@ import edu.eci.pdsw.samples.persistence.TemaDAO;
 import edu.eci.pdsw.samples.persistence.mybatis.MyBATISAdministradorDAO;
 import edu.eci.pdsw.samples.persistence.mybatis.MyBATISAsistenteDAO;
 import edu.eci.pdsw.samples.persistence.mybatis.MyBATISCursoDAO;
+import edu.eci.pdsw.samples.persistence.mybatis.MyBATISEstudianteCursaDAO;
 import edu.eci.pdsw.samples.persistence.mybatis.MyBATISEstudianteDAO;
 import edu.eci.pdsw.samples.persistence.mybatis.MyBATISFranjaDAO;
 import edu.eci.pdsw.samples.persistence.mybatis.MyBATISGrupoDAO;
@@ -57,6 +59,7 @@ public class ServiciosMonitoriasFactory {
                 bind(AdministradorDAO.class).to(MyBATISAdministradorDAO.class);
                 bind(AsistenteDAO.class).to(MyBATISAsistenteDAO.class);
                 bind(CursoDAO.class).to(MyBATISCursoDAO.class);
+                bind(EstudianteCursaDAO.class).to(MyBATISEstudianteCursaDAO.class);
                 bind(EstudianteDAO.class).to(MyBATISEstudianteDAO.class);
                 bind(FranjaDAO.class).to(MyBATISFranjaDAO.class);
                 bind(GrupoDAO.class).to(MyBATISGrupoDAO.class);
@@ -64,7 +67,7 @@ public class ServiciosMonitoriasFactory {
                 bind(MonitoriaDAO.class).to(MyBATISMonitoriaDAO.class);
                 bind(ProfesorDAO.class).to(MyBATISProfesorDAO.class);
                 bind(SemestreDAO.class).to(MyBATISSemestreDAO.class);
-//                bind(TemaDAO.class).to(MyBATISTemaDAO.class);
+                bind(TemaDAO.class).to(MyBATISTemaDAO.class);
             }
 
         }
@@ -81,6 +84,7 @@ public class ServiciosMonitoriasFactory {
                 bind(AdministradorDAO.class).to(MyBATISAdministradorDAO.class);
                 bind(AsistenteDAO.class).to(MyBATISAsistenteDAO.class);
                 bind(CursoDAO.class).to(MyBATISCursoDAO.class);
+                bind(EstudianteCursaDAO.class).to(MyBATISEstudianteCursaDAO.class);
                 bind(EstudianteDAO.class).to(MyBATISEstudianteDAO.class);
                 bind(FranjaDAO.class).to(MyBATISFranjaDAO.class);
                 bind(GrupoDAO.class).to(MyBATISGrupoDAO.class);
@@ -88,7 +92,7 @@ public class ServiciosMonitoriasFactory {
                 bind(MonitoriaDAO.class).to(MyBATISMonitoriaDAO.class);
                 bind(ProfesorDAO.class).to(MyBATISProfesorDAO.class);
                 bind(SemestreDAO.class).to(MyBATISSemestreDAO.class);
-//                bind(TemaDAO.class).to(MyBATISTemaDAO.class);
+                bind(TemaDAO.class).to(MyBATISTemaDAO.class);
             }
 
         }

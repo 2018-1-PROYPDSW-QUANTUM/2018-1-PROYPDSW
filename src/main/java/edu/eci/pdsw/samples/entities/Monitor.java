@@ -21,12 +21,13 @@ public class Monitor {
     private String celular;
     private String correo;
     private String clave;
-    private List<Grupo> gruposMonitor;
+    private List<Grupo> grupos;
+    private List<Monitoria> monitorias;
 
     public Monitor() {
     }
 
-    public Monitor(Integer codigo, String semestreIngreso, String programaAcademico, String nombre, String apellido, String celular, String correo, String clave, List<Grupo> gruposMonitor) {
+    public Monitor(Integer codigo, String semestreIngreso, String programaAcademico, String nombre, String apellido, String celular, String correo, String clave, List<Grupo> gruposMonitor, List<Monitoria> monitorias) {
         this.codigo = codigo;
         this.semestreIngreso = semestreIngreso;
         this.programaAcademico = programaAcademico;
@@ -35,7 +36,8 @@ public class Monitor {
         this.celular = celular;
         this.correo = correo;
         this.clave = clave;
-        this.gruposMonitor = gruposMonitor;
+        this.grupos = gruposMonitor;
+        this.monitorias = monitorias;
     }
 
     public Integer getCodigo() {
@@ -102,11 +104,19 @@ public class Monitor {
         this.clave = clave;
     }
 
-    public List<Grupo> getGruposMonitor() {
-        return gruposMonitor;
+    public List<Grupo> getGrupos() {
+        return grupos;
     }
 
-    public void setGruposMonitor(List<Grupo> gruposMonitor) {
-        this.gruposMonitor = gruposMonitor;
+    public void setGrupos(List<Grupo> grupos) {
+        this.grupos = grupos;
+    }
+
+    @Override
+    public String toString() {
+        return "Monitor {" + "Codigo=" + codigo + ", Semestre ingreso=" + semestreIngreso
+                + ", Programa academico=" + programaAcademico + ", Nombre=" + nombre + ", Apellido=" + apellido
+                + ", Celular=" + celular + ", Correo=" + correo + ", Clave=" + clave + ", Grupos=" + grupos
+                + ", Monitorias=" + monitorias + '}';
     }
 }

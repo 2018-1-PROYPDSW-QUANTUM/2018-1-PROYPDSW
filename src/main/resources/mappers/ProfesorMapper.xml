@@ -6,27 +6,78 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper">
     <select parameterType="map" id="consultarProfesorGeneral" resultMap="ProfesorResult">
-        SELECT
-        p.Codigo, p.nombre, p.apellido, p.celular, p.correo, p.clave,
-        g.Identificador, g.numero
-        FROM Profesor as p JOIN Grupo as g ON p.Codigo=g.profesor_codigo
+        SELECT 
+        p.Codigo as p_Codigo, 
+        p.nombre as p_nombre, 
+        p.apellido as p_apellido, 
+        p.celular as p_celular, 
+        p.correo as p_correo, 
+        p.clave as p_clave,
+        
+        g.Identificador as g_Identificador, 
+        g.numero as g_numero, 
+        
+        m.Codigo as m_Codigo, 
+        m.semestre_ingreso as m_semestre_ingreso, 
+        m.programa_academico as m_programa_academico, 
+        m.nombre as m_nombre, 
+        m.apellido as m_apellido, 
+        m.celular as m_celular, 
+        m.correo as m_correo, 
+        m.clave as m_clave, 
+        
+        s.Identificador as s_Identificador, 
+        s.years as s_years, 
+        s.periodo_academico as s_periodo_academico, 
+        s.fecha_inicio as s_fecha_inicio, 
+        s.fecha_fin as s_fecha_fin, 
+        
+        a.Codigo as a_Codigo, 
+        a.nombre as a_nombre, 
+        a.apellido as a_apellido, 
+        a.celular as a_celular, 
+        a.correo as a_correo, 
+        a.clave as a_clave, 
+        
+        f.Identificador as f_Identificador, 
+        f.dia as f_dia, 
+        f.hora_inicio as f_hora_inicio, 
+        f.hora_fin as f_hora_fin,
+        
+        c.Nemonico as c_Nemonico, 
+        c.nombre as c_nombre, 
+        c.creditos as c_creditos, 
+        c.horas_monitoria as c_horas_monitoria, 
+        
+        t.Identificador as t_Identificador, 
+        t.nombre as t_nombre, 
+        t.descripcion as t_descripcion
+        
+        FROM Profesor as p 
+        left join Grupo as g ON p.Codigo=g.profesor_codigo 
+        left join Monitor as m ON g.monitor_codigo=m.Codigo 
+        left join Semestre as s ON g.semestre_identificador=s.Identificador 
+        left join Administrador as a ON s.administrador_codigo=a.Codigo 
+        left join Curso as c ON g.curso_nemonico=c.Nemonico 
+        left join Franja as f ON g.Identificador=f.grupo_identificador
+        left join Tema as t ON c.Nemonico=t.curso_nemonico
         <if test="coProfesor != null">
             WHERE p.Codigo = #{coProfesor}
         </if>
     </select>
          
     <insert parameterType="map" id="registrarProfesor">
-        INSERT INTO Profesor (codigo, nombre, apellido, celular, correo, clave) 
+        INSERT INTO Profesor (Codigo, nombre, apellido, celular, correo, clave) 
         VALUES (#{coProfesor},#{noProfesor},#{apProfesor},#{ceProfesor},#{corProfesor},#{clProfesor})
     </insert>
     
     <resultMap type='Profesor' id='ProfesorResult'>
-        <id property='codigo' column='Codigo'/>
-        <result property='nombre' column='nombre'/>
-        <result property='apellido' column='apellido'/>
-        <result property='celular' column='celular'/>
-        <result property='correo' column='correo'/>
-        <result property='clave' column='clave'/>
-        <collection property='grupos' ofType='Grupo' resultMap="eci.edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult"></collection>
-    </resultMap> 
+        <id property='codigo' column='p_Codigo'/>
+        <result property='nombre' column='p_nombre'/>
+        <result property='apellido' column='p_apellido'/>
+        <result property='celular' column='p_celular'/>
+        <result property='correo' column='p_correo'/>
+        <result property='clave' column='p_clave'/>
+        <collection property='grupos' ofType='Grupo' resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult"></collection>
+    </resultMap>
 </mapper>

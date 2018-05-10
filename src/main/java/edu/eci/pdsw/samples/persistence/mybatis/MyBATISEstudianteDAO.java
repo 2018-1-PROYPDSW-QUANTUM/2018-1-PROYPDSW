@@ -10,6 +10,7 @@ import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.persistence.EstudianteDAO;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.persistence.mybatis.mappers.EstudianteMapper;
+import java.util.List;
 
 /**
  *
@@ -23,6 +24,11 @@ public class MyBATISEstudianteDAO implements EstudianteDAO{
     @Override
     public void save(Estudiante e) throws PersistenceException {
         estudiante.registrarEstudiante(e.getCodigo());
+    }
+
+    @Override
+    public List<Estudiante> loadAll() throws PersistenceException {
+        return estudiante.consultarEstudiantes();
     }
     
 }

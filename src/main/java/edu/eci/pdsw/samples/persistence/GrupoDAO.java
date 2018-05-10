@@ -7,6 +7,8 @@ package edu.eci.pdsw.samples.persistence;
 
 import java.util.List;
 import edu.eci.pdsw.samples.entities.Grupo;
+import edu.eci.pdsw.samples.entities.Monitor;
+import edu.eci.pdsw.samples.entities.Profesor;
 
 /**
  *
@@ -17,16 +19,19 @@ public interface GrupoDAO {
     /**
      *
      * @param g
+     * @param p
+     * @param m
      * @throws PersistenceException
      */
-    public void save(Grupo g) throws PersistenceException;
+    public void save(Grupo g, Profesor p, Monitor m) throws PersistenceException;
 
     /**
      *
      * @param id
      * @return
+     * @throws edu.eci.pdsw.samples.persistence.PersistenceException
      */
-    public Grupo load(Integer id);
+    public Grupo load(Integer id) throws PersistenceException;
 
     /**
      *

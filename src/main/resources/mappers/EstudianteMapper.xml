@@ -6,10 +6,9 @@
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.EstudianteMapper">
     <select parameterType="map" id="consultarEstudianteGeneral" resultMap="EstudianteResult">
         SELECT 
-        e.Codigo,
-        g.Identificador, g.numero
-        FROM Estudiante as e JOIN Estudiante_cursa as ec ON e.Codigo=ec.Estudiante_codigo 
-            JOIN  Grupo as g.Identificador=Grupo_Identificador
+        e.Codigo as e_codigo
+        
+        FROM Estudiante as e 
         <if test="coEstudiante != null">
             WHERE e.Codigo = #{coEstudiante}
         </if>
@@ -21,8 +20,6 @@
     </insert>
     
     <resultMap type="Estudiante" id="EstudianteResult" >
-        <id property="codigo" column="Codigo"/>
-        <collection property='cursando' ofType='Grupo' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.GrupoMapper.GrupoResult'></collection>
-    </resultMap>
-      	
+        <id property="codigo" column="e_codigo"/>
+    </resultMap> 	
 </mapper>

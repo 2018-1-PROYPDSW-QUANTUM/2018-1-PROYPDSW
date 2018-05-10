@@ -12,16 +12,14 @@ package edu.eci.pdsw.samples.entities;
 public class Tema {
 
     private Integer id;
-    private Curso curso;
     private String nombre;
     private String descripcion;
 
     public Tema() {
     }
 
-    public Tema(Integer id, Curso curso, String nombre, String descripcion) {
+    public Tema(Integer id, String nombre, String descripcion) {
         this.id = id;
-        this.curso = curso;
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
@@ -32,14 +30,6 @@ public class Tema {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
     }
 
     public String getNombre() {
@@ -56,6 +46,11 @@ public class Tema {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    @Override
+    public String toString() {
+        return "Tema {" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + '}';
     }
 
 }

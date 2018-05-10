@@ -49,6 +49,6 @@ public interface CursoMapper {
     public void registrarCurso(@Param("neCurso") String nemonico,
             @Param("noCurso") String nombre,
             @Param("crCurso") int creditos,
-            @Param("hmCurso") int horasMonitoria);
+            @Param("hmCurso") double horasMonitoria);
 
 }

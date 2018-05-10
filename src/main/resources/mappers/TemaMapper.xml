@@ -6,8 +6,12 @@
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper">
     <select parameterType="map" id="consultarTemaGeneral" resultMap="TemaResult">
-        SELECT
-        t.Identificador, t.nombre, t.descripcion
+        SELECT 
+        
+        t.Identificador as t_Identificador, 
+        t.nombre as t_nombre, 
+        t.descripcion as t_descripcion
+        
         FROM Tema as t
         <if test="idTema != null">
             WHERE t.Identificador = #{idTema}
@@ -20,10 +24,9 @@
     </insert>
      
     <resultMap type="Tema" id="TemaResult" >
-        <id property="id" column="Identificador,"/>
-        <result property="nombre" column="nombre"/>
-        <result property="descripcion" column="descripcion"/>
-        <!--<association property="curso" javaType="Curso" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper.CursoResult"/>-->
+        <id property="id" column="t_Identificador"/>
+        <result property="nombre" column="t_nombre"/>
+        <result property="descripcion" column="t_descripcion"/>
     </resultMap>
      
 </mapper>

@@ -90,4 +90,10 @@ public class Profesor {
         this.grupos = grupos;
     }
 
+    @Override
+    public String toString() {
+        return "Profesor {" + "Codigo=" + codigo + ", Nombre=" + nombre + ", Apellido=" + apellido + 
+                ", Celular=" + celular + ", Correo=" + correo + ", Clave=" + clave + ", Grupos=" + grupos +'}';
+    }
+
 }

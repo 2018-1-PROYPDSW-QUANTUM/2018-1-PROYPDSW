@@ -5,7 +5,6 @@
  */
 package edu.eci.pdsw.samples.managedbean;
 
-import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Franja;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Monitoria;
@@ -14,25 +13,21 @@ import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
 import java.io.Serializable;
-import java.util.Date;
 import javax.enterprise.context.SessionScoped;
 import java.util.List;
 import javax.inject.Named;
-
-
-
 
 /**
  *
  * @author camil
  */
-
 @SessionScoped
 @Named("registrarMonitoria")
-public class RegistroMonitoriaBean implements Serializable{
+public class RegistroMonitoriaBean implements Serializable {
+
     private ServiciosMonitoria sm = ServiciosMonitoriasFactory.getInstance().getMonitoriasServices();
     private final Monitoria nuevaMonitoria;
-    private Grupo grupo;    
+    private Grupo grupo;
     private Franja franjaMonitoria;
     private int estudianteMonitoria;
     private Monitoria monitoriaSeleccionada;
@@ -40,62 +35,60 @@ public class RegistroMonitoriaBean implements Serializable{
     private Integer monitorCodigo;
     private String curso;
     private String observaciones;
-    
-    
-    public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria{
-        cMonitorias=sm.consultarMonitorias();
+
+    public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria {
+        cMonitorias = sm.consultarMonitorias();
         nuevaMonitoria = new Monitoria();
     }
-    
-    public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria{
-        sm.registrarMonitoria(sm.consultarMonitorias().size(), new Date(), new Date(), new Date(), "xxx.xx.xx", observaciones,monitorCodigo);
+
+    public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria {
+        sm.registrarMonitoria(null, null);
     }
-    
-    public String getObservaciones(){
+
+    public String getObservaciones() {
         return observaciones;
     }
-    
-    public void setObservaciones(String observaciones){
-        this.observaciones=observaciones;
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
-    
-    public Integer getMonitorCodigo(){
+
+    public Integer getMonitorCodigo() {
         return monitorCodigo;
     }
-    
-    public void setMonitorCodigo(Integer monitorCodigo){
-        this.monitorCodigo=monitorCodigo;
+
+    public void setMonitorCodigo(Integer monitorCodigo) {
+        this.monitorCodigo = monitorCodigo;
     }
-    public String getCurso(){
+
+    public String getCurso() {
         return curso;
     }
-    
-    public void setCurso(String curso){
-        this.curso=curso;
+
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
-    
+
     public Monitoria getMonitoriaSeleccionada() {
         return monitoriaSeleccionada;
     }
 
     public void setMonitoriaSeleccionada(Monitoria monitoriaSeleccionada) {
         this.monitoriaSeleccionada = monitoriaSeleccionada;
-    }    
-    
+    }
+
     public Monitoria getNuevaMonitoria() {
         return nuevaMonitoria;
     }
 
-
-    public List<Monitoria> getCMonitorias() throws ExcepcionServiciosMonitoria{
+    public List<Monitoria> getCMonitorias() throws ExcepcionServiciosMonitoria {
         return cMonitorias;
     }
-    
+
     public void registrarNuevaMonitoria(Monitoria nuevaMonitoria) throws PersistenceException, ExcepcionServiciosMonitoria {
-        sm.registrarMonitoria(nuevaMonitoria.getId(), nuevaMonitoria.getFecha(), nuevaMonitoria.getHoraInicio(), nuevaMonitoria.getHoraFin(),
-                nuevaMonitoria.getIp(), nuevaMonitoria.getObservaciones(), nuevaMonitoria.getMonitor().getCodigo());
+
     }
-    
+
     public Grupo getGrupo() {
         return grupo;
     }
@@ -127,5 +120,5 @@ public class RegistroMonitoriaBean implements Serializable{
     public void setEstudianteMonitoria(int estudianteMonitoria) {
         this.estudianteMonitoria = estudianteMonitoria;
     }
-    
+
 }

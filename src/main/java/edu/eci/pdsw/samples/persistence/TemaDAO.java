@@ -5,7 +5,7 @@
  */
 package edu.eci.pdsw.samples.persistence;
 
-import edu.eci.pdsw.samples.entities.Profesor;
+import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.entities.Tema;
 import java.util.List;
 
@@ -18,9 +18,10 @@ public interface TemaDAO {
     /**
      *
      * @param t
+     * @param c
      * @throws PersistenceException
      */
-    public void save(Tema t) throws PersistenceException;
+    public void save(Tema t, Curso c) throws PersistenceException;
 
     /**
      *

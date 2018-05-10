@@ -6,9 +6,68 @@
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper">
     <select parameterType="map" id="consultarMonitorGeneral" resultMap="MonitorResult">
         SELECT 
-        m.Codigo, m.semsetre_ingreso, m.programa_academico, m.nombre, m.apellido, m.celular, m.correo, m.clave, 
-        g.Identificador, g.numero
-        FROM Monitor as m JOIN Grupo as g ON m.Codigo=g.monitor_codigo
+        m.Codigo as m_Codigo, 
+        m.semestre_ingreso as m_semestre_ingreso, 
+        m.programa_academico as m_programa_academico, 
+        m.nombre as m_nombre, 
+        m.apellido as m_apellido, 
+        m.celular as m_celular, 
+        m.correo as m_correo, 
+        m.clave as m_clave, 
+        
+        g.Identificador as g_Identificador, 
+        g.numero as g_numero, 
+        
+        p.Codigo as p_Codigo, 
+        p.nombre as p_nombre, 
+        p.apellido as p_apellido, 
+        p.celular as p_celular, 
+        p.correo as p_correo, 
+        p.clave as p_clave,
+        
+        s.Identificador as s_Identificador, 
+        s.years as s_years, 
+        s.periodo_academico as s_periodo_academico, 
+        s.fecha_inicio as s_fecha_inicio, 
+        s.fecha_fin as s_fecha_fin, 
+        
+        a.Codigo as a_Codigo, 
+        a.nombre as a_nombre, 
+        a.apellido as a_apellido, 
+        a.celular as a_celular, 
+        a.correo as a_correo, 
+        a.clave as a_clave, 
+        
+        f.Identificador as f_Identificador, 
+        f.dia as f_dia, 
+        f.hora_inicio as f_hora_inicio, 
+        f.hora_fin as f_hora_fin,
+        
+        c.Nemonico as c_Nemonico, 
+        c.nombre as c_nombre, 
+        c.creditos as c_creditos, 
+        c.horas_monitoria as c_horas_monitoria, 
+        
+        t.Identificador as t_Identificador, 
+        t.nombre as t_nombre, 
+        t.descripcion as t_descripcion,
+        
+        mo.Identificador as mo_Identificador, 
+        mo.fecha as mo_fecha, 
+        mo.hora_inicio as mo_hora_inicio, 
+        mo.hora_fin as mo_hora_fin, 
+        mo.ip as mo_ip, 
+        mo.observaciones as mo_observaciones
+        
+        FROM Monitor as m 
+        left join Grupo as g ON m.Codigo=g.monitor_codigo
+        left join Profesor as p ON g.profesor_codigo=p.Codigo 
+        left join Semestre as s ON g.semestre_identificador=s.Identificador 
+        left join Administrador as a ON s.administrador_codigo=a.Codigo 
+        left join Curso as c ON g.curso_nemonico=c.Nemonico 
+        left join Franja as f ON g.Identificador=f.grupo_identificador
+        left join Tema as t ON c.Nemonico=t.curso_nemonico
+        left join Monitoria as mo ON m.Codigo=mo.monitor_codigo
         <if test="coMonitor != null">
             WHERE m.Codigo = #{coMonitor}
         </if>
@@ -22,15 +81,16 @@
     <!--celular, clave se podran actualizar-->
     
     <resultMap type="Monitor" id="MonitorResult" >
-        <id property="codigo" column="Codigo"/>
-        <result property="semestreIngreso" column="semsetre_ingreso"/>
-        <result property="programaAcademico" column="programa_academico"/>
-        <result property="nombre" column="nombre"/>
-        <result property="apellido" column="apellido"/>
-        <result property="celular" column="celular"/>
-        <result property="correo" column="correo"/>
-        <result property="clave" column="clave"/>
-        <collection property='gruposMonitor' ofType='Grupo' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mapper.GrupoMapper.GrupoResult'></collection>
+        <id property="codigo" column="m_Codigo"/>
+        <result property="semestreIngreso" column="m_semestre_ingreso"/>
+        <result property="programaAcademico" column="m_programa_academico"/>
+        <result property="nombre" column="m_nombre"/>
+        <result property="apellido" column="m_apellido"/>
+        <result property="celular" column="m_celular"/>
+        <result property="correo" column="m_correo"/>
+        <result property="clave" column="m_clave"/>
+        <collection property='grupos' ofType='Grupo' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult'></collection>
+        <collection property='monitorias' ofType='Monitoria' resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitoriaMapper.MonitoriaResult'></collection>
     </resultMap>
       	
 </mapper>

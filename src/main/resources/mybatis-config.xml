@@ -12,6 +12,7 @@
         <typeAlias type='edu.eci.pdsw.samples.entities.Administrador' alias='Administrador'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Asistente' alias='Asistente'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Curso' alias='Curso'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.EstudianteCursa' alias='EstudianteCursa'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Estudiante' alias='Estudiante'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Franja' alias='Franja'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Grupo' alias='Grupo'/>
@@ -19,7 +20,7 @@
         <typeAlias type='edu.eci.pdsw.samples.entities.Monitoria' alias='Monitoria'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Profesor' alias='Profesor'/>
         <typeAlias type='edu.eci.pdsw.samples.entities.Semestre' alias='Semestre'/>
-        <!--<typeAlias type='edu.eci.pdsw.samples.entities.Tema' alias='Tema'/>-->
+        <typeAlias type='edu.eci.pdsw.samples.entities.Tema' alias='Tema'/>
     </typeAliases>
         
                         
@@ -39,6 +40,7 @@
         <mapper resource="mappers/AdministradorMapper.xml"></mapper>
         <mapper resource="mappers/AsistenteMapper.xml"></mapper>
         <mapper resource="mappers/CursoMapper.xml"></mapper>
+        <mapper resource="mappers/EstudianteCursaMapper.xml"></mapper>
         <mapper resource="mappers/EstudianteMapper.xml"></mapper>
         <mapper resource="mappers/FranjaMapper.xml"></mapper>
         <mapper resource="mappers/GrupoMapper.xml"></mapper>
@@ -46,7 +48,7 @@
         <mapper resource="mappers/MonitoriaMapper.xml"></mapper>
         <mapper resource="mappers/ProfesorMapper.xml"></mapper>
         <mapper resource="mappers/SemestreMapper.xml"></mapper>
-        <!--<mapper resource="mappers/TemaMapper.xml"></mapper>-->
+        <mapper resource="mappers/TemaMapper.xml"></mapper>
     </mappers> 
         
         

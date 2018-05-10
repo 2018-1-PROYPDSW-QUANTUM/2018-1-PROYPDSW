@@ -50,5 +50,10 @@ public class Asistente {
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
     }
+    
+    @Override
+    public String toString() {
+        return "Asistentes {" + "Monitoria=" + monitoria + ", Estudiante=" + estudiante + ", Temas=" + temas + '}';
+    }
 
 }

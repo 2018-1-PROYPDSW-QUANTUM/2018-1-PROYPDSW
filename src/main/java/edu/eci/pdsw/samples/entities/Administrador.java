@@ -78,4 +78,10 @@ public class Administrador {
         this.clave = clave;
     }
 
+    @Override
+    public String toString() {
+        return "Administrador {" + "Codigo=" + codigo + ", Nombre=" + nombre + ", Apellido=" + apellido + 
+                ", Celular=" + celular + ", Correo=" + correo + ", Clave=" + clave + '}';
+    }
+
 }

@@ -9,6 +9,7 @@ import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -36,8 +37,8 @@ public class MonitoriaProfesorBean {
         this.sm = sm;
     }
 
-    public Profesor getProfesorMonitoria() throws ExcepcionServiciosMonitoria {
-        return sm.consultarProfesor(998);
+    public List<Profesor> getProfesorMonitoria() throws ExcepcionServiciosMonitoria {
+        return sm.consultarProfesores();
     }
 
     public void setProfesorMonitoria(Profesor profesorMonitoria) {

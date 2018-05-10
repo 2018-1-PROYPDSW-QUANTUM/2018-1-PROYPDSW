@@ -6,12 +6,23 @@
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.AsistenteMapper">
     <select parameterType="map" id="consultarAsistentes" resultMap="AsistenteResult">
         SELECT 
-        mo.Identificador, mo.fecha, mo.hora_inicio, mo.hora_fin, mo.ip, mo.observaciones,
-        e.Codigo, 
-        t.Identificador, t.nombre, t.descripcion
-        FROM Asistente JOIN monitoria as mo ON Monitoria_identificador=mo.Identificador 
-            JOIN Estudiante as e ON Estudiante_codigo=e.Codigo
-            JOIN Tema as t Tema_identificador=t.Identificador
+        mo.Identificador as mo_Identificador, 
+        mo.fecha as mo_fecha, 
+        mo.hora_inicio as mo_hora_inicio, 
+        mo.hora_fin as mo_hora_fin, 
+        mo.ip as mo_ip, 
+        mo.observaciones as mo_observaciones, 
+        
+        e.Codigo as e_codigo, 
+        
+        t.Identificador as t_Identificador, 
+        t.nombre as t_nombre, 
+        t.descripcion as t_descripcion 
+        
+        FROM Asistente as asis
+        left join Monitoria as mo ON asis.Monitoria_identificador=mo.Identificador 
+        left join Estudiante as e ON asis.Estudiante_codigo=e.Codigo 
+        left join Tema as t ON asis.Tema_identificador=t.Identificador 
     </select>
     
     <select id="consultarAsistentesXMateria" resultMap="AsistenteResult">
@@ -20,8 +31,8 @@
         e.Codigo, 
         t.Identificador, t.nombre, t.descripcion
         FROM Asistente JOIN monitoria as mo ON Monitoria_identificador=mo.Identificador 
-            JOIN Estudiante as e ON Estudiante_codigo=e.Codigo
-            JOIN Tema as t Tema_identificador=t.Identificador
+        JOIN Estudiante as e ON Estudiante_codigo=e.Codigo
+        JOIN Tema as t ON Tema_identificador=t.Identificador
         WHERE t.curso_nemonico=#{neCurso}
     </select>
     
@@ -34,7 +45,7 @@
     <resultMap type="Asistente" id="AsistenteResult" >
         <association property="monitoria" javaType="Monitoria" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitoriaMapper.MonitoriaResult"/>
         <association property="estudiante" javaType="Estudiante" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.EstudianteMapper.EstudianteResult"/>
-        <!--<collection property="temas" ofType="Tema" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper.TemaResult"/>-->
+        <collection property="temas" ofType="Tema" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper.TemaResult"/>
     </resultMap>
       	
 </mapper>

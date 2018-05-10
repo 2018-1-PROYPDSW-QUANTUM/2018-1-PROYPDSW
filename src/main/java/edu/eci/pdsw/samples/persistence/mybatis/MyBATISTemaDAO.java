@@ -7,6 +7,7 @@ package edu.eci.pdsw.samples.persistence.mybatis;
 
 import java.util.List;
 import com.google.inject.Inject;
+import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.persistence.TemaDAO;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
@@ -22,8 +23,8 @@ public class MyBATISTemaDAO implements TemaDAO {
     private TemaMapper temaMapper;
     
     @Override
-    public void save(Tema t) throws PersistenceException {
-        temaMapper.registrarTema(t.getId(), t.getCurso().getNemonico(), t.getNombre(), t.getDescripcion());
+    public void save(Tema t, Curso c) throws PersistenceException {
+        temaMapper.registrarTema(t.getId(), c.getNemonico(), t.getNombre(), t.getDescripcion());
     }
     
     @Override

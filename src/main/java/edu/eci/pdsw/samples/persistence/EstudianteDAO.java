@@ -6,17 +6,25 @@
 package edu.eci.pdsw.samples.persistence;
 
 import edu.eci.pdsw.samples.entities.Estudiante;
+import java.util.List;
 
 /**
  *
  * @author jonnhi
  */
 public interface EstudianteDAO {
-    
+
     /**
      *
      * @param e Estudiante
      * @throws PersistenceException
      */
     public void save(Estudiante e) throws PersistenceException;
+
+    /**
+     *
+     * @return
+     * @throws PersistenceException
+     */
+    public List<Estudiante> loadAll() throws PersistenceException;
 }

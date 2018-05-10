@@ -6,7 +6,7 @@
 package edu.eci.pdsw.samples.persistence.mybatis.mappers;
 
 import edu.eci.pdsw.samples.entities.Franja;
-import java.util.Date;
+import java.time.LocalTime;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -50,7 +50,6 @@ public interface FranjaMapper {
      */
     public void registrarFranja(@Param("idFranja") Integer id,
             @Param("diFranja") String dia,
-            @Param("hiFranja") Date horaInicio,
-            @Param("hfFranja") Date horaFinal,
-            @Param("giFranja") Integer grupoId);
+            @Param("hiFranja") LocalTime horaInicio,
+            @Param("hfFranja") LocalTime horaFinal);
 }
