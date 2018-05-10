@@ -9,7 +9,8 @@
         f.Identificador as f_Identificador, 
         f.dia as f_dia, 
         f.hora_inicio as f_hora_inicio, 
-        f.hora_fin as f_hora_fin 
+        f.hora_fin as f_hora_fin,
+        f.grupo_identificador 
         
         FROM Franja as f
         <if test="idFranja != null">
@@ -27,6 +28,7 @@
         <result property="dia" column="f_dia"/>
         <result property="horaInicio" column="f_hora_inicio"/>
         <result property="horaFin" column="f_hora_fin"/>
+        <association property="grupo" javaType="Grupo" resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.GrupoMapper.GrupoResult'/>
     </resultMap>
       	
 </mapper>

@@ -111,7 +111,7 @@ and open the template in the editor.
         </div> 
         <br></br>
         <div class="form">
-            <h:form id="Fecha" prependId="false">
+            <h:form id="Fecha" prependId="false"  >
                 <h:panelGrid id="Panel" columns="1">
                     <h1>| Registrar Monitoria |</h1>
                     <p:inputText placeholder="Monitor(Codigo)" id="monitor" value="#{registrarMonitoria.monitorCodigo}" required="true"/>
@@ -119,12 +119,35 @@ and open the template in the editor.
                     <p:inputText placeholder="Grupo" id="grupo" value="#{registrarMonitoria.grupo}" required="true" label="Keyword"/>
                     <p:inputText placeholder="Estudiante" id="estudiante"  value="#{registrarMonitoria.estudianteMonitoria}" required="true" label="Keyword"/>         
                     <p:inputTextarea placeholder="Observaciones" style="text-align:center;" id="observaciones" rows="6" cols="33" value="#{registrarMonitoria.observaciones}" required="true" label="Keyword"/>                  
-                    <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaMonitoria}" styleClass="ui-priority-primary" />
+                    <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaMonitoria}" styleClass="ui-priority-primary" update=":dtMonitorias"/>
                 </h:panelGrid>   
             </h:form>
         </div>
         <div id="Monitorias">
             <h1> Monitorias Registradas </h1>
+            <table>
+                <tr>
+                    <th width="20%">
+                        <p:dataTable id="dtMonitorias" var="monitorias" value="#{registrarMonitoria.CMonitorias}"  selectionMode="single" rowKey="#{monitorias.id}">
+                            <p:column headerText="id" >
+                                <h:outputText value="#{monitorias.id}"/>
+                            </p:column>
+                            <p:column headerText="hora inicio" >
+                                <h:outputText value="#{monitorias.horaInicio}"/>
+                            </p:column>        
+                            <p:column headerText="hora fin">
+                                <h:outputText value="#{monitorias.horaFin}" />
+                            </p:column>
+                            <p:column headerText="observaciones">
+                                <h:outputText value="#{monitorias.observaciones}" />
+                            </p:column>
+                            <p:column headerText="Hora Fin">
+                                <h:outputText value="#{monitorias.fecha}" />
+                            </p:column>             
+                        </p:dataTable>
+                    </th>
+                </tr>
+            </table>
         </div>
     </h:body>
 </html>

@@ -80,35 +80,35 @@ and open the template in the editor.
         <div id="Informacion">
             <br></br>
             <h1> | Monitorias Disponibles | </h1>
-            <table>
+            <table> 
                 <tr>
+                    
                     <th width="20%">
-                        <p:dataTable var="cursos" value="#{indexBean.cursos}" selectionMode="single" rowKey="#{cursos.nemonico}">
+                        <p:dataTable var="cursos" value="#{indexBean.cursos}"  selectionMode="single"  selection="#{indexBean.curso}" rowKey="#{cursos.nemonico}">
                             <p:column headerText="Materias" >
-                                <h:outputText value="#{cursos.nemonico}"/>
-                            </p:column>             
+                                <h:outputText value="#{cursos.nemonico}" />
+                            </p:column>
                         </p:dataTable> 
+                        <p:commandButton class="Boton" value="Buscar" actionListener="#{indexBean.buscarFranjas}" styleClass="ui-priority-primary" update="franjas"/>
+                        
                     </th>
-                    <th width="90%" style="float: right;">
-                        <p:dataTable var="car" value="#{dtBasicView.cars}">
-                            <p:column headerText="Materia">
-                                <h:outputText value="#{car.id}" />
+                    <th width="20%">
+                        <p:dataTable id="franjas" var="franjas" value="#{indexBean.franjas}" rowKey="#{franjas.id}">
+                            <p:column headerText="Materias" >
+                                <h:outputText value="#{franjas.id}"/>
+                            </p:column>        
+                            <p:column headerText="dia">
+                                <h:outputText value="#{franjas.dia}" />
                             </p:column>
-                            <p:column headerText="Monitor">
-                                <h:outputText value="#{car.year}" />
-                            </p:column>
-                            <p:column headerText="Grupo">
-                                <h:outputText value="#{car.brand}" />
-                            </p:column>
-                            <p:column headerText="Hora Inicio">
-                                <h:outputText value="#{car.color}" />
+                            <p:column headerText="Hora Inicion">
+                                <h:outputText value="#{franjas.horaInicio}" />
                             </p:column>
                             <p:column headerText="Hora Fin">
-                                <h:outputText value="#{car.color}" />
+                                <h:outputText value="#{franjas.horaFin}" />
                             </p:column>
-                            <p:column headerText="Salon">
-                                <h:outputText value="#{car.color}" />
-                            </p:column>               
+                            <p:column headerText="Curso">
+                                <h:outputText value="#{franjas.grupo.id}" />
+                            </p:column>
                         </p:dataTable>
                     </th>
                 </tr>

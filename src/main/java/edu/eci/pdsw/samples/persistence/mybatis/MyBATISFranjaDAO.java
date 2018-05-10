@@ -23,7 +23,7 @@ public class MyBATISFranjaDAO implements FranjaDAO {
 
     @Override
     public void save(Franja f) throws PersistenceException {
-        franjaMapper.registrarFranja(f.getId(), f.getDia(), f.getHoraInicio(), f.getHoraFin());
+        franjaMapper.registrarFranja(f.getId(), f.getDia(), f.getHoraInicio(), f.getHoraFin(),f.getGrupo().getId());
     }
 
     @Override

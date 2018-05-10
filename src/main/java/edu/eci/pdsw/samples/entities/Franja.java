@@ -17,11 +17,12 @@ public class Franja {
     private String dia;
     private LocalTime horaInicio;
     private LocalTime horaFin;
+    private Grupo grupo;
 
     public Franja() {
     }
 
-    public Franja(Integer id, String dia, LocalTime horaInicio, LocalTime horaFin) {
+    public Franja(Integer id, String dia, LocalTime horaInicio, LocalTime horaFin,Grupo grupo) {
         this.id = id;
         this.dia = dia;
         this.horaInicio = horaInicio;
@@ -58,6 +59,14 @@ public class Franja {
 
     public void setHoraFin(LocalTime horaFin) {
         this.horaFin = horaFin;
+    }
+    
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
 
     @Override

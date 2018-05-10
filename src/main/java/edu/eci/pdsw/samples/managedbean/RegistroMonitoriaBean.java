@@ -38,12 +38,13 @@ public class RegistroMonitoriaBean{
     private String curso;
     private String observaciones;
 
-    public RegistroMonitoriaBean() throws PersistenceException{
+    public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria{
+        cMonitorias=sm.consultarMonitorias();
         nuevaMonitoria = new Monitoria();
     }
 
     public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria{
-        Monitoria monitoria=new Monitoria(sm.consultarMonitorias().size(), new Date(), LocalTime.now(),LocalTime.now() , "xxx.xx.xx", observaciones,sm.consultarMonitor(monitorCodigo));
+        Monitoria monitoria=new Monitoria(sm.consultarMonitorias().size()+1, new Date(), LocalTime.now(),LocalTime.now() , "xxx.xx.xx", observaciones,sm.consultarMonitor(monitorCodigo));
         sm.registrarMonitoria(monitoria);
     }
 
@@ -85,6 +86,10 @@ public class RegistroMonitoriaBean{
 
     public List<Monitoria> getCMonitorias() throws ExcepcionServiciosMonitoria {
         return cMonitorias;
+    }
+    
+    public void setCMonitorias() throws ExcepcionServiciosMonitoria {
+       this.cMonitorias=sm.consultarMonitorias();
     }
 
     public void registrarNuevaMonitoria(Monitoria nuevaMonitoria) throws PersistenceException, ExcepcionServiciosMonitoria {
