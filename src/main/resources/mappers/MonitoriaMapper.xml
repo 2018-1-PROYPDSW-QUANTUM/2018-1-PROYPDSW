@@ -11,14 +11,30 @@
         mo.hora_inicio as mo_hora_inicio, 
         mo.hora_fin as mo_hora_fin, 
         mo.ip as mo_ip, 
-        mo.observaciones as mo_observaciones
+        mo.observaciones as mo_observaciones,
+        
+        t.Identificador as t_Identificador,
+        t.nombre as t_nombre,
+        t.descripcion as t_descripcion,
+        
+        c.Nemonico as c_Nemonico,
+        c.nombre as c_nombre,
+        c.creditos as c_creditos,
+        c.horas_monitoria as c_horas_monitoria,
+        
+        e.Codigo as e_Codigo
         
         FROM Monitoria as mo
-            JOIN Asistente as a ON mo.Identificador=a.Monitoria_identificador
+        left join Monitor as m ON mo.monitor_codigo = m.Codigo
+        left join Grupo as g ON m.Codigo = g.monitor_codigo
+        left join Asistente as a ON mo.Identificador = a.Monitoria_identificador
+        left join Estudiante as e ON a.Estudiante_codigo = e.Codigo
+        left join Tema as t ON a.Tema_identificador = T.Identificador
+        left join Curso as c ON t.curso_nemonico = c.Nemonico
         <if test="idMonitoria != null">
             WHERE mo.Identificador = #{idMonitoria}
         </if>
-    </select>
+    </select>    
     
     <insert parameterType="map" id="registrarMonitoria">
         INSERT INTO Monitoria (Identificador, fecha, hora_inicio, hora_fin, ip, observaciones, monitor_codigo) 
@@ -32,6 +48,7 @@
         <result property="horaFin" column="mo_hora_fin"/>
         <result property="ip" column="mo_ip"/>
         <result property="observaciones" column="mo_observaciones"/>
+        <collection property="asistentes" ofType="Asistente" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.AsistenteMapper.AsistenteResult"/>
     </resultMap>
       	
 </mapper>

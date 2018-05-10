@@ -21,6 +21,15 @@ public class Monitoria {
     private LocalTime horaFin;
     private String ip;
     private String observaciones;
+    private List<Asistente> asistentes;
+
+    public List<Asistente> getAsistentes() {
+        return asistentes;
+    }
+
+    public void setAsistentes(List<Asistente> asistentes) {
+        this.asistentes = asistentes;
+    }
 
     public Monitoria() {
     }

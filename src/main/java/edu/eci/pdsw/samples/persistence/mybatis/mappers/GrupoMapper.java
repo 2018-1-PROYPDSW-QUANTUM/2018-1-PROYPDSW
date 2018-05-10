@@ -34,6 +34,22 @@ public interface GrupoMapper {
     
     /**
      *
+     * @param materiaProfesor
+     * @return
+     */
+    default List<Grupo> consultarGruposXMateria(String materiaProfesor){
+        return consultarGruposXMateriaGeneral(materiaProfesor);
+    }
+    
+    /**
+     *
+     * @param materiaProfesor
+     * @return
+     */
+    public List<Grupo> consultarGruposXMateriaGeneral(@Param("materiaProfesor") String materiaProfesor);
+    
+    /**
+     *
      * @param id
      * @return
      */

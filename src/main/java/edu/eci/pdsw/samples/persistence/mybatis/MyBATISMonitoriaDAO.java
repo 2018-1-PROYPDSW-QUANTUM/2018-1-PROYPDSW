@@ -36,5 +36,4 @@ public class MyBATISMonitoriaDAO implements MonitoriaDAO {
     public List<Monitoria> load() throws PersistenceException {
         return monitoria.consultarMonitorias();
     }
-
 }

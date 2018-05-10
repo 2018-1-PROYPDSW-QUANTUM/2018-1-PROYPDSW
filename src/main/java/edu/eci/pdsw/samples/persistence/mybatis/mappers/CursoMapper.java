@@ -26,6 +26,22 @@ public interface CursoMapper {
 
     /**
      *
+     * @param codigoProfesor
+     * @return
+     */
+    default List<Curso> consultarMateriasXCodigo(int codigoProfesor){
+        return consultarMateriasProfesorGeneral(codigoProfesor);
+    }
+
+    /**
+     *
+     * @param codigoProfesor
+     * @return
+     */
+    public List<Curso> consultarMateriasProfesorGeneral(@Param("coProfesor") int codigoProfesor);    
+    
+    /**
+     *
      * @return
      */
     default List<Curso> consultarCursos() {

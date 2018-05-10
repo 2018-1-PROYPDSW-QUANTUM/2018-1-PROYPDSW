@@ -83,9 +83,9 @@ and open the template in the editor.
             <table>
                 <tr>
                     <th width="20%">
-                        <p:dataTable var="profesor">
+                        <p:dataTable var="cursos" value="#{indexBean.cursos}" selectionMode="single" rowKey="#{cursos.nemonico}">
                             <p:column headerText="Materias" >
-                                <h:outputText />
+                                <h:outputText value="#{cursos.nemonico}"/>
                             </p:column>             
                         </p:dataTable> 
                     </th>

@@ -38,4 +38,9 @@ public class MyBATISGrupoDAO implements GrupoDAO {
         return grupoMapper.consultarGrupos();
     }
 
+    @Override
+    public List<Grupo> loadGruposXMateria(String materiaProfesor) throws PersistenceException {
+        return grupoMapper.consultarGruposXMateria(materiaProfesor);
+    }
+
 }

@@ -37,6 +37,23 @@ public interface ServiciosMonitoria {
 
     /**
      *
+     * @param codigoProfesor
+     * @return
+     * @throws ExcepcionServiciosMonitoria
+     */
+    public abstract List<Curso> consultarMateriasXCodigoProfesor(int codigoProfesor) throws ExcepcionServiciosMonitoria;
+    
+    /**
+     *
+     * @param grupo
+     * @param nemonico
+     * @return
+     * @throws ExcepcionServiciosMonitoria
+     */
+    public abstract List<Asistente> consultarMonitoriaXGrupo(int grupo, String nemonico) throws ExcepcionServiciosMonitoria;
+    
+    /**
+     *
      * @param codigo
      * @return
      * @throws ExcepcionServiciosMonitoria
@@ -49,6 +66,14 @@ public interface ServiciosMonitoria {
      */
     public abstract List<Administrador> consultarAdministradores() throws ExcepcionServiciosMonitoria;
 
+    /**
+     *
+     * @param materiaProfesor
+     * @return
+     * @throws edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria
+     */
+    public abstract List<Grupo> consultarGruposXMateriaProfesor(String materiaProfesor) throws ExcepcionServiciosMonitoria;
+    
     /**
      *
      * @return @throws ExcepcionServiciosMonitoria

@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.persistence.mybatis.mappers;
 
+import edu.eci.pdsw.samples.entities.Curso;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import edu.eci.pdsw.samples.entities.Profesor;
@@ -23,7 +24,7 @@ public interface ProfesorMapper {
     default Profesor consultarProfesor(Integer codigo) {
         return consultarProfesorGeneral(codigo).get(0);
     }
-
+    
     /**
      *
      * @return

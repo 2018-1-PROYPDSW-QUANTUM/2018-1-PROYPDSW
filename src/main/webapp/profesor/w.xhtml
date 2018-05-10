@@ -67,7 +67,7 @@
                     <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
                 </th>
                 <th width="30%" style="text-align: center;">
-                <p:button class="Boton" outcome="/index" value="Volver">
+                <p:button class="Boton" outcome="/index" value="Cerrar Sesion">
                     <f:param name="productId" value="10" />
                 </p:button>                    
                 </th>
@@ -80,34 +80,31 @@
                 <tr>
                     <th width="20%">
                 <h:form>
-                    <p:dataTable var="profesores" value="#{monitoriaProfesor.profesorMonitoria}" id="Tprofesores">
+                    <p:dataTable var="materias" value="#{monitoriaProfesor.profesorMonitoria}" selectionMode="single" rowKey="#{materias.nemonico}">
                         <p:column headerText="Materias" >
-                            <h:outputText value="#{profesores.nombre}" />
+                            <h:outputText value="#{materias.nemonico}" />
                         </p:column>             
                     </p:dataTable> 
                     <br></br><br></br>
-                    <p:splitButton value="Grupo" actionListener="#{buttonView.save}">
-                        <p:menuitem value="Update" actionListener="#{buttonView.update}"/>
-                        <p:menuitem value="Delete" actionListener="#{buttonView.delete}" ajax="false" icon="ui-icon-close" />
-                        <p:separator />
-                        <p:menuitem value="Homepage" url="http://www.primefaces.org" icon="ui-icon-extlink" />
-                    </p:splitButton>  
+                    <p:dataTable var="grupos" value="#{monitoriaProfesor.gruposProfesorMateria}" selectionMode="single" rowKey="#{grupos.id}">
+                        <p:column headerText="Grupos" >
+                            <h:outputText value="#{grupos.numero}" />
+                        </p:column>             
+                    </p:dataTable>
                     <br></br><br></br>
-                    <p:button class="Boton" value="Consultar" icon="" style="width: 100%">
-                        <f:param name="productId" value="10" />
-                    </p:button>             
+                    <p:commandButton class="Boton" value="Consultar" icon="" style="width: 100%"/>         
                 </h:form>
                 </th>                
                 <th width="90%" style="float: right;">
-                <p:dataTable var="monitorias" value="#{dtBasicView.cars}">
+                <p:dataTable var="monitorias" value="#{monitoriaProfesor.infoMonitoria}">
                     <f:facet name="header">
                         <h:outputText value="Monitorias registradas"/>
                     </f:facet>
                     <p:column headerText="Codigo estudiante" style="width: 30%">
-                        <h:outputText value="#{car.id}" />
+                        <h:outputText value="#{monitorias.estudiante.codigo}" />
                     </p:column>
                     <p:column headerText="Tema">
-                        <h:outputText value="#{car.year}" />
+                        <h:outputText value="#{monitorias.temas}" />
                     </p:column>              
                 </p:dataTable>
                 </th>

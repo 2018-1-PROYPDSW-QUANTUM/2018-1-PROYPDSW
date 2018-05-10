@@ -5,6 +5,10 @@
  */
 package edu.eci.pdsw.samples.managedbean;
 
+import edu.eci.pdsw.samples.entities.Asistente;
+import edu.eci.pdsw.samples.entities.Curso;
+import edu.eci.pdsw.samples.entities.Grupo;
+import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
@@ -23,10 +27,14 @@ import javax.faces.bean.SessionScoped;
 public class MonitoriaProfesorBean {
 
     private ServiciosMonitoria sm = ServiciosMonitoriasFactory.getInstance().getMonitoriasServices();
-    private Profesor profesorMonitoria;
+    private int codigoProfesor;
+    private String materiaProfesor;
+    private int grupo;
        
     public MonitoriaProfesorBean() {
-        profesorMonitoria = new Profesor();
+        codigoProfesor = 997;
+        materiaProfesor = "PIMO";
+        grupo = 1;
     }    
 
     public ServiciosMonitoria getSm() {
@@ -37,11 +45,15 @@ public class MonitoriaProfesorBean {
         this.sm = sm;
     }
 
-    public List<Profesor> getProfesorMonitoria() throws ExcepcionServiciosMonitoria {
-        return sm.consultarProfesores();
+    public List<Curso> getProfesorMonitoria() throws ExcepcionServiciosMonitoria {
+        return sm.consultarMateriasXCodigoProfesor(codigoProfesor);
     }
-
-    public void setProfesorMonitoria(Profesor profesorMonitoria) {
-        this.profesorMonitoria = profesorMonitoria;
-    }   
+    
+    public List<Grupo> getGruposProfesorMateria() throws ExcepcionServiciosMonitoria{
+        return sm.consultarGruposXMateriaProfesor(materiaProfesor);
+    }
+    
+    public List<Asistente> getInfoMonitoria() throws ExcepcionServiciosMonitoria{
+        return sm.consultarMonitoriaXGrupo(grupo, materiaProfesor);
+    }
 }

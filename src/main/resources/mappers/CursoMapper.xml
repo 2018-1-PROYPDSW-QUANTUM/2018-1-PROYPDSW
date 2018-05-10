@@ -24,6 +24,38 @@
         </if>
     </select>
     
+    <select parameterType="map" id="consultarMateriasProfesorGeneral" resultMap="CursoResult">
+        SELECT 
+        
+        c.Nemonico as c_Nemonico, 
+        c.nombre as c_nombre, 
+        c.creditos as c_creditos, 
+        c.horas_monitoria as c_horas_monitoria, 
+        
+        t.Identificador as t_Identificador, 
+        t.nombre as t_nombre, 
+        t.descripcion as t_descripcion,
+        
+        g.Identificador as g_Identificador,
+        g.numero as g_numero,
+        
+        p.Codigo as p_Codigo,
+        p.nombre as p_nombre,
+        p.apellido as p_apellido,
+        p.celular as p_celular,
+        p.correo as p_correo,
+        p.clave as p_clave
+        
+        FROM Curso as c         
+        left join Grupo as g ON c.Nemonico = g.curso_nemonico
+        left join Profesor as p ON g.profesor_codigo = p.Codigo
+        left join Tema as t ON c.Nemonico=t.curso_nemonico
+        
+        <if test="coProfesor != null">
+            WHERE p.Codigo = #{coProfesor}
+        </if>
+    </select>   
+    
     <insert parameterType="map" id ="registrarCurso" >
         INSERT INTO Curso (Nemonico, nombre, creditos, horas_monitorias)
         VALUES (#{neCurso},#{noCurso},#{crCurso},#{hmCurso})

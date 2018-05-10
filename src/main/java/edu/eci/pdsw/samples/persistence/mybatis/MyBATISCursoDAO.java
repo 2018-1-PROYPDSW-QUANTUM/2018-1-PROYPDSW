@@ -36,4 +36,9 @@ public class MyBATISCursoDAO implements CursoDAO {
         return cursoMapper.consultarCursos();
     }
 
+    @Override
+    public List<Curso> loadMaterias(int codigoProfesor) throws PersistenceException {
+        return cursoMapper.consultarMateriasXCodigo(codigoProfesor);
+    }
+    
 }

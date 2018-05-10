@@ -50,4 +50,9 @@ public class MyBATISAsistenteDAO implements AsistenteDAO {
         return asistente.consultarAsistentes();
     }
 
+    @Override
+    public List<Asistente> loadMonitoriaXGrupo(int grupo, String nemonico) throws PersistenceException {
+        return asistente.consultarMonitoriasXGrupo(grupo, nemonico);
+    }
+
 }

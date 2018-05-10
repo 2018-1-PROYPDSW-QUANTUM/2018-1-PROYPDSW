@@ -277,4 +277,31 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
         }
     }
 
+    @Override
+    public List<Curso> consultarMateriasXCodigoProfesor(int codigoProfesor) throws ExcepcionServiciosMonitoria {
+        try {
+            return daoCurso.loadMaterias(codigoProfesor);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar las materias del profesor: " + codigoProfesor, e);
+        }
+    }
+
+    @Override
+    public List<Grupo> consultarGruposXMateriaProfesor(String materiaProfesor) throws ExcepcionServiciosMonitoria{
+        try {
+            return daoGrupo.loadGruposXMateria(materiaProfesor);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar los grupos del profesor: " + materiaProfesor, e);
+        }        
+    }
+
+    @Override
+    public List<Asistente> consultarMonitoriaXGrupo(int grupo, String nemonico) throws ExcepcionServiciosMonitoria {
+        try {
+            return daoAsistente.loadMonitoriaXGrupo(grupo, nemonico);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar las monitorias del grupo: " + grupo, e);
+        } 
+    }
+
 }

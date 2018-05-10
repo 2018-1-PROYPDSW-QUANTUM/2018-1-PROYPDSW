@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.persistence;
 
+import edu.eci.pdsw.samples.entities.Curso;
 import java.util.List;
 import edu.eci.pdsw.samples.entities.Profesor;
 
@@ -28,7 +29,7 @@ public interface ProfesorDAO {
      * @throws PersistenceException
      */
     public Profesor load(Integer codigo) throws PersistenceException;
-
+    
     /**
      *
      * @return @throws PersistenceException

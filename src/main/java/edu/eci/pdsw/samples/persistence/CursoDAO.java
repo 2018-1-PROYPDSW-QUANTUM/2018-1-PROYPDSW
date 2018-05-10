@@ -23,6 +23,14 @@ public interface CursoDAO {
 
     /**
      *
+     * @param codigoProfesor
+     * @return
+     * @throws PersistenceException
+     */
+    public List<Curso> loadMaterias(int codigoProfesor) throws PersistenceException;
+    
+    /**
+     *
      * @param nemonico
      * @return
      */

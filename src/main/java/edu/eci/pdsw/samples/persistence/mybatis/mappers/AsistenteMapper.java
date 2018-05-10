@@ -7,6 +7,7 @@ package edu.eci.pdsw.samples.persistence.mybatis.mappers;
 
 import java.util.List;
 import edu.eci.pdsw.samples.entities.Asistente;
+import edu.eci.pdsw.samples.entities.Monitoria;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -14,6 +15,25 @@ import org.apache.ibatis.annotations.Param;
  * @author jonnhi
  */
 public interface AsistenteMapper {
+    
+   
+    /**
+     *
+     * @param grupo
+     * @param nemonico
+     * @return
+     */
+    default List<Asistente> consultarMonitoriasXGrupo(int grupo, String nemonico){
+        return consultarMonitoriasXGrupoGeneral(grupo, nemonico);
+    }    
+    
+    /**
+     *
+     * @param grupo
+     * @param nemonico
+     * @return
+     */
+    public List<Asistente> consultarMonitoriasXGrupoGeneral(@Param("grupoMonitoria") int grupo,@Param("nemonicoMonitoria") String nemonico);    
     
     public List<Asistente> consultarAsistentes();
     

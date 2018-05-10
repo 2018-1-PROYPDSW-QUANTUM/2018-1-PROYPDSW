@@ -29,6 +29,15 @@ public interface AsistenteDAO {
 
     /**
      *
+     * @param grupo
+     * @param nemonico
+     * @return
+     * @throws PersistenceException
+     */
+    public List<Asistente> loadMonitoriaXGrupo(int grupo, String nemonico) throws PersistenceException;    
+    
+    /**
+     *
      * @param id
      * @return
      * @throws PersistenceException

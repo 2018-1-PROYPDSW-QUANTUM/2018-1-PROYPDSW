@@ -35,6 +35,14 @@ public interface GrupoDAO {
 
     /**
      *
+     * @param materiaProfesor
+     * @return
+     * @throws PersistenceException
+     */
+    public List<Grupo> loadGruposXMateria(String materiaProfesor) throws PersistenceException;
+    
+    /**
+     *
      * @return
      * @throws PersistenceException
      */

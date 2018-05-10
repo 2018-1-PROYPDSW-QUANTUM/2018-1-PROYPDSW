@@ -7,6 +7,7 @@ package edu.eci.pdsw.samples.persistence.mybatis;
 
 import java.util.List;
 import com.google.inject.Inject;
+import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.persistence.ProfesorDAO;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
