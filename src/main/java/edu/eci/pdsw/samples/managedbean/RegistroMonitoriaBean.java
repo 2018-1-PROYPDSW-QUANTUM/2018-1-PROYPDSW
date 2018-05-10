@@ -5,6 +5,7 @@
  */
 package edu.eci.pdsw.samples.managedbean;
 
+import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Franja;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Monitoria;
@@ -12,37 +13,38 @@ import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
-import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author camil
  */
 @SessionScoped
-@Named("registrarMonitoria")
-public class RegistroMonitoriaBean implements Serializable {
+@ManagedBean(name = "registrarMonitoria")
+public class RegistroMonitoriaBean{
 
     private ServiciosMonitoria sm = ServiciosMonitoriasFactory.getInstance().getMonitoriasServices();
     private final Monitoria nuevaMonitoria;
-    private Grupo grupo;
+    private String grupo;
     private Franja franjaMonitoria;
     private int estudianteMonitoria;
     private Monitoria monitoriaSeleccionada;
-    private final List<Monitoria> cMonitorias;
+    private List<Monitoria> cMonitorias;
     private Integer monitorCodigo;
     private String curso;
     private String observaciones;
 
-    public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria {
-        cMonitorias = sm.consultarMonitorias();
+    public RegistroMonitoriaBean() throws PersistenceException{
         nuevaMonitoria = new Monitoria();
     }
 
-    public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria {
-        sm.registrarMonitoria(null, null);
+    public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria{
+        Monitoria monitoria=new Monitoria(sm.consultarMonitorias().size(), new Date(), LocalTime.now(),LocalTime.now() , "xxx.xx.xx", observaciones,sm.consultarMonitor(monitorCodigo));
+        sm.registrarMonitoria(monitoria);
     }
 
     public String getObservaciones() {
@@ -89,11 +91,11 @@ public class RegistroMonitoriaBean implements Serializable {
 
     }
 
-    public Grupo getGrupo() {
+    public String getGrupo() {
         return grupo;
     }
 
-    public void setGrupo(Grupo grupo) {
+    public void setGrupo(String grupo) {
         this.grupo = grupo;
     }
 

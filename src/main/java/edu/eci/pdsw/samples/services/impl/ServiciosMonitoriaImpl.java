@@ -187,8 +187,12 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
     }
 
     @Override
-    public void registrarMonitoria(Monitoria mo, Monitor m) throws ExcepcionServiciosMonitoria {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void registrarMonitoria(Monitoria mo) throws ExcepcionServiciosMonitoria {
+        try {
+            daoMonitoria.save(mo);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar todos los grupos registrados. ", e);
+        }
     }
 
     @Override

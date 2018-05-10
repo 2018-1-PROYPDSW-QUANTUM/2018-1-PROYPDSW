@@ -138,7 +138,7 @@ public interface ServiciosMonitoria {
      * @param m
      * @throws ExcepcionServiciosMonitoria
      */
-    public abstract void registrarMonitoria(Monitoria mo, Monitor m)
+    public abstract void registrarMonitoria(Monitoria mo)
             throws ExcepcionServiciosMonitoria;
 
     /**

@@ -125,26 +125,6 @@ and open the template in the editor.
         </div>
         <div id="Monitorias">
             <h1> Monitorias Registradas </h1>
-            <p:dataTable var="monitorias" value="#{registrarMonitoria.cMonitorias}" selection="#{RegistroMonitorias.monitoriaSeleccionada}" id="monitoria">
-                <p:column headerText="Materia">
-                    <h:outputText value="#{monitorias.getMonitor().getGruposMonitor().getCurso().getNemonico()}" />
-                </p:column>
-                <p:column headerText="Monitor">
-                    <h:outputText value="#{monitorias.monitor}" />
-                </p:column>
-                <p:column headerText="Hora inicio">
-                    <h:outputText value="#{monitorias.horaInicio}" />
-                </p:column>
-                <p:column headerText="Hora Fin">
-                    <h:outputText value="#{monitorias.horaFin}" />
-                </p:column>
-                <p:column headerText="Tema">
-                    <h:outputText value="#{car.color}" />
-                </p:column>
-                <p:column headerText="Descripcion">
-                    <h:outputText value="#{monitoria.observaciones}" />
-                </p:column>              
-            </p:dataTable>
         </div>
     </h:body>
 </html>
