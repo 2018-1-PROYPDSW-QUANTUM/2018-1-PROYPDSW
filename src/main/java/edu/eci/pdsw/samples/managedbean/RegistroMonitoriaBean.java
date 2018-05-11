@@ -5,10 +5,13 @@
  */
 package edu.eci.pdsw.samples.managedbean;
 
+import edu.eci.pdsw.samples.entities.Asistente;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Franja;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Monitoria;
+import edu.eci.pdsw.samples.entities.Profesor;
+import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
@@ -37,10 +40,23 @@ public class RegistroMonitoriaBean{
     private Integer monitorCodigo;
     private String curso;
     private String observaciones;
-
+    private Monitoria selectMonitoria;
+    private List<Asistente> asistenteMonitoria; 
+    private List<Estudiante> estudiantes;
+    private List<Tema> temas;
+    private List<Profesor> profesores;
+    private Estudiante estudian;
+    private Tema tema;
+    private Profesor profesor;
+    
     public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria{
         cMonitorias=sm.consultarMonitorias();
+
+
+    
+
         nuevaMonitoria = new Monitoria();
+        //estudian=new Estudiante(32131);
     }
 
     public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria{
@@ -85,6 +101,10 @@ public class RegistroMonitoriaBean{
     }
 
     public List<Monitoria> getCMonitorias() throws ExcepcionServiciosMonitoria {
+
+
+        cMonitorias=sm.consultarMonitorias();
+
         return cMonitorias;
     }
     
@@ -121,11 +141,66 @@ public class RegistroMonitoriaBean{
     }
 
     public int getEstudianteMonitoria() {
+
         return estudianteMonitoria;
     }
 
     public void setEstudianteMonitoria(int estudianteMonitoria) {
         this.estudianteMonitoria = estudianteMonitoria;
     }
-
+    
+    public List<Asistente> getAsistenteMonitoria() throws ExcepcionServiciosMonitoria{
+    
+        return sm.consultarAsistentes();
+    
+    }
+    
+    //Para seleccionar monitoria para agregar las asesorias
+    public Monitoria getSelectMonitoria(){
+        return selectMonitoria;
+    
+    }
+    public void setSelectMonitoria(Monitoria selectMonitoria){
+    
+    this.selectMonitoria=selectMonitoria;
+    
+    }
+    public List<Estudiante> getEstudiantes() throws ExcepcionServiciosMonitoria{
+        estudiantes=sm.consultarEstudiantes();
+/**        for (int i =0; i<estudiantes.size();i++){
+            Estudiante u= estudiantes.get(i);
+            System.out.println("Que imprime :"+u.getCodigo());
+        }*/
+        return estudiantes;
+ 
+    }
+    public Estudiante getEstudiant(){
+        System.out.println("ESTUDIANTE ES: "+ estudian);
+        return estudian;
+    }
+    public void setEstudiant(Estudiante estudiante){
+        System.out.println("Pasamos por aqui");
+        this.estudian=estudiante;
+    
+    }
+    public List<Tema> getTema() throws ExcepcionServiciosMonitoria{
+        temas=sm.consultarTemas();
+        return temas;
+    }
+    public void setTema(Tema tema){
+        this.tema=tema;
+    }
+    public List<Profesor> getProfesor() throws ExcepcionServiciosMonitoria{
+        profesores=sm.consultarProfesores();
+        return profesores;
+    }
+    public void setProfesor(Profesor profesor){
+        this.profesor=profesor;
+    }
+    //Asesoria
+    
+    
+    
+    
+    
 }

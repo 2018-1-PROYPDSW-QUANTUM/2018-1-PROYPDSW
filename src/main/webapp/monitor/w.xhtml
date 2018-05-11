@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <style type="text/css">
             body{
@@ -106,7 +107,9 @@ and open the template in the editor.
                 <th width="30%" style="text-align: center;">
                     <p:button class="Boton" outcome="/login" value="Cerrar Sesion" icon="">
                     </p:button>
-                </th>                 
+                </th>          
+                <p:link   value="Asesoria" outcome="/asesoria/asesoria.xhtml" style="color:blue" />
+                <h:outputLink value="/logout">Desea Salir</h:outputLink>
             </table>
         </div> 
         <br></br>
@@ -125,6 +128,7 @@ and open the template in the editor.
         </div>
         <div id="Monitorias">
             <h1> Monitorias Registradas </h1>
+<<<<<<< HEAD
             <table>
                 <tr>
                     <th width="20%">
@@ -148,6 +152,29 @@ and open the template in the editor.
                     </th>
                 </tr>
             </table>
+
+            <p:dataTable var="car" value="#{registrarMonitoria.CMonitorias}">
+            <f:facet name="header">
+                Lista de Materias
+            </f:facet>
+
+            <p:column headerText="Id">
+                <h:outputText value="#{car.id}" />
+            </p:column>
+
+            <p:column headerText="Fecha">
+                <h:outputText value="#{car.fecha}" />
+            </p:column>
+
+            <p:column headerText="Nombre">
+                <h:outputText value="#{car.monitor}" />
+            </p:column>
+
+            <p:column headerText="Observaciones Monitor">
+                <h:outputText value="#{car.observaciones}" />
+            </p:column>
+        </p:dataTable>  
+>>>>>>> Avance Asesoria
         </div>
     </h:body>
 </html>
