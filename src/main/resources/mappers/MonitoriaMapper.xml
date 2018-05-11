@@ -4,6 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitoriaMapper">
+    
+    <select parameterType="map" id="consultaInfoAsignaciones" resultMap="MonitoriaResult">
+        SELECT c.Nemonico, c.nombre, f.dia, f.hora_inicio, f.hora_fin, t.descripcion, COUNT(mo.identificador)
+        FROM Monitoria as mo
+        left join Monitor as m ON mo.monitor_codigo = m.Codigo
+        left join Grupo as g ON m.Codigo = g.monitor_codigo
+        left join Franja as f ON f.grupo_identificador = g.identificador
+        left join Asistente as a ON mo.Identificador = a.Monitoria_identificador
+        left join Estudiante as e ON a.Estudiante_codigo = e.Codigo
+        left join Tema as t ON a.Tema_identificador = T.Identificador
+        left join Curso as c ON t.curso_nemonico = c.Nemonico
+        <if test="idMonitoria != null">
+            WHERE mo.Identificador = #{idMonitoria}
+        </if>
+    </select>
+    
     <select parameterType="map" id="consultarMonitoriaGeneral" resultMap="MonitoriaResult">
         SELECT 
         mo.Identificador as mo_Identificador, 

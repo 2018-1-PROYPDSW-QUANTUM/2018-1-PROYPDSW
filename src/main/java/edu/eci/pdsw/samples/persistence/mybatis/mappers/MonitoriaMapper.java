@@ -44,6 +44,13 @@ public interface MonitoriaMapper {
     /**
      *
      * @param id
+     * @return
+     */
+    public List<Monitoria> consultaInfoAsignaciones(@Param("idMonitoria") Integer id);
+    
+    /**
+     *
+     * @param id
      * @param fecha
      * @param horaInicio
      * @param horaFin
