@@ -92,7 +92,6 @@ and open the template in the editor.
                         <p:commandButton class="Boton" value="Buscar" actionListener="#{indexBean.buscarFranjas}" styleClass="ui-priority-primary" update="franjas"/>
                         
                     </th>
-<<<<<<< HEAD
                     <th width="20%">
                         <p:dataTable id="franjas" var="franjas" value="#{indexBean.franjas}" rowKey="#{franjas.id}">
                             <p:column headerText="Materias" >
@@ -111,7 +110,7 @@ and open the template in the editor.
                                 <h:outputText value="#{franjas.grupo.id}" />
                             </p:column>
                         </p:dataTable>
-=======
+                    </th>
                     <th width="90%" style="float: right;">
                     <p:dataTable var="car" value="#{registrarMonitoria.CMonitorias}">
                     <f:facet name="header">
@@ -134,7 +133,7 @@ and open the template in the editor.
                         <h:outputText value="#{car.observaciones}" />
                     </p:column>
                 </p:dataTable>
->>>>>>> Avance Asesoria
+
                     </th>
                 </tr>
             </table>

@@ -27,13 +27,8 @@
         mo.hora_inicio as mo_hora_inicio, 
         mo.hora_fin as mo_hora_fin, 
         mo.ip as mo_ip, 
-<<<<<<< HEAD
-=======
-        mo.monitor_codigo as mon_cod ,
-
->>>>>>> Avance Asesoria
         mo.observaciones as mo_observaciones,
-        
+        mo.monitor_codigo as mon_cod ,
         t.Identificador as t_Identificador,
         t.nombre as t_nombre,
         t.descripcion as t_descripcion,
