@@ -95,54 +95,66 @@ and open the template in the editor.
         </style>
     </h:head>
     <h:body>
-<h:form>
- 
-    <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
- 
-        <p:outputLabel for="car" value="Estudiante: " />
-        <p:selectOneMenu id="car" value="#{registrarMonitoria.estudiant}">
-            <f:selectItem itemLabel="Select One" itemValue="" />
-            <f:selectItems value="#{registrarMonitoria.estudiantes}" />
-        </p:selectOneMenu>
-     </h:panelGrid>
-<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-    
-        <p:outputLabel for="carr" value="temas: " />
-        <p:selectOneMenu id="carr" value="#{registrarMonitoria.tema}" >
-            <f:selectItem itemLabel="Select One" itemValue="" />
-            <f:selectItems value="#{registrarMonitoria.tema}" />
-        </p:selectOneMenu>
-    </h:panelGrid>
-<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+    <h:form>
+               
         
-        <p:outputLabel for="profe" value="Profesor: " />
-        <p:selectOneMenu id="profe" value="#{registrarMonitoria.profesor}" >
-            <f:selectItem itemLabel="Select One" itemValue="" />
-            <f:selectItems value="#{registrarMonitoria.profesor}" />
-        </p:selectOneMenu> 
-        <br/>
-        <p:inputTextarea placeholder="Observaciones" style="text-align:center;" id="observaciones" rows="6" cols="33" value="#{registrarMonitoria.observaciones}" required="true" label="Keyword"/>                  
-    
- </h:panelGrid>
-    <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
- 
-    <p:dialog header="Datos" modal="true" showEffect="bounce" widgetVar="dlg" resizable="false">
-        <p:panelGrid columns="2" id="display" columnClasses="label,value">
-            <h:outputText value="Estudiante:" />
-            <h:outputText value="#{registrarMonitoria.estudiant.codigo}" />
- 
-            <h:outputText value="temas:" />
-            <h:outputText value="#{registrarMonitoria.tema}" />
- 
-            <h:outputText value="Profesor:" />
-            <h:outputText value="#{registrarMonitoria.profesor}" />
- 
-            <h:outputText value="Observaciones:" />
-            <h:outputText value="#{registrarMonitoria.observaciones}" />
- 
-        </p:panelGrid>
-    </p:dialog>
-</h:form>        
+        <br></br>
+        <br></br>
+        <br></br>           
+        <h1> Agregar Asesorias </h1>
+
+        <p:dataTable var="car" value="#{registrarMonitoria.estudiantes}">
+            <f:facet name="header">
+                Lista de Estudiantes
+            </f:facet>
+            <p:column headerText="Id">
+                <h:outputText value="#{car.codigo}" />
+            </p:column> 
+        </p:dataTable> 
+        <p:dataTable var="car" value="#{registrarMonitoria.tema}">
+            <f:facet name="header">
+                Lista de Temas
+            </f:facet>
+            <p:column headerText="Id">
+                <h:outputText value="#{car.descripcion}" />
+            </p:column> 
+            <p:column headerText="Id">
+                <h:outputText value="#{car.id}" />
+            </p:column> 
+             <p:column headerText="Nombre">
+                 <h:outputText value="#{car.nombre}" />
+            </p:column> 
+        </p:dataTable> 
+        
+        <p:dataTable var="car" value="#{registrarMonitoria.CMonitorias}">
+            <f:facet name="header">
+                Lista de Monitorias
+            </f:facet>
+            <p:column headerText="Id">
+                <h:outputText value="#{car.id}" />
+            </p:column> 
+            <p:column headerText="Id">
+                <h:outputText value="#{car.monitor}" />
+            </p:column> 
+             <p:column headerText="Nombre">
+                 <h:outputText value="#{car.observaciones}" />
+            </p:column> 
+        </p:dataTable> 
+
+                <div class="form">
+            <h:form id="Fecha" prependId="false"  >
+                <h:panelGrid id="Panel" columns="1">
+                    <h1>| Registrar Monitoria |</h1>
+                    <p:inputText placeholder="Monitoria(Codigo)" id="monitor" value="#{registrarMonitoria.monitorCodigo}" required="true"/>
+                    <p:inputText placeholder="Estudiante(Codigo)" id="materia" value="#{registrarMonitoria.curso}" required="true" label="Keyword"/>
+                    <p:inputText placeholder="Tema (Codigo)" id="grupo" value="#{registrarMonitoria.grupo}" required="true" label="Keyword"/>
+
+                    <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaAsesoria()}" styleClass="ui-priority-primary" />
+                </h:panelGrid>   
+            </h:form>
+        </div>
+        
+    </h:form>        
 
         </h:body>
 </html>

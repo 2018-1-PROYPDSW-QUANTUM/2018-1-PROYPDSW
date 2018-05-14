@@ -84,6 +84,13 @@ public class RegistroMonitoriaBean{
         Monitoria monitoria=new Monitoria(sm.consultarMonitorias().size()+1, new Date(), LocalTime.now(),LocalTime.now() , "xxx.xx.xx", observaciones,sm.consultarMonitor(monitorCodigo));
         sm.registrarMonitoria(monitoria);
     }
+    public void setNuevaAsesoria(){
+        System.out.println("Probadno");
+        //Monitoria monitoria, Estudiante estudiante, List<Tema> temas)
+        Asistente asisten=new Asistente();
+        
+    
+    }
 
     public String getObservaciones() {
         return observaciones;
