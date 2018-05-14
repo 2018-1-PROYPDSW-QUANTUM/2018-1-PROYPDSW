@@ -112,6 +112,11 @@ and open the template in the editor.
                 <h:outputLink value="/logout">Desea Salir</h:outputLink>
             </table>
         </div> 
+        <p:dataTable var="carr" value="#{registrarMonitoria.user}">
+            <p:column headerText="Monitor">
+                <h:outputText value="#{registrarMonitoria.user}" />
+            </p:column>
+        </p:dataTable>  
         <br></br>
         <div class="form">
             <h:form id="Fecha" prependId="false"  >
@@ -136,6 +141,7 @@ and open the template in the editor.
                             <p:column headerText="id" >
                                 <h:outputText value="#{monitorias.id}"/>
                             </p:column>
+                            
                             <p:column headerText="hora inicio" >
                                 <h:outputText value="#{monitorias.horaInicio}"/>
                             </p:column>        
@@ -148,6 +154,7 @@ and open the template in the editor.
                             <p:column headerText="Hora Fin">
                                 <h:outputText value="#{monitorias.fecha}" />
                             </p:column>             
+                            
                         </p:dataTable>
                     </th>
                 </tr>
@@ -174,7 +181,7 @@ and open the template in the editor.
                 <h:outputText value="#{car.observaciones}" />
             </p:column>
         </p:dataTable>  
->>>>>>> Avance Asesoria
+
         </div>
     </h:body>
 </html>

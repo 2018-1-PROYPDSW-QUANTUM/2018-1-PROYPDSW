@@ -19,7 +19,10 @@ import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
+import edu.eci.pdsw.samples.managedbean.ShiroLoginBean;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -27,9 +30,13 @@ import javax.faces.bean.SessionScoped;
  * @author camil
  */
 @SessionScoped
-@ManagedBean(name = "registrarMonitoria")
-public class RegistroMonitoriaBean{
 
+@ManagedBean(name = "registrarMonitoria")
+//@RequestScoped
+public class RegistroMonitoriaBean{
+    @ManagedProperty("#{loginBean}")
+    private ShiroLoginBean shiro;
+    
     private ServiciosMonitoria sm = ServiciosMonitoriasFactory.getInstance().getMonitoriasServices();
     private final Monitoria nuevaMonitoria;
     private String grupo;
@@ -51,14 +58,28 @@ public class RegistroMonitoriaBean{
     
     public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria{
         cMonitorias=sm.consultarMonitorias();
-
-
+        //System.out.println("Usuario es: "+shiro.getUsername());
+        //getUser();
     
 
         nuevaMonitoria = new Monitoria();
         //estudian=new Estudiante(32131);
     }
 
+    public String getUser(){
+        return shiro.getUsername();
+    
+    }
+    
+    public void setShiro(ShiroLoginBean si){
+        shiro=si;
+    
+    }
+    
+    public ShiroLoginBean getShiro(){
+        return shiro;
+    }
+    
     public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria{
         Monitoria monitoria=new Monitoria(sm.consultarMonitorias().size()+1, new Date(), LocalTime.now(),LocalTime.now() , "xxx.xx.xx", observaciones,sm.consultarMonitor(monitorCodigo));
         sm.registrarMonitoria(monitoria);

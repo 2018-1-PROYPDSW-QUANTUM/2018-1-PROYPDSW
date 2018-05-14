@@ -15,6 +15,7 @@ import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 /**
@@ -26,17 +27,36 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class MonitoriaProfesorBean {
 
+    @ManagedProperty("#{loginBean}")
+    private ShiroLoginBean shiro;
+        
     private ServiciosMonitoria sm = ServiciosMonitoriasFactory.getInstance().getMonitoriasServices();
     private int codigoProfesor;
     private String materiaProfesor;
     private int grupo;
        
     public MonitoriaProfesorBean() {
+        //Recuerden borrar esto, debe ser obtenido ya de la base de datos
         codigoProfesor = 997;
         materiaProfesor = "PIMO";
         grupo = 1;
     }    
 
+    public String getUser(){
+        System.out.println("E nombre es: "+shiro.getUsername());
+        return shiro.getUsername();
+    
+    }
+    
+    public void setShiro(ShiroLoginBean si){
+        shiro=si;
+    
+    }
+    
+    public ShiroLoginBean getShiro(){
+        return shiro;
+    }    
+    
     public ServiciosMonitoria getSm() {
         return sm;
     }

@@ -20,9 +20,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
 
-@ManagedBean(name = "loginBean", eager=true)
-//@RequestScoped
-//@ViewScoped
+@ManagedBean(name = "loginBean")
 @SessionScoped
 
 public class ShiroLoginBean implements Serializable {
@@ -49,10 +47,8 @@ public class ShiroLoginBean implements Serializable {
         Subject subject = SecurityUtils.getSubject();
 
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe());
-        
-//        prueb.setUser(username);
+       
         setUsername(username);
-        System.out.println("que imprime la gor"+username);
         try {
             subject.login(token);
             //prueb.setUser(username);
@@ -105,6 +101,7 @@ public class ShiroLoginBean implements Serializable {
     }
 
     public String getUsername() {
+        System.out.println("es: "+username);
         return username;
     }
 
