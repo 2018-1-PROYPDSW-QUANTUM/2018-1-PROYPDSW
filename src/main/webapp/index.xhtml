@@ -84,7 +84,7 @@ and open the template in the editor.
                 <tr>
                     
                     <th width="20%">
-                        <p:dataTable var="cursos" value="#{indexBean.cursos}"  selectionMode="single"  selection="#{indexBean.curso}" rowKey="#{cursos.nemonico}">
+                        <p:dataTable var="cursos" value="#{indexBean.cursos}"  selectionMode="single"  selection="#{indexBean.cursoSeleccionado}" rowKey="#{cursos.nemonico}">
                             <p:column headerText="Materias" >
                                 <h:outputText value="#{cursos.nemonico}" />
                             </p:column>
@@ -106,8 +106,8 @@ and open the template in the editor.
                             <p:column headerText="Hora Fin">
                                 <h:outputText value="#{franjas.horaFin}" />
                             </p:column>
-                            <p:column headerText="Curso">
-                                <h:outputText value="#{franjas.grupo.id}" />
+                            <p:column  headerText="Curso">
+                                <h:outputText value="#{indexBean.getCurso(franjas.grupo)}" />
                             </p:column>
                         </p:dataTable>
                     </th>

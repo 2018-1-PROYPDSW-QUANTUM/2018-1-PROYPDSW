@@ -27,7 +27,7 @@ public class indexBean implements Serializable{
     private final ServiciosMonitoria sm = ServiciosMonitoriasFactory.getInstance().getMonitoriasServices();
     private List<Franja>  franjas;
     private List<Curso> cursos;
-    private String curso;
+    private Curso cursoSeleccionado;
 
     public indexBean() throws ExcepcionServiciosMonitoria {
         franjas=sm.consultarFranjas();
@@ -42,19 +42,26 @@ public class indexBean implements Serializable{
         return cursos;
     }
     
-    public String getCurso() {
-        return curso;
+    public Curso getCursoSeleccionado() {
+        return cursoSeleccionado;
     }
-    public void setCurso(String curso) {
-        this.curso=curso;
+    public void setCursoSeleccionado(Curso cursoSeleccionado) {
+        this.cursoSeleccionado=cursoSeleccionado;
+    }
+
+    public String getCurso(Integer id) throws ExcepcionServiciosMonitoria{
+        return sm.consultarGrupo(id).getCurso().getNemonico();
     }
     
-    public void buscarFranjas(){
-        for (Franja i : franjas) {
-            if(!i.getGrupo().getCurso().getNemonico().equals(curso)){
+    public void buscarFranjas() throws ExcepcionServiciosMonitoria{
+        franjas=sm.consultarFranjas();
+        for (Iterator<Franja> it = franjas.iterator(); it.hasNext();) {
+            Franja i = it.next();
+            System.out.println(sm.consultarGrupo(i.getGrupo()).getCurso().getNemonico() +" "+cursoSeleccionado);
+            if (!sm.consultarGrupo(i.getGrupo()).getCurso().equals(cursoSeleccionado)){
                 franjas.remove(i);
+                
             }
         }
     }
-    
 }
