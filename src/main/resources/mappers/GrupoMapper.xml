@@ -137,7 +137,8 @@
         <result property="numero" column="g_numero"/>
         <association property="semestre" javaType="Semestre" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.SemestreMapper.SemestreResult"></association>
         <association property="curso" javaType="Curso" resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper.CursoResult'/>
-        <collection property='franjas' ofType='Franja' resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.FranjaMapper.FranjaResult"></collection>
+        <association property="monitor" javaType="Monitor" resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper.MonitorResult'/>
+        <association property="profesior" javaType="Profesor" resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper.ProfesorResult'/>
     </resultMap>
      
 </mapper>

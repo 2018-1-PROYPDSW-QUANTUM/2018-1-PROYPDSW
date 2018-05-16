@@ -18,6 +18,8 @@ public class Grupo {
     private Curso curso;
     private int numero;
     private List<Franja> franjas;
+    private Monitor monitor;
+    private Profesor profesor;
 
     public Grupo() {
     }
@@ -68,6 +70,21 @@ public class Grupo {
 
     public void setFranjas(List<Franja> franjas) {
         this.franjas = franjas;
+    }
+    
+    public Monitor getMonitor() {
+        return monitor;
+    }
+
+    public void setMoniotor(Monitor monitor) {
+        this.monitor = monitor;
+    }
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
     }
 
     @Override
