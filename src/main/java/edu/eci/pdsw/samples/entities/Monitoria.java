@@ -23,6 +23,7 @@ public class Monitoria {
     private String observaciones;
     private List<Asistente> asistentes;
     private Monitor monitor;
+    
     public List<Asistente> getAsistentes() {
         return asistentes;
     }

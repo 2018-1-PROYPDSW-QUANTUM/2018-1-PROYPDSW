@@ -100,87 +100,70 @@ and open the template in the editor.
                 <th>
                     <img src="../resources/LogoEscuela.png" alt="Logo Escuela"></img>
                 </th>
-                <th width="70%" style="text-align: left;">
+                <th width="40%" style="text-align: left;">
                     <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
                 </th>
 
                 <th width="30%" style="text-align: center;">
-                    <p:button class="Boton" outcome="/login" value="Cerrar Sesion" icon="">
-                    </p:button>
-                </th>          
-                <p:link   value="Asesoria" outcome="/asesoria/asesoria.xhtml" style="color:blue" />
-                <h:outputLink value="/logout">Desea Salir</h:outputLink>
+                    <p:button class="Boton" outcome="/asesoria/asesoria.xhtml" value="Asesoria">
+                    </p:button>                     
+                </th> 
+                <th width="30%" style="text-align: center;">
+                    <p:button class="Boton" outcome="/login" value="Cerrar Sesion">
+                    </p:button>                   
+                </th>     
             </table>
-        </div> 
-        <p:dataTable var="carr" value="#{registrarMonitoria.user}">
-            <p:column headerText="Monitor">
-                <h:outputText value="#{registrarMonitoria.user}" />
-            </p:column>
-        </p:dataTable>  
+        </div>  
         <br></br>
         <div class="form">
-            <h:form id="Fecha" prependId="false"  >
-                <h:panelGrid id="Panel" columns="1">
+            <tr>
+                <th>
                     <h1>| Registrar Monitoria |</h1>
-                    <p:inputText placeholder="Materia(neumonico)" id="materia" value="#{registrarMonitoria.curso}" required="true" label="Keyword"/>
-                    <p:inputText placeholder="Grupo" id="grupo" value="#{registrarMonitoria.grupo}" required="true" label="Keyword"/>
-                    <p:inputText placeholder="Estudiante" id="estudiante"  value="#{registrarMonitoria.estudianteMonitoria}" required="true" label="Keyword"/>         
-                    <p:inputTextarea placeholder="Observaciones" style="text-align:center;" id="observaciones" rows="6" cols="33" value="#{registrarMonitoria.observaciones}" required="true" label="Keyword"/>                  
-                    <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaMonitoria}" styleClass="ui-priority-primary" update=":dtMonitorias"/>
-                </h:panelGrid>   
-            </h:form>
+                    <p:dataTable var="carr" value="#{registrarMonitoria.user}">
+                        <p:column headerText="Monitor">
+                            <h:outputText value="#{registrarMonitoria.user}" />
+                        </p:column>
+                    </p:dataTable>
+                </th>
+                <br></br>
+                <th>
+                    <h:form id="Fecha" prependId="false">
+                        <h:panelGrid id="Panel" columns="1">                            
+                            <p:inputText placeholder="Materia(neumonico)" id="materia" value="#{registrarMonitoria.curso}" required="true" label="Keyword"/>
+                            <p:inputText placeholder="Grupo" id="grupo" value="#{registrarMonitoria.grupo}" required="true" label="Keyword"/>
+                            <p:inputText placeholder="Estudiante" id="estudiante"  value="#{registrarMonitoria.estudianteMonitoria}" required="true" label="Keyword"/>         
+                            <p:inputTextarea placeholder="Observaciones" style="text-align:center;" id="observaciones" rows="6" cols="33" value="#{registrarMonitoria.observaciones}" required="true" label="Keyword"/>                  
+                            <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaMonitoria}" styleClass="ui-priority-primary" update=":dtMonitorias"/>
+                        </h:panelGrid>   
+                    </h:form>
+                </th>
+            </tr>
         </div>
         <div id="Monitorias">
-            <h1> Monitorias Registradas </h1>
-
+            <h1> | Monitorias Registradas | </h1>
             <table>
                 <tr>
                     <th width="20%">
                         <p:dataTable id="dtMonitorias" var="monitorias" value="#{registrarMonitoria.CMonitorias}"  selectionMode="single" rowKey="#{monitorias.id}">
                             <p:column headerText="id" >
                                 <h:outputText value="#{monitorias.id}"/>
-                            </p:column>
-                            
-                            <p:column headerText="hora inicio" >
+                            </p:column>                           
+                            <p:column headerText="Hora Inicio" >
                                 <h:outputText value="#{monitorias.horaInicio}"/>
                             </p:column>        
-                            <p:column headerText="hora fin">
+                            <p:column headerText="Hora Fin">
                                 <h:outputText value="#{monitorias.horaFin}" />
                             </p:column>
-                            <p:column headerText="observaciones">
+                            <p:column headerText="Observaciones">
                                 <h:outputText value="#{monitorias.observaciones}" />
                             </p:column>
-                            <p:column headerText="Hora Fin">
-                                <h:outputText value="#{monitorias.fecha}" />
-                            </p:column>             
-                            
+                            <p:column headerText="IP Registro">
+                                <h:outputText value="#{monitorias.ip}" />
+                            </p:column>                             
                         </p:dataTable>
                     </th>
                 </tr>
             </table>
-
-            <p:dataTable var="car" value="#{registrarMonitoria.CMonitorias}">
-            <f:facet name="header">
-                Lista de Materias
-            </f:facet>
-
-            <p:column headerText="Id">
-                <h:outputText value="#{car.id}" />
-            </p:column>
-
-            <p:column headerText="Fecha">
-                <h:outputText value="#{car.fecha}" />
-            </p:column>
-
-            <p:column headerText="Nombre">
-                <h:outputText value="#{car.monitor}" />
-            </p:column>
-
-            <p:column headerText="Observaciones Monitor">
-                <h:outputText value="#{car.observaciones}" />
-            </p:column>
-        </p:dataTable>  
-
         </div>
     </h:body>
 </html>
