@@ -104,6 +104,13 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
             throw new ExcepcionServiciosMonitoria("Error al consultar todos los administradores registrados. ", e);
         }
     }
+    @Override
+    public void registrarAsesoria(Integer m, Integer de, Integer t ) throws ExcepcionServiciosMonitoria {
+        try {
+            daoAsistente.save(m, de, t);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al registrar una nueva asesoria ");
+        }    }
 
     @Override
     public List<Asistente> consultarAsistentes() throws ExcepcionServiciosMonitoria {
@@ -307,5 +314,6 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
             throw new ExcepcionServiciosMonitoria("Error al consultar las monitorias del grupo: " + grupo, e);
         } 
     }
+
 
 }

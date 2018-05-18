@@ -146,10 +146,10 @@ and open the template in the editor.
                 <h:panelGrid id="Panel" columns="1">
                     <h1>| Registrar Monitoria |</h1>
                     <p:inputText placeholder="Monitoria(Codigo)" id="monitor" value="#{registrarMonitoria.monitorCodigo}" required="true"/>
-                    <p:inputText placeholder="Estudiante(Codigo)" id="materia" value="#{registrarMonitoria.curso}" required="true" label="Keyword"/>
-                    <p:inputText placeholder="Tema (Codigo)" id="grupo" value="#{registrarMonitoria.grupo}" required="true" label="Keyword"/>
+                    <p:inputText placeholder="Estudiante(Codigo)" id="materia" value="#{registrarMonitoria.idEstudiante}" required="true" />
+                    <p:inputText placeholder="Tema (Codigo)" id="grupo" value="#{registrarMonitoria.idGrupo}" required="true"/>
 
-                    <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaAsesoria()}" styleClass="ui-priority-primary" />
+                    <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaAsesoria(monitor,materia,grupo)}" styleClass="ui-priority-primary" />
                 </h:panelGrid>   
             </h:form>
         </div>

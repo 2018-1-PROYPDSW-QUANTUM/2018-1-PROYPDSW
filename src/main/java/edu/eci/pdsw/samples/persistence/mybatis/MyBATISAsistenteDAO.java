@@ -26,8 +26,9 @@ public class MyBATISAsistenteDAO implements AsistenteDAO {
     private AsistenteMapper asistente;
 
     @Override
-    public void save(Monitoria m, Estudiante e, Tema t) throws PersistenceException {
-        asistente.registrarAsistente(m.getId(), e.getCodigo(), t.getId());
+    public void save(Integer m, Integer de, Integer t) throws PersistenceException {
+        //asistente.registrarAsistente(m.getId(), e.getCodigo(), t.getId());
+        asistente.registrarAsistente(m,de,t);
     }
 
     @Override

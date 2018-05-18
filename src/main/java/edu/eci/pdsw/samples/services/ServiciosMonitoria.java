@@ -74,6 +74,9 @@ public interface ServiciosMonitoria {
      */
     public abstract List<Grupo> consultarGruposXMateriaProfesor(String materiaProfesor) throws ExcepcionServiciosMonitoria;
     
+    
+    
+    public abstract void registrarAsesoria(Integer m, Integer e, Integer t)throws ExcepcionServiciosMonitoria;
     /**
      *
      * @return @throws ExcepcionServiciosMonitoria
@@ -201,5 +204,10 @@ public interface ServiciosMonitoria {
      * @return @throws ExcepcionServiciosMonitoria
      */
     public abstract List<Tema> consultarTemas() throws ExcepcionServiciosMonitoria;
+    
+    
+    
+    
+    
 
 }

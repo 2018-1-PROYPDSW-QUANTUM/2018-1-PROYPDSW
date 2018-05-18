@@ -20,6 +20,7 @@ import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 import edu.eci.pdsw.samples.managedbean.ShiroLoginBean;
+import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -56,6 +57,8 @@ public class RegistroMonitoriaBean {
     private Estudiante estudian;
     private Tema tema;
     private Profesor profesor;
+    private Integer numId;
+    private Integer grupId;
 
     public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria {
         cMonitorias = sm.consultarMonitorias();
@@ -85,10 +88,19 @@ public class RegistroMonitoriaBean {
         sm.registrarMonitoria(monitoria);
     }
 
-    public void setNuevaAsesoria() {
+    public void setNuevaAsesoria(Integer m, Integer e, Integer t) throws ExcepcionServiciosMonitoria {
         System.out.println("Probadno");
+        List<Tema> temas=new ArrayList<Tema>();
+        //Creacion de objetos nulos para setear los valores necesarios
+        Monitoria mon = new Monitoria(m,null,null, null, null,null, null);
+        Estudiante est=new Estudiante(e);
+        Tema tem=new Tema(t, null, null);
+        temas.add(tem);
         //Monitoria monitoria, Estudiante estudiante, List<Tema> temas)
-        Asistente asisten = new Asistente();
+        Asistente asisten = new Asistente(mon, est, temas);
+        
+        
+        sm.registrarAsesoria(m, e, t);
 
     }
 
@@ -141,6 +153,14 @@ public class RegistroMonitoriaBean {
 
     }
 
+    public Integer getIdGrupo(){
+        return grupId;
+    }
+    public void setIdGrupo(Integer id){
+        grupId=id;
+    
+        }
+    
     public String getGrupo() {
         return grupo;
     }
@@ -207,6 +227,16 @@ public class RegistroMonitoriaBean {
     public Estudiante getEstudiant() {
         System.out.println("ESTUDIANTE ES: " + estudian);
         return estudian;
+    }
+    
+    public Integer getIdEstudiante(){
+        System.out.println("numero ESTUDIANTE ES: " + numId);
+        return numId;   
+    }
+    public void setIdEstudiante(Integer id){
+        numId=id;
+        
+    
     }
 
     public void setEstudiant(Estudiante estudiante) {
