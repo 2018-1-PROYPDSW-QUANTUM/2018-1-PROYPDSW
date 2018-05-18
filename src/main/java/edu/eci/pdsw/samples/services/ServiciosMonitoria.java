@@ -141,9 +141,15 @@ public interface ServiciosMonitoria {
      * @param m
      * @throws ExcepcionServiciosMonitoria
      */
-    public abstract void registrarMonitoria(Monitoria mo)
-            throws ExcepcionServiciosMonitoria;
+    public abstract void registrarMonitoria(Monitoria mo) throws ExcepcionServiciosMonitoria;            
 
+    /**
+     *
+     * @param cu
+     * @throws ExcepcionServiciosMonitoria
+     */
+    public abstract void registrarCurso(Curso cu) throws ExcepcionServiciosMonitoria;
+    
     /**
      *
      * @return @throws ExcepcionServiciosMonitoria
@@ -205,9 +211,9 @@ public interface ServiciosMonitoria {
      */
     public abstract List<Tema> consultarTemas() throws ExcepcionServiciosMonitoria;
     
-    
-    
-    
-    
-
+    /**
+     *
+     * @param m
+     */
+    public abstract void registrarMonitor(Monitor m) throws ExcepcionServiciosMonitoria;
 }

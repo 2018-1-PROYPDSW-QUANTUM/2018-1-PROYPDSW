@@ -80,23 +80,18 @@
                 <tr>
                     <th width="20%">
                 <h:form>
-                <p:dataTable var="carr" value="#{monitoriaProfesor.user}">
-                    <p:column headerText="Profesor">
-                        <h:outputText value="#{monitoriaProfesor.user}" />
-                    </p:column>
-                </p:dataTable>  
+                    <p:dataTable var="carr" value="#{monitoriaProfesor.user}">
+                        <p:column headerText="Profesor">
+                            <h:outputText value="#{monitoriaProfesor.user}" />
+                        </p:column>
+                    </p:dataTable>
+                    <br></br>
                     <p:dataTable var="materias" value="#{monitoriaProfesor.profesorMonitoria}" selectionMode="single" rowKey="#{materias.nemonico}">
                         <p:column headerText="Materias" >
                             <h:outputText value="#{materias.nemonico}" />
                         </p:column>             
                     </p:dataTable> 
-                    <br></br><br></br>
-                    <p:dataTable var="grupos" value="#{monitoriaProfesor.gruposProfesorMateria}" selectionMode="single" rowKey="#{grupos.id}">
-                        <p:column headerText="Grupos" >
-                            <h:outputText value="#{grupos.numero}" />
-                        </p:column>             
-                    </p:dataTable>
-                    <br></br><br></br>
+                    <br></br>
                     <p:commandButton class="Boton" value="Consultar" icon="" style="width: 100%"/>         
                 </h:form>
                 </th>                

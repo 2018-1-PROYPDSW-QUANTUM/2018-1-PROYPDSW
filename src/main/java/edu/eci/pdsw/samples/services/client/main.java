@@ -30,6 +30,6 @@ public class main {
 //        ServiciosMonitoriasFactory.getInstance().getMonitoriasServices().registrarProfesor(pro);
 //        System.out.println(ServiciosMonitoriasFactory.getInstance().getMonitoriasServices().consultarProfesores());
 //        System.out.println(ServiciosMonitoriasFactory.getInstance().getMonitoriasServices().consultarGrupo(1234));
-        System.out.println(ServiciosMonitoriasFactory.getInstance().getMonitoriasServices().consultarMonitoriaXGrupo(1, "PIMO"));
+        System.out.println(ServiciosMonitoriasFactory.getInstance().getMonitoriasServices().consultarProfesores());
     }
 }

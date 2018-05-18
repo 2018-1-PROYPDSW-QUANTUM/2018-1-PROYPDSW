@@ -315,4 +315,22 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
         } 
     }
 
+    @Override
+    public void registrarCurso(Curso cu) throws ExcepcionServiciosMonitoria {
+        try {
+            daoCurso.save(cu);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al registrar el curso: " + cu, e);
+        }        
+    }
+
+    @Override
+    public void registrarMonitor(Monitor m) throws ExcepcionServiciosMonitoria{
+        try {
+            daoMonitor.save(m);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al registrar el monitor: " + m, e);
+        }        
+    }
+
 }

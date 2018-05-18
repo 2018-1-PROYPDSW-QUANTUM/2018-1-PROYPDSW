@@ -57,7 +57,7 @@
     </select>   
     
     <insert parameterType="map" id ="registrarCurso" >
-        INSERT INTO Curso (Nemonico, nombre, creditos, horas_monitorias)
+        INSERT INTO Curso (Nemonico, nombre, creditos, horas_monitoria)
         VALUES (#{neCurso},#{noCurso},#{crCurso},#{hmCurso})
     </insert>
     
