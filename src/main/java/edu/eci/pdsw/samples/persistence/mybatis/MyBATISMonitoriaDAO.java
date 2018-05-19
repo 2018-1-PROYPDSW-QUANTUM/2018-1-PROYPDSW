@@ -23,8 +23,8 @@ public class MyBATISMonitoriaDAO implements MonitoriaDAO {
     private MonitoriaMapper monitoria;
 
     @Override
-    public void save(Monitoria mo) throws PersistenceException {
-        monitoria.registrarMonitoria(mo.getId(), mo.getFecha(), mo.getHoraInicio(), mo.getHoraFin(), mo.getIp(), mo.getObservaciones(), mo.getMonitor().getCodigo());
+    public void save(Monitoria mo,Monitor m) throws PersistenceException {
+        monitoria.registrarMonitoria(mo.getId(), mo.getFecha(), mo.getHoraInicio(), mo.getHoraFin(), mo.getIp(), mo.getObservaciones(), m.getCodigo());
     }
 
     @Override

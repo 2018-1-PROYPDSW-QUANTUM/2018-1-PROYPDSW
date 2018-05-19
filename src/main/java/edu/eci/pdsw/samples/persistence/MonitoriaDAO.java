@@ -21,7 +21,7 @@ public interface MonitoriaDAO {
      * @param m
      * @throws PersistenceException
      */
-    public void save(Monitoria mo) throws PersistenceException;
+    public void save(Monitoria mo,Monitor m) throws PersistenceException;
     
     /**
      *

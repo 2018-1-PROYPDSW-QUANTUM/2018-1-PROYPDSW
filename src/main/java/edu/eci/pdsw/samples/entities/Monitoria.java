@@ -22,7 +22,6 @@ public class Monitoria {
     private String ip;
     private String observaciones;
     private List<Asistente> asistentes;
-    private Monitor monitor;
     
     public List<Asistente> getAsistentes() {
         return asistentes;
@@ -35,14 +34,13 @@ public class Monitoria {
     public Monitoria() {
     }
 
-    public Monitoria(Integer id, Date fecha, LocalTime horaInicio, LocalTime horaFin, String ip, String observaciones,Monitor monitor) {
+    public Monitoria(Integer id, Date fecha, LocalTime horaInicio, LocalTime horaFin, String ip, String observaciones) {
         this.id = id;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.ip = ip;
         this.observaciones = observaciones;
-        this.monitor=monitor;
     }
 
     public Integer getId() {
@@ -91,13 +89,6 @@ public class Monitoria {
 
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
-    }
-    public Monitor getMonitor() {
-        return monitor;
-    }
-
-    public void setMonitor(Monitor monitor) {
-        this.monitor= monitor;
     }
 
     @Override

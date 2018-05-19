@@ -84,15 +84,15 @@ public class RegistroMonitoriaBean {
     }
 
     public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria {
-        Monitoria monitoria = new Monitoria(sm.consultarMonitorias().size() + 1, new Date(), LocalTime.now(), LocalTime.now(), "xxx.xx.xx", observaciones, sm.consultarMonitor(monitorCodigo));
-        sm.registrarMonitoria(monitoria);
+        Monitoria monitoria = new Monitoria(sm.consultarMonitorias().size() + 1, new Date(), LocalTime.now(), LocalTime.now(), "xxx.xx.xx", observaciones);
+        sm.registrarMonitoria(monitoria,sm.consultarMonitor(monitorCodigo));
     }
 
     public void setNuevaAsesoria(Integer m, Integer e, Integer t) throws ExcepcionServiciosMonitoria {
         System.out.println("Probadno");
         List<Tema> temas=new ArrayList<Tema>();
         //Creacion de objetos nulos para setear los valores necesarios
-        Monitoria mon = new Monitoria(m,null,null, null, null,null, null);
+        Monitoria mon = new Monitoria(m,null,null, null, null,null);
         Estudiante est=new Estudiante(e);
         Tema tem=new Tema(t, null, null);
         temas.add(tem);

@@ -194,9 +194,9 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
     }
 
     @Override
-    public void registrarMonitoria(Monitoria mo) throws ExcepcionServiciosMonitoria {
+    public void registrarMonitoria(Monitoria mo,Monitor m) throws ExcepcionServiciosMonitoria {
         try {
-            daoMonitoria.save(mo);
+            daoMonitoria.save(mo,m);
         } catch (PersistenceException e) {
             throw new ExcepcionServiciosMonitoria("Error al consultar todos los grupos registrados. ", e);
         }
