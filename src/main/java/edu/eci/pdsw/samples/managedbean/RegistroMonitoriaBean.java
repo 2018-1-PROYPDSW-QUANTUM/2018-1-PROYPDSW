@@ -30,9 +30,10 @@ import javax.faces.bean.SessionScoped;
  *
  * @author camil
  */
-@SessionScoped
 
 @ManagedBean(name = "registrarMonitoria")
+@SessionScoped
+
 //@RequestScoped
 public class RegistroMonitoriaBean {
 
@@ -88,19 +89,10 @@ public class RegistroMonitoriaBean {
         sm.registrarMonitoria(monitoria,sm.consultarMonitor(monitorCodigo));
     }
 
-    public void setNuevaAsesoria(Integer m, Integer e, Integer t) throws ExcepcionServiciosMonitoria {
+    public void setNuevaAsesoria() throws ExcepcionServiciosMonitoria {
         System.out.println("Probadno");
-        List<Tema> temas=new ArrayList<Tema>();
-        //Creacion de objetos nulos para setear los valores necesarios
-        Monitoria mon = new Monitoria(m,null,null, null, null,null);
-        Estudiante est=new Estudiante(e);
-        Tema tem=new Tema(t, null, null);
-        temas.add(tem);
-        //Monitoria monitoria, Estudiante estudiante, List<Tema> temas)
-        Asistente asisten = new Asistente(mon, est, temas);
-        
-        
-        sm.registrarAsesoria(m, e, t);
+
+        sm.registrarAsesoria(monitorCodigo, numId, grupId);
 
     }
 
@@ -113,6 +105,8 @@ public class RegistroMonitoriaBean {
     }
 
     public Integer getMonitorCodigo() {
+        System.out.println("QUe imprime + monitor"+monitorCodigo);
+        
         return monitorCodigo;
     }
 
@@ -154,6 +148,7 @@ public class RegistroMonitoriaBean {
     }
 
     public Integer getIdGrupo(){
+        System.out.println("QUe imprime +grupo"+grupId);
         return grupId;
     }
     public void setIdGrupo(Integer id){

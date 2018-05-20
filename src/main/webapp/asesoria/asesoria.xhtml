@@ -133,23 +133,23 @@ and open the template in the editor.
             <p:column headerText="Id">
                 <h:outputText value="#{car.id}" />
             </p:column> 
-            <p:column headerText="Id">
-                <h:outputText value="#{car.monitor}" />
+            <p:column headerText="Observaciones">
+                <h:outputText value="#{car.observaciones}" />
             </p:column> 
              <p:column headerText="Nombre">
                  <h:outputText value="#{car.observaciones}" />
             </p:column> 
         </p:dataTable> 
 
-                <div class="form">
-            <h:form id="Fecha" prependId="false"  >
+        <div class="form">
+            <h:form id="asesoria"  >
                 <h:panelGrid id="Panel" columns="1">
                     <h1>| Registrar Monitoria |</h1>
-                    <p:inputText placeholder="Monitoria(Codigo)" id="monitor" value="#{registrarMonitoria.monitorCodigo}" required="true"/>
-                    <p:inputText placeholder="Estudiante(Codigo)" id="materia" value="#{registrarMonitoria.idEstudiante}" required="true" />
-                    <p:inputText placeholder="Tema (Codigo)" id="grupo" value="#{registrarMonitoria.idGrupo}" required="true"/>
+                    <p:inputText placeholder="Monitoria(Codigo)" value="#{registrarMonitoria.monitorCodigo}" />
+                    <p:inputText placeholder="Estudiante(Codigo)" value="#{registrarMonitoria.idEstudiante}"  />
+                    <p:inputText placeholder="Tema (Codigo)" value="#{registrarMonitoria.idGrupo}" />
 
-                    <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaAsesoria(monitor,materia,grupo)}" styleClass="ui-priority-primary" />
+                    <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaAsesoria()}" update="asesoria" styleClass="ui-priority-primary" />
                 </h:panelGrid>   
             </h:form>
         </div>
@@ -158,4 +158,3 @@ and open the template in the editor.
 
         </h:body>
 </html>
-
