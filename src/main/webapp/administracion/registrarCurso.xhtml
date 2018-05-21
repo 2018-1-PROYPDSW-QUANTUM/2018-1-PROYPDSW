@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+    </h:head>
+    <h:body>
+        <div class="Titulo">
+            <table>
+                <th>
+                    <img src="../resources/LogoEscuela.png" alt="Logo Escuela"></img>
+                </th>
+                <th width="70%" style="text-align: left;">
+                    <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
+                </th>
+                <th width="30%" style="text-align: center;">
+                    <p:button class="Boton" outcome="/index" value="Cerrar Sesion">
+                        <f:param name="productId" value="10" />
+                    </p:button>                    
+                </th>
+            </table>
+        </div>
+        <div class="form">
+            <h1> | Registrar Curso | </h1>
+            <h:form class="formX" prependId="false">
+                <h:panelGrid class="Panel" columns="1">                            
+                    <p:inputText placeholder="Nemonico" value="#{administradorBean.nemonicoCurso}" required="true" label="Keyword" type="text"/>
+                    <p:inputText placeholder="Nombre" value="#{administradorBean.nombreCurso}" required="true" label="Keyword" type="text"/>
+                    <p:inputText placeholder="Creditos" value="#{administradorBean.creditosCurso}" required="true" label="Keyword" type="number"/>  
+                    <p:inputText placeholder="Horas Monitoria" value="#{administradorBean.horasMonitoriaCurso}" required="true" label="Keyword" type="number"/>  
+                    <p:commandButton class="Boton" value="Enviar" action="#{administradorBean.registrarCurso()}"/>
+                </h:panelGrid>   
+            </h:form>
+        </div>
+    </h:body>
+</html>
