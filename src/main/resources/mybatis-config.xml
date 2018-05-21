@@ -30,8 +30,10 @@
             <dataSource type="POOLED">
                 <property name="driver" value="org.postgresql.Driver" />
                 <property name="url" value="jdbc:postgresql://ec2-23-23-247-245.compute-1.amazonaws.com:5432/dere5g7v1fn739?ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
+
                 <property name="username" value="kviasrhpmxauxb" />
                 <property name="password" value="36758ee11608a65d64462ea4005cbdd3c20ecf53db5f08359a3f2a3d55ac4cc2" />
+
             </dataSource>
         </environment>
     </environments>
