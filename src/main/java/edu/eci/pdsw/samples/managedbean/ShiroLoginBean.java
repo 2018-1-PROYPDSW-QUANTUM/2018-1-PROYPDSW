@@ -49,11 +49,7 @@ public class ShiroLoginBean implements Serializable {
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe());
        
         setUsername(username);
-        System.out.println("coontraseña"+ getPassword());
-        System.out.println("que es :"+ subject.getPrincipal());
-        System.out.println("rol :"+ subject.hasRole("monitor"));
-        System.out.println("rol :"+ subject.hasRole("profesor"));
-        System.out.println("rol :"+ subject.hasRole("administrador"));
+
         
         
         try {
