@@ -90,6 +90,7 @@ public class Monitoria {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
+    
 
     @Override
     public String toString() {

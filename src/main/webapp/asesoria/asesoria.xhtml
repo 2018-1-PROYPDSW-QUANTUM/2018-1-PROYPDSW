@@ -147,9 +147,19 @@ and open the template in the editor.
                     <h1>| Registrar Monitoria |</h1>
                     <p:inputText placeholder="Monitoria(Codigo)" value="#{registrarMonitoria.monitorCodigo}" />
                     <p:inputText placeholder="Estudiante(Codigo)" value="#{registrarMonitoria.idEstudiante}"  />
-                    <p:inputText placeholder="Tema (Codigo)" value="#{registrarMonitoria.idGrupo}" />
-
+                     <p:dataTable id="asistentes" var="asistente" value="#{registroMonitoria.Asistentes}" editable="true">
+                         <f:facet name="header">
+                            Asistentes
+                         </f:facet> 
+                         <p:column headerText="Id">
+                             <h:outputText value="#{asistente.estudiante.codigo}" />
+                         </p:column>
+                         <p:commandButton value="AgregarEstudiante" type="button" onclick="PF('dlg2').show();" />
+                     </p:dataTable>                                
                     <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaAsesoria()}" update="asesoria" styleClass="ui-priority-primary" />
+                    <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+                        <h:outputText value="This is a Modal Dialog." />
+                    </p:dialog>
                 </h:panelGrid>   
             </h:form>
         </div>

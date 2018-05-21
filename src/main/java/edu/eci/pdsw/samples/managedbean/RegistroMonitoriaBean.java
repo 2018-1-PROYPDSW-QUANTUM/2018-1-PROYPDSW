@@ -41,7 +41,7 @@ public class RegistroMonitoriaBean {
     private ShiroLoginBean shiro;
 
     private ServiciosMonitoria sm = ServiciosMonitoriasFactory.getInstance().getMonitoriasServices();
-    private final Monitoria nuevaMonitoria;
+    private Monitoria nuevaMonitoria;
     private String grupo;
     private Franja franjaMonitoria;
     private int estudianteMonitoria;
@@ -60,6 +60,7 @@ public class RegistroMonitoriaBean {
     private Profesor profesor;
     private Integer numId;
     private Integer grupId;
+    private List<Asistente> asistentes;
 
     public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria {
         cMonitorias = sm.consultarMonitorias();
@@ -85,15 +86,23 @@ public class RegistroMonitoriaBean {
     }
 
     public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria {
-        Monitoria monitoria = new Monitoria(sm.consultarMonitorias().size() + 1, new Date(), LocalTime.now(), LocalTime.now(), "xxx.xx.xx", observaciones);
-        sm.registrarMonitoria(monitoria,sm.consultarMonitor(monitorCodigo));
+        sm.registrarMonitoria(nuevaMonitoria,sm.consultarMonitor(monitorCodigo));
+    }
+    
+    public void comenzarMonitoria() throws ExcepcionServiciosMonitoria{
+        nuevaMonitoria=new Monitoria(sm.consultarMonitorias().size() + 1, new Date(), LocalTime.now(), null, "xxx.xx.xx", observaciones);
+        asistentes=nuevaMonitoria.getAsistentes();
     }
 
     public void setNuevaAsesoria() throws ExcepcionServiciosMonitoria {
-        System.out.println("Probadno");
+        System.out.println("Probando");
 
         sm.registrarAsesoria(monitorCodigo, numId, grupId);
 
+    }
+    public void agregarAsistente(Asistente asistente){
+        asistentes.add(asistente);
+        nuevaMonitoria.setAsistentes(asistentes);
     }
 
     public String getObservaciones() {
