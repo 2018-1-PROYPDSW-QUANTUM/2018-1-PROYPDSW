@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
+    </h:head>
+    <h:body>
+        <div class="Titulo">
+            <table>
+                <th>
+                    <img src="../resources/LogoEscuela.png" alt="Logo Escuela"></img>
+                </th>
+                <th width="70%" style="text-align: left;">
+                    <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
+                </th>
+                <th width="30%" style="text-align: center;">
+                    <p:button class="Boton" outcome="administracion" value="Volver">
+                    </p:button>                   
+                </th>                
+            </table>
+        </div>
+        <div class="form">
+            <h1> | Asignar Monitor | </h1>
+            <h:form>
+                <table>
+                    <tr>
+                        <th width="50%">
+                            <p:dataTable var="monitores" value="#{administradorBean.monitores}" selectionMode="single" selection="#{administradorBean.monitorSeleccionado}" rowKey="#{monitores.nombre}" id="monitores">
+                                <p:column headerText="Monitores">
+                                    <h:outputText value="#{monitores.nombre}" />
+                                </p:column>
+                            </p:dataTable>
+                        </th>
+                        <th width="50%">
+                            <p:dataTable var="grupos" value="#{administradorBean.grupos}" selectionMode="single" selection="#{administradorBean.grupoSeleccionado}" rowKey="#{grupos.curso.nemonico}" id="grupos">
+                                <p:column headerText="Curso">
+                                    <h:outputText value="#{grupos.curso.nemonico}" />
+                                </p:column>
+                                <p:column headerText="Grupo">
+                                    <h:outputText value="#{grupos.numero}" />
+                                </p:column>                             
+                            </p:dataTable>
+                        </th>
+                    </tr>                
+                </table>
+                <p:commandButton value="Asignar Monitor" action="#{administradorBean.asignarMonitorAGrupo()}" class="Boton" update="monitores grupos"/>
+            </h:form>
+        </div>
+    </h:body>
+</html>

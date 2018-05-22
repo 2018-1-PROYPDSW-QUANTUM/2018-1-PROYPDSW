@@ -14,7 +14,7 @@ import edu.eci.pdsw.samples.entities.Monitor;
  * @author jonnhi
  */
 public interface MonitorMapper {
-
+         
     /**
      *
      * @param codigo

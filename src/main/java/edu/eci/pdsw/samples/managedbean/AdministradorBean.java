@@ -7,13 +7,16 @@ package edu.eci.pdsw.samples.managedbean;
 
 import edu.eci.pdsw.samples.entities.Administrador;
 import edu.eci.pdsw.samples.entities.Curso;
+import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -21,13 +24,21 @@ import javax.faces.bean.SessionScoped;
  *
  * @author 2105700
  */
-
 @ManagedBean(name = "administradorBean")
 @SessionScoped
 public class AdministradorBean {
-    
+
     private ServiciosMonitoria sm = ServiciosMonitoriasFactory.getInstance().getMonitoriasServices();
-    
+    private List<Monitor> monitores;
+    private List<Curso> cursos;
+    private List<Grupo> grupos;
+    private List<Grupo> gruposSinProfesor;
+    private List<Profesor> profesores;
+    private Profesor profesorSeleccionado;
+    private Monitor monitorSeleccionado;
+    private Grupo grupoSeleccionado;
+    private Curso cursoSeleccionado;
+
     //Atributos Profesor
     private Integer codigoProfesor;
     private String nombreProfesor;
@@ -41,9 +52,9 @@ public class AdministradorBean {
     private String nemonicoCurso;
     private String nombreCurso;
     private int creditosCurso;
-    private double horasMonitoriaCurso;    
+    private double horasMonitoriaCurso;
     private Curso cursoRegistrado;
-    
+
     //Atributos semestre
     private Integer idSemestre;
     private Integer yearsSemestre;
@@ -52,7 +63,7 @@ public class AdministradorBean {
     private Date fechaFinSemestre;
     private Administrador adminSemestre;
     private Semestre semestreRegistrado;
-    
+
     //Atributos monitor
     private Integer codigoMonitor;
     private String semestreIngresoMonitor;
@@ -63,11 +74,11 @@ public class AdministradorBean {
     private String correoMonitor;
     private String claveMonitor;
     private Monitor monitorRegistrado;
-    
+
     public AdministradorBean() {
-    }    
- 
-    public void registrarProfesor() throws ExcepcionServiciosMonitoria{
+    }
+
+    public void registrarProfesor() throws ExcepcionServiciosMonitoria {
         profesorRegistrado = new Profesor();
         profesorRegistrado.setCodigo(codigoProfesor);
         profesorRegistrado.setNombre(nombreProfesor);
@@ -77,8 +88,8 @@ public class AdministradorBean {
         profesorRegistrado.setClave(claveProfesor);
         sm.registrarProfesor(profesorRegistrado);
     }
-    
-    public void registrarCurso() throws ExcepcionServiciosMonitoria{
+
+    public void registrarCurso() throws ExcepcionServiciosMonitoria {
         cursoRegistrado = new Curso();
         cursoRegistrado.setNemonico(nemonicoCurso);
         cursoRegistrado.setNombre(nombreCurso);
@@ -86,8 +97,8 @@ public class AdministradorBean {
         cursoRegistrado.setHorasMonitoria(horasMonitoriaCurso);
         sm.registrarCurso(cursoRegistrado);
     }
-    
-    public void registrarSemestre() throws ExcepcionServiciosMonitoria{
+
+    public void registrarSemestre() throws ExcepcionServiciosMonitoria {
         semestreRegistrado = new Semestre();
         semestreRegistrado.setId(idSemestre);
         semestreRegistrado.setYears(yearsSemestre);
@@ -97,8 +108,8 @@ public class AdministradorBean {
         semestreRegistrado.setAdmin(adminSemestre);
         sm.registrarSemestre(semestreRegistrado);
     }
-    
-    public void registrarMonitor() throws ExcepcionServiciosMonitoria{
+
+    public void registrarMonitor() throws ExcepcionServiciosMonitoria {
         monitorRegistrado = new Monitor();
         monitorRegistrado.setCodigo(codigoMonitor);
         monitorRegistrado.setSemestreIngreso(semestreIngresoMonitor);
@@ -110,14 +121,98 @@ public class AdministradorBean {
         monitorRegistrado.setClave(claveMonitor);
         sm.registrarMonitor(monitorRegistrado);
     }
-    
+
+    public void asignarMonitorAGrupo() throws ExcepcionServiciosMonitoria {
+        sm.añadirMonitorAGrupo(monitorSeleccionado.getCodigo(), grupoSeleccionado.getId());
+    }
+
+    public void asignarProfesorAGrupo() throws ExcepcionServiciosMonitoria {
+        sm.añadirProfesorAGrupo(profesorSeleccionado.getCodigo(), grupoSeleccionado.getId());
+    }
+
+    public List<Monitor> getMonitores() throws ExcepcionServiciosMonitoria {
+        monitores = sm.consultarMonitores();
+        return monitores;
+    }
+
+    public List<Grupo> getGruposXCurso(String curso) throws ExcepcionServiciosMonitoria {
+        grupos = sm.consultarGruposXMateriaProfesor(curso);
+        return grupos;
+    }
+
+    public List<Curso> getCursos() throws ExcepcionServiciosMonitoria {
+        cursos = sm.consultarCursos();
+        return cursos;
+    }
+
+    public List<Grupo> getGrupos() throws ExcepcionServiciosMonitoria {
+        grupos = sm.consultarGruposSinMonitor();
+        return grupos;
+    }
+
+    public void setGrupos(List<Grupo> grupos) {
+        this.grupos = grupos;
+    }
+
+    public void setCursos(List<Curso> cursos) {
+        this.cursos = cursos;
+    }
+
+    public Monitor getMonitorSeleccionado() {
+        return monitorSeleccionado;
+    }
+
+    public void setMonitorSeleccionado(Monitor monitorSeleccionado) {
+        this.monitorSeleccionado = monitorSeleccionado;
+    }
+
+    public List<Profesor> getProfesores() throws ExcepcionServiciosMonitoria {
+        return sm.consultarProfesores();
+    }
+
+    public void setProfesores(List<Profesor> profesores) {
+        this.profesores = profesores;
+    }
+
+    public List<Grupo> getGruposSinProfesor() throws ExcepcionServiciosMonitoria {
+        return sm.consultarGruposSinProfesor();
+    }
+
+    public void setGruposSinProfesor(List<Grupo> gruposSinProfesor) {
+        this.gruposSinProfesor = gruposSinProfesor;
+    }
+
+    public Profesor getProfesorSeleccionado() {
+        return profesorSeleccionado;
+    }
+
+    public void setProfesorSeleccionado(Profesor profesorSeleccionado) {
+        this.profesorSeleccionado = profesorSeleccionado;
+    }
+
+    public Grupo getGrupoSeleccionado() {
+        return grupoSeleccionado;
+    }
+
+    public void setGrupoSeleccionado(Grupo grupoSeleccionado) {
+        this.grupoSeleccionado = grupoSeleccionado;
+    }
+
+    public Curso getCursoSeleccionado() {
+        return cursoSeleccionado;
+    }
+
+    public void setCursoSeleccionado(Curso cursoSeleccionado) {
+        this.cursoSeleccionado = cursoSeleccionado;
+    }
+
     public ServiciosMonitoria getSm() {
         return sm;
     }
 
     public void setSm(ServiciosMonitoria sm) {
         this.sm = sm;
-    }    
+    }
 
     public Semestre getSemestreRegistrado() {
         return semestreRegistrado;
@@ -254,7 +349,7 @@ public class AdministradorBean {
     public void setAdminSemestre(Administrador adminSemestre) {
         this.adminSemestre = adminSemestre;
     }
-    
+
     public Integer getCodigoProfesor() {
         return codigoProfesor;
     }
@@ -335,13 +430,11 @@ public class AdministradorBean {
         this.horasMonitoriaCurso = horasMonitoriaCurso;
     }
 
-    
-    
     public Profesor getProfesorRegistrado() {
         return profesorRegistrado;
     }
 
     public void setProfesorRegistrado(Profesor profesorRegistrado) {
         this.profesorRegistrado = profesorRegistrado;
-    }   
+    }
 }

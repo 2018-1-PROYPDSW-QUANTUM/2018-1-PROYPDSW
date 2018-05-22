@@ -17,6 +17,34 @@ public interface GrupoMapper {
 
     /**
      *
+     * @param codigo
+     * @param grupoId
+     */
+    default void añadirMonitorAGrupo(Integer codigo, Integer grupoId) {
+        añadirMonitorAGrupoGeneral(codigo, grupoId);
+    }
+
+    default void añadirProfesorAGrupo(Integer profesorId, Integer grupoId){
+        añadirProfesorAGrupoGeneral(profesorId, grupoId);
+    }
+    
+    /**
+     *
+     * @param codigo
+     * @param grupoId
+     */
+    public void añadirMonitorAGrupoGeneral(@Param("codigoMonitor") Integer codigo, @Param("grupoId") Integer grupoId);
+
+    /**
+     *
+     * @return
+     */
+    default List<Grupo> consultarGruposSinProfesor(){
+        return consultarGruposSinProfesorGeneral();
+    }
+    
+    /**
+     *
      * @param id
      * @return
      */
@@ -31,23 +59,27 @@ public interface GrupoMapper {
     default List<Grupo> consultarGrupos() {
         return consultarGrupoGeneral(null);
     }
-    
+
+    default List<Grupo> consultarGruposSinMonitor() {
+        return consultarGruposSinMonitorGeneral();
+    }
+
     /**
      *
      * @param materiaProfesor
      * @return
      */
-    default List<Grupo> consultarGruposXMateria(String materiaProfesor){
+    default List<Grupo> consultarGruposXMateria(String materiaProfesor) {
         return consultarGruposXMateriaGeneral(materiaProfesor);
     }
-    
+
     /**
      *
      * @param materiaProfesor
      * @return
      */
     public List<Grupo> consultarGruposXMateriaGeneral(@Param("materiaProfesor") String materiaProfesor);
-    
+
     /**
      *
      * @param id
@@ -64,10 +96,24 @@ public interface GrupoMapper {
      * @param profesorCodigo
      * @param codigo
      */
-    public void registrarGrupo(@Param("idGrupo") Integer id, 
-            @Param("seGrupo") Integer semestreIdentificador, 
-            @Param("cnGrupo") String cursoNemonico, 
-            @Param("nuGrupo") int numero, 
-            @Param("pcGrupo") Integer profesorCodigo, 
+    public void registrarGrupo(@Param("idGrupo") Integer id,
+            @Param("seGrupo") Integer semestreIdentificador,
+            @Param("cnGrupo") String cursoNemonico,
+            @Param("nuGrupo") int numero,
+            @Param("pcGrupo") Integer profesorCodigo,
             @Param("mcGrupo") Integer codigo);
+
+    /**
+     *
+     * @return
+     */
+    public List<Grupo> consultarGruposSinMonitorGeneral();
+
+    /**
+     *
+     * @return
+     */
+    public List<Grupo> consultarGruposSinProfesorGeneral();
+
+    public void añadirProfesorAGrupoGeneral(@Param("profesorId")Integer profesorId, @Param("grupoId")Integer grupoId);
 }

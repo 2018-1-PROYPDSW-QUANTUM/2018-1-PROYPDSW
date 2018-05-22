@@ -34,6 +34,5 @@ public class MyBATISMonitorDAO implements MonitorDAO {
     @Override
     public List<Monitor> loadAll() throws PersistenceException {
         return monitorMapper.consultarMonitores();
-    }
-
+    }    
 }

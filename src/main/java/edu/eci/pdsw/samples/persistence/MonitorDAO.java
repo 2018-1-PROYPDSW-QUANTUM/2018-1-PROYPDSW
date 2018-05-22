@@ -12,8 +12,8 @@ import edu.eci.pdsw.samples.entities.Monitor;
  *
  * @author DANIEL, jonnhi
  */
-public interface MonitorDAO {
-
+public interface MonitorDAO {    
+    
     /**
      *
      * @param m

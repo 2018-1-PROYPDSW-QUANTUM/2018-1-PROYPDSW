@@ -18,6 +18,34 @@ public interface GrupoDAO {
 
     /**
      *
+     * @param profesorId
+     * @param grupoId
+     * @throws PersistenceException
+     */
+    public void añadirProfesorAGrupo(Integer profesorId, Integer grupoId) throws PersistenceException;
+    
+    /**
+     *
+     * @return 
+     * @throws PersistenceException
+     */
+    public List<Grupo> consultarGruposSinProfesor() throws PersistenceException;    
+    
+    /**
+     *
+     * @param codigo
+     * @throws PersistenceException
+     */
+    public void añadirMonitorAGrupo(Integer codigo, Integer grupoId) throws PersistenceException;
+
+    /**
+     *
+     * @return @throws PersistenceException
+     */
+    public List<Grupo> loadGruposSinMonitor() throws PersistenceException;
+
+    /**
+     *
      * @param g
      * @param p
      * @param m
@@ -40,11 +68,10 @@ public interface GrupoDAO {
      * @throws PersistenceException
      */
     public List<Grupo> loadGruposXMateria(String materiaProfesor) throws PersistenceException;
-    
+
     /**
      *
-     * @return
-     * @throws PersistenceException
+     * @return @throws PersistenceException
      */
     public List<Grupo> loadAll() throws PersistenceException;
 

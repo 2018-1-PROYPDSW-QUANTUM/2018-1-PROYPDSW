@@ -76,7 +76,7 @@ public class Grupo {
         return monitor;
     }
 
-    public void setMoniotor(Monitor monitor) {
+    public void setMonitor(Monitor monitor) {
         this.monitor = monitor;
     }
     public Profesor getProfesor() {
@@ -89,7 +89,7 @@ public class Grupo {
 
     @Override
     public String toString() {
-        return "Grupo {" + "Id=" + id + ", Semestre=" + semestre + ", Curso="
+        return "\nGrupo {" + "Id=" + id + ", Semestre=" + semestre + ", Curso="
                 + curso + ", Numero=" + numero + ", Franjas=" + franjas + '}';
     }
 

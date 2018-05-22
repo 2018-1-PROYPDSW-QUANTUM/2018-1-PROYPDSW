@@ -60,8 +60,8 @@ CREATE TABLE Grupo (
     semestre_identificador int  NOT NULL,
     curso_nemonico char(4)  NOT NULL,
     numero int  NOT NULL,
-    profesor_codigo int  NOT NULL,
-    monitor_codigo int  NOT NULL,
+    profesor_codigo int  NULL,
+    monitor_codigo int  NULL,
     CONSTRAINT Grupo_pk PRIMARY KEY (Identificador)
 );
 
@@ -117,7 +117,7 @@ CREATE TABLE Tema (
     Identificador int  NOT NULL,
     curso_nemonico char(4)  NOT NULL,
     nombre varchar(30)  NOT NULL,
-    descripcion varchar(90),
+    descripcion varchar(150),
     CONSTRAINT Tema_pk PRIMARY KEY (Identificador)
 );
 

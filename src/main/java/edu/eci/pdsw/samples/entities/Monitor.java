@@ -5,13 +5,14 @@
  */
 package edu.eci.pdsw.samples.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author 2106146, jonnhi
  */
-public class Monitor {
+public class Monitor{
 
     private Integer codigo;
     private String semestreIngreso;
@@ -92,6 +93,10 @@ public class Monitor {
         return correo;
     }
 
+    public void añadirGrupo(Grupo g){
+        grupos.add(g);
+    }
+    
     public void setCorreo(String correo) {
         this.correo = correo;
     }
@@ -114,7 +119,7 @@ public class Monitor {
 
     @Override
     public String toString() {
-        return "Monitor {" + "Codigo=" + codigo + ", Semestre ingreso=" + semestreIngreso
+        return "\nMonitor {" + "Codigo=" + codigo + ", Semestre ingreso=" + semestreIngreso
                 + ", Programa academico=" + programaAcademico + ", Nombre=" + nombre + ", Apellido=" + apellido
                 + ", Celular=" + celular + ", Correo=" + correo + ", Clave=" + clave + ", Grupos=" + grupos
                 + ", Monitorias=" + monitorias + '}';

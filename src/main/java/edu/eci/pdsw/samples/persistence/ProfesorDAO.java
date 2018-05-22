@@ -14,7 +14,7 @@ import edu.eci.pdsw.samples.entities.Profesor;
  * @author diego
  */
 public interface ProfesorDAO {
-
+    
     /**
      *
      * @param p

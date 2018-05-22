@@ -104,13 +104,15 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
             throw new ExcepcionServiciosMonitoria("Error al consultar todos los administradores registrados. ", e);
         }
     }
+
     @Override
-    public void registrarAsesoria(Integer m, Integer de, Integer t ) throws ExcepcionServiciosMonitoria {
+    public void registrarAsesoria(Integer m, Integer de, Integer t) throws ExcepcionServiciosMonitoria {
         try {
             daoAsistente.save(m, de, t);
         } catch (PersistenceException e) {
             throw new ExcepcionServiciosMonitoria("Error al registrar una nueva asesoria ");
-        }    }
+        }
+    }
 
     @Override
     public List<Asistente> consultarAsistentes() throws ExcepcionServiciosMonitoria {
@@ -202,9 +204,9 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
     }
 
     @Override
-    public void registrarMonitoria(Monitoria mo,Monitor m) throws ExcepcionServiciosMonitoria {
+    public void registrarMonitoria(Monitoria mo, Monitor m) throws ExcepcionServiciosMonitoria {
         try {
-            daoMonitoria.save(mo,m);
+            daoMonitoria.save(mo, m);
         } catch (PersistenceException e) {
             throw new ExcepcionServiciosMonitoria("Error al consultar todos los grupos registrados. ", e);
         }
@@ -306,12 +308,12 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
     }
 
     @Override
-    public List<Grupo> consultarGruposXMateriaProfesor(String materiaProfesor) throws ExcepcionServiciosMonitoria{
+    public List<Grupo> consultarGruposXMateriaProfesor(String materiaProfesor) throws ExcepcionServiciosMonitoria {
         try {
             return daoGrupo.loadGruposXMateria(materiaProfesor);
         } catch (PersistenceException e) {
             throw new ExcepcionServiciosMonitoria("Error al consultar los grupos del profesor: " + materiaProfesor, e);
-        }        
+        }
     }
 
     @Override
@@ -320,7 +322,7 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
             return daoAsistente.loadMonitoriaXGrupo(grupo, nemonico);
         } catch (PersistenceException e) {
             throw new ExcepcionServiciosMonitoria("Error al consultar las monitorias del grupo: " + grupo, e);
-        } 
+        }
     }
 
     @Override
@@ -329,16 +331,52 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
             daoCurso.save(cu);
         } catch (PersistenceException e) {
             throw new ExcepcionServiciosMonitoria("Error al registrar el curso: " + cu, e);
-        }        
+        }
     }
 
     @Override
-    public void registrarMonitor(Monitor m) throws ExcepcionServiciosMonitoria{
+    public void registrarMonitor(Monitor m) throws ExcepcionServiciosMonitoria {
         try {
             daoMonitor.save(m);
         } catch (PersistenceException e) {
             throw new ExcepcionServiciosMonitoria("Error al registrar el monitor: " + m, e);
-        }        
+        }
+    }
+
+    @Override
+    public List<Grupo> consultarGruposSinMonitor() throws ExcepcionServiciosMonitoria {
+        try {
+            return daoGrupo.loadGruposSinMonitor();
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al cargar los grupos sin monitor: " + e);
+        }
+    }
+
+    @Override
+    public void añadirMonitorAGrupo(Integer codigo, Integer grupoId) throws ExcepcionServiciosMonitoria {
+        try {
+            daoGrupo.añadirMonitorAGrupo(codigo, grupoId);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al añadir el monitor al grupo: " + codigo, e);
+        }
+    }
+
+    @Override
+    public List<Grupo> consultarGruposSinProfesor() throws ExcepcionServiciosMonitoria {
+        try {
+            return daoGrupo.consultarGruposSinProfesor();
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar los profesores: " + e);
+        }
+    }
+
+    @Override
+    public void añadirProfesorAGrupo(Integer profesorId, Integer grupoId) throws ExcepcionServiciosMonitoria {
+        try {
+            daoGrupo.añadirProfesorAGrupo(profesorId, grupoId);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al añadir el profesor al grupo: " + profesorId, e);
+        }
     }
 
 }

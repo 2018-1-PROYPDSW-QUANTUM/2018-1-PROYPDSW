@@ -43,4 +43,23 @@ public class MyBATISGrupoDAO implements GrupoDAO {
         return grupoMapper.consultarGruposXMateria(materiaProfesor);
     }
 
+    @Override
+    public List<Grupo> loadGruposSinMonitor() throws PersistenceException {
+        return grupoMapper.consultarGruposSinMonitor();
+    }
+
+    @Override
+    public List<Grupo> consultarGruposSinProfesor() throws PersistenceException {
+        return grupoMapper.consultarGruposSinProfesor();
+    }    
+    
+    @Override
+    public void añadirMonitorAGrupo(Integer codigo, Integer grupoId) throws PersistenceException {
+        grupoMapper.añadirMonitorAGrupo(codigo, grupoId);
+    }
+
+    @Override
+    public void añadirProfesorAGrupo(Integer profesorId, Integer grupoId) throws PersistenceException {
+        grupoMapper.añadirProfesorAGrupo(profesorId, grupoId);
+    }
 }
