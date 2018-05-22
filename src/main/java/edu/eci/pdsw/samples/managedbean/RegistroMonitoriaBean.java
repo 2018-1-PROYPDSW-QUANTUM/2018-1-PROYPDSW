@@ -6,6 +6,7 @@
 package edu.eci.pdsw.samples.managedbean;
 
 import edu.eci.pdsw.samples.entities.Asistente;
+import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.entities.Estudiante;
 import edu.eci.pdsw.samples.entities.Franja;
 import edu.eci.pdsw.samples.entities.Grupo;
@@ -30,7 +31,6 @@ import javax.faces.bean.SessionScoped;
  *
  * @author camil
  */
-
 @ManagedBean(name = "registrarMonitoria")
 @SessionScoped
 
@@ -61,18 +61,17 @@ public class RegistroMonitoriaBean {
     private Integer numId;
     private Integer grupId;
     private List<Asistente> asistentes;
+    private Curso cursoSeleccionado;
 
     public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria {
         cMonitorias = sm.consultarMonitorias();
-        temas=sm.consultarTemas();
+        temas = sm.consultarTemas();
         //System.out.println("Usuario es: "+shiro.getUsername());
         //getUser();
 
         nuevaMonitoria = new Monitoria();
         //estudian=new Estudiante(32131);
-        
-        
-        
+
     }
 
     public String getUser() {
@@ -85,6 +84,14 @@ public class RegistroMonitoriaBean {
 
     }
 
+    public List<Curso> getConsultarMaterias() throws ExcepcionServiciosMonitoria{
+        return sm.consultarCursos();
+    }
+    
+    public List<Franja> getConsultarFranjas() throws ExcepcionServiciosMonitoria{
+        return sm.consultarFranjas();
+    }
+    
     public ShiroLoginBean getShiro() {
         return shiro;
     }
@@ -92,33 +99,33 @@ public class RegistroMonitoriaBean {
     public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria {
         nuevaMonitoria.setHoraFin(LocalTime.now());
         nuevaMonitoria.setObservaciones(observaciones);
-        sm.registrarMonitoria(nuevaMonitoria,sm.consultarMonitor(monitorCodigo));
-        for(Asistente i :asistentes){
+        sm.registrarMonitoria(nuevaMonitoria, sm.consultarMonitor(monitorCodigo));
+        for (Asistente i : asistentes) {
             sm.registrarAsesoria(i.getMonitoria().getId(), i.getEstudiante().getCodigo(), i.getTemas().get(0).getId());
         }
     }
-    
-    public void comenzarMonitoria() throws ExcepcionServiciosMonitoria{
-        nuevaMonitoria=new Monitoria(sm.consultarMonitorias().size() + 1, new Date(), LocalTime.now(), null, shiro.getIp(), observaciones,new ArrayList<>());        
-        asistentes=nuevaMonitoria.getAsistentes();
+
+    public void comenzarMonitoria() throws ExcepcionServiciosMonitoria {
+        nuevaMonitoria = new Monitoria(sm.consultarMonitorias().size() + 1, new Date(), LocalTime.now(), null, shiro.getIp(), observaciones, new ArrayList<>());
+        asistentes = nuevaMonitoria.getAsistentes();
     }
 
-    public void agregarAsistente() throws ExcepcionServiciosMonitoria{
-        asistente=new Asistente(nuevaMonitoria,sm.consultarEstudiante(estudianteMonitoria),temasAsistente);
+    public void agregarAsistente() throws ExcepcionServiciosMonitoria {
+        asistente = new Asistente(nuevaMonitoria, sm.consultarEstudiante(estudianteMonitoria), temasAsistente);
         asistentes.add(asistente);
         System.out.println(asistentes);
         nuevaMonitoria.setAsistentes(asistentes);
     }
-    
-    
-    public List<Tema> getTemasAsistente(){
+
+    public List<Tema> getTemasAsistente() {
         return this.temasAsistente;
     }
-    
-    public void setTemasAsistente(List<Tema> temasAsistente){
-        this.temasAsistente=temasAsistente;
+
+    public void setTemasAsistente(List<Tema> temasAsistente) {
+        this.temasAsistente = temasAsistente;
     }
-    public List<Asistente> getAsistentes(){
+
+    public List<Asistente> getAsistentes() {
         return this.asistentes;
     }
 
@@ -126,13 +133,21 @@ public class RegistroMonitoriaBean {
         return observaciones;
     }
 
+    public Curso getCursoSeleccionado() {
+        return cursoSeleccionado;
+    }
+
+    public void setCursoSeleccionado(Curso cursoSeleccionado) {
+        this.cursoSeleccionado = cursoSeleccionado;
+    }
+
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
 
     public Integer getMonitorCodigo() {
-        System.out.println("QUe imprime + monitor"+monitorCodigo);
-        
+        System.out.println("QUe imprime + monitor" + monitorCodigo);
+
         return monitorCodigo;
     }
 
@@ -173,15 +188,16 @@ public class RegistroMonitoriaBean {
 
     }
 
-    public Integer getIdGrupo(){
-        System.out.println("QUe imprime +grupo"+grupId);
+    public Integer getIdGrupo() {
+        System.out.println("QUe imprime +grupo" + grupId);
         return grupId;
     }
-    public void setIdGrupo(Integer id){
-        grupId=id;
-    
-        }
-    
+
+    public void setIdGrupo(Integer id) {
+        grupId = id;
+
+    }
+
     public String getGrupo() {
         return grupo;
     }
@@ -238,8 +254,7 @@ public class RegistroMonitoriaBean {
         /**
          * for (int i =0; i<estudiantes.size();i++){ Estudiante u=
          * estudiantes.get(i); System.out.println("Que imprime
-         * :"+u.getCodigo());
-        }
+         * :"+u.getCodigo()); }
          */
         return estudiantes;
 
@@ -249,15 +264,15 @@ public class RegistroMonitoriaBean {
         System.out.println("ESTUDIANTE ES: " + estudian);
         return estudian;
     }
-    
-    public Integer getIdEstudiante(){
+
+    public Integer getIdEstudiante() {
         System.out.println("numero ESTUDIANTE ES: " + numId);
-        return numId;   
+        return numId;
     }
-    public void setIdEstudiante(Integer id){
-        numId=id;
-        
-    
+
+    public void setIdEstudiante(Integer id) {
+        numId = id;
+
     }
 
     public void setEstudiant(Estudiante estudiante) {
@@ -270,6 +285,7 @@ public class RegistroMonitoriaBean {
         temas = sm.consultarTemas();
         return temas;
     }
+
     public Tema getTema() throws ExcepcionServiciosMonitoria {
         return tema;
     }
@@ -282,7 +298,7 @@ public class RegistroMonitoriaBean {
         profesores = sm.consultarProfesores();
         return profesores;
     }
-    
+
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
     }

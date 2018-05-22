@@ -76,34 +76,46 @@ and open the template in the editor.
                 </th>                 
             </table>
         </div>       
-        <div id="Informacion">
+        <div id="Informacion" style="width: 90%">
             <br></br>
             <h1> | Monitorias Disponibles | </h1>
             <table> 
                 <tr>
-                    <th>
-                        <p:dataTable var="monitorias" value="#{registrarMonitoria.CMonitorias}">
+                    <th width="35%">
+                        <p:dataTable var="materias" value="#{registrarMonitoria.consultarMaterias}" selectionMode="single" selection="#{registrarMonitoria.cursoSeleccionado}" rowKey="#{materias.nemonico}">
                             <f:facet name="header">
                                 Lista de Materias
                             </f:facet>
-                            <p:column headerText="Id">
-                                <h:outputText value="#{monitorias.id}" />
+                            <p:column headerText="Materia">
+                                <h:outputText value="#{materias.nemonico} - #{materias.nombre}" />
+                            </p:column>                           
+                        </p:dataTable>                        
+                    </th>
+                    <th>
+                        <p:dataTable var="franjas" value="#{registrarMonitoria.consultarFranjas}">
+                            <f:facet name="header">
+                                Monitorias Disponibles
+                            </f:facet>
+                            <p:column headerText="Dia Monitoria">
+                                <h:outputText value="#{franjas.dia}" />
                             </p:column>
-                            <p:column headerText="Fecha">
-                                <h:outputText value="#{monitorias.fecha}" />
-                            </p:column>
-                            <p:column headerText="Codigo Monitor">
-                                <h:outputText value="#{monitorias.observaciones}" />
+                            <p:column headerText="Grupo Monitoria">
+                                <h:outputText value="#{franjas.grupo}" />
                             </p:column>
                             <p:column headerText="Hora inicio">
-                                <h:outputText value="#{monitorias.horaInicio}" />
+                                <h:outputText value="#{franjas.horaInicio}" />
                             </p:column>
                             <p:column headerText="Hora Fin">
-                                <h:outputText value="#{monitorias.horaFin}" />
+                                <h:outputText value="#{franjas.horaFin}" />
                             </p:column>                            
                         </p:dataTable>
-
                     </th>
+                </tr>
+                <tr>
+                    <th>
+                        <p:commandButton class="Boton" value="Consultar monitorias" action="#{registrarMonitoria}" />
+                    </th>
+                    <th></th>
                 </tr>
             </table>
         </div>

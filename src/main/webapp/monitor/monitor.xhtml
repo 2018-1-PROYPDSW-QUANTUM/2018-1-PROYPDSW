@@ -22,14 +22,11 @@ and open the template in the editor.
                 <th width="40%" style="text-align: left;">
                     <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
                 </th>
-
-                <th width="30%" style="text-align: center;">
-                    <p:button class="Boton" onclick="#{registrarMonitoria.comenzarMonitoria()}" outcome="/asesoria/asesoria.xhtml" value="Asesoria">
-                    </p:button>                     
+                <th width="30%" style="text-align: center;">                    
                 </th> 
                 <th width="30%" style="text-align: center;">
-                    <p:button class="Boton" outcome="/login" value="Cerrar Sesion">
-                    </p:button>                   
+                    <p:button class="Boton" onclick="#{registrarMonitoria.comenzarMonitoria()}" outcome="/asesoria/asesoria.xhtml" value="Asesoria"/>
+                    <p:button class="Boton" outcome="/login" value="Cerrar Sesion"/>                 
                 </th>     
             </table>
         </div>  
@@ -47,12 +44,12 @@ and open the template in the editor.
                 <br></br>
             </tr>
         </div>
-        <div id="Monitorias">
+        <div class="form" style="width: 75%">
             <h1> | Monitorias Registradas | </h1>
             <table>
                 <tr>
                     <th width="20%">
-                        <p:dataTable id="dtMonitorias" var="monitorias" value="#{registrarMonitoria.CMonitorias}"  selectionMode="single" rowKey="#{monitorias.id}">
+                        <p:dataTable id="dtMonitorias" var="monitorias" value="#{registrarMonitoria.CMonitorias}">
                             <p:column headerText="id" >
                                 <h:outputText value="#{monitorias.id}"/>
                             </p:column>                           

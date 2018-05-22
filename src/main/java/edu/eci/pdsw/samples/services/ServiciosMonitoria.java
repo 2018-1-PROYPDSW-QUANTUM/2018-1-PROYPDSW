@@ -41,6 +41,13 @@ public interface ServiciosMonitoria {
      * @return
      * @throws ExcepcionServiciosMonitoria
      */
+    public abstract List<Franja> consultarFranjas() throws ExcepcionServiciosMonitoria;
+    
+    /**
+     *
+     * @return
+     * @throws ExcepcionServiciosMonitoria
+     */
     public abstract List<Grupo> consultarGruposSinProfesor() throws ExcepcionServiciosMonitoria;
     
     /**
@@ -136,13 +143,13 @@ public interface ServiciosMonitoria {
      */
     public abstract List<Estudiante> consultarEstudiantes() throws ExcepcionServiciosMonitoria;
     
-    abstract Estudiante consultarEstudiante(Integer codigo) throws ExcepcionServiciosMonitoria;
-
     /**
      *
-     * @return @throws ExcepcionServiciosMonitoria
+     * @param codigo
+     * @return
+     * @throws ExcepcionServiciosMonitoria
      */
-    public abstract List<Franja> consultarFranjas() throws ExcepcionServiciosMonitoria;
+    abstract Estudiante consultarEstudiante(Integer codigo) throws ExcepcionServiciosMonitoria;
 
     /**
      *
