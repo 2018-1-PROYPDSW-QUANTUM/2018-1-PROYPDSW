@@ -10,6 +10,8 @@ import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.entities.Profesor;
+import edu.eci.pdsw.samples.ip.getIp;
+import edu.eci.pdsw.samples.persistence.PersistenceException;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
@@ -34,16 +36,19 @@ public class MonitoriaProfesorBean {
     private int codigoProfesor;
     private String materiaProfesor;
     private int grupo;
+    
        
-    public MonitoriaProfesorBean() {
+    public MonitoriaProfesorBean() throws PersistenceException, ExcepcionServiciosMonitoria, Exception {
         //Recuerden borrar esto, debe ser obtenido ya de la base de datos
         codigoProfesor = 997;
         materiaProfesor = "PIMO";
         grupo = 1;
+        
+        
     }    
 
     public String getUser(){
-        System.out.println("E nombre es: "+shiro.getUsername());
+        //System.out.println("E nombre es: "+shiro.getUsername());
         return shiro.getUsername();
     
     }

@@ -19,6 +19,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 @ManagedBean(name = "loginBean")
 @SessionScoped
@@ -29,6 +31,7 @@ public class ShiroLoginBean implements Serializable {
     private String username;
     private String password;
     private Boolean rememberMe;
+    private String dirrecionIp;
 
     
 
@@ -43,15 +46,13 @@ public class ShiroLoginBean implements Serializable {
     /**
      * Try and authenticate the user
      */
-    public void doLogin() {
+    public void doLogin() throws UnknownHostException {
         Subject subject = SecurityUtils.getSubject();
 
         UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), getPassword(), getRememberMe());
        
-        setUsername(username);
-
-        
-        
+        setUsername(username);        
+        setIp();
         try {
             subject.login(token);
             if (subject.hasRole("monitor")) {
@@ -125,5 +126,30 @@ public class ShiroLoginBean implements Serializable {
 
     public void setRememberMe(Boolean lembrar) {
         this.rememberMe = lembrar;
+    }
+    public String etIp(){
+        return dirrecionIp;
+
+    }
+    
+    public void setIp() throws UnknownHostException{
+        // Aqui obtenemos la ip local de la maquina
+        InetAddress address = InetAddress.getLocalHost();
+        //System.out.println("IP Local :"+address.getHostAddress());
+        dirrecionIp=address.getHostAddress();
+        /**
+        // Aqui obtenemos la ip de la web del programador
+        String domain="74.125.206.103";
+        InetAddress address2 = InetAddress.getByName(domain);
+        byte IP[] = address2.getAddress();
+        System.out.print("IP del dominio "+domain+" :");
+        for (int index = 0; index < IP.length; index++)
+        {
+           if (index > 0)
+                 System.out.print(".");
+           System.out.print(((int)IP[index])& 0xff);
+        }
+                * */
+    
     }
 }

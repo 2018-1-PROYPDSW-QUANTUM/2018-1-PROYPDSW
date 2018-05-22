@@ -34,7 +34,6 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean(name = "registrarMonitoria")
 @SessionScoped
 
-//@RequestScoped
 public class RegistroMonitoriaBean {
 
     @ManagedProperty("#{loginBean}")
@@ -71,6 +70,9 @@ public class RegistroMonitoriaBean {
 
         nuevaMonitoria = new Monitoria();
         //estudian=new Estudiante(32131);
+        
+        
+        
     }
 
     public String getUser() {
