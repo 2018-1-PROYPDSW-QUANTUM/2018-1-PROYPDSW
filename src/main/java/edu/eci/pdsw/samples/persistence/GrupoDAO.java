@@ -23,14 +23,13 @@ public interface GrupoDAO {
      * @throws PersistenceException
      */
     public void añadirProfesorAGrupo(Integer profesorId, Integer grupoId) throws PersistenceException;
-    
+
     /**
      *
-     * @return 
-     * @throws PersistenceException
+     * @return @throws PersistenceException
      */
-    public List<Grupo> consultarGruposSinProfesor() throws PersistenceException;    
-    
+    public List<Grupo> consultarGruposSinProfesor() throws PersistenceException;
+
     /**
      *
      * @param codigo
@@ -74,5 +73,13 @@ public interface GrupoDAO {
      * @return @throws PersistenceException
      */
     public List<Grupo> loadAll() throws PersistenceException;
+
+    /**
+     *
+     * @param codigo
+     * @return
+     * @throws edu.eci.pdsw.samples.persistence.PersistenceException
+     */
+    public List<Grupo> consultarGrupos(Integer codigo) throws PersistenceException;
 
 }

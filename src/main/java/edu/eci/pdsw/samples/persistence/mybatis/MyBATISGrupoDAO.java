@@ -51,8 +51,8 @@ public class MyBATISGrupoDAO implements GrupoDAO {
     @Override
     public List<Grupo> consultarGruposSinProfesor() throws PersistenceException {
         return grupoMapper.consultarGruposSinProfesor();
-    }    
-    
+    }
+
     @Override
     public void añadirMonitorAGrupo(Integer codigo, Integer grupoId) throws PersistenceException {
         grupoMapper.añadirMonitorAGrupo(codigo, grupoId);
@@ -62,4 +62,10 @@ public class MyBATISGrupoDAO implements GrupoDAO {
     public void añadirProfesorAGrupo(Integer profesorId, Integer grupoId) throws PersistenceException {
         grupoMapper.añadirProfesorAGrupo(profesorId, grupoId);
     }
+
+    @Override
+    public List<Grupo> consultarGrupos(Integer codigo) throws PersistenceException {
+        return grupoMapper.consultarGrupoMonitor(codigo);
+    }
+
 }

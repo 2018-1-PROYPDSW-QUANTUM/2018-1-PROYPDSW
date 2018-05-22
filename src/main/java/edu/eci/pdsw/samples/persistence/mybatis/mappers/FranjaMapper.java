@@ -47,7 +47,6 @@ public interface FranjaMapper {
      * @param horaInicio
      * @param horaFinal
      * @param grupo
-     * @param grupoId
      */
     public void registrarFranja(@Param("idFranja") Integer id,
             @Param("diFranja") String dia,

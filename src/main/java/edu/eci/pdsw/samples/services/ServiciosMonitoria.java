@@ -243,6 +243,23 @@ public interface ServiciosMonitoria {
     /**
      *
      * @param m
+     * @throws edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria
      */
     public abstract void registrarMonitor(Monitor m) throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @param codigo
+     * @return
+     * @throws ExcepcionServiciosMonitoria
+     */
+    public abstract List<Grupo> consultarGrupos(Integer codigo) throws ExcepcionServiciosMonitoria;
+
+    /**
+     *
+     * @param franjaRegistrada
+     * @throws edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria
+     */
+    public abstract void registrarFranja(Franja franjaRegistrada) throws ExcepcionServiciosMonitoria;
+
 }

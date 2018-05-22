@@ -247,6 +247,66 @@
         WHERE p.Codigo IS NULL
     </select>     
      
+    <select parameterType="map" id="consultarGrupoMonitorGeneral" resultMap="GrupoResult">
+        SELECT 
+        g.Identificador as g_Identificador, 
+        g.numero as g_numero, 
+        
+        p.Codigo as p_Codigo, 
+        p.nombre as p_nombre, 
+        p.apellido as p_apellido, 
+        p.celular as p_celular, 
+        p.correo as p_correo, 
+        p.clave as p_clave, 
+        
+        m.Codigo as m_Codigo, 
+        m.semestre_ingreso as m_semestre_ingreso, 
+        m.programa_academico as m_programa_academico, 
+        m.nombre as m_nombre, 
+        m.apellido as m_apellido, 
+        m.celular as m_celular, 
+        m.correo as m_correo, 
+        m.clave as m_clave, 
+         
+        s.Identificador as s_Identificador, 
+        s.years as s_years, 
+        s.periodo_academico as s_periodo_academico, 
+        s.fecha_inicio as s_fecha_inicio, 
+        s.fecha_fin as s_fecha_fin, 
+        
+        a.Codigo as a_Codigo, 
+        a.nombre as a_nombre, 
+        a.apellido as a_apellido, 
+        a.celular as a_celular, 
+        a.correo as a_correo, 
+        a.clave as a_clave, 
+        
+        f.Identificador as f_Identificador, 
+        f.dia as f_dia, 
+        f.hora_inicio as f_hora_inicio, 
+        f.hora_fin as f_hora_fin, 
+        
+        c.Nemonico as c_Nemonico, 
+        c.nombre as c_nombre, 
+        c.creditos as c_creditos, 
+        c.horas_monitoria as c_horas_monitoria, 
+        
+        t.Identificador as t_Identificador, 
+        t.nombre as t_nombre, 
+        t.descripcion as t_descripcion 
+        
+        FROM Grupo as g 
+        left join Profesor as p ON g.profesor_codigo=p.Codigo 
+        left join Monitor as m ON g.monitor_codigo=m.Codigo 
+        left join Semestre as s ON g.semestre_identificador=s.Identificador 
+        left join Administrador as a ON s.administrador_codigo=a.Codigo 
+        left join Curso as c ON g.curso_nemonico=c.Nemonico 
+        left join Franja as f ON g.Identificador=f.grupo_identificador
+        left join Tema as t ON c.Nemonico=t.curso_nemonico 
+
+        WHERE m.Codigo = #{codigoMonitor}
+    </select>      
+     
     <insert parameterType="map" id="registrarGrupo">
         INSERT INTO Grupo (Identificador, semestre_identificador, curso_nemonico, numero, profesor_codigo, monitor_codigo)
         VALUES (#{idGrupo},#{seGrupo},#{cnGrupo},#{nuGrupo},#{pcGrupo},#{mcGrupo})
@@ -267,10 +327,9 @@
     <resultMap type="Grupo" id="GrupoResult" >
         <id property="id" column="g_Identificador"/>
         <result property="numero" column="g_numero"/>
-        <association property="semestre" javaType="Semestre" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.SemestreMapper.SemestreResult"></association>
+        <association property="semestre" javaType="Semestre" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.SemestreMapper.SemestreResult"/>
         <association property="curso" javaType="Curso" resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.CursoMapper.CursoResult'/>
-        <association property="monitor" javaType="Monitor" resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitorMapper.MonitorResult'/>
-        <association property="profesor" javaType="Profesor" resultMap='edu.eci.pdsw.samples.persistence.mybatis.mappers.ProfesorMapper.ProfesorResult'/>
+        <collection property='franjas' ofType='Franja' resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.FranjaMapper.FranjaResult"/>
     </resultMap>
      
 </mapper>

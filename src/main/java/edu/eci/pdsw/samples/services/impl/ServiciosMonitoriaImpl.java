@@ -158,12 +158,13 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
             throw new ExcepcionServiciosMonitoria("Error al consultar todos los estudiante registrados. ", e);
         }
     }
+
     @Override
     public Estudiante consultarEstudiante(Integer codigo) throws ExcepcionServiciosMonitoria {
         try {
             return daoEstudiante.load(codigo);
         } catch (PersistenceException e) {
-            throw new ExcepcionServiciosMonitoria("Error al consultar todos los estudiante con codigo. "+codigo, e);
+            throw new ExcepcionServiciosMonitoria("Error al consultar todos los estudiante con codigo. " + codigo, e);
         }
     }
 
@@ -377,6 +378,24 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
         } catch (PersistenceException e) {
             throw new ExcepcionServiciosMonitoria("Error al añadir el profesor al grupo: " + profesorId, e);
         }
+    }
+
+    @Override
+    public List<Grupo> consultarGrupos(Integer codigo) throws ExcepcionServiciosMonitoria {
+        try {
+            return daoGrupo.consultarGrupos(codigo);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar los grupos del monitor: " + codigo, e);
+        }
+    }
+
+    @Override
+    public void registrarFranja(Franja franjaRegistrada) throws ExcepcionServiciosMonitoria{
+        try {
+            daoFranja.save(franjaRegistrada);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al agregar la franja: " + franjaRegistrada.getId(), e);
+        }        
     }
 
 }

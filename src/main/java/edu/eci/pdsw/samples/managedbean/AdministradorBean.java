@@ -7,6 +7,7 @@ package edu.eci.pdsw.samples.managedbean;
 
 import edu.eci.pdsw.samples.entities.Administrador;
 import edu.eci.pdsw.samples.entities.Curso;
+import edu.eci.pdsw.samples.entities.Franja;
 import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.entities.Profesor;
@@ -14,6 +15,7 @@ import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,7 +34,7 @@ public class AdministradorBean {
     private List<Monitor> monitores;
     private List<Curso> cursos;
     private List<Grupo> grupos;
-    private List<Grupo> gruposSinProfesor;
+    private List<Grupo> gruposMonitor;
     private List<Profesor> profesores;
     private Profesor profesorSeleccionado;
     private Monitor monitorSeleccionado;
@@ -74,6 +76,14 @@ public class AdministradorBean {
     private String correoMonitor;
     private String claveMonitor;
     private Monitor monitorRegistrado;
+
+    //Atributos franja
+    private Integer idFranja;
+    private String diaFranja;
+    private String horaInicioFranja;
+    private String horaFinFranja;
+    private Integer grupoFranja;
+    private Franja franjaRegistrada;
 
     public AdministradorBean() {
     }
@@ -122,6 +132,29 @@ public class AdministradorBean {
         sm.registrarMonitor(monitorRegistrado);
     }
 
+    public void registrarFranja() throws ExcepcionServiciosMonitoria {
+        franjaRegistrada = new Franja();
+        franjaRegistrada.setId(idFranja);
+        franjaRegistrada.setDia(diaFranja);
+        franjaRegistrada.setHoraInicio(LocalTime.parse(horaInicioFranja));
+        franjaRegistrada.setHoraFin(LocalTime.parse(horaFinFranja));
+        franjaRegistrada.setGrupo(grupoFranja);
+        if (franjaRegistrada.getHoraFin().compareTo(franjaRegistrada.getHoraInicio()) > 0) {
+            sm.registrarFranja(franjaRegistrada);
+        } else {
+            throw new ExcepcionServiciosMonitoria("La hora de inicion debe ser menor a la hora final");
+        }
+    }
+
+    public List<Grupo> getGruposXMonitor() throws ExcepcionServiciosMonitoria {
+        if (monitorSeleccionado == null) {
+            gruposMonitor = null;
+        } else {
+            gruposMonitor = sm.consultarGrupos(monitorSeleccionado.getCodigo());
+        }
+        return gruposMonitor;
+    }
+
     public void asignarMonitorAGrupo() throws ExcepcionServiciosMonitoria {
         sm.añadirMonitorAGrupo(monitorSeleccionado.getCodigo(), grupoSeleccionado.getId());
     }
@@ -158,6 +191,54 @@ public class AdministradorBean {
         this.cursos = cursos;
     }
 
+    public Integer getIdFranja() {
+        return idFranja;
+    }
+
+    public void setIdFranja(Integer idFranja) {
+        this.idFranja = idFranja;
+    }
+
+    public String getDiaFranja() {
+        return diaFranja;
+    }
+
+    public void setDiaFranja(String diaFranja) {
+        this.diaFranja = diaFranja;
+    }
+
+    public String getHoraInicioFranja() {
+        return horaInicioFranja;
+    }
+
+    public void setHoraInicioFranja(String horaInicioFranja) {
+        this.horaInicioFranja = horaInicioFranja;
+    }
+
+    public String getHoraFinFranja() {
+        return horaFinFranja;
+    }
+
+    public void setHoraFinFranja(String horaFinFranja) {
+        this.horaFinFranja = horaFinFranja;
+    }
+
+    public Integer getGrupoFranja() {
+        return grupoFranja;
+    }
+
+    public void setGrupoFranja(Integer grupoGranja) {
+        this.grupoFranja = grupoGranja;
+    }
+
+    public Franja getFranjaRegistrada() {
+        return franjaRegistrada;
+    }
+
+    public void setFranjaRegistrada(Franja franjaRegistrada) {
+        this.franjaRegistrada = franjaRegistrada;
+    }
+
     public Monitor getMonitorSeleccionado() {
         return monitorSeleccionado;
     }
@@ -178,8 +259,12 @@ public class AdministradorBean {
         return sm.consultarGruposSinProfesor();
     }
 
-    public void setGruposSinProfesor(List<Grupo> gruposSinProfesor) {
-        this.gruposSinProfesor = gruposSinProfesor;
+    public List<Grupo> getGruposMonitor() {
+        return gruposMonitor;
+    }
+
+    public void setGruposMonitor(List<Grupo> gruposMonitor) {
+        this.gruposMonitor = gruposMonitor;
     }
 
     public Profesor getProfesorSeleccionado() {

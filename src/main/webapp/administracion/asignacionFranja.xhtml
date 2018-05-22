@@ -29,32 +29,62 @@ and open the template in the editor.
                 </th>                
             </table>
         </div>
-        <div class="form">
+        <div class="form" style="width:50%">
             <h1> | Asignar Monitor | </h1>
             <h:form>
                 <table>
                     <tr>
                         <th width="50%">
                             <p:dataTable var="monitores" value="#{administradorBean.monitores}" selectionMode="single" selection="#{administradorBean.monitorSeleccionado}" rowKey="#{monitores.nombre}" id="monitores">
+                                <f:facet name="header">
+                                    Seleccionar monitor
+                                </f:facet>
                                 <p:column headerText="Monitores">
                                     <h:outputText value="#{monitores.nombre}" />
                                 </p:column>
                             </p:dataTable>
                         </th>
                         <th width="50%">
-                            <p:dataTable var="grupos" value="#{administradorBean.grupos}" selectionMode="single" selection="#{administradorBean.grupoSeleccionado}" rowKey="#{grupos.curso.nemonico}" id="grupos">
+                            <p:dataTable var="grupos" value="#{administradorBean.gruposXMonitor}" id="grupos">
+                                <f:facet name="header">
+                                    Seleccionar Grupo
+                                </f:facet>
                                 <p:column headerText="Curso">
                                     <h:outputText value="#{grupos.curso.nemonico}" />
                                 </p:column>
                                 <p:column headerText="Grupo">
                                     <h:outputText value="#{grupos.numero}" />
-                                </p:column>                             
+                                </p:column>      
+                                <p:column headerText="ID Grupo">
+                                    <h:outputText value="#{grupos.id}" />
+                                </p:column>                                  
                             </p:dataTable>
                         </th>
-                    </tr>                
-                </table>
-                <p:commandButton value="Asignar Monitor" action="#{administradorBean.asignarMonitorAGrupo()}" class="Boton" update="monitores grupos"/>
+                    </tr>
+                    <tr>
+                        <th width="33%">
+                            <p:commandButton value="Grupos Monitor" class="Boton" update="grupos" style="width: 75%;"/>
+                        </th>                                                   
+                    </tr>
+                </table>                
             </h:form>
+        </div>
+        <div class="form">
+            <h:form class="formX" prependId="false">
+                <th width="33%">
+                    <h:panelGrid class="Panel" columns="1" id="datos">
+                        <h1> | Asignar Franja | </h1>
+                        <p:inputText placeholder="Identificador" value="#{administradorBean.idFranja}" required="true" label="Keyword" type="number"/>
+                        <p:inputText placeholder="Dia de la semana" value="#{administradorBean.diaFranja}" required="true" label="Keyword" type="text"/>
+                        <p:inputText placeholder="Hora inicio" value="#{administradorBean.horaInicioFranja}" required="true" label="Keyword" type="time"/>  
+                        <p:inputText placeholder="Hora fin" value="#{administradorBean.horaFinFranja}" required="true" label="Keyword" type="time"/>
+                        <p:inputText placeholder="ID Grupo" value="#{administradorBean.grupoFranja}" required="true" label="Keyword" type="number"/>
+                        <p:commandButton value="Asignar Franja" action="#{administradorBean.registrarFranja()}" class="Boton">
+                            <p:resetInput target="datos"/>
+                        </p:commandButton>
+                    </h:panelGrid>
+                </th>
+            </h:form>            
         </div>
     </h:body>
 </html>

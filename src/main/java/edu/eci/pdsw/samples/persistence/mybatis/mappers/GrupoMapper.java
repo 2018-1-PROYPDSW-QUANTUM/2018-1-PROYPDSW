@@ -24,10 +24,10 @@ public interface GrupoMapper {
         añadirMonitorAGrupoGeneral(codigo, grupoId);
     }
 
-    default void añadirProfesorAGrupo(Integer profesorId, Integer grupoId){
+    default void añadirProfesorAGrupo(Integer profesorId, Integer grupoId) {
         añadirProfesorAGrupoGeneral(profesorId, grupoId);
     }
-    
+
     /**
      *
      * @param codigo
@@ -39,10 +39,10 @@ public interface GrupoMapper {
      *
      * @return
      */
-    default List<Grupo> consultarGruposSinProfesor(){
+    default List<Grupo> consultarGruposSinProfesor() {
         return consultarGruposSinProfesorGeneral();
     }
-    
+
     /**
      *
      * @param id
@@ -115,5 +115,26 @@ public interface GrupoMapper {
      */
     public List<Grupo> consultarGruposSinProfesorGeneral();
 
-    public void añadirProfesorAGrupoGeneral(@Param("profesorId")Integer profesorId, @Param("grupoId")Integer grupoId);
+    /**
+     *
+     * @param profesorId
+     * @param grupoId
+     */
+    public void añadirProfesorAGrupoGeneral(@Param("profesorId") Integer profesorId, @Param("grupoId") Integer grupoId);
+
+    /**
+     *
+     * @param codigo
+     * @return
+     */
+    default List<Grupo> consultarGrupoMonitor(Integer codigo) {
+        return consultarGrupoMonitorGeneral(codigo);
+    }
+
+    /**
+     *
+     * @param codigo
+     * @return
+     */
+    public List<Grupo> consultarGrupoMonitorGeneral(@Param("codigoMonitor") Integer codigo);
 }
