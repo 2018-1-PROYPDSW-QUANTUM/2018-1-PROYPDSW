@@ -18,7 +18,6 @@ import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Monitor;
 import edu.eci.pdsw.samples.entities.Profesor;
 import edu.eci.pdsw.samples.entities.Tema;
-import java.util.Date;
 
 /**
  *
@@ -27,7 +26,7 @@ import java.util.Date;
 public interface ServiciosMonitoria {
 
     public abstract void añadirProfesorAGrupo(Integer profesorId, Integer grupoId) throws ExcepcionServiciosMonitoria;
-    
+
     /**
      *
      * @param codigo
@@ -38,24 +37,23 @@ public interface ServiciosMonitoria {
 
     /**
      *
-     * @return
-     * @throws ExcepcionServiciosMonitoria
+     * @return @throws ExcepcionServiciosMonitoria
      */
     public abstract List<Franja> consultarFranjas() throws ExcepcionServiciosMonitoria;
-    
+
     /**
      *
-     * @return
-     * @throws ExcepcionServiciosMonitoria
+     * @return @throws ExcepcionServiciosMonitoria
      */
     public abstract List<Grupo> consultarGruposSinProfesor() throws ExcepcionServiciosMonitoria;
-    
+
     /**
      *
      * @param codigo
+     * @param grupoId
      * @throws ExcepcionServiciosMonitoria
      */
-    public abstract void añadirMonitorAGrupo(Integer codigo, Integer grupoId) throws ExcepcionServiciosMonitoria;
+    public abstract void anadirMonitorAGrupo(Integer codigo, Integer grupoId) throws ExcepcionServiciosMonitoria;
 
     /**
      *
@@ -81,11 +79,10 @@ public interface ServiciosMonitoria {
     /**
      *
      * @param grupo
-     * @param nemonico
      * @return
      * @throws ExcepcionServiciosMonitoria
      */
-    public abstract List<Asistente> consultarMonitoriaXGrupo(int grupo, String nemonico) throws ExcepcionServiciosMonitoria;
+    public abstract List<Asistente> consultarAsistentesXGrupo(Grupo grupo) throws ExcepcionServiciosMonitoria;
 
     /**
      *
@@ -109,6 +106,13 @@ public interface ServiciosMonitoria {
      */
     public abstract List<Grupo> consultarGruposXMateriaProfesor(String materiaProfesor) throws ExcepcionServiciosMonitoria;
 
+    /**
+     *
+     * @param m
+     * @param e
+     * @param t
+     * @throws ExcepcionServiciosMonitoria
+     */
     public abstract void registrarAsesoria(Integer m, Integer e, Integer t) throws ExcepcionServiciosMonitoria;
 
     /**
@@ -142,7 +146,7 @@ public interface ServiciosMonitoria {
      * @return @throws ExcepcionServiciosMonitoria
      */
     public abstract List<Estudiante> consultarEstudiantes() throws ExcepcionServiciosMonitoria;
-    
+
     /**
      *
      * @param codigo

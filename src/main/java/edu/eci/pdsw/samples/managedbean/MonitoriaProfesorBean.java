@@ -79,6 +79,6 @@ public class MonitoriaProfesorBean {
     }
     
     public List<Asistente> getInfoMonitoria() throws ExcepcionServiciosMonitoria{
-        return sm.consultarMonitoriaXGrupo(grupo, materiaProfesor);
+        return sm.consultarAsistentesXGrupo(sm.consultarGrupo(grupo));
     }
 }

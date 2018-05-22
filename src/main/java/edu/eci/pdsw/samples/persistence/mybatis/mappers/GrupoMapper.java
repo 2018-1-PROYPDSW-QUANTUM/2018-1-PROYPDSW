@@ -66,6 +66,7 @@ public interface GrupoMapper {
 
     /**
      *
+<<<<<<< HEAD
      * @param materiaProfesor
      * @return
      */
@@ -82,6 +83,8 @@ public interface GrupoMapper {
 
     /**
      *
+=======
+>>>>>>> Historia de uso: Consultar la informacion de las asesorias
      * @param id
      * @return
      */

@@ -6,11 +6,9 @@
 package edu.eci.pdsw.samples.persistence;
 
 import java.util.List;
-import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.entities.Asistente;
 import edu.eci.pdsw.samples.entities.Curso;
-import edu.eci.pdsw.samples.entities.Estudiante;
-import edu.eci.pdsw.samples.entities.Monitoria;
+import edu.eci.pdsw.samples.entities.Grupo;
 
 /**
  *
@@ -29,15 +27,6 @@ public interface AsistenteDAO {
 
     /**
      *
-     * @param grupo
-     * @param nemonico
-     * @return
-     * @throws PersistenceException
-     */
-    public List<Asistente> loadMonitoriaXGrupo(int grupo, String nemonico) throws PersistenceException;    
-    
-    /**
-     *
      * @param id
      * @return
      * @throws PersistenceException
@@ -54,6 +43,14 @@ public interface AsistenteDAO {
 
     /**
      *
+     * @param grupo
+     * @return
+     * @throws PersistenceException
+     */
+    public List<Asistente> loadMonitoriaXGrupo(Grupo grupo) throws PersistenceException;
+
+    /**
+     *
      * @param c
      * @return
      * @throws PersistenceException
@@ -62,8 +59,7 @@ public interface AsistenteDAO {
 
     /**
      *
-     * @return
-     * @throws PersistenceException
+     * @return @throws PersistenceException
      */
     public List<Asistente> loadAll() throws PersistenceException;
 }

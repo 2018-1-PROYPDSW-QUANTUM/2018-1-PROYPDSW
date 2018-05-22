@@ -52,7 +52,6 @@ public class ServiciosMonitoriasFactory {
 
             @Override
             protected void initialize() {
-                System.out.println("Initializing REAL");
                 install(JdbcHelper.PostgreSQL);
                 setClassPathResource("mybatis-config.xml");
                 bind(ServiciosMonitoria.class).to(ServiciosMonitoriaImpl.class);
@@ -77,7 +76,6 @@ public class ServiciosMonitoriasFactory {
 
             @Override
             protected void initialize() {
-                System.out.println("Initializing TESTING");
                 install(JdbcHelper.PostgreSQL);
                 setClassPathResource("mybatis-config-h2.xml");
                 bind(ServiciosMonitoria.class).to(ServiciosMonitoriaImpl.class);

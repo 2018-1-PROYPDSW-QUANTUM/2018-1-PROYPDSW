@@ -25,7 +25,7 @@
         left join Tema as t ON asis.Tema_identificador=t.Identificador 
     </select>
     
-    <select id="consultarMonitoriasXGrupoGeneral" resultMap="AsistenteResult">
+    <select id="consultarAsistentesXCurso" resultMap="AsistenteResult">
         SELECT 
         mo.Identificador as mo_Identificador, 
         mo.fecha as mo_fecha, 
@@ -40,13 +40,38 @@
         t.nombre as t_nombre, 
         t.descripcion as t_descripcion
         
-        FROM Asistente as a JOIN monitoria as mo ON a.Monitoria_identificador=mo.Identificador 
-        JOIN Estudiante as e ON a.Estudiante_codigo=e.Codigo
-        JOIN Tema as t ON a.Tema_identificador=t.Identificador
+        FROM Asistente as asis 
+        left join monitoria as mo on asis.Monitoria_identificador=mo.Identificador 
+        left join Estudiante as e ON asis.Estudiante_codigo=e.Codigo
+        left join Tema as t ON asis.Tema_identificador=t.Identificador
         left join Monitor as m ON mo.monitor_codigo = m.Codigo
         left join Curso as c on t.curso_nemonico = c.Nemonico
         
-        WHERE c.Nemonico = #{nemonicoMonitoria}
+        WHERE c.Nemonico = #{nemonico}
+    </select>
+    
+    <select id="consultarAsistentesXGrupo" resultMap="AsistenteResult">
+        SELECT 
+        mo.Identificador as mo_Identificador, 
+        mo.fecha as mo_fecha, 
+        mo.hora_inicio as mo_hora_inicio, 
+        mo.hora_fin as mo_hora_fin, 
+        mo.ip as mo_ip, 
+        mo.observaciones as mo_observaciones,
+        
+        e.Codigo as e_Codigo, 
+        
+        t.Identificador as t_Identificador, 
+        t.nombre as t_nombre, 
+        t.descripcion as t_descripcion
+        
+        FROM Asistente as asis 
+        left join monitoria as mo on asis.Monitoria_identificador=mo.Identificador 
+        left join Estudiante as e ON asis.Estudiante_codigo=e.Codigo
+        left join Tema as t ON asis.Tema_identificador=t.Identificador
+        left join estudiante_cursa as ec on ec.estudiante_codigo=e.codigo
+        join Grupo as g on ec.grupo_identificador = g.identificador
+        WHERE g.Identificador = #{idGrupo}
     </select>
     
     <insert  id="registrarAsistente">
@@ -58,7 +83,8 @@
     <resultMap type="Asistente" id="AsistenteResult" >
         <association property="monitoria" javaType="Monitoria" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitoriaMapper.MonitoriaResult"/>
         <association property="estudiante" javaType="Estudiante" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.EstudianteMapper.EstudianteResult"/>
-        <collection property="temas" ofType="Tema" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper.TemaResult"/>
+        <association property="tema" javaType="Tema" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper.TemaResult"/>
+        <!--<collection property="temas" ofType="Tema" resultMap="edu.eci.pdsw.samples.persistence.mybatis.mappers.TemaMapper.TemaResult"/>-->
     </resultMap>
       	
 </mapper>

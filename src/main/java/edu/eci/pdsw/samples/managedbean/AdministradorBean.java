@@ -156,7 +156,7 @@ public class AdministradorBean {
     }
 
     public void asignarMonitorAGrupo() throws ExcepcionServiciosMonitoria {
-        sm.añadirMonitorAGrupo(monitorSeleccionado.getCodigo(), grupoSeleccionado.getId());
+        sm.anadirMonitorAGrupo(monitorSeleccionado.getCodigo(), grupoSeleccionado.getId());
     }
 
     public void asignarProfesorAGrupo() throws ExcepcionServiciosMonitoria {

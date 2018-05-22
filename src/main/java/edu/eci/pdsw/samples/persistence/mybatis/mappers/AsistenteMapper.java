@@ -15,35 +15,28 @@ import org.apache.ibatis.annotations.Param;
  * @author jonnhi
  */
 public interface AsistenteMapper {
-    
-   
+
     /**
      *
-     * @param grupo
+     * @param id
+     * @return
+     */
+    public List<Asistente> consultarAsistentesXGrupo(@Param("idGrupo") Integer id);
+
+    /**
+     *
      * @param nemonico
      * @return
      */
-    default List<Asistente> consultarMonitoriasXGrupo(int grupo, String nemonico){
-        return consultarMonitoriasXGrupoGeneral(grupo, nemonico);
-    }    
-    
-    /**
-     *
-     * @param grupo
-     * @param nemonico
-     * @return
-     */
-    public List<Asistente> consultarMonitoriasXGrupoGeneral(@Param("grupoMonitoria") int grupo,@Param("nemonicoMonitoria") String nemonico);    
-    
+    public List<Asistente> consultarAsistentesXCurso(@Param("nemonico") String nemonico);
+
     public List<Asistente> consultarAsistentes();
-    
+
     public Asistente consultarAsistenteXMonitoria(@Param("miAsistente") Integer monitoriaId);
-    
+
     public Asistente consultarAsistenteXEstudiante(@Param("ecAsistente") Integer estudianteCodigo);
-    
-    public List<Asistente> consultarAsistentesXMateria(@Param("neCurso") String curso);
-    
-    public void registrarAsistente(@Param("miAsistente") Integer monitoriaId, 
-            @Param("ecAsistente") Integer estudianteCodigo, 
+
+    public void registrarAsistente(@Param("miAsistente") Integer monitoriaId,
+            @Param("ecAsistente") Integer estudianteCodigo,
             @Param("tiAsistente") Integer temaId);
 }

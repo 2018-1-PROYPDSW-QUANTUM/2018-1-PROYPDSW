@@ -54,12 +54,12 @@ public class MyBATISGrupoDAO implements GrupoDAO {
     }
 
     @Override
-    public void añadirMonitorAGrupo(Integer codigo, Integer grupoId) throws PersistenceException {
+    public void anadirMonitorAGrupo(Integer codigo, Integer grupoId) throws PersistenceException {
         grupoMapper.añadirMonitorAGrupo(codigo, grupoId);
     }
 
     @Override
-    public void añadirProfesorAGrupo(Integer profesorId, Integer grupoId) throws PersistenceException {
+    public void anadirProfesorAGrupo(Integer profesorId, Integer grupoId) throws PersistenceException {
         grupoMapper.añadirProfesorAGrupo(profesorId, grupoId);
     }
 
@@ -67,5 +67,4 @@ public class MyBATISGrupoDAO implements GrupoDAO {
     public List<Grupo> consultarGrupos(Integer codigo) throws PersistenceException {
         return grupoMapper.consultarGrupoMonitor(codigo);
     }
-
 }

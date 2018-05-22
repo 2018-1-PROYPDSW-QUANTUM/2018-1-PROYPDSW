@@ -22,6 +22,8 @@ import java.util.Date;
 import java.util.List;
 import edu.eci.pdsw.samples.managedbean.ShiroLoginBean;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -53,7 +55,7 @@ public class RegistroMonitoriaBean {
     private List<Asistente> asistenteMonitoria;
     private List<Estudiante> estudiantes;
     private List<Tema> temas;
-    private List<Tema> temasAsistente;
+    private Tema temasAsistente;
     private List<Profesor> profesores;
     private Estudiante estudian;
     private Tema tema;
@@ -64,14 +66,7 @@ public class RegistroMonitoriaBean {
     private Curso cursoSeleccionado;
 
     public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria {
-        cMonitorias = sm.consultarMonitorias();
-        temas = sm.consultarTemas();
-        //System.out.println("Usuario es: "+shiro.getUsername());
-        //getUser();
-
         nuevaMonitoria = new Monitoria();
-        //estudian=new Estudiante(32131);
-
     }
 
     public String getUser() {
@@ -81,6 +76,12 @@ public class RegistroMonitoriaBean {
 
     public void setShiro(ShiroLoginBean si) {
         shiro = si;
+        try {
+            cMonitorias = sm.consultarMonitorias();
+            temas = sm.consultarTemas();
+        } catch (ExcepcionServiciosMonitoria ex) {
+            Logger.getLogger(RegistroMonitoriaBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -101,7 +102,7 @@ public class RegistroMonitoriaBean {
         nuevaMonitoria.setObservaciones(observaciones);
         sm.registrarMonitoria(nuevaMonitoria, sm.consultarMonitor(monitorCodigo));
         for (Asistente i : asistentes) {
-            sm.registrarAsesoria(i.getMonitoria().getId(), i.getEstudiante().getCodigo(), i.getTemas().get(0).getId());
+            sm.registrarAsesoria(i.getMonitoria().getId(), i.getEstudiante().getCodigo(), i.getTema().getId());
         }
     }
 
@@ -117,11 +118,11 @@ public class RegistroMonitoriaBean {
         nuevaMonitoria.setAsistentes(asistentes);
     }
 
-    public List<Tema> getTemasAsistente() {
+    public Tema getTemaAsistente() {
         return this.temasAsistente;
     }
 
-    public void setTemasAsistente(List<Tema> temasAsistente) {
+    public void setTemaAsistente(Tema temasAsistente) {
         this.temasAsistente = temasAsistente;
     }
 

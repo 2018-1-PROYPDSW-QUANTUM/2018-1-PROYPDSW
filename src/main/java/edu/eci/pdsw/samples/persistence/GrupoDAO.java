@@ -22,7 +22,7 @@ public interface GrupoDAO {
      * @param grupoId
      * @throws PersistenceException
      */
-    public void añadirProfesorAGrupo(Integer profesorId, Integer grupoId) throws PersistenceException;
+    public void anadirProfesorAGrupo(Integer profesorId, Integer grupoId) throws PersistenceException;
 
     /**
      *
@@ -35,7 +35,7 @@ public interface GrupoDAO {
      * @param codigo
      * @throws PersistenceException
      */
-    public void añadirMonitorAGrupo(Integer codigo, Integer grupoId) throws PersistenceException;
+    public void anadirMonitorAGrupo(Integer codigo, Integer grupoId) throws PersistenceException;
 
     /**
      *

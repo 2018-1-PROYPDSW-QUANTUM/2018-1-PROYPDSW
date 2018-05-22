@@ -6,6 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
+        <title>Profesores</title>
         <style type="text/css">
             body{
                 background-image: url(../resources/Fondo.jpg);
@@ -64,10 +65,10 @@
                     <img src="../resources/LogoEscuela.png" alt="Logo Escuela"></img>
                 </th>
                 <th width="70%" style="text-align: left;">
-                    <h1 id="TituloFuente"> | Sistema de Monitorias </h1>
+                    <h1 id="TituloFuente"> | Sistema de Monitorias | </h1>
                 </th>
                 <th width="30%" style="text-align: center;">
-                <p:button class="Boton" outcome="/index" value="Cerrar Sesion">
+                <p:button class="Boton" outcome="/login" value="Cerrar Sesion">
                     <f:param name="productId" value="10" />
                 </p:button>                    
                 </th>
@@ -75,39 +76,39 @@
         </div>
         <div id="Informacion">
             <br></br>
-            <h1> | Informacion Monitoria | </h1>
+            <h1> Hola #{monitoriaProfesor.profesor.nombre} </h1>
             <table>
                 <tr>
-                    <th width="20%">
                 <h:form>
-                    <p:dataTable var="carr" value="#{monitoriaProfesor.user}">
-                        <p:column headerText="Profesor">
-                            <h:outputText value="#{monitoriaProfesor.user}" />
+                    <th width="20%">
+                        <br></br>
+                    <p:outputPanel>
+
+                    </p:outputPanel>
+                    <p:dataTable var="cursos" value="#{monitoriaProfesor.profesor.grupos}" selectionMode="single" selection="#{monitoriaProfesor.grupoSelected}" rowKey="#{cursos.id}">
+                        <p:column headerText="Cursos" >
+                            <h:outputText value="#{cursos.curso.nemonico} - #{cursos.numero}" />
+                        </p:column>             
+                    </p:dataTable>
+                    <p:separator style="height:5px" />
+                    <p:commandButton class="Boton" value="Consultar" actionListener="#{monitoriaProfesor.asistentesXGrupo(monitoriaProfesor.grupoSelected)}" update="Asistente" style="width: 100%"/>
+                    </th>                
+                    <th width="90%" style="float: right;">
+                    <p:dataTable var="asistentes" value="#{monitoriaProfesor.asistentes}" id="Asistente">
+                        <p:column headerText="Estudiante">
+                            <h:outputText value="#{asistentes.estudiante.codigo}" />
+                        </p:column>
+                        <p:column headerText="Tema">
+                            <h:outputText value="#{asistentes.tema.nombre}" />
                         </p:column>
                     </p:dataTable>
-                    <br></br>
-                    <p:dataTable var="materias" value="#{monitoriaProfesor.profesorMonitoria}" selectionMode="single" rowKey="#{materias.nemonico}">
-                        <p:column headerText="Materias" >
-                            <h:outputText value="#{materias.nemonico}" />
-                        </p:column>             
-                    </p:dataTable> 
-                    <br></br>
-                    <p:commandButton class="Boton" value="Consultar" icon="" style="width: 100%"/>         
+                    </th>
+                    <p:ajaxExceptionHandler type="edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria" update="exceptionDialog" onexception="PF('exceptionDialog').show()" />
+                    <p:dialog id="exceptionDialog" header="Error" widgetVar="exceptionDialog" height="200px">         
+                        <h3> #{pfExceptionHandler.message}</h3>
+                        Por favor seleccione un curso para realizar la consulta. Cierre la ventana para poder continuar.
+                    </p:dialog>
                 </h:form>
-                </th>                
-                <th width="90%" style="float: right;">
-                <p:dataTable var="monitorias" value="#{monitoriaProfesor.infoMonitoria}">
-                    <f:facet name="header">
-                        <h:outputText value="Monitorias registradas"/>
-                    </f:facet>
-                    <p:column headerText="Codigo estudiante" style="width: 30%">
-                        <h:outputText value="#{monitorias.estudiante.codigo}" />
-                    </p:column>
-                    <p:column headerText="Tema">
-                        <h:outputText value="#{monitorias.temas}" />
-                    </p:column>              
-                </p:dataTable>
-                </th>
                 </tr>
             </table>
         </div>

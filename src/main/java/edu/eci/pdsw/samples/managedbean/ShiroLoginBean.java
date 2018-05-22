@@ -81,14 +81,9 @@ public class ShiroLoginBean implements Serializable {
             facesError("Locked account");
             log.error(ex.getMessage(), ex);
         }
-        catch (AuthenticationException ex) {
+        catch (AuthenticationException | IOException ex) {
             facesError("Unknown error: " + ex.getMessage());
             log.error(ex.getMessage(), ex);
-        }
-        catch (IOException ex){
-            facesError("Unknown error: " + ex.getMessage());
-            log.error(ex.getMessage(), ex);
-            
         }
         finally {
             token.clear();
@@ -104,7 +99,6 @@ public class ShiroLoginBean implements Serializable {
     }
 
     public String getUsername() {
-        System.out.println("es: "+username);
         return username;
     }
 

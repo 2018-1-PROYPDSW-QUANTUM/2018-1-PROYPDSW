@@ -126,7 +126,7 @@
         WHERE m.Codigo IS NULL
     </select>    
     
-    <select parameterType="map" id="consultarGruposXMateriaGeneral" resultMap="GrupoResult">
+    <select parameterType="map" id="consultarGruposXProfesor" resultMap="GrupoResult">
         SELECT 
         g.Identificador as g_Identificador, 
         g.numero as g_numero, 
@@ -182,9 +182,8 @@
         left join Curso as c ON g.curso_nemonico=c.Nemonico 
         left join Franja as f ON g.Identificador=f.grupo_identificador
         left join Tema as t ON c.Nemonico=t.curso_nemonico 
-        <if test="materiaProfesor != null">
-            WHERE g.curso_nemonico = #{materiaProfesor}
-        </if>
+
+        WHERE g.profesor_codigo = #{codigoProfesor}
     </select>    
      
     <select parameterType="map" id="consultarGruposSinProfesorGeneral" resultMap="GrupoResult">

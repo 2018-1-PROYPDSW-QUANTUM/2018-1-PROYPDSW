@@ -6,7 +6,17 @@
 <mapper namespace="edu.eci.pdsw.samples.persistence.mybatis.mappers.MonitoriaMapper">
     
     <select parameterType="map" id="consultaInfoAsignaciones" resultMap="MonitoriaResult">
-        SELECT c.Nemonico, c.nombre, f.dia, f.hora_inicio, f.hora_fin, t.descripcion, COUNT(mo.identificador)
+        SELECT 
+        c.Nemonico, 
+        c.nombre, 
+        
+        f.dia, 
+        f.hora_inicio, 
+        f.hora_fin, 
+        t.descripcion, 
+        
+        COUNT(mo.identificador)
+        
         FROM Monitoria as mo
         left join Monitor as m ON mo.monitor_codigo = m.Codigo
         left join Grupo as g ON m.Codigo = g.monitor_codigo
@@ -29,6 +39,7 @@
         mo.ip as mo_ip, 
         mo.observaciones as mo_observaciones,
         mo.monitor_codigo as mon_cod ,
+        
         t.Identificador as t_Identificador,
         t.nombre as t_nombre,
         t.descripcion as t_descripcion,

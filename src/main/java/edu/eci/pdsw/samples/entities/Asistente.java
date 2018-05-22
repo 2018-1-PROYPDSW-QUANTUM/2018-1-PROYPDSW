@@ -5,8 +5,6 @@
  */
 package edu.eci.pdsw.samples.entities;
 
-import java.util.List;
-
 /**
  *
  * @author jonnhi
@@ -15,16 +13,16 @@ public class Asistente {
 
     private Monitoria monitoria;
     private Estudiante estudiante;
-    private List<Tema> temas;
+    private Tema tema;
 
     public Asistente() {
 
     }
 
-    public Asistente(Monitoria monitoria, Estudiante estudiante, List<Tema> temas) {
+    public Asistente(Monitoria monitoria, Estudiante estudiante, Tema tema) {
         this.monitoria = monitoria;
         this.estudiante = estudiante;
-        this.temas = temas;
+        this.tema = tema;
     }
 
     public Monitoria getMonitoria() {
@@ -35,12 +33,12 @@ public class Asistente {
         this.monitoria = monitoria;
     }
 
-    public List<Tema> getTemas() {
-        return temas;
+    public Tema getTema() {
+        return tema;
     }
 
-    public void setTemas(List<Tema> temas) {
-        this.temas = temas;
+    public void setTema(Tema temas) {
+        this.tema = temas;
     }
 
     public Estudiante getEstudiante() {
@@ -50,10 +48,10 @@ public class Asistente {
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
     }
-    
+
     @Override
     public String toString() {
-        return "Asistentes {" + "Monitoria=" + monitoria + ", Estudiante=" + estudiante + ", Temas=" + temas + '}';
+        return "Asistentes {" + "Monitoria=" + monitoria + ", Estudiante=" + estudiante + ", Temas=" + tema + '}';
     }
 
 }

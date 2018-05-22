@@ -9,6 +9,7 @@ import com.google.inject.Inject;
 import edu.eci.pdsw.samples.entities.Asistente;
 import edu.eci.pdsw.samples.entities.Curso;
 import edu.eci.pdsw.samples.entities.Estudiante;
+import edu.eci.pdsw.samples.entities.Grupo;
 import edu.eci.pdsw.samples.entities.Monitoria;
 import edu.eci.pdsw.samples.entities.Tema;
 import edu.eci.pdsw.samples.persistence.AsistenteDAO;
@@ -27,8 +28,7 @@ public class MyBATISAsistenteDAO implements AsistenteDAO {
 
     @Override
     public void save(Integer m, Integer de, Integer t) throws PersistenceException {
-        //asistente.registrarAsistente(m.getId(), e.getCodigo(), t.getId());
-        asistente.registrarAsistente(m,de,t);
+        asistente.registrarAsistente(m, de, t);
     }
 
     @Override
@@ -42,18 +42,18 @@ public class MyBATISAsistenteDAO implements AsistenteDAO {
     }
 
     @Override
+    public List<Asistente> loadMonitoriaXGrupo(Grupo grupo) throws PersistenceException {
+        return asistente.consultarAsistentesXGrupo(grupo.getId());
+    }
+
+    @Override
     public List<Asistente> loadAsistenteXCurso(Curso c) throws PersistenceException {
-        return asistente.consultarAsistentesXMateria(c.getNemonico());
+        return asistente.consultarAsistentesXCurso(c.getNemonico());
     }
 
     @Override
     public List<Asistente> loadAll() throws PersistenceException {
         return asistente.consultarAsistentes();
-    }
-
-    @Override
-    public List<Asistente> loadMonitoriaXGrupo(int grupo, String nemonico) throws PersistenceException {
-        return asistente.consultarMonitoriasXGrupo(grupo, nemonico);
     }
 
 }
