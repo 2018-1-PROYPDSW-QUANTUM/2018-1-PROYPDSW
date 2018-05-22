@@ -153,7 +153,15 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
         try {
             return daoEstudiante.loadAll();
         } catch (PersistenceException e) {
-            throw new ExcepcionServiciosMonitoria("Error al consultar todos los estudiantes registrados. ", e);
+            throw new ExcepcionServiciosMonitoria("Error al consultar todos los estudiante registrados. ", e);
+        }
+    }
+    @Override
+    public Estudiante consultarEstudiante(Integer codigo) throws ExcepcionServiciosMonitoria {
+        try {
+            return daoEstudiante.load(codigo);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar todos los estudiante con codigo. "+codigo, e);
         }
     }
 

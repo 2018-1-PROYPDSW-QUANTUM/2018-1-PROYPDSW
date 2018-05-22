@@ -34,13 +34,14 @@ public class Monitoria {
     public Monitoria() {
     }
 
-    public Monitoria(Integer id, Date fecha, LocalTime horaInicio, LocalTime horaFin, String ip, String observaciones) {
+    public Monitoria(Integer id, Date fecha, LocalTime horaInicio, LocalTime horaFin, String ip, String observaciones,List<Asistente> asistentes) {
         this.id = id;
         this.fecha = fecha;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.ip = ip;
         this.observaciones = observaciones;
+        this.asistentes=asistentes;
     }
 
     public Integer getId() {

@@ -24,7 +24,7 @@ and open the template in the editor.
                 </th>
 
                 <th width="30%" style="text-align: center;">
-                    <p:button class="Boton" onclick="#{registrarMonitoria.comenzarMonitoria}" outcome="/asesoria/asesoria.xhtml" value="Asesoria">
+                    <p:button class="Boton" onclick="#{registrarMonitoria.comenzarMonitoria()}" outcome="/asesoria/asesoria.xhtml" value="Asesoria">
                     </p:button>                     
                 </th> 
                 <th width="30%" style="text-align: center;">
@@ -45,17 +45,6 @@ and open the template in the editor.
                     </p:dataTable>
                 </th>
                 <br></br>
-                <th>
-                    <h:form id="Fecha" prependId="false">
-                        <h:panelGrid id="Panel" columns="1">                            
-                            <p:inputText placeholder="Materia(neumonico)" id="materia" value="#{registrarMonitoria.curso}" required="true" label="Keyword"/>
-                            <p:inputText placeholder="Grupo" id="grupo" value="#{registrarMonitoria.grupo}" required="true" label="Keyword"/>
-                            <p:inputText placeholder="Estudiante" id="estudiante"  value="#{registrarMonitoria.estudianteMonitoria}" required="true" label="Keyword"/>         
-                            <p:inputTextarea placeholder="Observaciones" style="text-align:center;" id="observaciones" rows="6" cols="33" value="#{registrarMonitoria.observaciones}" required="true" label="Keyword"/>                  
-                            <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaMonitoria}" styleClass="ui-priority-primary" update=":dtMonitorias"/>
-                        </h:panelGrid>   
-                    </h:form>
-                </th>
             </tr>
         </div>
         <div id="Monitorias">

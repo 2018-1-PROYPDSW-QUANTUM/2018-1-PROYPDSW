@@ -102,65 +102,49 @@ and open the template in the editor.
         <br></br>
         <br></br>           
         <h1> Agregar Asesorias </h1>
-
-        <p:dataTable var="car" value="#{registrarMonitoria.estudiantes}">
-            <f:facet name="header">
-                Lista de Estudiantes
-            </f:facet>
-            <p:column headerText="Id">
-                <h:outputText value="#{car.codigo}" />
-            </p:column> 
-        </p:dataTable> 
-        <p:dataTable var="car" value="#{registrarMonitoria.tema}">
-            <f:facet name="header">
-                Lista de Temas
-            </f:facet>
-            <p:column headerText="Id">
-                <h:outputText value="#{car.descripcion}" />
-            </p:column> 
-            <p:column headerText="Id">
-                <h:outputText value="#{car.id}" />
-            </p:column> 
-             <p:column headerText="Nombre">
-                 <h:outputText value="#{car.nombre}" />
-            </p:column> 
-        </p:dataTable> 
-        
-        <p:dataTable var="car" value="#{registrarMonitoria.CMonitorias}">
-            <f:facet name="header">
-                Lista de Monitorias
-            </f:facet>
-            <p:column headerText="Id">
-                <h:outputText value="#{car.id}" />
-            </p:column> 
-            <p:column headerText="Observaciones">
-                <h:outputText value="#{car.observaciones}" />
-            </p:column> 
-             <p:column headerText="Nombre">
-                 <h:outputText value="#{car.observaciones}" />
-            </p:column> 
-        </p:dataTable> 
-
         <div class="form">
             <h:form id="asesoria"  >
                 <h:panelGrid id="Panel" columns="1">
-                    <h1>| Registrar Monitoria |</h1>
-                    <p:inputText placeholder="Monitoria(Codigo)" value="#{registrarMonitoria.monitorCodigo}" />
-                    <p:inputText placeholder="Estudiante(Codigo)" value="#{registrarMonitoria.idEstudiante}"  />
-                     <p:dataTable id="asistentes" var="asistente" value="#{registroMonitoria.Asistentes}" editable="true">
-                         <f:facet name="header">
+                    <h1>| Registrar Asesoria |</h1>
+                    <p:inputText placeholder="Materia(neumonico)" id="materia" value="#{registrarMonitoria.curso}" required="true" label="Keyword"/>
+                    <p:inputText placeholder="Grupo" id="grupo" value="#{registrarMonitoria.grupo}" required="true" label="Keyword"/>
+                    <p:inputTextarea placeholder="Observaciones" style="text-align:center;" id="observaciones" rows="6" cols="33" value="#{registrarMonitoria.observaciones}" required="true" label="Keyword"/>
+                    <p:dataTable id="asistentes" var="asistente" value="#{registrarMonitoria.asistentes}" editable="true" rowKey="#{asistente.estudiante.codigo}">
+                        <f:facet name="header">
                             Asistentes
-                         </f:facet> 
-                         <p:column headerText="Id">
-                             <h:outputText value="#{asistente.estudiante.codigo}" />
-                         </p:column>
-                         <p:commandButton value="AgregarEstudiante" type="button" onclick="PF('dlg2').show();" />
-                     </p:dataTable>                                
-                    <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaAsesoria()}" update="asesoria" styleClass="ui-priority-primary" />
-                    <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
-                        <h:outputText value="This is a Modal Dialog." />
-                    </p:dialog>
-                </h:panelGrid>   
+                        </f:facet> 
+                        <p:column headerText="codigo">
+                            <h:outputText value="#{asistente.estudiante.codigo}" />
+                        </p:column>
+                    </p:dataTable> 
+                    <p:commandButton value="AgregarEstudiante" type="button" onclick="PF('agregarAsistente').show()" actionListener="#{registrarMonitoria.setNuevaAsesoria()}" update=":asesoria:asistentes" />
+                    <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaMonitoria()}" update="asesoria" styleClass="ui-priority-primary" />
+                </h:panelGrid> 
+                
+                
+                <p:dialog header="Asistente" widgetVar="agregarAsistente" height="100">
+                    <p:inputText placeholder="Estudiante(codigo)" value="#{registrarMonitoria.estudianteMonitoria}" />
+                    <f:facet name="header">
+                        Agregar Estudiante
+                    </f:facet>
+                    <h:form id="temasf"  >
+                        <p:dataTable id="Temas" var="temas" value="#{registrarMonitoria.temas}" editable="true" selectionMode="multiple" selection="#{registrarMonitoria.temasAsistente}" rowKey="#{temas.id}">
+                            <f:facet name="header">
+                                Temas
+                            </f:facet> 
+                            <p:column headerText="nombre">
+                                <h:outputText value="#{temas.nombre}" />
+                            </p:column>
+                            <p:column headerText="descripcon">
+                                <h:outputText value="#{temas.descripcion}" />
+                            </p:column>
+                            <p:ajax event="rowSelect" listener="#{registrarMonitoria.setTemasAsistente(temasAsistente)}"></p:ajax>
+                        </p:dataTable>
+                    </h:form>
+                    <p:commandButton class="Boton" value="Enviar" actionListener="#{registrarMonitoria.agregarAsistente()}"  styleClass="ui-priority-primary" />
+                </p:dialog>
+                
+                
             </h:form>
         </div>
         

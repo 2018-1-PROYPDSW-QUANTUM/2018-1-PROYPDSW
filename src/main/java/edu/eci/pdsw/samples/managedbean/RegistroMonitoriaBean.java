@@ -39,7 +39,7 @@ public class RegistroMonitoriaBean {
 
     @ManagedProperty("#{loginBean}")
     private ShiroLoginBean shiro;
-
+    private Asistente asistente;
     private ServiciosMonitoria sm = ServiciosMonitoriasFactory.getInstance().getMonitoriasServices();
     private Monitoria nuevaMonitoria;
     private String grupo;
@@ -54,6 +54,7 @@ public class RegistroMonitoriaBean {
     private List<Asistente> asistenteMonitoria;
     private List<Estudiante> estudiantes;
     private List<Tema> temas;
+    private List<Tema> temasAsistente;
     private List<Profesor> profesores;
     private Estudiante estudian;
     private Tema tema;
@@ -64,6 +65,7 @@ public class RegistroMonitoriaBean {
 
     public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria {
         cMonitorias = sm.consultarMonitorias();
+        temas=sm.consultarTemas();
         //System.out.println("Usuario es: "+shiro.getUsername());
         //getUser();
 
@@ -86,23 +88,36 @@ public class RegistroMonitoriaBean {
     }
 
     public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria {
+        nuevaMonitoria.setHoraFin(LocalTime.now());
+        nuevaMonitoria.setObservaciones(observaciones);
         sm.registrarMonitoria(nuevaMonitoria,sm.consultarMonitor(monitorCodigo));
+        for(Asistente i :asistentes){
+            sm.registrarAsesoria(i.getMonitoria().getId(), i.getEstudiante().getCodigo(), i.getTemas().get(0).getId());
+        }
     }
     
     public void comenzarMonitoria() throws ExcepcionServiciosMonitoria{
-        nuevaMonitoria=new Monitoria(sm.consultarMonitorias().size() + 1, new Date(), LocalTime.now(), null, "xxx.xx.xx", observaciones);
+        nuevaMonitoria=new Monitoria(sm.consultarMonitorias().size() + 1, new Date(), LocalTime.now(), null, "xxx.xx.xx", observaciones,new ArrayList<>());        
         asistentes=nuevaMonitoria.getAsistentes();
     }
 
-    public void setNuevaAsesoria() throws ExcepcionServiciosMonitoria {
-        System.out.println("Probando");
-
-        sm.registrarAsesoria(monitorCodigo, numId, grupId);
-
-    }
-    public void agregarAsistente(Asistente asistente){
+    public void agregarAsistente() throws ExcepcionServiciosMonitoria{
+        asistente=new Asistente(nuevaMonitoria,sm.consultarEstudiante(estudianteMonitoria),temasAsistente);
         asistentes.add(asistente);
+        System.out.println(asistentes);
         nuevaMonitoria.setAsistentes(asistentes);
+    }
+    
+    
+    public List<Tema> getTemasAsistente(){
+        return this.temasAsistente;
+    }
+    
+    public void setTemasAsistente(List<Tema> temasAsistente){
+        this.temasAsistente=temasAsistente;
+    }
+    public List<Asistente> getAsistentes(){
+        return this.asistentes;
     }
 
     public String getObservaciones() {
@@ -249,9 +264,12 @@ public class RegistroMonitoriaBean {
 
     }
 
-    public List<Tema> getTema() throws ExcepcionServiciosMonitoria {
+    public List<Tema> getTemas() throws ExcepcionServiciosMonitoria {
         temas = sm.consultarTemas();
         return temas;
+    }
+    public Tema getTema() throws ExcepcionServiciosMonitoria {
+        return tema;
     }
 
     public void setTema(Tema tema) {
@@ -262,7 +280,7 @@ public class RegistroMonitoriaBean {
         profesores = sm.consultarProfesores();
         return profesores;
     }
-
+    
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
     }

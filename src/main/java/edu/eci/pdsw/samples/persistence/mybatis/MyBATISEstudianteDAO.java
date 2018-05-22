@@ -31,4 +31,8 @@ public class MyBATISEstudianteDAO implements EstudianteDAO{
         return estudiante.consultarEstudiantes();
     }
     
+    public Estudiante load(Integer codigo) throws PersistenceException {
+        return estudiante.consultarEstudiante(codigo);
+    }
+    
 }

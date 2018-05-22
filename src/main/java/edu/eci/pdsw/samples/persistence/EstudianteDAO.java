@@ -27,4 +27,12 @@ public interface EstudianteDAO {
      * @throws PersistenceException
      */
     public List<Estudiante> loadAll() throws PersistenceException;
+    
+    /**
+     *
+     * @param codigo
+     * @return
+     * @throws PersistenceException
+     */
+    public Estudiante load(Integer codigo) throws PersistenceException;
 }

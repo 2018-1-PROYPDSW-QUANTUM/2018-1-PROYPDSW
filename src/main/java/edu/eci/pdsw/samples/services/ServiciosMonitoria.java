@@ -108,6 +108,8 @@ public interface ServiciosMonitoria {
      * @return @throws ExcepcionServiciosMonitoria
      */
     public abstract List<Estudiante> consultarEstudiantes() throws ExcepcionServiciosMonitoria;
+    
+    abstract Estudiante consultarEstudiante(Integer codigo) throws ExcepcionServiciosMonitoria;
 
     /**
      *
