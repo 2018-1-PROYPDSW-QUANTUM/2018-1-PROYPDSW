@@ -127,7 +127,7 @@ public class ShiroLoginBean implements Serializable {
     public void setRememberMe(Boolean lembrar) {
         this.rememberMe = lembrar;
     }
-    public String etIp(){
+    public String getIp(){
         return dirrecionIp;
 
     }

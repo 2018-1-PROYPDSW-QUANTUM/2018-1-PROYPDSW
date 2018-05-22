@@ -99,7 +99,7 @@ public class RegistroMonitoriaBean {
     }
     
     public void comenzarMonitoria() throws ExcepcionServiciosMonitoria{
-        nuevaMonitoria=new Monitoria(sm.consultarMonitorias().size() + 1, new Date(), LocalTime.now(), null, "xxx.xx.xx", observaciones,new ArrayList<>());        
+        nuevaMonitoria=new Monitoria(sm.consultarMonitorias().size() + 1, new Date(), LocalTime.now(), null, shiro.getIp(), observaciones,new ArrayList<>());        
         asistentes=nuevaMonitoria.getAsistentes();
     }
 
