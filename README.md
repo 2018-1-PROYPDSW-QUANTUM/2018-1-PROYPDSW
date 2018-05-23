@@ -7,12 +7,13 @@
 ##### 2018 - PDSW
 
 ### Integrantes
-- Daniel Betlran - Scrum team member
+- Daniel Beltran - Scrum team member
 - Diego Chinchilla - Scrum master
 - Cesar Lanos - Scrum team member
 - Camilo Lopez - Scrum team member
 - Jonathan Prieto - Scrum team member
 - Francisco Chaves - Product owner
+- Wilmer Garzón - Client
 ---
 ## Profesor: Francisco Chaves<br />
 ### Descripción del producto
