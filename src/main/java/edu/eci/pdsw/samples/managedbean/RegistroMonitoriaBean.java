@@ -98,6 +98,7 @@ public class RegistroMonitoriaBean {
     }
 
     public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria {
+        System.out.println("------------------------------------------------------");
         nuevaMonitoria.setHoraFin(LocalTime.now());
         nuevaMonitoria.setObservaciones(observaciones);
         sm.registrarMonitoria(nuevaMonitoria, sm.consultarMonitor(monitorCodigo));
@@ -114,7 +115,6 @@ public class RegistroMonitoriaBean {
     public void agregarAsistente() throws ExcepcionServiciosMonitoria {
         asistente = new Asistente(nuevaMonitoria, sm.consultarEstudiante(estudianteMonitoria), temasAsistente);
         asistentes.add(asistente);
-        System.out.println(asistentes);
         nuevaMonitoria.setAsistentes(asistentes);
     }
 
@@ -124,6 +124,19 @@ public class RegistroMonitoriaBean {
 
     public void setTemaAsistente(Tema temasAsistente) {
         this.temasAsistente = temasAsistente;
+    }
+    
+    public void setAsistente(Asistente asistente){
+        this.asistente=asistente;        
+    }
+    
+    public Asistente getAsistente(){
+        return this.asistente;        
+    }
+    
+    public void eliminarAsistente(){
+        asistentes.remove(asistente);
+        nuevaMonitoria.setAsistentes(asistentes);
     }
 
     public List<Asistente> getAsistentes() {
