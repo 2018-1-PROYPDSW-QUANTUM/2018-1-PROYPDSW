@@ -43,9 +43,22 @@ El administrador podra registrar un profesor, con tan solo ingresar los datos qu
 ![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/registrarSemestre.PNG)
 El administrador podra registrar un Semestre, con tan solo ingresar los datos que se solicitan, los cuales son: ID, año, periodo academico, Fecha inicio semestre, fecha fin semestre y seleccionar el administrador que estara encargado de ese semestre. Al dar click en el boton, automaticamente el Semestre es registrado en la base de datos.
 
-## Arquitectura y diseño:<br />
+## Arquitectura y diseño detallado:<br />
 > - **Modelo de base de datos:**
 ![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Modelo%20Base%20de%20datos.png)
+
+- **Tecnologias utilizadas:**
+
+- #### Apache Shiro  
+Un poderoso y sencillo Framework de seguridad de Java. Cuenta con funciones de autenticación, autorización, criptografía, y manejo de sesiones. Es versatil y permite asegurar desde aplicaciones móviles hasta grandes aplicaciones web.
+
+- #### PrimeFaces 
+Una biblioteca de JavaServerFaces que facilita el desarrollo de aplicaciones web con una gran variedad de componentes disponibles para diseño web.
+
+#### Postgres SQL
+Sistema de gestión de bases de datos objeto-relacionales, de código abierto y el más potente del mercado.
+
+- #### [Link Heroku](https://pdswproyectoquantum.herokuapp.com/)
 
 ## Descripción del proceso:<br />
 * Metodología: Se hizo uso SCRUM, una metodología que permite el despliegue continuo del producto con el fin de mostrar en cada revisión  lo avanzado.<br />
@@ -84,8 +97,6 @@ El administrador podra registrar un Semestre, con tan solo ingresar los datos qu
 ![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Burn3.PNG)
 
 >En este Sprint la organizacion fue mucho mayor, por lo que la mayoria de las tareas fue correcta, la organizacion en este caso fue importante en cada una de las tareas y en cada una de las tareas.
-
-#### [Link Heroku](https://pdswproyectoquantum.herokuapp.com/)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/21db71efa3e4472bb82a3a658f9e332c)](https://www.codacy.com/app/DanBeltF/2018-1-PROYPDSW?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW&amp;utm_campaign=Badge_Grade)
 
