@@ -47,6 +47,40 @@ El administrador podra registrar un Semestre, con tan solo ingresar los datos qu
 * Metodología: Se hizo uso SCRUM, una metodología que permite el despliegue continuo del producto con el fin de mostrar en cada revisión  lo avanzado.<br />
 * Trello: https://trello.com/b/uaAquS03/2018-1-proypdsw-quantum<br />
 
+- **Sprint 1:**
+> - **Sprint-Backlog:**
+
+![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Sprint1.PNG)
+
+> - **Sprint-Burdown Chart:**
+
+![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Burn1.PNG)
+
+>En este Sprint presentamos algunos inconvenientes en la asignacion de tareas entre cada uno de los participantes y desorganizacion en el tiempo que cada uno ibamos a invertir en las tareas, por lo tanto, decidimos organizar mejor las tareas para el siguiente Sprint, ya que al finalizar este no teniamos ninguna tarea completada.
+
+- **Sprint 2:**
+> - **Sprint-Backlog:**
+
+![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Sprint2.PNG)
+
+> - **Sprint-Burdown Chart:**
+
+![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Burn2.PNG)
+
+>
+
+- **Sprint 3:**
+> - **Sprint-Backlog:**
+
+![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Sprint3.PNG)
+![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Sprint3[1].PNG)
+
+> - **Sprint-Burdown Chart:**
+
+![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Burn3.PNG)
+
+>
+
 #### [Link Heroku](https://pdswproyectoquantum.herokuapp.com/)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/21db71efa3e4472bb82a3a658f9e332c)](https://www.codacy.com/app/DanBeltF/2018-1-PROYPDSW?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW&amp;utm_campaign=Badge_Grade)
