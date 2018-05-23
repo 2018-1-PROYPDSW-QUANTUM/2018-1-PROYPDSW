@@ -55,7 +55,7 @@ Un poderoso y sencillo Framework de seguridad de Java. Cuenta con funciones de a
 - #### PrimeFaces 
 Una biblioteca de JavaServerFaces que facilita el desarrollo de aplicaciones web con una gran variedad de componentes disponibles para diseño web.
 
-#### Postgres SQL
+- #### Postgres SQL
 Sistema de gestión de bases de datos objeto-relacionales, de código abierto y el más potente del mercado.
 
 - #### [Link Heroku](https://pdswproyectoquantum.herokuapp.com/)
