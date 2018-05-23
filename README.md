@@ -48,6 +48,16 @@ El administrador podra registrar un Semestre, con tan solo ingresar los datos qu
 > - **Modelo de base de datos:**
 ![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Modelo%20Base%20de%20datos.png)
 
+## Diagrama de Clases
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Screenshot%20from%202018-05-23%2015:49:32.png)
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Screenshot%20from%202018-05-23%2015:53:13.png)
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Screenshot%20from%202018-05-23%2015:53:39.png)
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Screenshot%20from%202018-05-23%2015:54:44.png)
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Screenshot%20from%202018-05-23%2015:54:55.png)
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Screenshot%20from%202018-05-23%2015:55:16.png)
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Screenshot%20from%202018-05-23%2015:55:40.png)
+
+
 - **Tecnologias utilizadas:**
 
 - #### Apache Shiro  
