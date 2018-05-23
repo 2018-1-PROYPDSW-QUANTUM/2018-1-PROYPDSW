@@ -112,6 +112,9 @@ and open the template in the editor.
         </div> 
         <h:form>
             <div class="form">
+                <p:idleMonitor timeout="100000">
+                    <p:ajax event="idle" oncomplete="alert('inactivo')" />
+                </p:idleMonitor>
                 <p:dialog header="Asesoria" widgetVar="registrada" width="50%">
                     <p:button class="Boton" value="Finalizar"  outcome="/monitor/monitor" />
                 </p:dialog>
