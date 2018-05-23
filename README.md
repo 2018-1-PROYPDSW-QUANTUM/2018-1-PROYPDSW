@@ -18,10 +18,34 @@
 ### Descripción del producto
 La Plataforma de gestión a servicios de Monitorias Académicas, es una herramienta que ha contribuido a una mejora significativa en el desempeño de los estudiantes del programa de Ingeniería de Sistemas de la Escuela, en las asignaturas de primeros semestres administradas por el mismo. El sistema, más allá de facilitar el seguimiento de la labor de los monitores, se ha convertido en una valiosa base de conocimiento con la que los coordinadores de asignaturas y de línea pueden identificar aquellos temas que -a través del tiempo- han presentado mayores dificultades a los estudiantes. Con esto, ha sido posible organizar, de forma más estratégica, la tomar acciones a nivel pedagógico, didáctico y administrativo que han redundado en un mejoramiento general del desempeño de los estudiantes.
 
+## Funcionalidades
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Inicio.PNG)
+En la pagina de inicio del proyecto, se pueden filtrar cada una de las franjas que tienen cada uno de los cursos, dando la opcion de seleccionara cada uno de los cursos que estan registrados.
+
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Monitoria.PNG)
+En la pagina de monitor, se puede agragar una asesoria o monitoria, en la cual se puede seleccionar la materia, el grupo, el estudiante por codigo y las observaciones que se tienen en la asesoria.
+
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Profesor.PNG)
+Cuando el profesor ingrese a su pagina correspondiente, este tendra la opcion de filtar las monitorias que se han realizado en sus cursos, mediante la seleccion de sus cursos los cuales aparecen en una tabla seleccionable, ademas se ofrece la opcion de ver cada uno de los registros estadisticos de las asesorias por estudiantes que asisten a estas, se pueden filtrar por Curso, Grupo, Monitor y Tema tratado en la Monitoria.
+
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Administrador.PNG)
+El administrador al ingresar a su pagina, podra escoger mediante botones, cada una de las funciones que le pertenecen al mismo, cada boton lo redirecciona a una pagina diferente, la cual contiene cada una de las funcionalidades.
+
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/registrarCurso.PNG)
+El administrador podra registrar un curso dando los siguientes datos: Nemonico del curso, nombre del curso, creditos academicos correspondientes al curso, horas de monitoria correspondientes al curso. Al dar click en el boton, automaticamente el Curso es registrado en la base de datos
+
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/registrarMonitor.PNG)
+El administrador podra registrar un Monitor, con el simple hecho de dar los datos que se requieren, los cuales son: Codigo, semestre ingreso, programa academico, nombre, apellido, celular, correo y clave. Al dar click en el boton, automaticamente el Monitor es registrado en la base de datos.
+
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/registrarProfesor.PNG)
+El administrador podra registrar un profesor, con tan solo ingresar los datos que son solicitados, los cuales son: Codigo, nombre, apellido, celular, correo y clave. Al dar click en el boton, automaticamente el Profesor es registrado en la base de datos.
+
+![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/registrarSemestre.PNG)
+El administrador podra registrar un Semestre, con tan solo ingresar los datos que se solicitan, los cuales son: ID, año, periodo academico, Fecha inicio semestre, fecha fin semestre y seleccionar el administrador que estara encargado de ese semestre. Al dar click en el boton, automaticamente el Semestre es registrado en la base de datos.
+
 ## Descripción del proceso:<br />
 * Metodología: Se hizo uso SCRUM, una metodología que permite el despliegue continuo del producto con el fin de mostrar en cada revisión  lo avanzado.<br />
 * Trello: https://trello.com/b/uaAquS03/2018-1-proypdsw-quantum<br />
-
 
 #### [Link Heroku](https://pdswproyectoquantum.herokuapp.com/)
 
