@@ -67,7 +67,7 @@ El administrador podra registrar un Semestre, con tan solo ingresar los datos qu
 
 ![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Burn2.PNG)
 
->
+>En este Sprint volvimos a presentar algunos inconvenientes en organizacion de tiempo, pero se adelantaron muchas cosas de la parte grafica, de los mappers, MyBatis, Daos y demas. No se terminaron ninguna de las tareas propuestas en el trello completamente, por lo que organizamos las tareas de una manera mas organizada y tratando que las tareas quedaran entre 2 personsa para la correcta terminacion de cada una.
 
 - **Sprint 3:**
 > - **Sprint-Backlog:**
@@ -79,7 +79,7 @@ El administrador podra registrar un Semestre, con tan solo ingresar los datos qu
 
 ![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Burn3.PNG)
 
->
+>En este Sprint la organizacion fue mucho mayor, por lo que la mayoria de las tareas fue correcta, la organizacion en este caso fue importante en cada una de las tareas y en cada una de las tareas.
 
 #### [Link Heroku](https://pdswproyectoquantum.herokuapp.com/)
 
