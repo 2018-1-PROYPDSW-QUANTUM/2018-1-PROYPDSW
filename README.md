@@ -1,4 +1,6 @@
 # ECI-Monitores
+## Periodo Académico: 2018-1<br />
+## Curso: Procesos de Desarrollo de Software (PDSW)<br />
 #### Plataforma de gestión a servicios de Monitorías Académicas para el programa de Ingeniería de sistemas de la Escuela Colombiana de Ingeniería Julio Garavito
 ---
 
@@ -12,8 +14,14 @@
 - Jonathan Prieto - Scrum team member
 - Francisco Chaves - Product owner
 ---
+## Profesor: Francisco Chaves<br />
 ### Descripción del producto
 La Plataforma de gestión a servicios de Monitorias Académicas, es una herramienta que ha contribuido a una mejora significativa en el desempeño de los estudiantes del programa de Ingeniería de Sistemas de la Escuela, en las asignaturas de primeros semestres administradas por el mismo. El sistema, más allá de facilitar el seguimiento de la labor de los monitores, se ha convertido en una valiosa base de conocimiento con la que los coordinadores de asignaturas y de línea pueden identificar aquellos temas que -a través del tiempo- han presentado mayores dificultades a los estudiantes. Con esto, ha sido posible organizar, de forma más estratégica, la tomar acciones a nivel pedagógico, didáctico y administrativo que han redundado en un mejoramiento general del desempeño de los estudiantes.
+
+## Descripción del proceso:<br />
+* Metodología: Se hizo uso SCRUM, una metodología que permite el despliegue continuo del producto con el fin de mostrar en cada revisión  lo avanzado.<br />
+* Trello: https://trello.com/b/uaAquS03/2018-1-proypdsw-quantum<br />
+
 
 #### [Link Heroku](https://pdswproyectoquantum.herokuapp.com/)
 
