@@ -15,10 +15,15 @@ import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+
+import edu.eci.pdsw.samples.writer.writer;
+import java.io.IOException;
+
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -90,7 +95,16 @@ public class AdministradorBean {
     private Integer grupoFranja;
     private Franja franjaRegistrada;
 
-    public AdministradorBean() {
+    public AdministradorBean() throws IOException {
+        /** Para agregar algo al shiro.ini
+        String a= "Fernando";
+        String b= "1234";
+        String c="profesor";
+        writer er= new writer();
+        er.escribir(a,b,c); 
+        */
+        
+        
     }
 
     public void registrarProfesor() throws ExcepcionServiciosMonitoria {
