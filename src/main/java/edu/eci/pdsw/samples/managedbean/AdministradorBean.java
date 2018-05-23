@@ -122,7 +122,7 @@ public class AdministradorBean {
         String dateAsStringFi = fechaInicioSemestre;        
         Date dateFechaInicio = sourceFormatFi.parse(dateAsStringFi);
         DateFormat sourceFormatFf = new SimpleDateFormat("yyyy-MM-dd");
-        String dateAsStringFf = fechaInicioSemestre;
+        String dateAsStringFf = fechaFinSemestre;
         Date dateFechaFin = sourceFormatFf.parse(dateAsStringFf);        
         semestreRegistrado.setFechaInicio(dateFechaInicio);
         semestreRegistrado.setFechaFin(dateFechaFin);
