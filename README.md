@@ -43,6 +43,10 @@ El administrador podra registrar un profesor, con tan solo ingresar los datos qu
 ![alt text](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/registrarSemestre.PNG)
 El administrador podra registrar un Semestre, con tan solo ingresar los datos que se solicitan, los cuales son: ID, año, periodo academico, Fecha inicio semestre, fecha fin semestre y seleccionar el administrador que estara encargado de ese semestre. Al dar click en el boton, automaticamente el Semestre es registrado en la base de datos.
 
+## Arquitectura y diseño:<br />
+> - **Modelo de base de datos:**
+![](https://github.com/2018-1-PROYPDSW-QUANTUM/2018-1-PROYPDSW/blob/master/Modelo%20Base%20de%20datos.png)
+
 ## Descripción del proceso:<br />
 * Metodología: Se hizo uso SCRUM, una metodología que permite el despliegue continuo del producto con el fin de mostrar en cada revisión  lo avanzado.<br />
 * Trello: https://trello.com/b/uaAquS03/2018-1-proypdsw-quantum<br />
