@@ -64,6 +64,9 @@ public class RegistroMonitoriaBean {
     private Integer grupId;
     private List<Asistente> asistentes;
     private Curso cursoSeleccionado;
+    private Grupo grupoSeleccionado;
+    private List<Franja> franjaSeleccionada;
+    private List<Grupo> grupos;
 
     public RegistroMonitoriaBean() throws PersistenceException, ExcepcionServiciosMonitoria {
         nuevaMonitoria = new Monitoria();
@@ -85,16 +88,21 @@ public class RegistroMonitoriaBean {
 
     }
 
-    public List<Curso> getConsultarMaterias() throws ExcepcionServiciosMonitoria{
+    public List<Curso> getConsultarMaterias() throws ExcepcionServiciosMonitoria {
         return sm.consultarCursos();
     }
-    
-    public List<Franja> getConsultarFranjas() throws ExcepcionServiciosMonitoria{
+
+    public List<Franja> getConsultarFranjas() throws ExcepcionServiciosMonitoria {
         return sm.consultarFranjas();
     }
-    
+
     public ShiroLoginBean getShiro() {
         return shiro;
+    }
+
+    public List<Grupo> getGrupos() throws ExcepcionServiciosMonitoria {
+        grupos = sm.consultarGrupos();
+        return grupos;
     }
 
     public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria {
@@ -122,6 +130,23 @@ public class RegistroMonitoriaBean {
         return this.temasAsistente;
     }
 
+    public List<Franja> getConsutarFranjasXMateria() throws ExcepcionServiciosMonitoria {        
+        if (grupoSeleccionado != null) {
+            franjaSeleccionada = sm.consultarFranjasXMateria(grupoSeleccionado.getId());            
+        } else {
+            franjaSeleccionada = null;
+        }
+        return franjaSeleccionada;
+    }
+
+    public Grupo getGrupoSeleccionado() {
+        return grupoSeleccionado;
+    }
+
+    public void setGrupoSeleccionado(Grupo grupoSeleccionado) {
+        this.grupoSeleccionado = grupoSeleccionado;
+    }
+
     public void setTemaAsistente(Tema temasAsistente) {
         this.temasAsistente = temasAsistente;
     }
@@ -141,6 +166,14 @@ public class RegistroMonitoriaBean {
 
     public List<Asistente> getAsistentes() {
         return this.asistentes;
+    }
+
+    public List<Franja> getFranjaSeleccionada() {
+        return franjaSeleccionada;
+    }
+
+    public void setFranjaSeleccionada(List<Franja> franjaSeleccionada) {
+        this.franjaSeleccionada = franjaSeleccionada;
     }
 
     public String getObservaciones() {

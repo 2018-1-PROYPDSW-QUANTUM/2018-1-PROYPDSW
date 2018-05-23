@@ -18,6 +18,18 @@
         </if>
     </select>
     
+    <select parameterType="map" id="consultarFranjasXMateriaGeneral" resultMap="FranjaResult">
+        SELECT 
+        f.Identificador as f_Identificador, 
+        f.dia as f_dia, 
+        f.hora_inicio as f_hora_inicio, 
+        f.hora_fin as f_hora_fin,
+        f.grupo_identificador as f_grupo 
+        
+        FROM Franja as f
+        WHERE f.grupo_identificador = #{idMateria}
+    </select>    
+    
     <insert parameterType="map" id="registrarFranja">
         INSERT INTO Franja (Identificador, dia, hora_inicio, hora_fin, grupo_identificador) 
         VALUES (#{idFranja},#{diFranja},#{hiFranja},#{hfFranja},#{giFranja})

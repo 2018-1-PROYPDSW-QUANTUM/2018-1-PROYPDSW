@@ -273,4 +273,11 @@ public interface ServiciosMonitoria {
      */
     public abstract void registrarFranja(Franja franjaRegistrada) throws ExcepcionServiciosMonitoria;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public abstract List<Franja> consultarFranjasXMateria(Integer id) throws ExcepcionServiciosMonitoria;
+
 }

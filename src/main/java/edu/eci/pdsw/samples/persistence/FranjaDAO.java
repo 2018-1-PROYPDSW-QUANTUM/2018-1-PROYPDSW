@@ -35,4 +35,12 @@ public interface FranjaDAO {
      * @throws PersistenceException
      */
     public List<Franja> loadAll() throws PersistenceException;
+
+    /**
+     *
+     * @param id
+     * @return 
+     * @throws edu.eci.pdsw.samples.persistence.PersistenceException
+     */
+    public List<Franja> consultarFranjasXMateria(Integer id) throws PersistenceException;
 }

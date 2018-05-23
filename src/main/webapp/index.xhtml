@@ -10,56 +10,8 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Sistema de monitorias</title>
-        <style type="text/css">
-            body{
-                background-image: url(resources/Fondo.jpg);
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                max-width: 100%;
-                max-height: 100%;
-                margin: auto;
-                overflow: auto;
-            }
-            #Informacion{
-                background-color: #F7F7F5;
-                margin: auto;
-                width: 75%;
-                height: auto;
-                text-align: center;
-                padding: 1%;
-                box-shadow: 0px 7px 20px black;
-                font-family: Verdana;
-                color: grey;
-            }         
-            .Titulo{
-                font-family: Verdana;
-                position: relative;
-                z-index: 1;
-                background: #FFFFFF;
-                max-width: 100%;
-                margin: 0 auto 10%;
-                text-align: right;
-                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-                color: grey;              
-            }
-            .Boton{
-                font-family: Verdana, sans-serif;
-                text-transform: uppercase;
-                outline: 0;
-                background: #4CAF50;
-                width: 50%;
-                border: 0;
-                padding: 15px;
-                color: #FFFFFF;
-                font-size: 14px;
-                -webkit-transition: all 0.3 ease;
-                transition: all 0.3 ease;
-                cursor: pointer;
-            }           
-        </style>
+        <title>Sistema de monitorias</title>          
+        <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
     </h:head>
     <h:body>
         <div class="Titulo">
@@ -80,45 +32,47 @@ and open the template in the editor.
         <div id="Informacion" style="width: 90%">
             <br></br>
             <h1> | Monitorias Disponibles | </h1>
-            <table> 
-                <tr>
-                    <th width="35%">
-                        <p:dataTable var="materias" value="#{registrarMonitoria.consultarMaterias}" selectionMode="single" selection="#{registrarMonitoria.cursoSeleccionado}" rowKey="#{materias.nemonico}">
-                            <f:facet name="header">
-                                Lista de Materias
-                            </f:facet>
-                            <p:column headerText="Materia">
-                                <h:outputText value="#{materias.nemonico} - #{materias.nombre}" />
-                            </p:column>                           
-                        </p:dataTable>                        
-                    </th>
-                    <th>
-                        <p:dataTable var="franjas" value="#{registrarMonitoria.consultarFranjas}">
-                            <f:facet name="header">
-                                Monitorias Disponibles
-                            </f:facet>
-                            <p:column headerText="Dia Monitoria">
-                                <h:outputText value="#{franjas.dia}" />
-                            </p:column>
-                            <p:column headerText="Grupo Monitoria">
-                                <h:outputText value="#{franjas.grupo}" />
-                            </p:column>
-                            <p:column headerText="Hora inicio">
-                                <h:outputText value="#{franjas.horaInicio}" />
-                            </p:column>
-                            <p:column headerText="Hora Fin">
-                                <h:outputText value="#{franjas.horaFin}" />
-                            </p:column>                            
-                        </p:dataTable>
-                    </th>
-                </tr>
-                <tr>
-                    <th>
-                        <p:commandButton class="Boton" value="Consultar monitorias" action="#{registrarMonitoria}" />
-                    </th>
-                    <th></th>
-                </tr>
-            </table>
+            <h:form>
+                <table> 
+                    <tr>
+                        <th width="35%">
+                            <p:dataTable var="materias" id="materias" value="#{registrarMonitoria.grupos}" selectionMode="single" selection="#{registrarMonitoria.grupoSeleccionado}" rowKey="#{materias.curso}">
+                                <f:facet name="header">
+                                    Lista de Materias
+                                </f:facet>
+                                <p:column headerText="Materia">
+                                    <h:outputText value="#{materias.curso.nemonico} - #{materias.numero}" />
+                                </p:column>                           
+                            </p:dataTable>                        
+                        </th>
+                        <th>
+                            <p:dataTable var="franjas" value="#{registrarMonitoria.consutarFranjasXMateria}" id="franjas">
+                                <f:facet name="header">
+                                    Monitorias Disponibles
+                                </f:facet>
+                                <p:column headerText="Dia Monitoria">
+                                    <h:outputText value="#{franjas.dia}" />
+                                </p:column>
+                                <p:column headerText="Grupo Monitoria">
+                                    <h:outputText value="#{franjas.grupo}" />
+                                </p:column>
+                                <p:column headerText="Hora inicio">
+                                    <h:outputText value="#{franjas.horaInicio}" />
+                                </p:column>
+                                <p:column headerText="Hora Fin">
+                                    <h:outputText value="#{franjas.horaFin}" />
+                                </p:column>                            
+                            </p:dataTable>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <p:commandButton class="Boton" value="Consultar monitorias" update="franjas materias"/>
+                        </th>
+                        <th></th>
+                    </tr>
+                </table>
+            </h:form>
         </div>
         <h:form prependId="false">
             <p:outputPanel deferred="true" style="text-align: center">

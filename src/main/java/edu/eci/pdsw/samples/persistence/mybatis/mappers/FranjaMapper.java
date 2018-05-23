@@ -53,4 +53,20 @@ public interface FranjaMapper {
             @Param("hiFranja") LocalTime horaInicio,
             @Param("hfFranja") LocalTime horaFinal,
             @Param("giFranja")Integer grupo);
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    default List<Franja> consultarFranjasXMateria(Integer id){
+        return consultarFranjasXMateriaGeneral(id);
+    }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public List<Franja> consultarFranjasXMateriaGeneral(@Param("idMateria")Integer id);
 }

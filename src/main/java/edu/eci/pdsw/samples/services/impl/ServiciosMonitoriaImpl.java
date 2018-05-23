@@ -412,4 +412,13 @@ public class ServiciosMonitoriaImpl implements ServiciosMonitoria {
         }
     }
 
+    @Override
+    public List<Franja> consultarFranjasXMateria(Integer id) throws ExcepcionServiciosMonitoria{
+        try {
+            return daoFranja.consultarFranjasXMateria(id);
+        } catch (PersistenceException e) {
+            throw new ExcepcionServiciosMonitoria("Error al consultar la franja: " + id, e);
+        }        
+    }
+
 }

@@ -36,4 +36,9 @@ public class MyBATISFranjaDAO implements FranjaDAO {
         return franjaMapper.ConsultarFranjas();
     }
 
+    @Override
+    public List<Franja> consultarFranjasXMateria(Integer id) throws PersistenceException {
+        return franjaMapper.consultarFranjasXMateria(id);
+    }
+
 }
