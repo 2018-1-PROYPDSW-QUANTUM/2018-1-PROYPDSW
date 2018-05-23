@@ -15,6 +15,10 @@ import edu.eci.pdsw.samples.entities.Semestre;
 import edu.eci.pdsw.samples.services.ExcepcionServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoria;
 import edu.eci.pdsw.samples.services.ServiciosMonitoriasFactory;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,6 +44,7 @@ public class AdministradorBean {
     private Monitor monitorSeleccionado;
     private Grupo grupoSeleccionado;
     private Curso cursoSeleccionado;
+    private Administrador administradorSeleccionado;
 
     //Atributos Profesor
     private Integer codigoProfesor;
@@ -61,9 +66,9 @@ public class AdministradorBean {
     private Integer idSemestre;
     private Integer yearsSemestre;
     private String periodoAcademicoSemestre;
-    private Date fechaInicioSemestre;
-    private Date fechaFinSemestre;
-    private Administrador adminSemestre;
+    private String fechaInicioSemestre;
+    private String fechaFinSemestre;
+    private Integer adminSemestre;
     private Semestre semestreRegistrado;
 
     //Atributos monitor
@@ -108,14 +113,20 @@ public class AdministradorBean {
         sm.registrarCurso(cursoRegistrado);
     }
 
-    public void registrarSemestre() throws ExcepcionServiciosMonitoria {
+    public void registrarSemestre() throws ExcepcionServiciosMonitoria, ParseException {
         semestreRegistrado = new Semestre();
         semestreRegistrado.setId(idSemestre);
         semestreRegistrado.setYears(yearsSemestre);
         semestreRegistrado.setPeriodoAcademico(periodoAcademicoSemestre);
-        semestreRegistrado.setFechaInicio(fechaInicioSemestre);
-        semestreRegistrado.setFechaFin(fechaFinSemestre);
-        semestreRegistrado.setAdmin(adminSemestre);
+        DateFormat sourceFormatFi = new SimpleDateFormat("yyyy-MM-dd");
+        String dateAsStringFi = fechaInicioSemestre;        
+        Date dateFechaInicio = sourceFormatFi.parse(dateAsStringFi);
+        DateFormat sourceFormatFf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateAsStringFf = fechaInicioSemestre;
+        Date dateFechaFin = sourceFormatFf.parse(dateAsStringFf);        
+        semestreRegistrado.setFechaInicio(dateFechaInicio);
+        semestreRegistrado.setFechaFin(dateFechaFin);
+        semestreRegistrado.setAdmin(administradorSeleccionado);
         sm.registrarSemestre(semestreRegistrado);
     }
 
@@ -189,6 +200,14 @@ public class AdministradorBean {
 
     public void setCursos(List<Curso> cursos) {
         this.cursos = cursos;
+    }
+
+    public Administrador getAdministradorSeleccionado() {
+        return administradorSeleccionado;
+    }
+
+    public void setAdministradorSeleccionado(Administrador administradorSeleccionado) {
+        this.administradorSeleccionado = administradorSeleccionado;
     }
 
     public Integer getIdFranja() {
@@ -411,28 +430,32 @@ public class AdministradorBean {
         this.periodoAcademicoSemestre = periodoAcademicoSemestre;
     }
 
-    public Date getFechaInicioSemestre() {
+    public String getFechaInicioSemestre() {
         return fechaInicioSemestre;
     }
 
-    public void setFechaInicioSemestre(Date fechaInicioSemestre) {
+    public void setFechaInicioSemestre(String fechaInicioSemestre) {
         this.fechaInicioSemestre = fechaInicioSemestre;
     }
 
-    public Date getFechaFinSemestre() {
+    public String getFechaFinSemestre() {
         return fechaFinSemestre;
     }
 
-    public void setFechaFinSemestre(Date fechaFinSemestre) {
+    public void setFechaFinSemestre(String fechaFinSemestre) {
         this.fechaFinSemestre = fechaFinSemestre;
     }
 
-    public Administrador getAdminSemestre() {
+    public Integer getAdminSemestre() {
         return adminSemestre;
     }
 
-    public void setAdminSemestre(Administrador adminSemestre) {
+    public void setAdminSemestre(Integer adminSemestre) {
         this.adminSemestre = adminSemestre;
+    }
+
+    public List<Administrador> getAdministradores() throws ExcepcionServiciosMonitoria {
+        return sm.consultarAdministradores();
     }
 
     public Integer getCodigoProfesor() {

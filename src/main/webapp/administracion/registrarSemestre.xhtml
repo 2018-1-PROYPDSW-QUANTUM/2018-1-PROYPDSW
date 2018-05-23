@@ -37,8 +37,12 @@ and open the template in the editor.
                     <p:inputText placeholder="Año" value="#{administradorBean.yearsSemestre}" required="true" label="Keyword" type="number"/>
                     <p:inputText placeholder="Periodo academico" value="#{administradorBean.periodoAcademicoSemestre}" required="true" label="Keyword" type="text"/>  
                     <p:inputText placeholder="Fecha Inicio" value="#{administradorBean.fechaInicioSemestre}" required="true" label="Keyword" type="date"/> 
-                    <p:inputText placeholder="Fecha Fin" value="#{administradorBean.fechaFinSemestre}" required="true" label="Keyword" type="date"/> 
-                    <p:inputText placeholder="Id Administrador" value="#{administradorBean.adminSemestre}" required="true" label="Keyword" type="number"/> 
+                    <p:inputText placeholder="Fecha Fin" value="#{administradorBean.fechaFinSemestre}" required="true" label="Keyword" type="date"/>                     
+                    <p:dataTable var="admins" value="#{administradorBean.administradores}" selectionMode="single" selection="#{administradorBean.administradorSeleccionado}" rowKey="#{admins.nombre}">
+                        <p:column headerText="Seleccione administrador">
+                            <h:outputText value="#{admins.nombre} #{admins.apellido}" />
+                        </p:column>                        
+                    </p:dataTable>
                     <p:commandButton class="Boton" value="Enviar" action="#{administradorBean.registrarSemestre()}" update="panelForm2"/>
                 </h:panelGrid>   
             </h:form>
