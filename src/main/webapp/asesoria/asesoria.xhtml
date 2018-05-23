@@ -148,10 +148,11 @@ and open the template in the editor.
                                     <h:outputText value="#{asistente.estudiante.codigo}" />
                                 </p:column>
                                 
-                            </p:dataTable>                       
+                            </p:dataTable>  
+                            <p:inputTextarea placeholder="Observaciones"  id="observaciones" rows="6" cols="33" value="#{registrarMonitoria.observaciones}" required="true" label="Keyword"/>
                     </h:panelGrid>
-                    <p:inputTextarea placeholder="Observaciones"  id="observaciones" rows="6" cols="33" value="#{registrarMonitoria.observaciones}" required="true" label="Keyword" onchange="#{registrarMonitoria.setObservaciones(observaciones)}"/>
-                        <p:commandButton  class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaMonitoria()}" process="@this" onclick="PF('registrada').show()"/>
+                    
+                        <p:commandButton  class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaMonitoria()}" styleClass="ui-priority-primary"  onclick="PF('registrada').show()" update="asesoria:Panel"/>
                         
                 </h:form>
                 
