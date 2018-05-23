@@ -106,13 +106,13 @@ public class RegistroMonitoriaBean {
     }
 
     public void setNuevaMonitoria() throws ExcepcionServiciosMonitoria {
-        System.out.println("------------------------------------------------------");
         nuevaMonitoria.setHoraFin(LocalTime.now());
         nuevaMonitoria.setObservaciones(observaciones);
         sm.registrarMonitoria(nuevaMonitoria, sm.consultarMonitor(monitorCodigo));
         for (Asistente i : asistentes) {
             sm.registrarAsesoria(i.getMonitoria().getId(), i.getEstudiante().getCodigo(), i.getTema().getId());
         }
+        
     }
 
     public void comenzarMonitoria() throws ExcepcionServiciosMonitoria {
@@ -179,6 +179,7 @@ public class RegistroMonitoriaBean {
     public String getObservaciones() {
         return observaciones;
     }
+    
 
     public Curso getCursoSeleccionado() {
         return cursoSeleccionado;
@@ -189,6 +190,7 @@ public class RegistroMonitoriaBean {
     }
 
     public void setObservaciones(String observaciones) {
+        nuevaMonitoria.setObservaciones(observaciones);
         this.observaciones = observaciones;
     }
 

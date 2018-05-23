@@ -112,14 +112,15 @@ and open the template in the editor.
         </div> 
         <h:form>
             <div class="form">
-                
-                <h:form id="asesoria"  > 
-                    <p:dialog header="Asistente" widgetVar="agregarAsistente" width="50%">
+                <p:dialog header="Asesoria" widgetVar="registrada" width="50%">
+                    <h:outputText value="Monitoria Registrada" />
+                    <p:button class="Boton" value="Finalizar" outcome="/monitor/monitor" />
+                </p:dialog>
+                <p:dialog header="Asistente" widgetVar="agregarAsistente" width="50%">
                         <p:inputText placeholder="Estudiante(codigo)" value="#{registrarMonitoria.estudianteMonitoria}" />
                         <f:facet name="header">
                             Agregar Estudiante
                         </f:facet>
-                        <h:form id="temasf"  >
                             <p:dataTable id="Temas" var="temas" value="#{registrarMonitoria.temas}" editable="true" selectionMode="single" selection="#{registrarMonitoria.temaAsistente}" rowKey="#{temas.id}">
                                 <f:facet name="header">
                                     Temas
@@ -132,15 +133,16 @@ and open the template in the editor.
                                 </p:column>
                                 <p:ajax event="rowSelect" listener="#{registrarMonitoria.setTemaAsistente(temasAsistente)}"></p:ajax>
                             </p:dataTable>
-                        </h:form>
-                        <p:commandButton class="Boton" value="Agregar" actionListener="#{registrarMonitoria.agregarAsistente}"  styleClass="ui-priority-primary" update="asesoria:asistentesf:asistentes"  onclick="PF('agregarAsistente').hide();"/>
+                        <p:commandButton class="Boton" value="Agregar" actionListener="#{registrarMonitoria.agregarAsistente}"  styleClass="ui-priority-primary" update="asesoria:Panel"  onclick="PF('agregarAsistente').hide();"/>
                         <p:commandButton class="Boton" value="Cancelar"   styleClass="ui-priority-primary"  onclick="PF('agregarAsistente').hide();"/>
                     </p:dialog>
-                    <h:panelGrid id="Panel" columns="1">                        
-                        <h1>| Registrar Asesoria |</h1>
+                
+                <h:form id="asesoria"  > 
+                    <h1>| Registrar Asesoria |</h1>
                         <p:inputText placeholder="Materia(neumonico)" id="materia" value="#{registrarMonitoria.curso}" required="true" label="Keyword"/>
                         <p:inputText placeholder="Grupo" id="grupo" value="#{registrarMonitoria.grupo}" required="true" label="Keyword"/>
-                        <h:form id="asistentesf"  >
+                        
+                    <h:panelGrid id="Panel" columns="1">                        
                             <p:commandButton class="Boton" value="Agregar estudiante" type="button" onclick="PF('agregarAsistente').show()" />
                             <p:dataTable id="asistentes" var="asistente" value="#{registrarMonitoria.asistentes}" editable="true" rowKey="#{asistente.estudiante.codigo}">
                                 <f:facet name="header">
@@ -149,13 +151,14 @@ and open the template in the editor.
                                 <p:column headerText="codigo">
                                     <h:outputText value="#{asistente.estudiante.codigo}" />
                                 </p:column>
-                            </p:dataTable>
-                        </h:form>
-                        <p:inputTextarea placeholder="Observaciones" style="text-align:center;" id="observaciones" rows="6" cols="33" value="#{registrarMonitoria.observaciones}" required="true" />
-                        <p:commandButton  class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaMonitoria}"  styleClass="ui-priority-primary"/>
-                    </h:panelGrid>                     
-                    
+                                
+                            </p:dataTable>                       
+                    </h:panelGrid>
+                        <p:inputTextarea placeholder="Observaciones"  id="observaciones" rows="6" cols="33" value="#{registrarMonitoria.observaciones}" required="true" label="Keyword"/>
+                        <p:commandButton  class="Boton" value="Enviar" actionListener="#{registrarMonitoria.setNuevaMonitoria()}" process="@this" onclick="PF('registrada').show()"/>
+                        
                 </h:form>
+                
             </div>
         </h:form>        
 
